@@ -123,7 +123,7 @@ export default function Navbar() {
           </div>
 
           <a
-            href="https://front-end-beta-puce.vercel.app/"
+            href="https://app.flowtingai.com/"
             target="_blank"
             rel="noopener noreferrer"
             className="text-xs md:text-sm lg:text-base text-foreground bg-main-bg border border-main-border rounded-xl shadow-sm shadow-zinc-00 px-4 py-2 hover:scale-95 transition-all duration-300"
