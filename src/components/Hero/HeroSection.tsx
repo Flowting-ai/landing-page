@@ -163,7 +163,7 @@ export default function HeroSection() {
                       </div>
                       <div className="w-full h-auto flex flex-row lg:flex-row items-start justify-start gap-0 px-2 lg:px-6">
                         <Image
-                          src="./hero/FlowtingLogoSilver.svg"
+                          src="./hero/flowtingBox.svg"
                           alt="Flowting Avatar"
                           width={20}
                           height={20}
