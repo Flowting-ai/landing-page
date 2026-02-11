@@ -1,12 +1,19 @@
 import PixelCard from "@/animations/PixelCard";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
+
+interface ProblemCardProps {
+  problem: string;
+  description: string;
+  solution: string;
+  imgSrc: string | StaticImageData;
+}
 
 export default function ProblemCard({
   problem,
   description,
   solution,
   imgSrc,
-}) {
+}: ProblemCardProps) {
   return (
     <PixelCard
       variant="pink"
