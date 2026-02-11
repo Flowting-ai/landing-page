@@ -9,7 +9,7 @@ const features = [
     title: "Chat across any model",
     description:
       "Not every AI thinks the same way. Some are better at writing. Some are better at code. Some are better at research. With Flowting, you pick the one that fits Claude, GPT, Gemini and switch anytime without losing your conversation. One chat. Many minds. You got a great answer. Now don't let it disappear.",
-    image: "/features/feature1.svg",
+    image: "./features/feature1.svg",
     styling: "translate-x-12 scale-90",
   },
   {
@@ -17,7 +17,7 @@ const features = [
     title: "Save what feels important.",
     description:
       "You know that moment — AI gives you something perfect, and two hours later you can't find it. In Flowting, you pin it. One click. That insight, that summary, that piece of code — saved right where you found it. No more digging through old chats. Now you have the good stuff. But good stuff scattered everywhere is still a mess.",
-    image: "/features/feature2.svg",
+    image: "./features/feature2.svg",
     styling: "translate-x-0 scale-90",
   },
   {
@@ -25,7 +25,7 @@ const features = [
     title: "Organize it your way.",
     description:
       "Group your saved work by project, by client, by idea — whatever makes sense to you. Not folders someone else designed. Not tags that don't fit. Your system. Your structure. Your AI work finally has a home.Everything is in place. Here's where it starts to pay off.",
-    image: "/features/feature3.svg",
+    image: "./features/feature3.svg",
     styling: "translate-x-0 scale-90",
   },
   {
@@ -33,7 +33,7 @@ const features = [
     title: "Reuse context instantly",
     description:
       "New conversation? Bring your saved context in with one click. The research you already did. The decisions you already made. It's all there. No copy-paste. No starting from scratch. Every new chat picks up where the last one left off. This is where your AI stops forgetting and starts working like you do.",
-    image: "/features/feature4.svg",
+    image: "./features/feature4.svg",
     styling: "translate-x-16 scale-120",
   },
 ];
