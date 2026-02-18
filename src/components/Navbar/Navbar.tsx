@@ -169,7 +169,7 @@ export default function Navbar() {
           </div>
 
           <a
-            href="https://front-end-beta-puce.vercel.app/"
+            href="https://app.flowtingai.com/"
             target="_blank"
             rel="noopener noreferrer"
             className="text-xs md:text-sm lg:text-base text-foreground bg-main-bg hover:bg-zinc-300/40 border border-main-border rounded-xl shadow-sm px-4 py-2 transition-all duration-300"
@@ -251,18 +251,18 @@ export default function Navbar() {
           <span className="font-medium tracking-tight text-lg text-transparent bg-clip-text bg-linear-to-br from-zinc-400 via-zinc-700 to-zinc-400">
             FlowtingAI
           </span>
-          {/* <button
+          <button
             onClick={closeMobileMenu}
-            className="w-10 h-6 text-foreground hover:bg-white/10 border-2 border-main-border rounded-xl active:scale-95 transition-all"
+            className="w-8 h-8 text-foreground hover:bg-white/10 border border-main-border rounded-xl flex items-center justify-center active:scale-95 transition-all"
             aria-label="Close menu"
           >
-            Future Theme Toggle
-          </button> */}
+            <X className="w-4 h-4 text-text" />
+          </button>
         </div>
         
         <nav className="z-2 flex flex-col gap-2 p-4 pt-6">
           <a
-            href="https://front-end-beta-puce.vercel.app/"
+            href="https://app.flowtingai.com/"
             target="_blank"
             rel="noopener noreferrer"
             onClick={closeMobileMenu}
@@ -289,7 +289,7 @@ export default function Navbar() {
           ) : null}
         </nav>
 
-        <div className="z-2 bg-white/50 mt-auto border-t border-main-border backdrop-blur-xs p-4">
+        {/* <div className="z-10 bg-white/50 mt-auto border-t border-main-border backdrop-blur-xs p-4">
           <button
             onClick={closeMobileMenu}
             className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-foreground bg-main-bg border border-main-border font-medium transition-all duration-300 hover:bg-main-bg/80 active:scale-[0.98]"
@@ -297,7 +297,7 @@ export default function Navbar() {
           >
             <X className="w-4 h-4" /> Close
           </button>
-        </div>
+        </div> */}
         <Image
               src="./hero/FlowtingLogo.svg"
               alt="Flowting AI Logo"

@@ -219,7 +219,9 @@ export default function PixelCard({
     pixelsRef.current = pxs;
   };
 
-  const doAnimate = (fnName: keyof Pixel) => {
+  type PixelAnimationMethod = 'appear' | 'disappear';
+
+  const doAnimate = (fnName: PixelAnimationMethod) => {
     animationRef.current = requestAnimationFrame(() => doAnimate(fnName));
     const timeNow = performance.now();
     const timePassed = timeNow - timePreviousRef.current;
@@ -236,7 +238,6 @@ export default function PixelCard({
     let allIdle = true;
     for (let i = 0; i < pixelsRef.current.length; i++) {
       const pixel = pixelsRef.current[i];
-      // @ts-ignore
       pixel[fnName]();
       if (!pixel.isIdle) {
         allIdle = false;
@@ -247,7 +248,7 @@ export default function PixelCard({
     }
   };
 
-  const handleAnimation = (name: keyof Pixel) => {
+  const handleAnimation = (name: PixelAnimationMethod) => {
     if (animationRef.current !== null) {
       cancelAnimationFrame(animationRef.current);
     }

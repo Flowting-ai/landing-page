@@ -5,6 +5,7 @@ import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { useFadeInOnScroll } from "@/hooks/useFadeInOnScroll";
+import { LiaHandPointer } from "react-icons/lia";
 
 const DOT_IDLE = { scale: 1, boxShadow: "0 0 6px 2px rgba(255,255,255,0.35)" };
 const DOT_PULSE = {
@@ -125,8 +126,18 @@ export default function YourContextSection() {
               height={16}
               className="z-1 absolute top-1/2 left-1/2 -translate-1/2 w-full! max-w-[200px] h-auto! object-contain"
             />
+
+            {/* FlowtingAI Logo */}
+            <Image
+              src="./hero/FlowtingLogoSilver.svg"
+              alt="Flowting Logo"
+              width={16}
+              height={16}
+              className="z-1 absolute top-1/2 left-1/2 -translate-1/2 w-full! max-w-20 h-auto! object-contain"
+            />
+
             {/* Border + Claude */}
-            <div className="z-2 top-10 -translate-x-40 absolute flex items-center justify-center">
+            <div className="z-2 top-2 -translate-x-40 absolute flex items-center justify-center">
               <div className="relative w-full h-full flex items-center justify-center">
                 <Image
                   src="./yourContext/borderFrame.svg"
@@ -145,7 +156,7 @@ export default function YourContextSection() {
               </div>
             </div>
             {/* Border + Persona */}
-            <div className="z-2 bottom-30 -translate-x-74 absolute flex items-center justify-center">
+            <div className="z-2 bottom-22 -translate-x-70 absolute flex items-center justify-center">
               <div className="relative w-full h-full flex items-center justify-center">
                 <Image
                   src="./yourContext/borderFrame.svg"
@@ -170,26 +181,49 @@ export default function YourContextSection() {
               alt="openai"
               width={16}
               height={16}
-              className="z-4 absolute bottom-20 -translate-x-52 w-16.5 h-16.5 object-contain backdrop-blur-sm"
+              className="z-4 absolute bottom-12 -translate-x-48 w-16.5 h-16.5 object-contain backdrop-blur-sm"
             />
 
-            {/* Pins */}
-            <Image
-              src="./yourContext/pins.svg"
-              alt="pins"
-              width={16}
-              height={16}
-              className="z-4 absolute top-39 translate-x-39 w-13.25 h-auto object-contain backdrop-blur-sm"
-            />
+            {/* PinsFrame + Pins */}
+            <div className="z-2 top-22 translate-x-45 w-25 absolute flex items-center justify-center">
+              <div className="relative w-full h-full flex items-center justify-center">
+                <Image
+                  src="./yourContext/pinsFrame.svg"
+                  alt="Pins Frame"
+                  width={16}
+                  height={16}
+                  className="w-full max-w-25 h-full max-h-25 object-contain"
+                />
+                <Image
+                  src="./yourContext/pin.svg"
+                  alt="pin"
+                  width={16}
+                  height={16}
+                  className="absolute w-9 h-9 object-contain"
+                />
+              </div>
+            </div>
 
-            {/* Cursor Pointer */}
-            <Image
-              src="./yourContext/cursorPointer.svg"
-              alt="Cursor Pointer"
-              width={16}
-              height={16}
-              className="z-4 absolute bottom-38 translate-x-61.5 w-23.5 h-23.5 object-contain backdrop-blur-sm"
-            />
+            {/* PointerFrame + CursorPointer */}
+            <div className="z-2 bottom-34 translate-x-62 w-16 absolute flex items-center justify-center">
+              <div className="relative w-full h-full flex items-center justify-center">
+                <Image
+                  src="./yourContext/pinsFrame.svg"
+                  alt="Pointer Frame"
+                  width={16}
+                  height={16}
+                  className="w-full max-w-25 h-full max-h-25 object-contain"
+                />
+                {/* <LiaHandPointer size={25} className="absolute z-4 text-black"/> */}
+                <Image
+                  src="./yourContext/hand-pointer.svg"
+                  alt="Cursor Pointer"
+                  width={16}
+                  height={16}
+                  className="absolute w-8 h-8 object-contain"
+                />
+              </div>
+            </div>
 
             {/* Connector1 */}
             <Image
@@ -197,7 +231,7 @@ export default function YourContextSection() {
               alt="connector1"
               width={16}
               height={16}
-              className="z-3 absolute top-26 translate-x-4 w-57 h-auto object-contain"
+              className="z-3 absolute top-18 translate-x-4 w-57 h-auto object-contain drop-shadow-xs"
             />
 
             {/* Connector2 */}
@@ -206,20 +240,20 @@ export default function YourContextSection() {
               alt="connector2"
               width={16}
               height={16}
-              className="scale-120 md:scale-110 lg:scale-100 z-3 absolute bottom-28 translate-x-3 w-93.75 h-auto object-contain"
+              className="scale-120 md:scale-110 lg:scale-100 z-3 absolute bottom-20 translate-x-7 w-93.75 h-auto object-contain drop-shadow-xs"
             />
 
             {/* Dots - Connector 1 */}
             {/* Dot 1 */}
-            <div className="z-4 absolute top-25 -translate-x-24 w-2 h-2 flex items-center justify-center">
+            <div className="z-4 absolute top-17 -translate-x-24 w-2 h-2 flex items-center justify-center">
               <div
                 ref={c1d1}
-                className="w-full h-full bg-white rounded-full will-change-transform"
+                className="w-full h-full bg-white rounded-full will-change-transform drop-shadow-sm drop-shadow-zinc-300"
                 style={{ boxShadow: DOT_IDLE.boxShadow }}
               />
             </div>
             {/* Dot 2 */}
-            <div className="z-4 absolute top-26 -translate-x-12 w-3 h-3 flex items-center justify-center">
+            <div className="z-4 absolute top-18 -translate-x-12 w-3 h-3 flex items-center justify-center">
               <div
                 ref={c1d2}
                 className="w-full h-full bg-white rounded-full will-change-transform"
@@ -227,7 +261,7 @@ export default function YourContextSection() {
               />
             </div>
             {/* Dot 3 */}
-            <div className="z-4 absolute top-38 translate-x-12 w-2.5 h-2.5 flex items-center justify-center">
+            <div className="z-4 absolute top-30 translate-x-12 w-2.5 h-2.5 flex items-center justify-center">
               <div
                 ref={c1d3}
                 className="w-full h-full bg-white rounded-full will-change-transform"
@@ -235,25 +269,25 @@ export default function YourContextSection() {
               />
             </div>
             {/* Dot 4 */}
-            <div className="z-4 absolute top-42 translate-x-32 w-2 h-2 flex items-center justify-center">
+            <div className="z-4 absolute top-34 translate-x-32 w-2 h-2 flex items-center justify-center">
               <div
                 ref={c1d4}
-                className="w-full h-full bg-white rounded-full will-change-transform"
+                className="w-full h-full bg-white rounded-full will-change-transform drop-shadow-sm drop-shadow-zinc-300"
                 style={{ boxShadow: DOT_IDLE.boxShadow }}
               />
             </div>
 
             {/* Dots - Connector 2 */}
             {/* Dot 1 */}
-            <div className="z-4 absolute bottom-27 -translate-x-44 w-2 h-2 flex items-center justify-center">
+            <div className="z-4 absolute bottom-19.5 -translate-x-40 w-2 h-2 flex items-center justify-center">
               <div
                 ref={c2d1}
-                className="w-full h-full bg-white rounded-full will-change-transform"
+                className="w-full h-full bg-white rounded-full will-change-transform drop-shadow-sm drop-shadow-zinc-300"
                 style={{ boxShadow: DOT_IDLE.boxShadow }}
               />
             </div>
             {/* Dot 2 */}
-            <div className="z-4 absolute bottom-36 translate-x-0 w-4 h-4 flex items-center justify-center">
+            <div className="z-4 absolute bottom-28 translate-x-4 w-4 h-4 flex items-center justify-center">
               <div
                 ref={c2d2}
                 className="w-full h-full bg-white rounded-full will-change-transform"
@@ -261,10 +295,10 @@ export default function YourContextSection() {
               />
             </div>
             {/* Dot 3 */}
-            <div className="z-4 absolute bottom-49 translate-x-50 w-2 h-2 flex items-center justify-center">
+            <div className="z-4 absolute bottom-41 translate-x-54 w-2 h-2 flex items-center justify-center">
               <div
                 ref={c2d3}
-                className="w-full h-full bg-white rounded-full will-change-transform"
+                className="w-full h-full bg-white rounded-full will-change-transform drop-shadow-sm drop-shadow-zinc-300"
                 style={{ boxShadow: DOT_IDLE.boxShadow }}
               />
             </div>

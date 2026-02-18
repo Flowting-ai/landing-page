@@ -27,8 +27,7 @@ export default function AutoManualSection() {
             className="w-full h-full"
             style={{ width: "100%", height: "100%" }}
           />
-        </div>
-        {/* Video: desktop */}
+        </div>        
         <video
           autoPlay
           muted

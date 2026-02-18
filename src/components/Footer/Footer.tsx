@@ -27,11 +27,11 @@ const FOOTER_LINKS_PRODUCT = [
     href: "/changelog",
     disabled: true,
   },
-  {
-    name: "Docs",
-    href: "/docs",
-    disabled: true,
-  },
+  // {
+  //   name: "Docs",
+  //   href: "/docs",
+  //   disabled: true,
+  // },
 ];
 const FOOTER_LINKS_COMPANY = [
   {
@@ -49,11 +49,11 @@ const FOOTER_LINKS_COMPANY = [
     href: "/privacy-policy",
     disabled: true,
   },
-  {
-    name: "Manage Cookies",
-    href: "/Manage Cookies",
-    disabled: true,
-  },
+  // {
+  //   name: "Manage Cookies",
+  //   href: "/Manage Cookies",
+  //   disabled: true,
+  // },
 ];
 const FOOTER_LINKS_RESOURCES = [
   {
