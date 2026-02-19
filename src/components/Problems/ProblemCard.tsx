@@ -1,48 +1,47 @@
-import PixelCard from "@/animations/PixelCard";
-import Image, { StaticImageData } from "next/image";
+import Image from "next/image";
+import type { StaticImageData } from "next/image";
 
-interface ProblemCardProps {
+export interface ProblemCardProps {
   problem: string;
   description: string;
   solution: string;
-  imgSrc: string | StaticImageData;
+  layer1: StaticImageData;
 }
 
 export default function ProblemCard({
   problem,
   description,
   solution,
-  imgSrc,
+  layer1,
 }: ProblemCardProps) {
   return (
-    <PixelCard
-      variant="pink"
-      className="w-full h-60! lg:h-[400px]! min-w-60 max-w-87.5  group hover:animate-dual-beam2 hover:animate-border-rotate2 border-3! border-white shadow-sm transition-all duration-500"
-    >
-      <div className="absolute w-full h-full bg-transparent rounded-xl">
-        <div className="relative w-full h-full bg-linear-to-b from-blue-200/70 via-65% via-amber-200/50 to-blue-200/50 rounded-xl flex flex-col justify-between px-0 py-11 transition-all duration-500">
+    <div className="group w-full h-auto rounded-none flex items-center justify-center transition-all duration-0 px-10 sm:px-0 py-2">
+      <div className="aspect-33/50 min-w-[297px] w-full min-h-[450px] h-full bg-linear-to-b from-zinc-300 via-30% via-zinc-600 to-zinc-200 rounded-[18px] group-hover:shadow-sm p-[3px] transition-all duration-300">
+        <div className="relative w-full h-full rounded-[15px] flex flex-col justify-between px-0 py-0 transition-all duration-500 overflow-hidden">
+          <div className="z-2 absolute w-full h-full bg-transparent"></div>
           {/* Image */}
           <Image
-            src={imgSrc}
+            src={layer1}
             alt={problem}
             fill
-            className="group-hover:scale-120 z-1 absolute w-full h-auto opacity-10 object-cover transition-all duration-300"
+            className="z-1 w-full h-full opacity-100 object-contain scale-103 group-hover:scale-110 transition-all duration-500"
           />
 
           {/* Content */}
-          <div className="z-2 group-hover:translate-y-2 flex flex-col gap-2 transition-all duration-300">
-            <h3 className="z-2 font-medium text-[20px] lg:text-[24px] text-transparent bg-clip-text bg-linear-to-b from-zinc-950 via-zinc-600 to-zinc-950 ">
+          <div className="z-3 text-left group-hover:translate-y-2 flex flex-col gap-2 pt-6 transition-all duration-300">
+            <h3 className="z-3 font-medium text-[20px] lg:text-[24px] text-black px-6">
               {problem}
             </h3>
-            <h3 className="z-2 font-normal text-sm lg:text-base text-zinc-500 group-hover:backdrop-blur-[2px] px-6">
+            <h3 className="z-3 font-normal text-sm lg:text-base text-black px-6">
               {description}
             </h3>
           </div>
-          <h3 className="z-2 group-hover:-translate-y-2 font-light text-sm lg:text-base transition-all duration-300">
+
+          <h3 className="z-3 w-full h-auto group-hover:-translate-y-2 font-light text-sm lg:text-base bg-transparent group-hover:bg-linear-to-r group-hover:from-zinc-300/40 group-hover:via-white group-hover:to-zinc-300/40 group-hover:backdrop-blur-[5px] opacity-0 group-hover:opacity-100 py-3 mb-8 transition-all duration-300">
             {solution}
           </h3>
         </div>
       </div>
-    </PixelCard>
+    </div>
   );
 }

@@ -13,7 +13,7 @@ const ContactForm: React.FC = () => {
   // if (state.succeeded) {
   //   return (
   //     <section className="border w-full min-h-screen flex items-center justify-center">
-  //       <div className="max-w-7xl mx-auto flex items-center justify-center px-4 lg:px-0 py-20">
+  //       <div className="container mx-auto flex items-center justify-center px-4 lg:px-0 py-20">
   //         <div className="w-full max-w-2xl">
   //           <div className="relative w-full h-auto min-h-96 flex items-center justify-center">
   //             <div className="z-0 absolute inset-0 overflow-hidden rounded-2xl lg:rounded-3xl flex items-center justify-center">
@@ -78,7 +78,7 @@ const ContactForm: React.FC = () => {
         </div>
       ) : (
         <section className="w-full min-h-screen flex items-center justify-center bg-main-bg">
-          <div className="max-w-7xl mx-auto flex items-center justify-center px-2 lg:px-0 py-12 lg:py-20 w-full">
+          <div className="container mx-auto flex items-center justify-center px-2 lg:px-0 py-12 lg:py-20 w-full">
             <div className="w-full max-w-2xl">
               <div className="relative w-full h-auto flex items-center justify-center px-2 py-2 sm px-10sm:py-10 lg:py-20">
                 {/* Animated BG */}
@@ -94,7 +94,7 @@ const ContactForm: React.FC = () => {
                 {/* Blur Glass */}
                 <div className="absolute inset-0 backdrop-blur-[5px] rounded-2xl lg:rounded-3xl -z-10"></div>
 
-                {/* Form Container */}
+                {/* Form container */}
                 <div
                   ref={containerRef}
                   className="relative w-full max-w-xl bg-white/95 backdrop-blur-sm rounded-2xl lg:rounded-3xl p-8 lg:p-12 shadow-2xl z-10"
@@ -104,7 +104,7 @@ const ContactForm: React.FC = () => {
                     <h2 className="font-normal text-2xl lg:text-3xl text-black">
                       Get In Touch
                     </h2>
-                    <p className="font-normal text-sm lg:text-base text-zinc-600">
+                    <p className="font-normal text-sm lg:text-base text-subtext text-zinc-600">
                       Have a question or want to work with us? We&apos;d love to
                       hear from you.
                     </p>

@@ -181,7 +181,7 @@ export default function PixelCard({
   const pixelsRef = useRef<Pixel[]>([]);
   const animationRef = useRef<ReturnType<typeof requestAnimationFrame> | null>(null);
   const timePreviousRef = useRef(performance.now());
-  const reducedMotion = useRef(typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches).current;
+  const reducedMotion = useRef(window.matchMedia('(prefers-reduced-motion: reduce)').matches).current;
 
   const variantCfg: VariantConfig = VARIANTS[variant] || VARIANTS.default;
   const finalGap = gap ?? variantCfg.gap;
@@ -219,7 +219,9 @@ export default function PixelCard({
     pixelsRef.current = pxs;
   };
 
-  const doAnimate = (fnName: keyof Pixel) => {
+  type PixelAnimationMethod = 'appear' | 'disappear';
+
+  const doAnimate = (fnName: PixelAnimationMethod) => {
     animationRef.current = requestAnimationFrame(() => doAnimate(fnName));
     const timeNow = performance.now();
     const timePassed = timeNow - timePreviousRef.current;
@@ -236,7 +238,6 @@ export default function PixelCard({
     let allIdle = true;
     for (let i = 0; i < pixelsRef.current.length; i++) {
       const pixel = pixelsRef.current[i];
-      // @ts-ignore
       pixel[fnName]();
       if (!pixel.isIdle) {
         allIdle = false;
@@ -247,7 +248,7 @@ export default function PixelCard({
     }
   };
 
-  const handleAnimation = (name: keyof Pixel) => {
+  const handleAnimation = (name: PixelAnimationMethod) => {
     if (animationRef.current !== null) {
       cancelAnimationFrame(animationRef.current);
     }
@@ -286,7 +287,7 @@ export default function PixelCard({
     <div
       ref={containerRef}
       // aspect-[4/5]
-      className={`h-[400px] w-[300px] relative overflow-hidden grid place-items-center border border-[#27272a] rounded-[25px] isolate transition-colors duration-200 ease-[cubic-bezier(0.5,1,0.89,1)] select-none ${className}`}
+      className={`h-100 lg:h-auto w-75 relative overflow-hidden grid place-items-center border border-[#27272a] isolate transition-colors duration-200 ease-[cubic-bezier(0.5,1,0.89,1)] select-none ${className}`}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
       onFocus={finalNoFocus ? undefined : onFocus}

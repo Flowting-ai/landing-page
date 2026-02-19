@@ -2,6 +2,7 @@
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { useState, useEffect } from "react";
+import { useFadeInOnScroll } from "@/hooks/useFadeInOnScroll";
 
 const AIModels = [
   { name: "Grok", id: "grok", color: "from-purple-600 to-purple-800" },
@@ -24,17 +25,17 @@ const sampleQueries = [
 ];
 
 export default function FlowtingSelectSection() {
-
+  const sectionRef = useFadeInOnScroll<HTMLElement>();
 
   return (
-    <section className="w-full h-auto mt-10 lg:mt-40">
+    <section ref={sectionRef} className="w-full h-auto mt-10 lg:mt-40">
       {/* Initial Content */}
-      <div className="max-w-7xl mx-auto text-left flex flex-col gap-4 px-4 lg:px-0">
+      <div className="container mx-auto text-left flex flex-col gap-4 px-4 lg:px-16">
         <div className="flex flex-col gap-2">
-          <h3 className="font-medium lg:font-normal leading-[120%] text-xl lg:text-[37px] text-foreground">
+          <h3 className="font-medium lg:font-normal leading-[120%] text-xl lg:text-[37px] text-text">
             Flowting selects the best model <br /> for your question
           </h3>
-          <p className="font-normal text-sm lg:text-base">
+          <p className="font-normal text-sm lg:text-base text-subtext">
             No more guessing. No more switching. Just ask.
           </p>
         </div>

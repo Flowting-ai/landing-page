@@ -9,7 +9,6 @@ import ProblemsSection from "@/components/Problems/ProblemsSection";
 import QuoteFlowting from "@/components/QuoteFlowting/QuoteFlowting";
 import WorkflowsSection from "@/components/Workflows/WorkflowsSection";
 import YourContextSection from "@/components/YourContext/YourContextSection";
-import Image from "next/image";
 
 export default function Home() {
   return (
@@ -17,7 +16,7 @@ export default function Home() {
       <HeroSection/>
       <ProblemsSection/>
       <FlowtingSelectSection/>
-      {/* <AutoManualSection/> */}
+      <AutoManualSection/>
       <YourContextSection/>
       <FeaturesSection/>
       <PersonasSection/>
