@@ -222,7 +222,7 @@ export default function GoBuildSomething() {
               {logos.map((logo, index) => (
                 <div
                   key={logo.name}
-                  className="relative h-[174px] w-[115px] rounded-full drop-shadow-sm overflow-hidden shrink-0"
+                  className="relative h-[174px] w-[115px] rounded-full drop-shadow-sm drop-shadow-main-border overflow-hidden shrink-0"
                 >
                   {/* Window frame */}
                   <Image
@@ -230,7 +230,7 @@ export default function GoBuildSomething() {
                     alt="window frame"
                     width={115}
                     height={174}
-                    className="absolute inset-0 w-full h-full object-cover pointer-events-none z-10"
+                    className="z-10 absolute inset-0 w-full h-full object-cover pointer-events-none"
                   />
                   {/* Sun icon for middle window (gemini, index 3) */}
                   {index === 3 && (

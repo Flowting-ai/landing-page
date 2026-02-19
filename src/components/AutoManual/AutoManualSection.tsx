@@ -5,7 +5,7 @@ import { useFadeInOnScroll } from "@/hooks/useFadeInOnScroll";
 
 const Player = dynamic(
   () => import("@lottiefiles/react-lottie-player").then((mod) => mod.Player),
-  { ssr: false }
+  { ssr: false },
 );
 
 export default function AutoManualSection() {
@@ -24,7 +24,7 @@ export default function AutoManualSection() {
           </p>
         </div>
         {/* Lottie: responsive (mobile) — same behavior as video: autoplay, loop, no controls */}
-        <div className="w-full rounded-xl shadow-sm overflow-hidden block lg:hidden aspect-[623/1046]">
+        <div className="w-full border border-main-border rounded-2xl shadow-sm overflow-hidden block lg:hidden aspect-623/1046">
           <Player
             autoplay
             loop
@@ -32,18 +32,14 @@ export default function AutoManualSection() {
             className="w-full h-full"
             style={{ width: "100%", height: "100%" }}
           />
-        </div>        
-        <video
-          autoPlay
-          muted
+        </div>
+        <Player
+          autoplay
           loop
-          playsInline
-          className="w-full h-auto rounded-4xl hidden lg:block"
-        >
-          <source src="./autoManual.mov" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-
+          src="./lottie3.json"
+          className="hidden lg:flex w-full h-full border border-main-border rounded-4xl"
+          style={{ width: "100%", height: "100%" }}
+        />
       </div>
     </section>
   );

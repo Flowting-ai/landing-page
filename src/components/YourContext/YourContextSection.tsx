@@ -111,20 +111,15 @@ export default function YourContextSection() {
           <div className="translate-y-10 scale-46 sm:scale-50 md:scale-75 lg:scale-100 relative w-full min-h-42 lg:min-h-96 flex items-center justify-center">
             {/* Background */}
             <div className="w-100 max-w-100 h-100 max-h-100 bg-linear-to-b from-amber-100/50 via-amber-100 to-blue-300/60 blur-[60px]"></div>
-            {/* <Image
-            src="./yourContext/background.svg"
-            alt="Your Context Background"
-            width={16}
-            height={16}
-            className="blur-[60px] -translate-y-10 w-full! max-w-[521px] h-auto! object-contain"
-          /> */}
+            
+            {/* === Z-1 === */}
             {/* Window */}
             <Image
               src="./yourContext/window.svg"
               alt="Window"
               width={16}
               height={16}
-              className="z-1 absolute top-1/2 left-1/2 -translate-1/2 w-full! max-w-[200px] h-auto! object-contain"
+              className="z-1 absolute top-1/2 left-1/2 -translate-1/2 w-full! max-w-[200px] h-auto! object-contain drop-shadow-sm drop-shadow-white"
             />
 
             {/* FlowtingAI Logo */}
@@ -136,8 +131,9 @@ export default function YourContextSection() {
               className="z-1 absolute top-1/2 left-1/2 -translate-1/2 w-full! max-w-20 h-auto! object-contain"
             />
 
+            {/* === Z-3 === */}
             {/* Border + Claude */}
-            <div className="z-2 top-2 -translate-x-40 absolute flex items-center justify-center">
+            <div className="z-3 top-2 -translate-x-40 absolute flex items-center justify-center">
               <div className="relative w-full h-full flex items-center justify-center">
                 <Image
                   src="./yourContext/borderFrame.svg"
@@ -156,14 +152,14 @@ export default function YourContextSection() {
               </div>
             </div>
             {/* Border + Persona */}
-            <div className="z-2 bottom-22 -translate-x-70 absolute flex items-center justify-center">
+            <div className="z-3 bottom-22 -translate-x-70 absolute flex items-center justify-center">
               <div className="relative w-full h-full flex items-center justify-center">
                 <Image
                   src="./yourContext/borderFrame.svg"
                   alt="Border Frame"
                   width={16}
                   height={16}
-                  className="w-full max-w-[125px] h-full max-h-[125px] object-contain"
+                  className="w-full max-w-31.5 h-full max-h-31.5 object-contain"
                 />
                 <Image
                   src="./yourContext/persona.svg"
@@ -179,59 +175,59 @@ export default function YourContextSection() {
             <Image
               src="./yourContext/openai.svg"
               alt="openai"
-              width={16}
-              height={16}
-              className="z-4 absolute bottom-12 -translate-x-48 w-16.5 h-16.5 object-contain backdrop-blur-sm"
+              width={66}
+              height={66}
+              className="z-3 absolute bottom-12 -translate-x-48 w-16.5 h-16.5 object-contain backdrop-blur-sm"
             />
 
             {/* PinsFrame + Pins */}
-            <div className="z-2 top-22 translate-x-45 w-25 absolute flex items-center justify-center">
+            <div className="z-3 top-22 translate-x-45 w-25 absolute flex items-center justify-center backdrop-blur-lg">
               <div className="relative w-full h-full flex items-center justify-center">
                 <Image
                   src="./yourContext/pinsFrame.svg"
                   alt="Pins Frame"
-                  width={16}
-                  height={16}
+                  width={100}
+                  height={100}
                   className="w-full max-w-25 h-full max-h-25 object-contain"
                 />
                 <Image
                   src="./yourContext/pin.svg"
                   alt="pin"
-                  width={16}
-                  height={16}
-                  className="absolute w-9 h-9 object-contain"
+                  width={44}
+                  height={44}
+                  className="absolute w-11 h-11 object-contain"
                 />
               </div>
             </div>
 
             {/* PointerFrame + CursorPointer */}
-            <div className="z-2 bottom-34 translate-x-62 w-16 absolute flex items-center justify-center">
+            <div className="z-3 bottom-34 translate-x-62 w-16 h-16 absolute flex items-center justify-center">
               <div className="relative w-full h-full flex items-center justify-center">
                 <Image
                   src="./yourContext/pinsFrame.svg"
                   alt="Pointer Frame"
                   width={16}
                   height={16}
-                  className="w-full max-w-25 h-full max-h-25 object-contain"
+                  className="w-full h-full object-contain backdrop-blur-sm"
                 />
-                {/* <LiaHandPointer size={25} className="absolute z-4 text-black"/> */}
                 <Image
-                  src="./yourContext/hand-pointer.svg"
+                  src="./yourContext/cursor-pointer.svg"
                   alt="Cursor Pointer"
-                  width={16}
-                  height={16}
-                  className="absolute w-8 h-8 object-contain"
+                  width={44}
+                  height={44}
+                  className="absolute w-11 h-11 object-contain"
                 />
               </div>
             </div>
 
+            {/* === Z-2 === */}
             {/* Connector1 */}
             <Image
               src="./yourContext/connector1.svg"
               alt="connector1"
               width={16}
               height={16}
-              className="z-3 absolute top-18 translate-x-4 w-57 h-auto object-contain drop-shadow-xs"
+              className="z-2 absolute top-18 translate-x-4 w-57 h-auto object-contain drop-shadow-xs"
             />
 
             {/* Connector2 */}
@@ -240,9 +236,10 @@ export default function YourContextSection() {
               alt="connector2"
               width={16}
               height={16}
-              className="scale-106 md:scale-100 lg:scale-100 z-3 absolute bottom-20 translate-x-7 w-93.75 h-auto object-contain drop-shadow-xs"
+              className="scale-106 md:scale-100 lg:scale-100 z-2 absolute bottom-20 translate-x-7 w-93.75 h-auto object-contain drop-shadow-xs"
             />
 
+            {/* === Z-4 === */}
             {/* Dots - Connector 1 */}
             {/* Dot 1 */}
             <div className="z-4 absolute top-17 -translate-x-24 w-2 h-2 flex items-center justify-center">
@@ -253,7 +250,7 @@ export default function YourContextSection() {
               />
             </div>
             {/* Dot 2 */}
-            <div className="z-4 absolute top-18 -translate-x-12 w-3 h-3 flex items-center justify-center">
+            <div className="z-4 absolute top-20 -translate-x-6 w-3 h-3 flex items-center justify-center">
               <div
                 ref={c1d2}
                 className="w-full h-full bg-white rounded-full will-change-transform"
@@ -261,7 +258,7 @@ export default function YourContextSection() {
               />
             </div>
             {/* Dot 3 */}
-            <div className="z-4 absolute top-30 translate-x-12 w-2.5 h-2.5 flex items-center justify-center">
+            <div className="z-4 absolute top-32 translate-x-17 w-2.5 h-2.5 flex items-center justify-center">
               <div
                 ref={c1d3}
                 className="w-full h-full bg-white rounded-full will-change-transform"
@@ -295,7 +292,7 @@ export default function YourContextSection() {
               />
             </div>
             {/* Dot 3 */}
-            <div className="z-4 absolute bottom-40.5 translate-x-54 w-2 h-2 flex items-center justify-center">
+            <div className="z-4 absolute bottom-41 translate-x-54 w-2 h-2 flex items-center justify-center">
               <div
                 ref={c2d3}
                 className="w-full h-full bg-white rounded-full will-change-transform drop-shadow-sm drop-shadow-zinc-300"

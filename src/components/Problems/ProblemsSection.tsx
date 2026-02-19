@@ -56,7 +56,7 @@ export default function ProblemsSection() {
           </p>
         </div>
 
-        <div className="w-full bg-zinc-200/50 sm:bg-transparent rounded-3xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0 lg:gap-4 p-0">
+        <div className="w-full bg-zinc-200/50 sm:bg-transparent rounded-3xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-0 sm:gap-4 md:gap-4 lg:gap-4 p-0">
           {CARD_CONTENT.map(
             ({ id, problem, description, solution, layer1 }) => (
               <ProblemCard

@@ -36,7 +36,7 @@ export default function HeroSection() {
   const [messagePhase, setMessagePhase] = useState<1 | 2 | 3 | 4>(1);
   const [displayText, setDisplayText] = useState("");
   const [showClaudeAvatar, setShowClaudeAvatar] = useState(false);
-  const sectionRef = useFadeInOnScroll<HTMLElement>();
+  const sectionRef = useFadeInOnScroll<HTMLDivElement>();
 
   const LINE_1 = "Analyzing your prompt...";
   const LINE_2 = "Checking Available Models...";
@@ -119,13 +119,16 @@ export default function HeroSection() {
     );
   }, []);
   return (
-    <section ref={sectionRef} className="w-full h-auto">
+    <section className="w-full h-auto">
       {/* === NAVBAR === */}
       <div className="container mx-auto flex items-center justify-center px-2 lg:px-16 py-3 lg:py-6">
         <Navbar />
       </div>
 
-      <div className="container mx-auto flex flex-col gap-4 px-4 lg:px-16 mt-6 lg:mt-0">
+      <div
+        ref={sectionRef}
+        className="container mx-auto flex flex-col gap-4 px-4 lg:px-16 mt-6 lg:mt-0"
+      >
         {/* Title + Small Descriptions */}
         <div className="flex flex-col gap-3 lg:gap-2 my-4">
           <p

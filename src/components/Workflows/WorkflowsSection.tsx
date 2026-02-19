@@ -51,7 +51,7 @@ export default function WorkflowsSection() {
         </div>
 
         {/* Mobile/Tablet: Grid of Cards with Images */}
-        <div className="w-full mt-6 lg:hidden">
+        <div className="w-full mt-6 xl:hidden">
           <div className="relative w-full bg-white rounded-3xl shadow-sm p-4 overflow-hidden">
             {/* Gradient Blocks */}
             <div className="z-0 absolute top-0 left-0 -translate-x-1/2 w-1/3 h-2/3 bg-linear-to-b from-blue-100 to-amber-100/70 blur-3xl"></div>
@@ -115,7 +115,7 @@ export default function WorkflowsSection() {
         </div>
 
         {/* Desktop: Tab Interface */}
-        <div className="w-full mt-6 hidden lg:block">
+        <div className="w-full mt-6 hidden xl:block">
           <div className="relative w-full bg-white rounded-3xl shadow-sm p-4 overflow-hidden">
             {/* Gradient Blocks */}
             <div className="z-0 absolute top-0 left-0 -translate-x-1/2 w-1/3 h-2/3 bg-linear-to-b from-blue-100 to-amber-100/70 blur-3xl"></div>
