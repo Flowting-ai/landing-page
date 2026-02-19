@@ -15,7 +15,7 @@ export default function ProblemCard({
   layer1,
 }: ProblemCardProps) {
   return (
-    <div className="group w-full h-auto rounded-none flex items-center justify-center transition-all duration-0 px-10 sm:px-0 py-2">
+    <div className="group w-full h-auto rounded-none flex items-center justify-center transition-all duration-0 px-10 sm:px-0 py-6 sm:py-0">
       <div className="aspect-33/50 min-w-[297px] w-full min-h-[450px] h-full bg-linear-to-b from-zinc-300 via-30% via-zinc-600 to-zinc-200 rounded-[18px] group-hover:shadow-sm p-[3px] transition-all duration-300">
         <div className="relative w-full h-full rounded-[15px] flex flex-col justify-between px-0 py-0 transition-all duration-500 overflow-hidden">
           <div className="z-2 absolute w-full h-full bg-transparent"></div>

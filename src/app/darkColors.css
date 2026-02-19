@@ -1,0 +1,33 @@
+/* Dark Mode - Class-based approach */
+/* :root[data-theme="dark"],
+html.dark {
+  color-scheme: dark;
+
+  --background: #141413;
+  --foreground: #9d9d9d;
+  --text: #a4a4a4;
+
+  --main-bg: #1a1a1a;
+  --main-border: #3a3a3a;
+
+  --nav-bg: #3a3a3a;
+  --nav-button-bg: #ffffff;
+
+  --quote-text: #ffffff;
+  --quote-subtext: #aeaeae;
+  --quote-startend: #080808;
+  --quote-via: #2c2c2c;
+
+  --social-text: #cbcbcb;
+  --social-bg: #1e1818;
+  --social-border: #606060;
+
+  --footer-elements: #0b0707;
+  --footer-text: #7a7a7a;
+  --footer-logo-stend: #737373;
+  --footer-logo-via: #eaeaea;
+
+  --subtext: #e7e7e7;
+
+  --border-angle: 0deg;
+} */

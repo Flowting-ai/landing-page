@@ -240,7 +240,7 @@ export default function YourContextSection() {
               alt="connector2"
               width={16}
               height={16}
-              className="scale-120 md:scale-110 lg:scale-100 z-3 absolute bottom-20 translate-x-7 w-93.75 h-auto object-contain drop-shadow-xs"
+              className="scale-106 md:scale-100 lg:scale-100 z-3 absolute bottom-20 translate-x-7 w-93.75 h-auto object-contain drop-shadow-xs"
             />
 
             {/* Dots - Connector 1 */}
@@ -279,7 +279,7 @@ export default function YourContextSection() {
 
             {/* Dots - Connector 2 */}
             {/* Dot 1 */}
-            <div className="z-4 absolute bottom-19.5 -translate-x-40 w-2 h-2 flex items-center justify-center">
+            <div className="z-4 absolute bottom-19 -translate-x-40 w-2 h-2 flex items-center justify-center">
               <div
                 ref={c2d1}
                 className="w-full h-full bg-white rounded-full will-change-transform drop-shadow-sm drop-shadow-zinc-300"
@@ -295,7 +295,7 @@ export default function YourContextSection() {
               />
             </div>
             {/* Dot 3 */}
-            <div className="z-4 absolute bottom-41 translate-x-54 w-2 h-2 flex items-center justify-center">
+            <div className="z-4 absolute bottom-40.5 translate-x-54 w-2 h-2 flex items-center justify-center">
               <div
                 ref={c2d3}
                 className="w-full h-full bg-white rounded-full will-change-transform drop-shadow-sm drop-shadow-zinc-300"

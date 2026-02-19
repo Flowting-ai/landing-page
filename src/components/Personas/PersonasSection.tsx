@@ -23,7 +23,7 @@ export default function PersonasSection() {
           {/* Create Persona */}
           <div className="relative w-full h-auto max-h-164 flex items-center justify-center p-4">
             {/* Text */}
-            <div className="z-3 absolute top-[12%] left-[17%] xl:top-20 xl:left-20 text-left text-text flex flex-col gap-2">
+            <div className="z-3 absolute top-[14%] left-[17%] xl:top-20 xl:left-20 text-left text-text flex flex-col gap-2">
               <h3 className="text-lg lg:text-xl xl:text-[28px]">
                 Create Persona
               </h3>
@@ -54,7 +54,7 @@ export default function PersonasSection() {
           {/* Share Persona */}
           <div className="relative w-full h-auto max-h-164 flex items-center justify-center p-4">
             {/* Text */}
-            <div className="z-3 absolute top-[12%] left-[17%] xl:top-20 xl:left-20 text-left text-text flex flex-col gap-2">
+            <div className="z-3 absolute top-[14%] left-[17%] xl:top-20 xl:left-20 text-left text-text flex flex-col gap-2">
               <h3 className="text-lg md:text-2xl lg:text-xl xl:text-[28px]">
                 Share Persona
               </h3>

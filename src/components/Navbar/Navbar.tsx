@@ -196,7 +196,7 @@ export default function Navbar() {
     </nav>
 
     {/* Mobile */}
-    <nav className="z-50 fixed top-0 w-full h-auto flex lg:hidden px-4 py-1">
+    <nav className="z-100 fixed top-0 w-full h-auto flex lg:hidden px-4 py-1">
           <div className="relative w-full h-12 flex items-center justify-between">
             {/* Logo */}
             <button className="bg-white/50 border border-main-border rounded-xl backdrop-blur-sm p-2">
@@ -228,7 +228,7 @@ export default function Navbar() {
 
     {/* Mobile slide-in menu from left */}
     <div
-      className={`lg:hidden fixed inset-0 z-100 ${isMobileMenuOpen ? "pointer-events-auto" : "pointer-events-none"}`}
+      className={`lg:hidden fixed inset-0 z-100 h-screen ${isMobileMenuOpen ? "pointer-events-auto" : "pointer-events-none"}`}
       aria-hidden={!isMobileMenuOpen}
     >
       {/* Backdrop */}
