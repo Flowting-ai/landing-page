@@ -1,7 +1,12 @@
 "use client";
 
-import { Player } from "@lottiefiles/react-lottie-player";
+import dynamic from "next/dynamic";
 import { useFadeInOnScroll } from "@/hooks/useFadeInOnScroll";
+
+const Player = dynamic(
+  () => import("@lottiefiles/react-lottie-player").then((mod) => mod.Player),
+  { ssr: false }
+);
 
 export default function AutoManualSection() {
   const sectionRef = useFadeInOnScroll<HTMLElement>();
