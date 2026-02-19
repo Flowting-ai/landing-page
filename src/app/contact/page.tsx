@@ -1,8 +1,18 @@
+import ContactForm from "@/components/Contact/ContactForm";
+import Navbar from "@/components/Navbar/Navbar";
+
 export default function ContactPage() {
   return (
-    <main style={{ padding: "2rem" }}>
-      <h1>Contact</h1>
-      <p>Please reach out to the FlowtingAI team.</p>
-    </main>
+    <>
+      {/* === NAVBAR === */}
+      <div className="w-full h-auto bg-main-bg">
+        <div className="max-w-7xl mx-auto bg-transparent flex items-center justify-center px-2 lg:px-0 py-3 lg:py-6">
+          <Navbar />
+        </div>
+      </div>
+
+      {/* === CONTACT FORM === */}
+      <ContactForm />
+    </>
   );
 }
