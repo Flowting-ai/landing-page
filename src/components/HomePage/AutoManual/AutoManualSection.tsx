@@ -28,17 +28,15 @@ export default function AutoManualSection() {
           <Player
             autoplay
             loop
-            src="./lottie2.json"
+            src="./lottie2b.json"
             className="w-full h-full"
-            style={{ width: "100%", height: "100%" }}
           />
         </div>
         <Player
           autoplay
           loop
-          src="./lottie3.json"
+          src="./lottie2a.json"
           className="hidden lg:flex w-full h-full border border-main-border rounded-4xl"
-          style={{ width: "100%", height: "100%" }}
         />
       </div>
     </section>

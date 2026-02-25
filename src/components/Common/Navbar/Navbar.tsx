@@ -114,6 +114,15 @@ export default function Navbar() {
           <p className="hidden sm:block font-normal tracking-tight text-sm md:text-base text-black lg:text-[18px]">
             FlowtingAI
           </p>
+
+          <ul className="flex items-center gap-4 px-4">
+            <li>
+              <Link href="/about" className="text-text hover:text-black hover:bg-zinc-200 rounded-[8px] px-4 py-3 transition-all duration-300">About</Link>            
+            </li>
+            <li>
+            <Link href="/features" className="text-text hover:text-black hover:bg-zinc-200 rounded-[8px] px-4 py-3 transition-all duration-300">Features</Link>            
+            </li>
+          </ul>
         </div>
 
         {/* Right - Navigation CTAS & Theme Selector */}
@@ -176,14 +185,15 @@ export default function Navbar() {
           >
             Sign In
           </a>
-          {pathname === "/" ? (
+          {(pathname !== "/contact") && (
             <Link
               href={"/contact"}
               className="text-xs md:text-sm lg:text-base text-nav-bg bg-nav-button-bg border border-nav-button-bg rounded-xl shadow-sm px-4 py-2 transition-all duration-300"
             >
               Get Started
             </Link>
-          ) : pathname === "/contact" ? (
+          )} 
+          {(pathname === "/contact") ? (
             <Link
               href="/"
               className="text-xs md:text-sm lg:text-base text-text! hover:text-black bg-main-bg hover:bg-zinc-300/40 border border-main-border rounded-xl shadow-sm transition-colors px-4 py-2 inline-flex items-center gap-1"

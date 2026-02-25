@@ -15,7 +15,7 @@ const FOOTER_LINKS_PRODUCT = [
   {
     name: "Features",
     href: "/features",
-    disabled: true,
+    disabled: false,
   },
   {
     name: "Pricing",
@@ -37,7 +37,7 @@ const FOOTER_LINKS_COMPANY = [
   {
     name: "About Us",
     href: "/about",
-    disabled: true,
+    disabled: false,
   },
   {
     name: "Terms of Service",

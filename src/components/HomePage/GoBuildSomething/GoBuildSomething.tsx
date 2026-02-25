@@ -1,8 +1,10 @@
-'use client';
+"use client";
 import Image from "next/image";
 import { useEffect, useRef } from "react";
 import { gsap } from "gsap";
 import { useFadeInOnScroll } from "@/hooks/useFadeInOnScroll";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
 
 const logos = [
   { name: "meta", src: "./goBuildSomething/meta.svg" },
@@ -45,13 +47,13 @@ export default function GoBuildSomething() {
           duration: 0.8, // Slower rise
           ease: "power3.out", // More elegant easing
         },
-        index * 0.2 // Stagger by 0.2 seconds for smoother sequence
+        index * 0.2, // Stagger by 0.2 seconds for smoother sequence
       );
     });
 
     // Calculate when all logos have finished appearing
     const allAppearTime = (logoElements.length - 1) * 0.2 + 0.8;
-    
+
     // Hold all logos visible for 1.5 seconds after all have appeared
     tl.to({}, { duration: 1.5 }, allAppearTime);
 
@@ -67,7 +69,7 @@ export default function GoBuildSomething() {
           duration: 0.55, // Slightly slower sink, still faster than 0.8s rise
           ease: "power2.in",
         },
-        sinkStartTime + index * 0.12 // Stagger with a clear difference between logos
+        sinkStartTime + index * 0.12, // Stagger with a clear difference between logos
       );
     });
 
@@ -78,7 +80,9 @@ export default function GoBuildSomething() {
 
   // Mobile: staggered opacity animation (start to end)
   useEffect(() => {
-    const elements = mobileLogoRefs.current.filter(Boolean) as HTMLSpanElement[];
+    const elements = mobileLogoRefs.current.filter(
+      Boolean,
+    ) as HTMLSpanElement[];
     if (elements.length === 0) return;
 
     gsap.set(elements, { opacity: 0 });
@@ -89,13 +93,21 @@ export default function GoBuildSomething() {
 
     // Fade in from start to end
     elements.forEach((el, index) => {
-      tl.to(el, { opacity: 1, duration: fadeDuration, ease: "power2.out" }, index * stagger);
+      tl.to(
+        el,
+        { opacity: 1, duration: fadeDuration, ease: "power2.out" },
+        index * stagger,
+      );
     });
     const allInTime = (elements.length - 1) * stagger + fadeDuration;
     tl.to({}, { duration: 1.2 }, allInTime);
     // Fade out same order (start to end)
     elements.forEach((el, index) => {
-      tl.to(el, { opacity: 0, duration: fadeDuration, ease: "power2.in" }, allInTime + 1.2 + index * stagger);
+      tl.to(
+        el,
+        { opacity: 0, duration: fadeDuration, ease: "power2.in" },
+        allInTime + 1.2 + index * stagger,
+      );
     });
 
     return () => {
@@ -103,15 +115,52 @@ export default function GoBuildSomething() {
     };
   }, []);
 
+  const pathname = usePathname();
+
   return (
     <section ref={sectionRef} className="w-full h-auto mb-10 lg:mb-20">
-      <div className="container mx-auto text-center flex flex-col items-center gap-12 lg:gap-24 px-4 lg:px-16">
-        <div className="w-full flex flex-col gap-2">
-          <h3 className="font-medium lg:font-normal leading-[116%] text-xl lg:text-[37px] text-text">
-            Go Build Something.
-          </h3>
-          <p className="font-normal text-text">One Workspace. All Models.</p>
-        </div>
+      <div className="container mx-auto text-center flex flex-col items-center gap-12 lg:gap-20 px-4 lg:px-16">
+        {pathname === "/" && (
+          <div className="w-full flex flex-col gap-2">
+            <h3 className="font-medium lg:font-normal leading-[116%] text-xl lg:text-[37px] text-text">
+              Go Build Something.
+            </h3>
+            <p className="font-normal text-text">One Workspace. All Models.</p>
+          </div>
+        )}
+        {pathname === "/features" && (
+          <div className="w-full flex flex-col gap-10">
+            <div className="w-full flex flex-col gap-2">
+              <h3 className="font-medium lg:font-normal leading-[116%] text-xl lg:text-[42px] text-text">
+                Ready to do your best AI work?
+              </h3>
+              <p className="font-normal text-text">
+                Plans start at $12/month. Start building today.
+              </p>
+            </div>
+            <div className="flex items-center justify-center gap-4">
+              <Link
+                href="/pricing"
+                className="text-foreground bg-main-bg border border-main-border rounded-xl shadow-sm px-4 py-3 text-center font-medium transition-all hover:bg-main-bg/80 active:scale-[0.98]"
+              >
+                View Pricing
+              </Link>
+              <Link
+                href="/contact"
+                className="text-nav-bg bg-nav-button-bg border border-nav-button-bg rounded-xl shadow-sm px-4 py-3 text-center font-medium transition-all hover:opacity-90 active:scale-[0.98]"
+              >
+                Get Started
+              </Link>
+            </div>
+            <div className="relative text-sm text-text/60 flex items-center justify-between p-8">
+              <p>Chat & Models</p>
+              <p className="absolute top-1/2 left-1/2 -translate-1/2">
+                Workflows
+              </p>
+              <p>Personas</p>
+            </div>
+          </div>
+        )}
 
         {/* Flowting Windows */}
         <div className="w-full flex items-center justify-center">
@@ -128,7 +177,9 @@ export default function GoBuildSomething() {
               />
               {/* qwen */}
               <span
-                ref={(el) => { mobileLogoRefs.current[0] = el; }}
+                ref={(el) => {
+                  mobileLogoRefs.current[0] = el;
+                }}
                 className="absolute left-4 top-[70%]"
               >
                 <Image
@@ -141,7 +192,9 @@ export default function GoBuildSomething() {
               </span>
               {/* meta */}
               <span
-                ref={(el) => { mobileLogoRefs.current[1] = el; }}
+                ref={(el) => {
+                  mobileLogoRefs.current[1] = el;
+                }}
                 className="absolute left-8 top-[58%]"
               >
                 <Image
@@ -154,7 +207,9 @@ export default function GoBuildSomething() {
               </span>
               {/* gemini */}
               <span
-                ref={(el) => { mobileLogoRefs.current[2] = el; }}
+                ref={(el) => {
+                  mobileLogoRefs.current[2] = el;
+                }}
                 className="absolute left-13 top-[48%]"
               >
                 <Image
@@ -167,7 +222,9 @@ export default function GoBuildSomething() {
               </span>
               {/* grok */}
               <span
-                ref={(el) => { mobileLogoRefs.current[3] = el; }}
+                ref={(el) => {
+                  mobileLogoRefs.current[3] = el;
+                }}
                 className="absolute left-20 top-[38%]"
               >
                 <Image
@@ -180,7 +237,9 @@ export default function GoBuildSomething() {
               </span>
               {/* claude */}
               <span
-                ref={(el) => { mobileLogoRefs.current[4] = el; }}
+                ref={(el) => {
+                  mobileLogoRefs.current[4] = el;
+                }}
                 className="absolute left-28 top-[29%]"
               >
                 <Image
@@ -193,7 +252,9 @@ export default function GoBuildSomething() {
               </span>
               {/* OpenAI */}
               <span
-                ref={(el) => { mobileLogoRefs.current[5] = el; }}
+                ref={(el) => {
+                  mobileLogoRefs.current[5] = el;
+                }}
                 className="absolute left-38 top-[22%]"
               >
                 <Image

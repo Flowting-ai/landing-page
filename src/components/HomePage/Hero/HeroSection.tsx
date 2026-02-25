@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 // import Link from "next/link";
-import Navbar from "../Navbar/Navbar";
+import Navbar from "../../Common/Navbar/Navbar";
 // import Iridescence from "@/animations/Iridescence";
 import {
   ChevronDown,
@@ -19,7 +19,7 @@ import dynamic from "next/dynamic";
 
 const Player = dynamic(
   () => import("@lottiefiles/react-lottie-player").then((mod) => mod.Player),
-  { ssr: false }
+  { ssr: false },
 );
 
 gsap.registerPlugin(useGSAP);
@@ -125,6 +125,7 @@ export default function HeroSection() {
         <Navbar />
       </div>
 
+      {/* === HERO SECTION === */}
       <div
         ref={sectionRef}
         className="container mx-auto flex flex-col gap-4 px-4 lg:px-16 mt-6 lg:mt-0"
@@ -314,27 +315,34 @@ export default function HeroSection() {
               </div>
             </div> */}
 
-            {/* Blur Glass
-            <div className="z-2 absolute inset-0 backdrop-blur-[5px]"></div> */}
-
-            {/* Video: desktop */}
-            <Player
-              autoplay
-              loop
-              src="./lottie1.json"
-              className="w-full h-full z-2 absolute top-1/2 left-1/2 -translate-1/2 scale-110"
-            />
-
             <video
               autoPlay
               muted
               loop
               playsInline
-              className="w-full lg:w-full h-full lg:h-auto rounded-4xl blur-lg object-cover"
+              className="z-1 relative w-full lg:w-full h-full lg:h-auto rounded-4xl blur-lg object-cover"
             >
               <source src="./blueBg.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
+
+            {/* Video: desktop */}
+            <Player
+              autoplay
+              loop
+              src="./lottie1a.json"
+              className="z-2 hidden lg:flex w-full h-full absolute top-1/2 left-1/2 -translate-1/2 scale-110"
+            />
+
+            {/* Lottie: responsive (mobile) — same behavior as video: autoplay, loop, no controls */}
+            <div className="z-2 absolute w-full border border-main-border rounded-2xl shadow-sm overflow-hidden block lg:hidden">
+              <Player
+                autoplay
+                loop
+                src="./lottie1b.json"
+                className="w-full h-full"
+              />
+            </div>
           </div>
         </div>
       </div>
