@@ -3,7 +3,7 @@ import Image from "next/image";
 
 export default function HeroSection() {
   return (
-    <div className="w-full min-h-screen">
+    <div className="w-full h-auto mt-10 sm lg:mt-0 lg:mb-20">
       {/* === NAVBAR === */}
       <div className="container mx-auto flex items-center justify-center px-2 lg:px-16 py-3 lg:py-6">
         <Navbar />

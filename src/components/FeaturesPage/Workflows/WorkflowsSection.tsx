@@ -2,8 +2,8 @@ import Image from "next/image";
 
 export default function WorkflowsSection() {
   return (
-    <div className="w-full h-auto mb-20">
-      <div className="z-0 relative container mx-auto min-h-screen flex flex-col items-center justify-center gap-4 px-4 lg:px-16 mt-6 lg:mt-0">
+    <div className="w-full h-auto my-10 lg:my-20">
+      <div className="z-0 relative container mx-auto h-auto flex flex-col items-center justify-center gap-4 px-4 lg:px-16 mt-6 lg:mt-0">
         {/* Title */}
         <div className="w-full">
           <p className="font-mono font-normal text-[12px] text-[#929291] px-2">
@@ -11,7 +11,7 @@ export default function WorkflowsSection() {
           </p>
         </div>
         {/* Title + Small Descriptions */}
-        <div className="z-2 w-full h-auto text-left flex flex-row items-start justify-between gap-3 pb-6">
+        <div className="z-2 w-full h-auto text-left flex flex-col md:flex-row items-start justify-between gap-3 pb-6">
           <h1 className="font-semibold leading-[120%] text-2xl lg:text-[37px] xl:text-[48px] text-black">
             Automate your best workflows
           </h1>

@@ -1,6 +1,6 @@
 export default function AboutContent() {
   return (
-    <div className="w-full min-h-screen my-10">
+    <div className="w-full h-auto my-10 lg:my-20">
       {/* === ABOUT CONTENT === */}
       <div className="container mx-auto h-full flex items-center justify-center flex-col gap-4 px-4 lg:px-16 py-4 lg:py-12 xl:py-16 mt-6 lg:mt-0">
         {/* Title + Small Descriptions */}
@@ -31,21 +31,21 @@ export default function AboutContent() {
             </li>
           </ul>
           <div className="w-full max-w-4xl flex flex-col gap-6 py-6">
-            <div className="flex items-start">
-              <div className="w-2/5">
-                <h4 className="text-[32px] text-text">Our Mission</h4>
+            <div className="flex flex-col md:flex-row items-start">
+              <div className="w-full md:w-2/5">
+                <h4 className="text-[24px] lg:text-[32px] text-text">Our Mission</h4>
               </div>
-              <div className="w-3/5 py-3">
-                <p className="text-[20px] text-[#262320]">To give AI a memory, so your work builds on itself, instead of
+              <div className="w-full md:w-3/5 py-3">
+                <p className="text-sm md:text-[20px] text-[#262320]">To give AI a memory, so your work builds on itself, instead of
                 starting over.</p>
               </div>
             </div>  
-            <div className="flex items-start">
-              <div className="w-2/5">
-                <h4 className="text-[32px] text-text">Our Product</h4>
+            <div className="flex flex-col md:flex-row items-start">
+              <div className="w-full md:w-2/5">
+                <h4 className="text-[24px] lg:text-[32px] text-text">Our Product</h4>
               </div>
-              <div className="w-3/5 py-3">
-                <p className="text-[20px] text-[#262320]">One workspace where context persists, the right model is picked for you, and every output is reusable.</p>
+              <div className="w-full md:w-3/5 py-3">
+                <p className="text-sm md:text-[20px] text-[#262320]">One workspace where context persists, the right model is picked for you, and every output is reusable.</p>
               </div>
             </div>
           </div>

@@ -141,7 +141,7 @@ export default function GoBuildSomething() {
             <div className="flex items-center justify-center gap-4">
               <Link
                 href="/pricing"
-                className="text-foreground bg-main-bg border border-main-border rounded-xl shadow-sm px-4 py-3 text-center font-medium transition-all hover:bg-main-bg/80 active:scale-[0.98]"
+                className="pointer-events-none text-foreground bg-main-bg border border-main-border rounded-xl shadow-sm px-4 py-3 text-center font-medium transition-all hover:bg-main-bg/80 active:scale-[0.98]"
               >
                 View Pricing
               </Link>
@@ -152,9 +152,9 @@ export default function GoBuildSomething() {
                 Get Started
               </Link>
             </div>
-            <div className="relative text-sm text-text/60 flex items-center justify-between p-8">
+            <div className="relative text-sm text-text/60 flex flex-col md:flex-row items-center justify-between p-8">
               <p>Chat & Models</p>
-              <p className="absolute top-1/2 left-1/2 -translate-1/2">
+              <p className="static md:absolute md:top-1/2 md:left-1/2 md:-translate-1/2">
                 Workflows
               </p>
               <p>Personas</p>

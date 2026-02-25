@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function WhatWeBelieve() {
   return (
-    <div className="w-full min-h-screen">
+    <div className="w-full h-auto my-10 lg:my-20">
       {/* === wHAT WE BELIEVE === */}
       <div className="container mx-auto h-full flex items-center justify-center flex-col gap-10 px-4 lg:px-16 py-4 lg:py-12 xl:py-16 mt-6 lg:mt-0">
         {/* Title + Small Descriptions */}

@@ -4,12 +4,12 @@ import Link from "next/link";
 
 export default function JoinUs() {
   return (
-    <div className="w-full h-screen">
+    <div className="w-full h-auto my-10 lg:my-20">
 
       {/* === ABOUT PAGE === */}
-      <div className="overflow-hidden relative container mx-auto h-full flex items-center justify-center flex-col gap-4 px-4 lg:px-16 py-4 lg:py-12 xl:py-16 mt-6 lg:mt-0">
+      <div className="overflow-hidden relative container mx-auto flex items-center justify-center flex-col gap-4 px-4 lg:px-16 py-4 lg:py-12 xl:py-16 mt-6 lg:mt-0">
         {/* Title + Small Descriptions */}
-        <div className="z-3 text-center flex flex-col items-center justify-center gap-6">
+        <div className="z-3 text-center flex flex-col items-center justify-center gap-6 py-60 lg:py-50">
           <h1 className="font-medium md:font-normal leading-[120%] text-2xl lg:text-[36px] text-black">
           Join Us On
             <br />
