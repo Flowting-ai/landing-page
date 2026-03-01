@@ -89,30 +89,24 @@ export default function Navbar() {
       {/* Desktop */}
       <nav className="hidden lg:flex w-full h-auto">
         <div className="w-full sm:hidden block font-medium tracking-tight text-center text-lg lg:text-[18px] text-transparent bg-clip-text bg-linear-to-r from-zinc-300 via-zinc-700 to-zinc-300">
-          <p>FlowtingAI</p>
+          <p>SouvenirAI</p>
         </div>
         <div className="w-full h-12 lg:h-14 bg-nav-bg rounded-2xl shadow-xs shadow-main-border flex items-center justify-between pl-4 pr-2 md:px-5 py-2.5">
           {/* Left - Logo*/}
-          <Link href="/" className="relative w-auto h-full flex items-center gap-4">
-            {theme === "light" ? (
-              <Image
-                src="./hero/FlowtingLogo.svg"
-                alt="Flowting AI Logo"
-                width={28}
-                height={28}
-                className="w-6 h-6 lg:w-7 lg:h-7"
-              />
-            ) : (
-              <Image
-                src="./hero/FlowtingLogoSilver.svg"
-                alt="Flowting AI Logo"
-                width={28}
-                height={28}
-                className="w-6 h-6 lg:w-7 lg:h-7"
-              />
-            )}
+          <Link
+            href="/"
+            className="relative w-auto h-full flex items-center gap-4"
+          >
+            <Image
+              src="./hero/FlowtingLogo.svg"
+              alt="Flowting AI Logo"
+              width={28}
+              height={28}
+              className="w-6 h-6 lg:w-7 lg:h-7"
+            />
+
             <p className="hidden sm:block font-normal tracking-tight text-sm md:text-base text-black lg:text-[18px]">
-              FlowtingAI
+              SouvenirAI
             </p>
 
             <ul className="flex items-center gap-4 px-4">
@@ -188,7 +182,7 @@ export default function Navbar() {
             </div>
 
             <a
-              href="https://app.flowtingai.com/"
+              href="https://app.getsouvenir.com/"
               target="_blank"
               rel="noopener noreferrer"
               className="text-xs md:text-sm lg:text-base text-foreground bg-main-bg hover:bg-zinc-300/40 border border-main-border rounded-xl shadow-sm px-4 py-2 transition-all duration-300"
@@ -235,7 +229,7 @@ export default function Navbar() {
                 : "opacity-100"
             }`}
           >
-            FlowtingAI
+            SouvenirAI
           </h3>
           {/* Navigation CTA - opens slide-in menu */}
           <button
@@ -272,7 +266,7 @@ export default function Navbar() {
           <div className="relative w-full h-full flex flex-col overflow-hidden">
             <div className="z-2 bg-white/50 flex items-center justify-between border-b border-main-border backdrop-blur-xs px-5 py-4">
               <span className="font-medium tracking-tight text-lg text-transparent bg-clip-text bg-linear-to-br from-zinc-400 via-zinc-700 to-zinc-400">
-                FlowtingAI
+                SouvenirAI
               </span>
               <button
                 onClick={closeMobileMenu}
@@ -285,7 +279,7 @@ export default function Navbar() {
 
             <nav className="z-2 flex flex-col gap-2 p-4 pt-6">
               <a
-                href="https://app.flowtingai.com/"
+                href="https://app.getsouvenir.com/"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={closeMobileMenu}
@@ -311,12 +305,12 @@ export default function Navbar() {
                 </Link>
               ) : null}
 
-               <div className="border border-text/30 my-2"/> 
+              <div className="border border-text/30 my-2" />
               <Link
                 href="/"
                 className="text-foreground bg-main-bg border border-main-border rounded-xl shadow-sm px-4 py-3 text-center font-medium transition-all hover:bg-main-bg/80 active:scale-[0.98]"
               >
-               Home
+                Home
               </Link>
               <Link
                 href="/about"

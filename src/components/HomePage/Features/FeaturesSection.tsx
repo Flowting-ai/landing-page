@@ -9,7 +9,7 @@ const features = [
     id: 1,
     title: "Chat across any model",
     description:
-      "No two AIs think exactly alike. Some master writing, others dominate code, and some specialize in deep research. FlowtingAI brings them all into one seamless experience. Choose your preferred model or let Flowting select the best match for you - without losing your conversation. One chat, many minds.",
+      "No two AIs think exactly alike. Some master writing, others dominate code, and some specialize in deep research. SouvenirAI brings them all into one seamless experience. Choose your preferred model or let Souvenir select the best match for you - without losing your conversation. One chat, many minds.",
     image: "/features/feature1.svg",
     styling: "translate-x-12 scale-90",
   },
@@ -17,7 +17,7 @@ const features = [
     id: 2,
     title: "Save what counts",
     description:
-      "You know the feeling: the AI delivers the perfect response, only for it to get buried in the feed hours later. With Flowting, just pin it. One click saves that insight, summary, or code block instantly. No more digging through chat history. But a scattered collection is just clutter in disguise.",
+      "You know the feeling: the AI delivers the perfect response, only for it to get buried in the feed hours later. With SouvenirAI, just pin it. One click saves that insight, summary, or code block instantly. No more digging through chat history. But a scattered collection is just clutter in disguise.",
     image: "/features/feature2.svg",
     styling: "translate-x-0 scale-90",
   },

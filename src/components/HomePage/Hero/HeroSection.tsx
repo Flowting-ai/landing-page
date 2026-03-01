@@ -143,7 +143,7 @@ export default function HeroSection() {
               ref={titleLine2Ref}
               className="font-medium md:font-normal leading-[120%] text-2xl lg:text-[37px] xl:text-[42px] text-text opacity-0"
             >
-              Do your best work with FlowtingAI.
+              Do your best work with SouvenirAI.
               <br />
               The new home for AI practitioners
             </h1>
@@ -206,7 +206,7 @@ export default function HeroSection() {
                         className="w-4 h-4 lg:w-5 lg:h-5 object-contain"
                       />
                       <span className="text-sm lg:text-base">
-                        Flowting AI Framework
+                        Souvenir AI Framework
                       </span>
                       <ChevronDown size={16} />
                     </button>

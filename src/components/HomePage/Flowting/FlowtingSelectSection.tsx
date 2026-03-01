@@ -33,7 +33,7 @@ export default function FlowtingSelectSection() {
       <div className="container mx-auto text-left flex flex-col gap-4 px-4 lg:px-16">
         <div className="flex flex-col gap-2">
           <h3 className="font-medium lg:font-normal leading-[120%] text-xl lg:text-[37px] text-text">
-            Flowting selects the best model <br /> for your question
+            SouvenirAI selects the best model <br /> for your question
           </h3>
           <p className="font-normal text-sm lg:text-base text-subtext">
             No more guessing. No more switching. Just ask.

@@ -22,7 +22,7 @@ export default function QuoteFlowting() {
           <p className="font-normal text-base">
             For the ones who build with AI Researchers, students, founders, and
             teams pushing the boundaries of what&quot;s possible.
-            <br /> You deserve tools that keep up with how you think. FlowtingAI
+            <br /> You deserve tools that keep up with how you think. SouvenirAI
             is the workspace where AI finally works the way you do. <br />
             When AI remembers what matters, it stops making things up.
           </p>
@@ -42,7 +42,7 @@ export default function QuoteFlowting() {
                   keep up with how you think.{" "}
                 </li>
                 <li>
-                  FlowtingAI is the workspace where AI finally works the way you
+                  SouvenirAI is the workspace where AI finally works the way you
                   do.
                 </li>
                 <li>
@@ -51,7 +51,7 @@ export default function QuoteFlowting() {
               </ul>
               <div className="w-full flex items-center justify-end">
                 <p className="font-medium text-sm md:text-lg lg:text-xl">
-                  - Team Flowting
+                  - Team SouvenirAI
                 </p>
               </div>
             </div>

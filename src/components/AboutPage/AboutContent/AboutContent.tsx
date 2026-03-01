@@ -18,7 +18,7 @@ export default function AboutContent() {
             </li>
             <li>We&apos;re building the fix.</li>
             <li>
-              FlowtingAI acts as a memory layer for AI — preserving context,
+              SouvenirAI acts as a memory layer for AI — preserving context,
               organizing conversations, and letting memory flow across models.
               Every interaction builds on what came before.
             </li>
