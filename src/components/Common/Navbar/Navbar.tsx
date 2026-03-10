@@ -110,7 +110,7 @@ export default function Navbar() {
             </p>
 
             <ul className="flex-1 flex items-center justify-center gap-4 px-4 mx-2">
-            <li>
+              <li>
                 <Link
                   href="/features"
                   className="text-text hover:text-black hover:bg-zinc-200 rounded-[8px] px-4 py-2 transition-all duration-300"
@@ -126,15 +126,14 @@ export default function Navbar() {
                   About
                 </Link>
               </li>
-              
-              <li>
+              {/* <li>
                 <Link
                   href="/pricing"
                   className="text-text hover:text-black hover:bg-zinc-200 rounded-[8px] px-4 py-2 transition-all duration-300"
                 >
                   Pricing
                 </Link>
-              </li>
+              </li> */}
             </ul>
           </Link>
 
@@ -336,12 +335,12 @@ export default function Navbar() {
               >
                 Features
               </Link>
-              <Link
+              {/* <Link
                 href="/pricing"
                 className="text-foreground bg-main-bg border border-main-border rounded-xl shadow-sm px-4 py-3 text-center font-medium transition-all hover:bg-main-bg/80 active:scale-[0.98]"
               >
                 Pricing
-              </Link>
+              </Link> */}
             </nav>
 
             {/* <div className="z-10 bg-white/50 mt-auto border-t border-main-border backdrop-blur-xs p-4">

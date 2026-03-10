@@ -17,11 +17,11 @@ const FOOTER_LINKS_PRODUCT = [
     href: "/features",
     disabled: false,
   },
-  {
-    name: "Pricing",
-    href: "/pricing",
-    disabled: false,
-  },
+  // {
+  //   name: "Pricing",
+  //   href: "/pricing",
+  //   disabled: false,
+  // },
   // {
   //   name: "Changelog",
   //   href: "/changelog",
