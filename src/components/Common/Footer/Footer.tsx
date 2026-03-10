@@ -20,13 +20,13 @@ const FOOTER_LINKS_PRODUCT = [
   {
     name: "Pricing",
     href: "/pricing",
-    disabled: true,
+    disabled: false,
   },
-  {
-    name: "Changelog",
-    href: "/changelog",
-    disabled: true,
-  },
+  // {
+  //   name: "Changelog",
+  //   href: "/changelog",
+  //   disabled: true,
+  // },
   // {
   //   name: "Docs",
   //   href: "/docs",
@@ -39,39 +39,39 @@ const FOOTER_LINKS_COMPANY = [
     href: "/about",
     disabled: false,
   },
-  {
-    name: "Terms of Service",
-    href: "/terms-and-conditions",
-    disabled: true,
-  },
-  {
-    name: "Privacy Policy",
-    href: "/privacy-policy",
-    disabled: true,
-  },
+  // {
+  //   name: "Terms of Service",
+  //   href: "/terms-and-conditions",
+  //   disabled: true,
+  // },
+  // {
+  //   name: "Privacy Policy",
+  //   href: "/privacy-policy",
+  //   disabled: true,
+  // },
   // {
   //   name: "Manage Cookies",
   //   href: "/Manage Cookies",
   //   disabled: true,
   // },
 ];
-const FOOTER_LINKS_RESOURCES = [
-  {
-    name: "Videos",
-    href: "/demo-videos",
-    disabled: true,
-  },
-  {
-    name: "Blogs",
-    href: "/blogs",
-    disabled: true,
-  },
-  {
-    name: "Guides",
-    href: "/guides",
-    disabled: true,
-  },
-];
+// const FOOTER_LINKS_RESOURCES = [
+//   {
+//     name: "Videos",
+//     href: "/demo-videos",
+//     disabled: true,
+//   },
+//   {
+//     name: "Blogs",
+//     href: "/blogs",
+//     disabled: true,
+//   },
+//   {
+//     name: "Guides",
+//     href: "/guides",
+//     disabled: true,
+//   },
+// ];
 const FOOTER_LINKS_SOCIALS = [
   {
     name: "Twitter",
@@ -107,20 +107,20 @@ export default function Footer() {
   return (
     <footer
       ref={sectionRef}
-      className="w-full h-auto mt-20 sm:mt-30 md:mt-40 lg:mt-50 overflow-hidden"
+      className="w-full h-auto font-geist mt-20 sm:mt-30 md:mt-40 lg:mt-50 overflow-hidden"
     >
       <div className="container mx-auto flex flex-col sm:flex-row px-0 md:px-4 lg:px-16">
-        {/* Flowting AI Logo */}
-        <div className="w-full lg:w-1/3 flex items-center sm:items-start justify-center sm:justify-start gap-4 px-4 mb-16">
+        {/* Souvenir AI Logo */}
+        <div className="w-full lg:w-1/2 flex items-center sm:items-start justify-center sm:justify-start gap-4 px-4 mb-16">
           <Image
-            src="./hero/FlowtingLogo.svg"
-            alt="Flowting AI Logo"
+            src="./logos/souvenir-logo.svg"
+            alt="Souvenir AI Logo"
             width={43}
             height={43}
             className="w-7 h-7 md:w-8 md:h-8 lg:w-10.75 lg:h-10.75"
           />
           <div className="flex flex-col">
-            <h3 className="font-normal leading-[120%] text-2xl lg:text-[36px] text-black">
+            <h3 className="font-besley font-normal leading-[120%] text-2xl lg:text-[36px] text-black">
               SouvenirAI
               <br />
             </h3>
@@ -129,7 +129,7 @@ export default function Footer() {
         </div>
 
         {/* GRIDS */}
-        <div className="w-full lg:w-2/3 grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-2 ">
+        <div className="w-full lg:w-1/2 grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-2 ">
           {/* Product */}
           <div className="flex flex-col justify-start gap-4 px-4 sm:px-0 md:px-2 lg:px-4">
             <h3 className="font-normal text-lg lg:text-xl">Product</h3>
@@ -148,7 +148,7 @@ export default function Footer() {
           </div>
 
           {/* Resources */}
-          <div className="flex flex-col justify-start gap-4 px-4 sm:px-0 md:px-2 lg:px-4">
+          {/* <div className="flex flex-col justify-start gap-4 px-4 sm:px-0 md:px-2 lg:px-4">
             <h3 className="font-normal text-lg lg:text-xl">Resources</h3>
             <ul className="list-none w-full font-normal text-base lg:text-lg flex flex-col gap-2">
               {FOOTER_LINKS_RESOURCES.map(({ name, href, disabled }) => (
@@ -162,7 +162,7 @@ export default function Footer() {
                 </li>
               ))}
             </ul>
-          </div>
+          </div> */}
 
           {/* Company */}
           <div className="col-span-2 sm:col-span-1 flex flex-col justify-start gap-4 px-4 sm:px-0 md:px-2 lg:px-4">

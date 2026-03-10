@@ -49,35 +49,35 @@ const ContactForm: React.FC = () => {
   return (
     <>
       {state.submitting ? (
-        <div className="relative animate-pulse w-full h-[calc(100vh-72px)] lg:h-[calc(100vh-104px)] min-h-70 bg-main-bg rounded-xl flex items-center justify-center gap-4 overflow-hidden">
+        <div className="font-geist relative animate-pulse w-full h-[calc(100vh-72px)] lg:h-[calc(100vh-104px)] min-h-70 bg-main-bg rounded-xl flex items-center justify-center gap-4 overflow-hidden">
           <h3 className="z-1 font-semibold lg:font-normal text-center lg:text-left text-2xl lg:text-5xl text-balance text-transparent bg-linear-to-r bg-clip-text from-blue-400 to-zinc-400">
             Sending Message...
           </h3>
           <Image
-            src="./hero/FlowtingLogoBlue.svg"
-            alt="Flowting Logo"
+            src="./logos/souvenir-logo.svg"
+            alt="Souvenir AI Logo"
             width={16}
             height={16}
             className="z-0 absolute w-40 h-40 lg:w-120 lg:h-120 object-contain opacity-10"
           />
         </div>
       ) : state.succeeded ? (
-        <div className="relative w-full h-[calc(100vh-72px)] lg:h-[calc(100vh-104px)] min-h-70 bg-main-bg rounded-xl flex items-center justify-center gap-4 overflow-hidden">
+        <div className="font-geist relative w-full h-[calc(100vh-72px)] lg:h-[calc(100vh-104px)] min-h-70 bg-main-bg rounded-xl flex items-center justify-center gap-4 overflow-hidden">
           <h3 className="z-1 font-semibold lg:font-normal text-center lg:text-left text-2xl lg:text-5xl text-balance text-transparent bg-linear-to-r bg-clip-text from-blue-600 to-zinc-400">
             Thank you for reaching out to us.
             <br />
             We will contact you soon.
           </h3>
           <Image
-            src="./hero/FlowtingLogoBlue.svg"
-            alt="Flowting Logo"
+            src="./logos/souvenir-logo.svg"
+            alt="Souvenir AI Logo"
             width={16}
             height={16}
             className="z-0 absolute w-40 h-40 lg:w-120 lg:h-120 object-contain opacity-10"
           />
         </div>
       ) : (
-        <section className="w-full min-h-screen flex items-center justify-center bg-main-bg">
+        <section className="font-geist w-full min-h-screen flex items-center justify-center bg-main-bg">
           <div className="container mx-auto flex items-center justify-center px-2 lg:px-0 py-12 lg:py-20 w-full">
             <div className="w-full max-w-2xl">
               <div className="relative w-full h-auto flex items-center justify-center px-2 py-2 sm px-10sm:py-10 lg:py-20">

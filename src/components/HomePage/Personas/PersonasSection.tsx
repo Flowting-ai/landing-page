@@ -13,7 +13,7 @@ export default function PersonasSection() {
           <h3 className="font-medium lg:font-normal leading-[120%] text-xl lg:text-[37px] text-text">
             Your AI, Your Rules
           </h3>
-          <p className="font-normal text-sm lg:text-base text-subtext">
+          <p className="font-geist font-normal text-sm lg:text-base text-subtext">
             Create custom personas. <br className="block sm:hidden" /> Share them with anyone.
           </p>
         </div>
@@ -23,7 +23,7 @@ export default function PersonasSection() {
           {/* Create Persona */}
           <div className="relative w-full h-auto max-h-164 flex items-center justify-center p-4">
             {/* Text */}
-            <div className="z-3 absolute top-[14%] left-[17%] xl:top-24 xl:left-24 text-left text-text flex flex-col gap-2">
+            <div className="font-geist z-3 absolute top-[14%] left-[17%] xl:top-24 xl:left-24 text-left text-text flex flex-col gap-2">
               <h3 className="text-lg lg:text-xl xl:text-[28px]">
                 Create Persona
               </h3>
@@ -52,7 +52,7 @@ export default function PersonasSection() {
             </div>
           </div>
           {/* Share Persona */}
-          <div className="relative w-full h-auto max-h-164 flex items-center justify-center p-4">
+          <div className="font-geist relative w-full h-auto max-h-164 flex items-center justify-center p-4">
             {/* Text */}
             <div className="z-3 absolute top-[14%] left-[17%] xl:top-24 xl:left-24 text-left text-text flex flex-col gap-2">
               <h3 className="text-lg md:text-2xl lg:text-xl xl:text-[28px]">

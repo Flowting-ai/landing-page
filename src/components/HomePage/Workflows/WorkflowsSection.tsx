@@ -42,7 +42,7 @@ export default function WorkflowsSection() {
           <h3 className="font-medium lg:font-normal leading-[120%] text-xl lg:text-[37px] text-text">
             Build workflows that run on AI.
           </h3>
-          <p className="font-normal text-sm lg:text-base text-subtext">
+          <p className="font-geist font-normal text-sm lg:text-base text-subtext">
             Connect your chats, models and personas into directional workflows.
             <br className="block sm:hidden" /> Set it up once, run it anytime.{" "}
             <br className="block sm:hidden" /> Your personal no code workflow
@@ -63,7 +63,7 @@ export default function WorkflowsSection() {
                 return (
                   <div
                     key={workflow.title}
-                    className={`relative bg-white border animate-dual-beam3 rounded-[18px] p-2 shadow-sm hover:shadow-md transition-shadow overflow-hidden`}
+                    className={`relative font-geist bg-white border animate-dual-beam3 rounded-[18px] p-2 shadow-sm hover:shadow-md transition-shadow overflow-hidden`}
                   >
                     {/* Gradient */}
                     <div className="absolute top-2 left-0 w-full h-1/2 bg-linear-to-br from-cyan-300 to-amber-100 blur-lg"></div>
@@ -131,7 +131,7 @@ export default function WorkflowsSection() {
                     key={workflow.title}
                     type="button"
                     onClick={() => setActiveIndex(index)}
-                    className={`cursor-pointer group flex-1 border border-transparent rounded-2xl p-2 text-left transition-shadow ${
+                    className={`cursor-pointer font-geist group flex-1 border border-transparent rounded-2xl p-2 text-left transition-shadow ${
                       isActive
                         ? "animate-dual-beam2 shadow-lg bg-white"
                         : "hover:shadow-md shadow-sm bg-white"

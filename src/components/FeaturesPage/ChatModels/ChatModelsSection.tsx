@@ -9,11 +9,11 @@ export default function ChatModelsSection() {
           <p className="font-mono font-normal text-[12px] text-[#929291] px-2">Multi-Model Workspace</p>
         </div>
         {/* Title + Small Descriptions */}
-        <div className="z-2 w-full h-[128px] text-left flex flex-col md:flex-row items-start lg:items-center justify-between gap-3">
-          <h1 className="font-semibold leading-[120%] text-2xl lg:text-[37px] xl:text-[48px] text-black">
+        <div className="z-2 w-full h-[128px] text-left flex flex-col md:flex-row items-start justify-between gap-3">
+          <h1 className="font-medium leading-[120%] text-2xl lg:text-[37px] xl:text-[48px] text-black">
           One workspace, every model.
           </h1>
-          <p className="pt-2 max-w-xl font-normal tracking-[-0.3px] leading-[24px] text-sm lg:text-base xl:text-xl text-black">
+          <p className="font-geist pt-2 max-w-md font-normal tracking-[-0.3px] leading-[24px] text-sm lg:text-base xl:text-xl text-black">
           Stop re-explaining yourself every time you switch models. Start a conversation with Claude, continue with GPT, compare with Gemini, all in one thread, with full context preserved.
           </p>
         </div>

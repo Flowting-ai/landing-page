@@ -51,7 +51,7 @@ export default function ProblemsSection() {
           <h3 className="font-medium lg:font-normal leading-[120%] text-xl lg:text-[37px] text-text">
             Sound familiar?
           </h3>
-          <p className="font-normal text-sm lg:text-base text-subtext">
+          <p className="font-geist font-normal text-sm lg:text-base text-subtext">
             Turn scattered AI chats into focused workflows
           </p>
         </div>

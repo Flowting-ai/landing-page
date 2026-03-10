@@ -2,7 +2,18 @@
 import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { useState, useEffect } from "react";
+import dynamic from "next/dynamic";
 import { useFadeInOnScroll } from "@/hooks/useFadeInOnScroll";
+
+const Player = dynamic(
+  () =>
+    import("@lottiefiles/react-lottie-player").then(
+      (mod) => mod.Player
+    ) as Promise<React.ComponentType<any>>,
+  {
+    ssr: false,
+  }
+);
 
 const AIModels = [
   { name: "Grok", id: "grok", color: "from-purple-600 to-purple-800" },
@@ -39,13 +50,19 @@ export default function FlowtingSelectSection() {
             No more guessing. No more switching. Just ask.
           </p>
         </div>
-        <Image
-          src="./flowtingSelect/select-desktop.svg"
+        <Player
+              autoplay
+              loop
+              src="./souvenir-home-3a.json"
+              className="z-2 hidden lg:flex w-full h-full"
+            />
+        {/* <Image
+          src="./flowtingSelect/souvenir-select.svg"
           alt="Flowting Selection Desktop"
           width={16}
           height={16}
           className="hidden lg:block w-full! h-auto! object-contain rounded-3xl"
-        />
+        /> */}
         <Image
           src="./flowtingSelect/select-mobile.svg"
           alt="Flowting Selection Mobile"

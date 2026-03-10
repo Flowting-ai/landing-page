@@ -87,7 +87,7 @@ export default function FeaturesSection() {
           <h3 className="font-medium lg:font-normal leading-[120%] text-balance text-xl lg:text-[37px] text-text">
             Practical Features. Measurable Impact.
           </h3>
-          <p className="font-normal text-sm lg:text-base text-subtext">
+          <p className="font-geist font-normal text-sm lg:text-base text-subtext">
             Designed for Efficiency and Reliability
           </p>
         </div>
@@ -105,10 +105,10 @@ export default function FeaturesSection() {
                 className="relative w-full h-auto lg:h-screen bg-linear-to-b from-blue-200/40 via-amber-100 to-[#3E53577D]/49 lg:from-transparent lg:via-transparent lg:to-transparent border-2 lg:border-0 border-white rounded-3xl shadow-sm lg:shadow-none flex flex-col justify-center gap-4 text-left p-8 lg:p-12 overflow-hidden lg:overflow-auto mb-4 last:mb-0"
               >
                 {/* <div className="z-2 absolute left-2 w-1/2 h-1/2 bg-linear-to-b from-blue-100/30 via-amber-100/30 to-blue-200/30 blur-[30px]"></div> */}
-                <h4 className="font-normal text-xl lg:text-[28px]">
+                <h4 className="font-normal text-xl lg:text-3xl">
                   {feature.title}
                 </h4>
-                <p className="text-subtext text-sm lg:text-base xl:text-xl leading-relaxed">
+                <p className="font-geist text-subtext text-sm lg:text-base xl:text-xl leading-relaxed">
                   {feature.description}
                 </p>
                 <div className="lg:hidden w-full h-auto flex items-center justify-center">

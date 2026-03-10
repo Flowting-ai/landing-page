@@ -87,7 +87,7 @@ export default function Navbar() {
   return (
     <>
       {/* Desktop */}
-      <nav className="hidden lg:flex w-full h-auto">
+      <nav className="hidden lg:flex w-full h-auto font-geist">
         <div className="w-full sm:hidden block font-medium tracking-tight text-center text-lg lg:text-[18px] text-transparent bg-clip-text bg-linear-to-r from-zinc-300 via-zinc-700 to-zinc-300">
           <p>SouvenirAI</p>
         </div>
@@ -95,35 +95,44 @@ export default function Navbar() {
           {/* Left - Logo*/}
           <Link
             href="/"
-            className="relative w-auto h-full flex items-center gap-4"
+            className="relative w-auto h-full flex items-center gap-2"
           >
             <Image
-              src="./hero/FlowtingLogo.svg"
-              alt="Flowting AI Logo"
+              src="./logos/souvenir-logo.svg"
+              alt="Souvenir AI Logo"
               width={28}
               height={28}
               className="w-6 h-6 lg:w-7 lg:h-7"
             />
 
-            <p className="hidden sm:block font-normal tracking-tight text-sm md:text-base text-black lg:text-[18px]">
+            <p className="font-besley hidden sm:block font-medium tracking-tight text-sm md:text-base text-black lg:text-[18px]">
               SouvenirAI
             </p>
 
-            <ul className="flex items-center gap-4 px-4">
-              <li>
+            <ul className="flex-1 flex items-center justify-center gap-4 px-4 mx-2">
+            <li>
                 <Link
-                  href="/about"
-                  className="text-text hover:text-black hover:bg-zinc-200 rounded-[8px] px-4 py-3 transition-all duration-300"
+                  href="/features"
+                  className="text-text hover:text-black hover:bg-zinc-200 rounded-[8px] px-4 py-2 transition-all duration-300"
                 >
-                  About
+                  Features
                 </Link>
               </li>
               <li>
                 <Link
-                  href="/features"
-                  className="text-text hover:text-black hover:bg-zinc-200 rounded-[8px] px-4 py-3 transition-all duration-300"
+                  href="/about"
+                  className="text-text hover:text-black hover:bg-zinc-200 rounded-[8px] px-4 py-2 transition-all duration-300"
                 >
-                  Features
+                  About
+                </Link>
+              </li>
+              
+              <li>
+                <Link
+                  href="/pricing"
+                  className="text-text hover:text-black hover:bg-zinc-200 rounded-[8px] px-4 py-2 transition-all duration-300"
+                >
+                  Pricing
                 </Link>
               </li>
             </ul>
@@ -210,13 +219,13 @@ export default function Navbar() {
       </nav>
 
       {/* Mobile */}
-      <nav className="z-100 fixed top-0 w-full h-auto flex lg:hidden px-4 py-1">
+      <nav className="z-100 fixed top-0 w-full h-auto font-geist flex lg:hidden px-4 py-1">
         <div className="relative w-full h-12 flex items-center justify-between">
           {/* Logo */}
           <button className="bg-white/50 border border-main-border rounded-xl backdrop-blur-sm p-2">
             <Image
-              src="./hero/FlowtingLogo.svg"
-              alt="Flowting AI Logo"
+              src="./logos/souvenir-logo.svg"
+              alt="Souvenir AI Logo"
               width={28}
               height={28}
               className="w-6 h-6 lg:w-7 lg:h-7 object-contain"
@@ -245,7 +254,7 @@ export default function Navbar() {
 
       {/* Mobile slide-in menu from left */}
       <div
-        className={`lg:hidden fixed inset-0 z-100 h-screen ${isMobileMenuOpen ? "pointer-events-auto" : "pointer-events-none"}`}
+        className={`lg:hidden fixed inset-0 z-100 h-screen font-geist ${isMobileMenuOpen ? "pointer-events-auto" : "pointer-events-none"}`}
         aria-hidden={!isMobileMenuOpen}
       >
         {/* Backdrop */}
@@ -305,7 +314,10 @@ export default function Navbar() {
                 </Link>
               ) : null}
 
-              <div className="border border-text/30 my-2" />
+              {/* Spacer Border Div */}
+              <div className="border border-text/20 my-2" />
+
+              {/* Links 2 */}
               <Link
                 href="/"
                 className="text-foreground bg-main-bg border border-main-border rounded-xl shadow-sm px-4 py-3 text-center font-medium transition-all hover:bg-main-bg/80 active:scale-[0.98]"
@@ -324,6 +336,12 @@ export default function Navbar() {
               >
                 Features
               </Link>
+              <Link
+                href="/pricing"
+                className="text-foreground bg-main-bg border border-main-border rounded-xl shadow-sm px-4 py-3 text-center font-medium transition-all hover:bg-main-bg/80 active:scale-[0.98]"
+              >
+                Pricing
+              </Link>
             </nav>
 
             {/* <div className="z-10 bg-white/50 mt-auto border-t border-main-border backdrop-blur-xs p-4">
@@ -336,10 +354,10 @@ export default function Navbar() {
           </button>
         </div> */}
             <Image
-              src="./hero/FlowtingLogo.svg"
-              alt="Flowting AI Logo"
+              src="./logos/souvenir-logo-chat.svg"
+              alt="Souvenir AI Logo"
               fill
-              className="scale-192 z-1 absolute -translate-x-22 -translate-y-6 object-center object-contain opacity-10"
+              className="scale-192 z-1 absolute -translate-x-18 -translate-y-6 object-center object-contain opacity-30"
             />
           </div>
         </aside>

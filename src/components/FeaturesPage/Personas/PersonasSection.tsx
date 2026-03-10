@@ -12,10 +12,10 @@ export default function PersonasSection() {
         </div>
         {/* Title + Small Descriptions */}
         <div className="z-2 w-full h-auto text-left flex flex-col md:flex-row items-start justify-between gap-3 pb-6">
-          <h1 className="font-semibold leading-[120%] text-2xl lg:text-[37px] xl:text-[48px] text-black">
+          <h1 className="font-medium leading-[120%] text-2xl lg:text-[37px] xl:text-[48px] text-black">
             Build your own AI experts.
           </h1>
-          <p className="pt-2 max-w-xl font-normal tracking-[-0.3px] leading-[24px] text-sm lg:text-base xl:text-xl text-black">
+          <p className="font-geist pt-2 max-w-md font-normal tracking-[-0.3px] leading-[24px] text-sm lg:text-base xl:text-xl text-black">
             Create reusable personas with custom instructions, tone, and
             context. Use them anywhere.
           </p>

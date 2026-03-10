@@ -90,7 +90,7 @@ export default function YourContextSection() {
           <h3 className="font-normal leading-[120%] text-xl xl:text-[37px] text-text">
             &quot;Your context, always with you.&quot;
           </h3>
-          <p className="font-normal text-sm lg:text-base text-subtext">
+          <p className="font-geist font-normal text-sm lg:text-base text-subtext">
             Your thinking stays connected across every model and conversation
           </p>
         </div>
@@ -102,7 +102,7 @@ export default function YourContextSection() {
               &quot;Your context, always with you.&quot;
             </h3>
 
-            <p className="font-normal text-sm lg:text-base text-subtext">
+            <p className="font-geist font-normal text-sm lg:text-base text-subtext">
               Your thinking stays connected across every model and conversation
             </p>
           </div>
@@ -124,8 +124,8 @@ export default function YourContextSection() {
 
             {/* FlowtingAI Logo */}
             <Image
-              src="./hero/FlowtingLogoSilver.svg"
-              alt="Flowting Logo"
+              src="./logos/souvenir-logo-chat.svg"
+              alt="Souvenir AI Logo"
               width={16}
               height={16}
               className="z-1 absolute top-1/2 left-1/2 -translate-1/2 w-full! max-w-20 h-auto! object-contain"

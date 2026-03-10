@@ -9,7 +9,7 @@ export default function AboutContent() {
             Everyone is racing to make AI smarter. <br />
             No one is fixing how people actually use it.
           </h1>
-          <ul className="list-none max-w-4xl font-normal text-sm lg:text-base xl:text-lg text-text flex flex-col gap-3">
+          <ul className="list-none max-w-4xl font-geist font-normal text-sm lg:text-base xl:text-lg text-text flex flex-col gap-3">
             <li>
               Today&apos;s AI tools forget your identity, lose your context, and
               force you to repeat yourself — copy-pasting between tabs,
@@ -36,7 +36,7 @@ export default function AboutContent() {
                 <h4 className="text-[24px] lg:text-[32px] text-text">Our Mission</h4>
               </div>
               <div className="w-full md:w-3/5 py-3">
-                <p className="text-sm md:text-[20px] text-[#262320]">To give AI a memory, so your work builds on itself, instead of
+                <p className="font-geist text-sm md:text-base text-text">To give AI a memory, so your work builds on itself, instead of
                 starting over.</p>
               </div>
             </div>  
@@ -45,7 +45,7 @@ export default function AboutContent() {
                 <h4 className="text-[24px] lg:text-[32px] text-text">Our Product</h4>
               </div>
               <div className="w-full md:w-3/5 py-3">
-                <p className="text-sm md:text-[20px] text-[#262320]">One workspace where context persists, the right model is picked for you, and every output is reusable.</p>
+                <p className="font-geist text-sm md:text-base  text-text">One workspace where context persists, the right model is picked for you, and every output is reusable.</p>
               </div>
             </div>
           </div>

@@ -118,30 +118,30 @@ export default function GoBuildSomething() {
   const pathname = usePathname();
 
   return (
-    <section ref={sectionRef} className="w-full h-auto mb-10 lg:mb-20">
+    <section ref={sectionRef} className="w-full h-auto mb-10 lg:mb-40">
       <div className="container mx-auto text-center flex flex-col items-center gap-12 lg:gap-20 px-4 lg:px-16">
         {pathname === "/" && (
           <div className="w-full flex flex-col gap-2">
             <h3 className="font-medium lg:font-normal leading-[116%] text-xl lg:text-[37px] text-text">
               Go Build Something.
             </h3>
-            <p className="font-normal text-text">One Workspace. All Models.</p>
+            <p className="font-geist font-normal text-text">One Workspace. All Models.</p>
           </div>
         )}
         {pathname === "/features" && (
           <div className="w-full flex flex-col gap-10">
-            <div className="w-full flex flex-col gap-2">
-              <h3 className="font-medium lg:font-normal leading-[116%] text-xl lg:text-[42px] text-text">
+            <div className="w-full flex flex-col gap-4">
+              <h3 className="font-medium lg:font-normal leading-[116%] text-xl lg:text-[42px] text-black">
                 Ready to do your best AI work?
               </h3>
-              <p className="font-normal text-text">
+              <p className="font-geist font-normal text-xl text-text">
                 Plans start at $12/month. Start building today.
               </p>
             </div>
-            <div className="flex items-center justify-center gap-4">
+            <div className="font-geist flex items-center justify-center gap-4">
               <Link
                 href="/pricing"
-                className="pointer-events-none text-foreground bg-main-bg border border-main-border rounded-xl shadow-sm px-4 py-3 text-center font-medium transition-all hover:bg-main-bg/80 active:scale-[0.98]"
+                className="text-foreground bg-main-bg border border-main-border rounded-xl shadow-sm px-4 py-3 text-center font-medium transition-all hover:bg-main-bg/80 active:scale-[0.98]"
               >
                 View Pricing
               </Link>
@@ -152,12 +152,32 @@ export default function GoBuildSomething() {
                 Get Started
               </Link>
             </div>
-            <div className="relative text-sm text-text/60 flex flex-col md:flex-row items-center justify-between p-8">
+            <div className="relative font-geist text-sm text-text/60 flex flex-col md:flex-row items-center justify-between p-8">
               <p>Chat & Models</p>
               <p className="static md:absolute md:top-1/2 md:left-1/2 md:-translate-1/2">
                 Workflows
               </p>
-              <p>Personas</p>
+              <p>AI Personas</p>
+            </div>
+          </div>
+        )}
+        {pathname === "/pricing" && (
+          <div className="w-full flex flex-col gap-10">
+            <div className="w-full flex flex-col gap-4">
+              <h3 className="font-medium lg:font-normal leading-[116%] text-xl lg:text-[42px] text-black">
+                Ready to do your best AI work?
+              </h3>
+              <p className="font-geist font-normal text-xl text-text">
+                Pick a plan above and start building today.
+              </p>
+            </div>
+            <div className="font-geist flex items-center justify-center gap-4">
+              <Link
+                href="/contact"
+                className="text-nav-bg bg-nav-button-bg border border-nav-button-bg rounded-xl shadow-sm px-4 py-3 text-center font-medium transition-all hover:opacity-90 active:scale-[0.98]"
+              >
+                Get Started
+              </Link>
             </div>
           </div>
         )}
@@ -283,7 +303,7 @@ export default function GoBuildSomething() {
               {logos.map((logo, index) => (
                 <div
                   key={logo.name}
-                  className="relative h-[174px] w-[115px] rounded-full drop-shadow-sm drop-shadow-main-border overflow-hidden shrink-0"
+                  className="relative h-[174px] w-[115px] rounded-full drop-shadow-sm drop-shadow-white overflow-hidden shrink-0"
                 >
                   {/* Window frame */}
                   <Image

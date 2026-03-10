@@ -18,7 +18,7 @@ export default function HeroSection() {
             <br />
             You Deserve
           </h1>
-          <p className="max-w-xl font-normal text-balance text-sm lg:text-base xl:text-lg text-text">
+          <p className="font-geist max-w-xl font-normal text-balance text-sm lg:text-base xl:text-lg text-text">
             Great AI needs great context. We build tools that remember, so you
             don&apos;t have to repeat yourself.
           </p>
