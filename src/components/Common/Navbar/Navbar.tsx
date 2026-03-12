@@ -112,6 +112,14 @@ export default function Navbar() {
             <ul className="flex-1 flex items-center justify-center gap-4 px-4 mx-2">
               <li>
                 <Link
+                  href="/"
+                  className="text-text hover:text-black hover:bg-zinc-200 rounded-[8px] px-4 py-2 transition-all duration-300"
+                >
+                  Home
+                </Link>
+              </li>
+              <li>
+                <Link
                   href="/features"
                   className="text-text hover:text-black hover:bg-zinc-200 rounded-[8px] px-4 py-2 transition-all duration-300"
                 >
