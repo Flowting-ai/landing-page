@@ -5,6 +5,7 @@ import { Check } from "lucide-react";
 
 import { Switch } from "@/components/ui/switch";
 import { CARD_CONFIG, type CardConfig } from "@/components/PricingPage/PricingPlans/PricingPlansSection";
+import Link from "next/link";
 
 type BillingPlan = "monthly" | "annual";
 
@@ -138,12 +139,13 @@ export default function CompareAllFeaturesSection() {
                         </div>
                         <span className="text-xs text-[#525252]">{billedLabel}</span>
                       </div>
-                      <button
+                      <Link
+                      href="/contact"
                         type="button"
-                        className="w-full cursor-pointer bg-black text-[#F2F2F0] rounded-[8px] py-2 text-sm font-medium hover:bg-[#0A0A0A] transition-colors"
+                        className="flex items-center justify-center w-full cursor-pointer bg-black text-[#F2F2F0] rounded-[8px] py-2 text-sm font-medium hover:bg-[#0A0A0A] transition-colors"
                       >
                         Select plan
-                      </button>
+                      </Link>
                     </div>
                   </td>
 
@@ -161,12 +163,13 @@ export default function CompareAllFeaturesSection() {
                         </div>
                         <span className="text-xs text-[#525252]">{billedLabel}</span>
                       </div>
-                      <button
+                      <Link
+                      href="/contact"
                         type="button"
-                        className="w-full cursor-pointer bg-black text-[#F2F2F0] rounded-[8px] py-2 text-sm font-medium hover:bg-[#0A0A0A] transition-colors"
+                        className="flex items-center justify-center w-full cursor-pointer bg-black text-[#F2F2F0] rounded-[8px] py-2 text-sm font-medium hover:bg-[#0A0A0A] transition-colors"
                       >
                         Select plan
-                      </button>
+                      </Link>
                     </div>
                   </td>
 
@@ -186,12 +189,13 @@ export default function CompareAllFeaturesSection() {
                         </div>
                         <span className="text-xs text-[#525252]">{billedLabel}</span>
                       </div>
-                      <button
+                      <Link
+                      href="/contact"
                         type="button"
-                        className="w-full cursor-pointer bg-black text-[#F2F2F0] rounded-[8px] py-2 text-sm font-medium hover:bg-[#0A0A0A] transition-colors"
+                        className="flex items-center justify-center w-full cursor-pointer bg-black text-[#F2F2F0] rounded-[8px] py-2 text-sm font-medium hover:bg-[#0A0A0A] transition-colors"
                       >
                         Select plan
-                      </button>
+                      </Link>
                     </div>
                   </td>
                 </tr>

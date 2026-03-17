@@ -134,7 +134,7 @@ export default function HeroSection() {
         <div className="flex flex-col gap-3 lg:gap-2 my-4">
           <p
             ref={titleLine1Ref}
-            className="font-geist uppercase font-normal text-sm lg:text-base xl:text-lg text-text opacity-0"
+            className="font-geist font-normal text-sm lg:text-base xl:text-lg text-text opacity-0"
           >
             Elevate your work.
           </p>
@@ -148,12 +148,12 @@ export default function HeroSection() {
               The new home for AI practitioners
             </h1>
           </div>
-          <p
+          {/* <p
             ref={titleLine3Ref}
             className="font-geist font-normal text-sm lg:text-base xl:text-lg text-text opacity-0"
           >
             Turn scattered AI chats into focused workflows
-          </p>
+          </p> */}
         </div>
 
         {/* Content */}
@@ -175,7 +175,7 @@ export default function HeroSection() {
               autoplay
               loop
               src="./souvenir-home-1a.json"
-              className="z-2 hidden lg:flex w-full h-full absolute top-1/2 left-1/2 -translate-1/2 scale-110"
+              className="z-2 hidden lg:flex w-full h-full absolute top-1/2 left-1/2 -translate-1/2 scale-120"
             />
 
             {/* Lottie: responsive (mobile) — same behavior as video: autoplay, loop, no controls */}

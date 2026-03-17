@@ -51,9 +51,9 @@ export default function ProblemsSection() {
           <h3 className="font-medium lg:font-normal leading-[120%] text-xl lg:text-[37px] text-text">
             Sound familiar?
           </h3>
-          <p className="font-geist font-normal text-sm lg:text-base text-subtext">
-            Turn scattered AI chats into focused workflows
-          </p>
+          {/* <p className="font-geist font-normal text-sm lg:text-base text-subtext">
+            Do you find yourself constantly facing the same issues? 
+          </p> */}
         </div>
 
         <div className="w-full bg-zinc-200/50 sm:bg-transparent rounded-3xl grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-0 sm:gap-4 md:gap-4 lg:gap-4 p-0">
