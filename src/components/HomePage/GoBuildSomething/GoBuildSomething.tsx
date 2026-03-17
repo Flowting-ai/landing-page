@@ -139,12 +139,12 @@ export default function GoBuildSomething() {
               </p>
             </div>
             <div className="font-geist flex items-center justify-center gap-4">
-              {/* <Link
+              <Link
                 href="/pricing"
                 className="text-foreground bg-main-bg border border-main-border rounded-xl shadow-sm px-4 py-3 text-center font-medium transition-all hover:bg-main-bg/80 active:scale-[0.98]"
               >
                 View Pricing
-              </Link> */}
+              </Link>
               <Link
                 href="/contact"
                 className="text-nav-bg bg-nav-button-bg border border-nav-button-bg rounded-xl shadow-sm px-4 py-3 text-center font-medium transition-all hover:opacity-90 active:scale-[0.98]"

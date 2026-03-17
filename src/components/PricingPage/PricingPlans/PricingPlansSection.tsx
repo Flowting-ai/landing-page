@@ -2,12 +2,13 @@
 
 import { Check } from "lucide-react";
 import gsap from "gsap";
+import Link from "next/link";
 import React, { useLayoutEffect, useMemo, useRef, useState } from "react";
 
 type BillingPlan = "monthly" | "annual";
 
-type CardConfig = {
-  id: "starter" | "plus" | "power";
+export type CardConfig = {
+  id: "starter" | "pro" | "power";
   title: string;
   subtitle?: string;
   monthlyPrice: number;
@@ -16,36 +17,40 @@ type CardConfig = {
   features: string[];
 };
 
-const CARD_CONFIG: CardConfig[] = [
+export const CARD_CONFIG: CardConfig[] = [
   {
     id: "starter",
     title: "Starter",
     subtitle: "For daily AI power users",
     monthlyPrice: 12,
     annualPrice: 10,
-    introText: undefined,
+    introText: "Plan Inclusions",
     features: [
-      "All AI models",
+      "Basic AI models",
       "Basic smart routing",
-      "Limited persona bots",
-      "3 web searches / day",
-      "Pin & save outputs",
+      "Limited personas",
+      "100 Pins",
+      "10 web searches / day",
+      "Community Support",
     ],
   },
   {
-    id: "plus",
-    title: "Plus",
+    id: "pro",
+    title: "Pro",
     subtitle: "For daily AI power users",
     monthlyPrice: 25,
     annualPrice: 21,
     introText: "Everything in Starter, plus",
     features: [
-      "Advanced model routing to best model",
-      "Unlimited personas",
-      "5 shareable personas",
-      "Project-based organization",
-      "2 workflows",
-      "Expanded web search",
+      "Basic + Advanced AI Models",
+      "Advanced routing algorithm",
+      "Unlimited personas + 2 shared",
+      "2000 Pins",
+      "Unlimited Web Search",
+      "Model compare",
+      "Persona & Workflow Analytics",
+      "Early access to new features",
+      "Email, call & chat support",
     ],
   },
   {
@@ -54,14 +59,17 @@ const CARD_CONFIG: CardConfig[] = [
     subtitle: "Zero limits",
     monthlyPrice: 100,
     annualPrice: 83,
-    introText: "Everything in Plus, and",
+    introText: "Everything in Pro, plus",
     features: [
-      "Power routing — both algorithms unlocked",
+      "All models : Basic + Advanced + Power",
+      "All algorithms + manual switch",
       "Unlimited personas & sharing",
       "Unlimited workflows",
-      "Max usage & priority compute",
-      "Priority support",
-      "API access",
+      "Unlimited pins",
+      "Advanced Analytics",
+      "Priority compute",
+      "Early access to new features",
+      "Priority support • < 1hr response",
     ],
   },
 ];
@@ -72,15 +80,17 @@ const PricingPage = () => {
   const cardsById = useMemo(() => {
     const map: Record<CardConfig["id"], CardConfig> = {
       starter: CARD_CONFIG[0],
-      plus: CARD_CONFIG[1],
+      pro: CARD_CONFIG[1],
       power: CARD_CONFIG[2],
     };
     return map;
   }, []);
 
-  const [displayPrices, setDisplayPrices] = useState<Record<CardConfig["id"], number>>(() => ({
+  const [displayPrices, setDisplayPrices] = useState<
+    Record<CardConfig["id"], number>
+  >(() => ({
     starter: cardsById.starter.monthlyPrice,
-    plus: cardsById.plus.monthlyPrice,
+    pro: cardsById.pro.monthlyPrice,
     power: cardsById.power.monthlyPrice,
   }));
 
@@ -110,11 +120,13 @@ const PricingPage = () => {
   }, [billing]);
 
   useLayoutEffect(() => {
-    const ids: CardConfig["id"][] = ["starter", "plus", "power"];
+    const ids: CardConfig["id"][] = ["starter", "pro", "power"];
 
     ids.forEach((id) => {
       const target =
-        billing === "annual" ? cardsById[id].annualPrice : cardsById[id].monthlyPrice;
+        billing === "annual"
+          ? cardsById[id].annualPrice
+          : cardsById[id].monthlyPrice;
 
       const from = displayPrices[id];
       const obj = { value: from };
@@ -125,7 +137,9 @@ const PricingPage = () => {
         ease: "power2.out",
         onUpdate: () => {
           const next = Math.round(obj.value);
-          setDisplayPrices((prev) => (prev[id] === next ? prev : { ...prev, [id]: next }));
+          setDisplayPrices((prev) =>
+            prev[id] === next ? prev : { ...prev, [id]: next },
+          );
         },
       });
     });
@@ -133,35 +147,34 @@ const PricingPage = () => {
   }, [billing, cardsById]);
 
   return (
-    <section className="w-full min-h-screen bg-main-bg flex items-center justify-center px-4">
+    <section className="w-full min-h-screen bg-[#FAF9F8] flex items-center justify-center px-4">
       <div className="w-full flex flex-col items-center gap-8 py-10">
         {/* Section 1: Title + Subtext */}
         <section className="text-center space-y-3 max-w-2xl">
           <h1 className="font-besley text-3xl md:text-4xl text-black">
-            You just saved your first thought
+            Plans that grow with you
           </h1>
           <p className="font-geist text-sm md:text-base text-[#525252]">
-            Choose a plan to keep building. Every conversation remembers the
-            last.
+            One workspace. Every AI model. No commitment.
           </p>
         </section>
 
         {/* Section 2: Monthly / Annual toggle */}
-        <section className="flex justify-center">
+        <section className="font-geist flex justify-center">
           <div
             ref={toggleRef}
-            className="relative inline-flex items-center bg-[#F5F5F5] rounded-[12px] shadow-xs p-1"
+            className="relative inline-flex items-center bg-white rounded-[12px] shadow-md px-1 py-1.5"
           >
             <div
               ref={sliderRef}
-              className="absolute left-0 top-0 bottom-0 rounded-[8px] bg-[#171717]"
+              className="absolute left-0 top-0 bottom-0 rounded-[8px] bg-[#171717] my-1.5"
               style={{ width: "50%", transform: "translateX(0px)" }}
             />
             <button
               type="button"
               onClick={() => setBilling("monthly")}
               ref={monthlyBtnRef}
-              className={`relative z-10 px-4 py-2 text-sm font-medium rounded-[8px] transition-colors ${
+              className={`cursor-pointer relative z-10 px-4 py-2 text-sm font-medium rounded-[8px] transition-colors ${
                 billing === "monthly" ? "text-white" : "text-[#171717]"
               }`}
             >
@@ -171,7 +184,7 @@ const PricingPage = () => {
               type="button"
               onClick={() => setBilling("annual")}
               ref={annualBtnRef}
-              className={`relative z-10 px-4 py-2 text-sm font-medium rounded-[8px] transition-colors ${
+              className={`cursor-pointer relative z-10 px-4 py-2 text-sm font-medium rounded-[8px] transition-colors ${
                 billing === "annual" ? "text-white" : "text-[#171717]"
               }`}
             >
@@ -182,20 +195,22 @@ const PricingPage = () => {
 
         {/* Section 3: Pricing Cards */}
         <section className="w-full flex items-center justify-center">
-          <div className="grid grid-cols-3 gap-6">
+          <div className="lg:min-w-6xl grid grid-cols-1 lg:grid-cols-3 gap-6">
             {CARD_CONFIG.map((card) => {
               const price = displayPrices[card.id];
 
+              // Card 1: Starter
               if (card.id === "starter") {
                 return (
                   <article
                     key={card.id}
-                    className="bg-white shadow-lg shadow-zinc-300 rounded-[16px] p-4 flex flex-col justify-between gap-4"
+                    className="bg-white font-geist shadow-lg shadow-zinc-300 rounded-[16px] p-4 flex flex-col justify-between gap-4 lg:mt-8 lg:mb-1"
                   >
-                    <div className="flex flex-col gap-2">
-                      <div className="bg-linear-to-b from-white via-white to-stone-200 shadow-md shadow-zinc-300 rounded-[12px] p-4 space-y-4 mb-2">
+                    {/* Mini Card + Content List */}
+                    <div className="flex flex-col gap-2 mb-6">
+                      <div className="bg-linear-to-b from-white via-white to-stone-100 shadow-md shadow-zinc-300 rounded-[12px] p-4 space-y-4 mb-2">
                         <div className="flex flex-col gap-0">
-                          <span className="font-semibold text-lg tracking-tight text-[#171717]">
+                          <span className="font-semibold text-xl tracking-tight text-[#171717]">
                             {card.title}
                           </span>
                           <span className="font-semibold tracking-tight text-sm text-[#212123]">
@@ -232,71 +247,85 @@ const PricingPage = () => {
                         </ul>
                       </div>
                     </div>
+
+                    {/* Get Started Button */}
                     <div className="pt-2">
-                      <button
-                        type="button"
-                        className="w-full cursor-pointer font-geist border border-[#171717] text-[#171717] rounded-[8px] py-2 text-sm font-medium hover:bg-[#171717] hover:text-white transition-colors"
+                      <Link
+                        href="/contact"
+                        className="flex items-center justify-center w-full cursor-pointer border border-[#171717] text-[#171717] rounded-[8px] py-2 text-sm font-medium hover:bg-[#171717] hover:text-white transition-all duration-300"
                       >
                         Get Started
-                      </button>
+                      </Link>
                     </div>
                   </article>
                 );
               }
 
-              if (card.id === "plus") {
+              // Card 2: Pro
+              if (card.id === "pro") {
                 return (
                   <article
                     key={card.id}
-                    className="bg-white shadow-lg shadow-zinc-300 rounded-[16px] p-4 flex flex-col justify-between gap-4"
+                    className="font-geist bg-linear-to-b from-[#BA9671] to-[#D3AA80] rounded-t-[16px] rounded-b-[20px] shadow-lg shadow-zinc-300 px-1 pb-1"
                   >
-                    <div className="flex flex-col gap-2">
-                      <div className="bg-linear-to-b from-[#D47E51]/70 via-[#ffa16f] to-[#D47E51]/70 text-black shadow-md shadow-zinc-300 rounded-[12px] p-4 space-y-4 mb-2">
-                        <div className="flex flex-col gap-0">
-                          <span className="font-semibold text-lg tracking-tight text-[#171717]">
-                            {card.title}
-                          </span>
-                          <span className="font-semibold text-sm text-[#212123]">
-                            {card.subtitle}
-                          </span>
+                    <p className="text-center font-semibold text-xs text-white py-2">
+                      Most recommended
+                    </p>
+                    <div className="bg-white rounded-[16px] p-4 flex flex-col justify-between gap-4">
+                      {/* Mini Card + Content List */}
+                      <div className="flex flex-col gap-2 mb-6">
+                        <div className="bg-linear-to-b from-white via-white to-stone-100 shadow-md shadow-zinc-300 rounded-[12px] p-4 space-y-4 mb-2">
+                          <div className="flex flex-col gap-0">
+                            <span className="font-semibold text-xl tracking-tight text-black">
+                              {card.title}
+                            </span>
+                            <span className="font-semibold tracking-tight text-sm text-[#212123]">
+                              {card.subtitle}
+                            </span>
+                          </div>
+                          <div className="flex items-baseline gap-1">
+                            <span className="font-besley font-bold text-5xl text-black">
+                              ${price}
+                            </span>
+                            <span className="font-bold text-base text-[#373D3D]/80">
+                              /mo
+                            </span>
+                          </div>
                         </div>
-                        <div className="flex items-baseline gap-1">
-                          <span className="font-besley text-5xl font-semibold text-black">
-                            ${price}
-                          </span>
-                          <span className="font-bold text-base text-[#373D3D]/80">
-                            /mo
-                          </span>
+
+                        <div className="space-y-3 px-2">
+                          {card.introText && (
+                            <p className="font-geist text-xs text-[#212123]">
+                              {card.introText}
+                            </p>
+                          )}
+                          <ul className="space-y-2">
+                            {card.features.map((label) => (
+                              <li
+                                key={label}
+                                className="flex items-center gap-2"
+                              >
+                                <span className="h-4 w-4 text-white bg-[#F26725] rounded-full flex items-center justify-center ">
+                                  <Check size={12} strokeWidth={3} />
+                                </span>
+                                <span className="text-sm text-[#171717]">
+                                  {label}
+                                </span>
+                              </li>
+                            ))}
+                          </ul>
                         </div>
                       </div>
 
-                      <div className="space-y-3 px-2">
-                        {card.introText && (
-                          <p className="font-geist text-xs text-[#212123]">
-                            {card.introText}
-                          </p>
-                        )}
-                        <ul className="space-y-2">
-                          {card.features.map((label) => (
-                            <li key={label} className="flex items-center gap-2">
-                              <span className="h-4 w-4 text-white bg-[#F26725] rounded-full flex items-center justify-center ">
-                                <Check size={12} strokeWidth={3} />
-                              </span>
-                              <span className="text-sm text-[#171717]">
-                                {label}
-                              </span>
-                            </li>
-                          ))}
-                        </ul>
+                      {/* Get Started Button */}
+                      <div className="pt-2">
+                        <Link
+                          href="/contact"
+                          className="flex items-center justify-center w-full cursor-pointer bg-black text-[#F2F2F0] rounded-[8px] py-2 text-sm font-medium hover:bg-[#0A0A0A] transition-colors"
+                        >
+                          Get Started
+                        </Link>
                       </div>
-                    </div>
-                    <div className="pt-2">
-                      <button
-                        type="button"
-                        className="w-full cursor-pointer font-geist bg-black text-[#F2F2F0] rounded-[8px] py-2 text-sm font-medium hover:bg-[#0A0A0A] transition-colors"
-                      >
-                        Get Started
-                      </button>
                     </div>
                   </article>
                 );
@@ -306,25 +335,24 @@ const PricingPage = () => {
               return (
                 <article
                   key={card.id}
-                  className="bg-white shadow-lg shadow-zinc-300 rounded-[16px] p-4 flex flex-col justify-between gap-4"
+                  className="font-geist bg-white shadow-lg shadow-zinc-300 rounded-[16px] p-4 flex flex-col justify-between gap-4 lg:mt-8 lg:mb-1"
                 >
-                  <div className="flex flex-col gap-2">
-                    <div className="bg-linear-to-b from-[#171717] via-[#171717] to-[#171717] text-[#F9D99C] shadow-lg rounded-[12px] p-4 space-y-4 mb-2">
+                  {/* Mini Card + Content List */}
+                  <div className="flex flex-col gap-2 mb-6">
+                    <div className="bg-linear-to-b from-white via-white to-stone-100 shadow-md shadow-zinc-300 rounded-[12px] p-4 space-y-4 mb-2">
                       <div className="flex flex-col gap-0">
-                        <span className="font-semibold text-lg tracking-tight text-[#F9D99C]">
+                        <span className="font-semibold text-xl tracking-tight text-black">
                           {card.title}
                         </span>
-                        {card.subtitle && (
-                          <span className="font-semibold text-sm text-[#F9D99C]">
-                            {card.subtitle}
-                          </span>
-                        )}
+                        <span className="font-semibold tracking-tight text-sm text-[#212123]">
+                          {card.subtitle}
+                        </span>
                       </div>
                       <div className="flex items-baseline gap-1">
-                        <span className="font-besley text-5xl font-semibold text-[#F9D99C]">
+                        <span className="font-besley text-5xl font-semibold text-black">
                           ${price}
                         </span>
-                        <span className="font-bold text-base text-[#F9D99C]/62">
+                        <span className="font-bold text-base text-[#373D3D]/80">
                           /mo
                         </span>
                       </div>
@@ -350,13 +378,15 @@ const PricingPage = () => {
                       </ul>
                     </div>
                   </div>
+
+                  {/* Get Started Button */}
                   <div className="pt-2">
-                    <button
-                      type="button"
-                      className="w-full cursor-pointer font-geist bg-[#191919] text-[#F9D99C] rounded-[8px] py-2 text-sm font-medium hover:bg-black transition-colors"
+                    <Link
+                      href="/contact"
+                      className="flex items-center justify-center w-full cursor-pointer bg-black text-[#F2F2F0] rounded-[8px] py-2 text-sm font-medium hover:bg-black transition-colors"
                     >
-                      Go Unlimited
-                    </button>
+                      Get Started
+                    </Link>
                   </div>
                 </article>
               );

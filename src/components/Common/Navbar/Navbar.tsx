@@ -134,14 +134,14 @@ export default function Navbar() {
                   About
                 </Link>
               </li>
-              {/* <li>
+              <li>
                 <Link
                   href="/pricing"
                   className="text-text hover:text-black hover:bg-zinc-200 rounded-[8px] px-4 py-2 transition-all duration-300"
                 >
                   Pricing
                 </Link>
-              </li> */}
+              </li>
             </ul>
           </Link>
 
@@ -213,14 +213,14 @@ export default function Navbar() {
                 Get Started
               </Link>
             )}
-            {pathname === "/contact" ? (
+            {/* {pathname === "/contact" ? (
               <Link
                 href="/"
                 className="text-xs md:text-sm lg:text-base text-text! hover:text-black bg-main-bg hover:bg-zinc-300/40 border border-main-border rounded-xl shadow-sm transition-colors px-4 py-2 inline-flex items-center gap-1"
               >
                 <ChevronLeft /> Back to Home
               </Link>
-            ) : null}
+            ) : null} */}
           </div>
         </div>
       </nav>
@@ -312,13 +312,14 @@ export default function Navbar() {
                   Get Started
                 </Link>
               ) : pathname === "/contact" ? (
-                <Link
-                  href="/"
-                  onClick={closeMobileMenu}
-                  className="text-text hover:text-black transition-colors px-4 py-3 text-center font-medium inline-flex items-center justify-center gap-1"
-                >
-                  <ChevronLeft className="w-4 h-4" /> Back to Home
-                </Link>
+                null
+                // <Link
+                //   href="/"
+                //   onClick={closeMobileMenu}
+                //   className="text-text hover:text-black transition-colors px-4 py-3 text-center font-medium inline-flex items-center justify-center gap-1"
+                // >
+                //   <ChevronLeft className="w-4 h-4" /> Back to Home
+                // </Link>
               ) : null}
 
               {/* Spacer Border Div */}
@@ -343,12 +344,12 @@ export default function Navbar() {
               >
                 Features
               </Link>
-              {/* <Link
+              <Link
                 href="/pricing"
                 className="text-foreground bg-main-bg border border-main-border rounded-xl shadow-sm px-4 py-3 text-center font-medium transition-all hover:bg-main-bg/80 active:scale-[0.98]"
               >
                 Pricing
-              </Link> */}
+              </Link>
             </nav>
 
             {/* <div className="z-10 bg-white/50 mt-auto border-t border-main-border backdrop-blur-xs p-4">

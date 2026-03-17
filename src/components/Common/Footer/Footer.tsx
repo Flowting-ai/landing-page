@@ -17,11 +17,11 @@ const FOOTER_LINKS_PRODUCT = [
     href: "/features",
     disabled: false,
   },
-  // {
-  //   name: "Pricing",
-  //   href: "/pricing",
-  //   disabled: false,
-  // },
+  {
+    name: "Pricing",
+    href: "/pricing",
+    disabled: false,
+  },
   // {
   //   name: "Changelog",
   //   href: "/changelog",
@@ -207,7 +207,7 @@ export default function Footer() {
         <div className="flex sm:hidden flex-col items-center gap-6 px-4 py-12">
           <h3 className="font-normal text-lg lg:text-3xl">Connect With Us</h3>
           <ul className="list-none w-full flex items-center justify-center gap-3 lg:gap-6 flex-wrap">
-            {FOOTER_LINKS_SOCIALS.map(({ name, href, disabled, icon }) => (
+            {FOOTER_LINKS_SOCIALS.map(({ name, href, icon }) => (
               <li key={name}>
                 <a
                   href={href}
