@@ -19,7 +19,7 @@ const besley = Besley({
 })
 
 export const metadata: Metadata = {
-  title: "SouvenirAI",
+  title: "Souvenir",
   description: "All AI Models, One Interface.",
 };
 

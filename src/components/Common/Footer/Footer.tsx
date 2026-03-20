@@ -121,7 +121,7 @@ export default function Footer() {
           />
           <div className="flex flex-col">
             <h3 className="font-besley font-normal leading-[120%] text-2xl lg:text-[36px] text-black">
-              SouvenirAI
+              Souvenir
               <br />
             </h3>
             {/* <p>Made with context.</p> */}
@@ -228,7 +228,7 @@ export default function Footer() {
       <div className="relative w-full h-auto text-center lg:text-left px-4 lg:px-20 py-10">
         <div className="container mx-auto text-balance text-sm lg:text-base text-footer-text flex flex-col lg:flex-row gap-4 pt-4">
           <div className="w-auto text-center md:text-left">
-            <p className="">&copy; {currentYear} SouvenirAI. Made with context.</p>
+            <p className="">&copy; {currentYear} Souvenir Inc. Made with context.</p>
             <p className="flex items-center justify-center sm:justify-start gap-2">
               <HiOutlineArrowTurnDownRight size={16} className="hidden md:block" />{" "}
               {`(Yes, an AI helped write this site. But a human approved it.)`}

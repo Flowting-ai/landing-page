@@ -89,7 +89,7 @@ export default function Navbar() {
       {/* Desktop */}
       <nav className="hidden lg:flex w-full h-auto font-geist">
         <div className="w-full sm:hidden block font-medium tracking-tight text-center text-lg lg:text-[18px] text-transparent bg-clip-text bg-linear-to-r from-zinc-300 via-zinc-700 to-zinc-300">
-          <p>SouvenirAI</p>
+          <p>Souvenir</p>
         </div>
         <div className="w-full h-12 lg:h-14 bg-nav-bg rounded-2xl shadow-xs shadow-main-border flex items-center justify-between pl-4 pr-2 md:px-5 py-2.5">
           {/* Left - Logo*/}
@@ -106,7 +106,7 @@ export default function Navbar() {
             />
 
             <p className="font-besley hidden sm:block font-medium tracking-tight text-sm md:text-base text-black lg:text-[18px]">
-              SouvenirAI
+              Souvenir
             </p>
 
             <ul className="flex-1 flex items-center justify-center gap-4 px-4 mx-2">
@@ -245,7 +245,7 @@ export default function Navbar() {
                 : "opacity-100"
             }`}
           >
-            SouvenirAI
+            Souvenir
           </h3>
           {/* Navigation CTA - opens slide-in menu */}
           <button
@@ -282,7 +282,7 @@ export default function Navbar() {
           <div className="relative w-full h-full flex flex-col overflow-hidden">
             <div className="z-2 bg-white/50 flex items-center justify-between border-b border-main-border backdrop-blur-xs px-5 py-4">
               <span className="font-medium tracking-tight text-lg text-transparent bg-clip-text bg-linear-to-br from-zinc-400 via-zinc-700 to-zinc-400">
-                SouvenirAI
+                Souvenir
               </span>
               <button
                 onClick={closeMobileMenu}
