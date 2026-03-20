@@ -75,25 +75,25 @@ const FOOTER_LINKS_COMPANY = [
 const FOOTER_LINKS_SOCIALS = [
   {
     name: "Twitter",
-    href: "https://x.com/Flowtingai",
+    href: "https://x.com/getSouvenirAi",
     disabled: false,
     icon: <FaXTwitter />,
   },
   {
     name: "Discord",
-    href: "https://discord.gg/eXfnSe86dr",
+    href: "https://discord.gg/uwsp2HWcts",
     disabled: false,
     icon: <FaDiscord />,
   },
   {
     name: "LinkedIn",
-    href: "https://www.linkedin.com/company/flowting-ai/",
+    href: "https://www.linkedin.com/company/souvenirai/",
     disabled: false,
     icon: <FaLinkedinIn />,
   },
   {
     name: "Instagram",
-    href: "https://www.instagram.com/flowtingai?igsh=MXJuYXl5bDc2NDk5Zw==",
+    href: "https://www.instagram.com/getsouvenirai?igsh=MXJuYXl5bDc2NDk5Zw==",
     disabled: false,
     icon: <FaInstagram />,
   },
@@ -225,7 +225,7 @@ export default function Footer() {
       </div>
 
       {/* BOTTOM */}
-      <div className="relative w-full h-auto text-center lg:text-left px-4 lg:px-16 py-10">
+      <div className="relative w-full h-auto text-center lg:text-left px-4 lg:px-20 py-10">
         <div className="container mx-auto text-balance text-sm lg:text-base text-footer-text flex flex-col lg:flex-row gap-4 pt-4">
           <div className="w-auto text-center md:text-left">
             <p className="">&copy; {currentYear} SouvenirAI. Made with context.</p>

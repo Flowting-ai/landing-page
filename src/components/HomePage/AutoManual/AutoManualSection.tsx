@@ -28,14 +28,14 @@ export default function AutoManualSection() {
           <Player
             autoplay
             loop
-            src="./lottie2b.json"
+            src="./souvenir-home-3b.json"
             className="w-full h-full"
           />
         </div>
         <Player
           autoplay
           loop
-          src="./lottie2a.json"
+          src="./souvenir-home-3a.json"
           className="hidden lg:flex w-full h-full border border-main-border rounded-4xl"
         />
       </div>

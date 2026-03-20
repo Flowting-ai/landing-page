@@ -18,7 +18,7 @@ export default function JoinUs() {
             href="/contact"
             className="font-geist text-nav-bg bg-nav-button-bg border border-nav-button-bg rounded-xl shadow-sm px-4 py-2 text-center font-medium flex items-center gap-2 transition-all hover:opacity-90 active:scale-[0.98]"
           >
-            Follow Our Journey <ArrowRight size={16} />
+            Get Started <ArrowRight size={16} />
           </Link>
         </div>
         {/* Gradient Bg */}
