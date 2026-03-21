@@ -183,7 +183,7 @@ export default function HeroSection() {
               <Player
                 autoplay
                 loop
-                src="./lottie1b.json"
+                src="./souvenir-home-1b.json"
                 className="w-full h-full"
               />
             </div>

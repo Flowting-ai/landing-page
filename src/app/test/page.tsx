@@ -2,8 +2,8 @@ import Image from "next/image";
 
 export default function PricingPage() {
     return (
-      <div className="w-full h-screen flex items-center justify-center p-4">
-        <div className="w-full h-full bg-linear-to-b from-blue-200 via-amber-200 to-blue-200 border border-zinc-400 rounded-2xl shadow-md flex items-center justify-center">
+      <div className="w-full h-screen flex items-center justify-center p-0">
+        <div className="w-full h-full bg-linear-to-b from-blue-200 via-amber-200 to-blue-200 border border-zinc-400 rounded-none shadow-md flex items-center justify-center">
         <Image
           src="./logos/souvenir-logo-chat.svg"
           alt="Guy Sitting On Chair"
