@@ -113,7 +113,7 @@ export default function Footer() {
         {/* Souvenir AI Logo */}
         <div className="w-full lg:w-1/2 flex items-center sm:items-start justify-center sm:justify-start gap-4 px-4 mb-16">
           <Image
-            src="./logos/souvenir-logo.svg"
+            src="/logos/souvenir-logo.svg"
             alt="Souvenir AI Logo"
             width={43}
             height={43}

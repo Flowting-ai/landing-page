@@ -18,7 +18,7 @@ const ContactForm: React.FC = () => {
             Sending Message...
           </h3>
           <Image
-            src="./logos/souvenir-logo.svg"
+            src="/logos/souvenir-logo.svg"
             alt="Souvenir AI Logo"
             width={16}
             height={16}
@@ -33,7 +33,7 @@ const ContactForm: React.FC = () => {
             We will contact you soon.
           </h3>
           <Image
-            src="./logos/souvenir-logo.svg"
+            src="/logos/souvenir-logo.svg"
             alt="Souvenir AI Logo"
             width={16}
             height={16}

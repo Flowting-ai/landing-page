@@ -98,7 +98,7 @@ export default function Navbar() {
             className="relative w-auto h-full flex items-center gap-2"
           >
             <Image
-              src="./logos/souvenir-logo.svg"
+              src="/logos/souvenir-logo.svg"
               alt="Souvenir AI Logo"
               width={28}
               height={28}
@@ -231,7 +231,7 @@ export default function Navbar() {
           {/* Logo */}
           <button className="bg-white/50 border border-main-border rounded-xl backdrop-blur-sm p-2">
             <Image
-              src="./logos/souvenir-logo.svg"
+              src="/logos/souvenir-logo.svg"
               alt="Souvenir AI Logo"
               width={28}
               height={28}
@@ -362,7 +362,7 @@ export default function Navbar() {
           </button>
         </div> */}
             <Image
-              src="./logos/souvenir-logo-chat.svg"
+              src="/logos/souvenir-logo-chat.svg"
               alt="Souvenir AI Logo"
               fill
               className="scale-192 z-1 absolute -translate-x-18 -translate-y-6 object-center object-contain opacity-30"

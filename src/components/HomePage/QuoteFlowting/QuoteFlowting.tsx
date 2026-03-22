@@ -44,7 +44,7 @@ export default function QuoteFlowting() {
             <div className="absolute w-full h-full flex items-center justify-center">
               <div className="w-full h-full flex items-center justify-center">
                 <Image
-                  src="./logos/souvenir-quote-logo.svg"
+                  src="/logos/souvenir-quote-logo.svg"
                   alt="Quote Background"
                   width={500}
                   height={500}

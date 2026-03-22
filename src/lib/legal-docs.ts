@@ -8,7 +8,14 @@ export type LegalSection = {
   links: LegalLink[];
 };
 
-/** Section slugs match static route folders under `src/app/legal/`. */
+/** Hub shows all entries; only these have live routes (see `isLegalHubLinkEnabled`). */
+const LEGAL_HUB_LIVE_ROUTES = new Set<string>(["privacy-data/privacy-policy"]);
+
+export function isLegalHubLinkEnabled(sectionSlug: string, docSlug: string): boolean {
+  return LEGAL_HUB_LIVE_ROUTES.has(`${sectionSlug}/${docSlug}`);
+}
+
+/** Section slugs match static route folders under `src/app/legal/` when pages exist. */
 export const legalSections: LegalSection[] = [
   {
     slug: "platform-terms",

@@ -121,7 +121,7 @@ export default function HeroSection() {
   return (
     <section className="w-full h-auto">
       {/* === NAVBAR === */}
-      <div className="container mx-auto flex items-center justify-center px-2 lg:px-16 py-3 lg:py-6">
+      <div className="container mx-auto bg-[#FAF9F8] flex items-center justify-center px-2 lg:px-16 py-3 lg:py-6">
         <Navbar />
       </div>
 

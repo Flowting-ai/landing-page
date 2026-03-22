@@ -1,6 +1,10 @@
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
-import { legalHref, legalSections } from "@/lib/legal-docs";
+import {
+  isLegalHubLinkEnabled,
+  legalHref,
+  legalSections,
+} from "@/lib/legal-docs";
 
 export default function LegalHub() {
   return (
@@ -21,23 +25,46 @@ export default function LegalHub() {
               </h2>
               <nav aria-label={section.title}>
                 <ul className="flex flex-col gap-3">
-                  {section.links.map((link) => (
-                    <li key={link.slug}>
-                      <Link
-                        href={legalHref(section.slug, link.slug)}
-                        className="w-full border-t border-b border-main-border py-2 px-2 flex flex-row items-center justify-between gap-3 text-left hover:bg-black/2 transition-colors rounded-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground/30"
-                      >
-                        <span className="font-geist text-text text-sm sm:text-base">
-                          {link.label}
-                        </span>
-                        <ChevronRight
-                          className="shrink-0 size-5 sm:size-[1.35rem] text-text"
-                          strokeWidth={1.4}
-                          aria-hidden
-                        />
-                      </Link>
-                    </li>
-                  ))}
+                  {section.links.map((link) => {
+                    const enabled = isLegalHubLinkEnabled(section.slug, link.slug);
+                    const rowClass = enabled
+                      ? "w-full border-t border-b border-main-border py-2 px-2 flex flex-row items-center justify-between gap-3 text-left hover:bg-black/2 transition-colors rounded-none focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-foreground/30"
+                      : "w-full border-t border-b border-main-border py-2 px-2 flex flex-row items-center justify-between gap-3 text-left rounded-none pointer-events-none text-text/45";
+
+                    if (enabled) {
+                      return (
+                        <li key={link.slug}>
+                          <Link href={legalHref(section.slug, link.slug)} className={rowClass}>
+                            <span className="font-geist text-text text-sm sm:text-base">
+                              {link.label}
+                            </span>
+                            <ChevronRight
+                              className="shrink-0 size-5 sm:size-[1.35rem] text-text"
+                              strokeWidth={1.4}
+                              aria-hidden
+                            />
+                          </Link>
+                        </li>
+                      );
+                    }
+
+                    return (
+                      <li key={link.slug}>
+                        <div
+                          className={rowClass}
+                          aria-disabled="true"
+                          title="Coming soon"
+                        >
+                          <span className="font-geist text-sm sm:text-base">{link.label}</span>
+                          <ChevronRight
+                            className="shrink-0 size-5 sm:size-[1.35rem] text-text/45"
+                            strokeWidth={1.4}
+                            aria-hidden
+                          />
+                        </div>
+                      </li>
+                    );
+                  })}
                 </ul>
               </nav>
             </section>

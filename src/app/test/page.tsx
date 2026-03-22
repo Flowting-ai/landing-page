@@ -5,7 +5,7 @@ export default function PricingPage() {
       <div className="w-full h-screen flex items-center justify-center p-0">
         <div className="w-full h-full bg-linear-to-b from-blue-200 via-amber-200 to-blue-200 border border-zinc-400 rounded-none shadow-md flex items-center justify-center">
         <Image
-          src="./logos/souvenir-logo-chat.svg"
+          src="/logos/souvenir-logo-chat.svg"
           alt="Guy Sitting On Chair"
           width={564}
           height={270}

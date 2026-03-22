@@ -26,7 +26,7 @@ export default function JoinUs() {
         {/* Image */}
         <div className="z-2 absolute translate-y-0 w-full h-auto flex items-center justify-center">
           <Image
-            src="./logos/souvenir-quote-logo.svg"
+            src="/logos/souvenir-quote-logo.svg"
             alt="quoteBackground"
             width={564}
             height={270}
