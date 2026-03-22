@@ -205,13 +205,19 @@ export default function CompareAllFeaturesSection() {
                   label="AI Models"
                   starter="Basic"
                   pro="Basic + Advanced"
-                  power="Basic + Advanced + Power"
+                  power="All models"
                 />
                 <DataRow
                   label="Smart Routing"
                   starter="Basic Algorithm"
-                  pro="Advanced"
+                  pro="Basic + Advanced + manual switch"
                   power="All + Manual Switch"
+                />
+                <DataRow
+                  label="Usage"
+                  starter="Basic Usage"
+                  pro="More Usage"
+                  power="5x Usage"
                 />
                 <DataRow
                   label="Model Compare"
