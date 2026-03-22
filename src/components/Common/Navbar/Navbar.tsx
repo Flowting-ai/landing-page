@@ -1,5 +1,5 @@
 "use client";
-import { ChevronLeft, Ellipsis, Moon, Sun, X } from "lucide-react";
+import { Ellipsis, Moon, Sun, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -92,24 +92,26 @@ export default function Navbar() {
           <p>Souvenir</p>
         </div>
         <div className="w-full h-12 lg:h-14 bg-nav-bg rounded-2xl shadow-xs shadow-main-border flex items-center justify-between pl-4 pr-2 md:px-5 py-2.5">
-          {/* Left - Logo*/}
-          <Link
-            href="/"
-            className="relative w-auto h-full flex items-center gap-2"
-          >
-            <Image
-              src="/logos/souvenir-logo.svg"
-              alt="Souvenir AI Logo"
-              width={28}
-              height={28}
-              className="w-6 h-6 lg:w-7 lg:h-7"
-            />
+          {/* Left: logo link + nav links (siblings — no nested <a>) */}
+          <div className="relative flex min-w-0 flex-1 items-center justify-start gap-1 sm:gap-3 md:gap-4 h-full">
+            <Link
+              href="/"
+              className="flex shrink-0 items-center gap-2"
+            >
+              <Image
+                src="/logos/souvenir-logo.svg"
+                alt="Souvenir AI Logo"
+                width={28}
+                height={28}
+                className="w-6 h-6 lg:w-7 lg:h-7"
+              />
 
-            <p className="font-besley hidden sm:block font-medium tracking-tight text-sm md:text-base text-black lg:text-[18px]">
-              Souvenir
-            </p>
+              <p className="font-besley hidden sm:block font-medium tracking-tight text-sm md:text-base text-black lg:text-[18px]">
+                Souvenir
+              </p>
+            </Link>
 
-            <ul className="flex-1 flex items-center justify-center gap-4 px-4 mx-2">
+            <ul className="flex shrink-0 list-none items-center justify-start gap-1 md:gap-2">
               <li>
                 <Link
                   href="/"
@@ -143,7 +145,7 @@ export default function Navbar() {
                 </Link>
               </li>
             </ul>
-          </Link>
+          </div>
 
           {/* Right - Navigation CTAS & Theme Selector */}
           <div className="w-full md:w-auto h-full flex items-center justify-end gap-2 md:gap-3">
