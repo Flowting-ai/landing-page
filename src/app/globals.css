@@ -17,7 +17,7 @@
   --foreground: #171717;
   --text: #525252;
 
-  --main-bg: #f5f5f5;
+  --main-bg: #faf9f8;
   --main-border: #d9d9d9;
 
   --nav-bg: #ffffff;
@@ -77,11 +77,11 @@
 }
 
 @theme {
-  --color-main-bg: var(--main-bg, #f5f5f5);
+  --color-main-bg: var(--main-bg, #faf9f8);
   --color-main-border: var(--main-border, #d9d9d9);
   --color-subtext: var(--subtext, #525252);
 
-  --color-app-bg: #f5f5f5;
+  --color-app-bg: #faf9f8;
   --color-app-border: #d9d9d9;
 
   /* Animation Definitions */
@@ -116,9 +116,12 @@
 
 html {
   scroll-behavior: smooth;
+  min-height: 100%;
+  background: var(--background);
 }
 
 body {
+  min-height: 100%;
   background: var(--background);
   /* color: var(--foreground); */
   font-family: var(--font-besley-start);

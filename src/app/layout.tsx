@@ -48,7 +48,7 @@ export default function RootLayout({
       </head>
       <body
         suppressHydrationWarning
-        className={`font-besley ${geistSans.variable} ${geistMono.variable} ${besley.variable} antialiased`}
+        className={`font-besley ${geistSans.variable} ${geistMono.variable} ${besley.variable} min-h-dvh bg-background antialiased`}
       >
         {children}
       </body>
