@@ -26,11 +26,14 @@ export const CARD_CONFIG: CardConfig[] = [
     annualPrice: 10,
     introText: "Plan Inclusions",
     features: [
+      "Basic Usage",
       "Basic AI models",
-      "Basic smart routing",
-      "Limited personas",
-      "100 Pins",
+      "Smart routing (basic algorithm)",
+      "Manual model switching",
+      "3 custom personas",
+      "100 Pins to save outputs",
       "10 web searches / day",
+      "Cross-model memory(light)",
       "Community Support",
     ],
   },
@@ -42,15 +45,17 @@ export const CARD_CONFIG: CardConfig[] = [
     annualPrice: 21,
     introText: "Everything in Starter, plus",
     features: [
+      "More Usage*",
       "Basic + Advanced AI Models",
-      "Advanced routing algorithm",
-      "Unlimited personas + 2 shared",
+      "Basic + Advanced routing algorithm",
+      "Model Compare(side-by-side)",
       "2000 Pins",
+      "Unlimited Personas + 2 shared",
       "Unlimited Web Search",
       "Model compare",
       "Persona & Workflow Analytics",
       "Early access to new features",
-      "Email, call & chat support",
+      "Email & chat support",
     ],
   },
   {
@@ -61,15 +66,15 @@ export const CARD_CONFIG: CardConfig[] = [
     annualPrice: 83,
     introText: "Everything in Pro, plus",
     features: [
-      "All models : Basic + Advanced + Power",
+      "5x usage*",
+      "All models : Basic + Advanced",
       "All algorithms + manual switch",
-      "Unlimited personas & sharing",
-      "Unlimited workflows",
-      "Unlimited pins",
+      "Unlimited Pins & Personas",
+      "Unlimited workflows + sharing",
       "Advanced Analytics",
       "Priority compute",
-      "Early access to new features",
-      "Priority support • < 1hr response",
+      "First access to new features",
+      "Priority support + live response",
     ],
   },
 ];
@@ -147,7 +152,7 @@ const PricingPage = () => {
   }, [billing, cardsById]);
 
   return (
-    <section className="w-full min-h-screen bg-[#FAF9F8] flex items-center justify-center px-4">
+    <section className="w-full h-auto bg-[#FAF9F8] flex items-center justify-center px-4 mb-10 lg:mb-20">
       <div className="w-full flex flex-col items-center gap-8 py-10">
         {/* Section 1: Title + Subtext */}
         <section className="text-center space-y-3 max-w-2xl">

@@ -50,10 +50,19 @@ export default function FlowtingSelectSection() {
             No more guessing. No more switching. Just ask.
           </p>
         </div>
+        {/* Lottie: responsive (mobile) — same behavior as video: autoplay, loop, no controls */}
+        <div className="w-full border border-main-border rounded-2xl shadow-sm overflow-hidden block lg:hidden">
+          <Player
+            autoplay
+            loop
+            src="./souvenir-home-2b.json"
+            className="w-full h-full"
+          />
+        </div>
         <Player
               autoplay
               loop
-              src="./souvenir-home-3a.json"
+              src="./souvenir-home-2a.json"
               className="z-2 hidden lg:flex w-full h-full"
             />
         {/* <Image
@@ -63,13 +72,13 @@ export default function FlowtingSelectSection() {
           height={16}
           className="hidden lg:block w-full! h-auto! object-contain rounded-3xl"
         /> */}
-        <Image
+        {/* <Image
           src="./flowtingSelect/select-mobile.svg"
           alt="Flowting Selection Mobile"
           width={16}
           height={16}
           className="lg:hidden block w-full! h-auto! object-contain rounded-3xl"
-        />
+        /> */}
       </div>
     </section>
   );

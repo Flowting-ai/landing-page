@@ -2,8 +2,8 @@ import Navbar from "@/components/Common/Navbar/Navbar";
 
 export default function HeroSection() {
   return (
-    <div className="w-full h-auto">
-      <div className="z-50 container mx-auto flex items-center justify-center px-2 lg:px-16 py-3 lg:py-6">
+    <div className="w-full h-auto bg-[#FAF9F8]">
+      <div className="z-50 container mx-auto bg-[#FAF9F8] flex items-center justify-center px-2 lg:px-16 py-3 lg:py-6">
         <Navbar />
       </div>
 

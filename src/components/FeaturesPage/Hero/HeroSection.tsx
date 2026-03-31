@@ -4,7 +4,7 @@ export default function HeroSection() {
   return (
     <div className="w-full h-auto">
       {/* === NAVBAR === */}
-      <div className="z-50 absolute left-1/2 -translate-x-1/2 container mx-auto flex items-center justify-center px-2 lg:px-16 py-3 lg:py-6">
+      <div className="z-50 absolute left-1/2 -translate-x-1/2 container mx-auto bg-transparent flex items-center justify-center px-2 lg:px-16 py-3 lg:py-6">
         <Navbar />
       </div>
 
@@ -12,8 +12,8 @@ export default function HeroSection() {
       <div className="z-0 relative container mx-auto min-h-[40vh] lg:min-h-screen flex flex-col items-center justify-center gap-4 px-4 lg:px-16 py-30 mt-0 lg:mt-0 overflow-hidden">
         
         {/* Gradient Layers */}
-        <div className="z-1 absolute top-0 -left-40 w-[40%] h-4/5 bg-linear-to-tr from-blue-200 via-amber-100 to-blue-300 rounded-full blur-[30px] opacity-50"></div>
-        <div className="z-1 absolute top-0 -right-40 w-[45%] h-2/3 bg-linear-to-br from-amber-200 via-amber-100 via-35% to-blue-300 rounded-full blur-[30px] opacity-50"></div>
+        <div className="z-1 absolute top-0 -left-40 2xl:left-12 w-[40%] h-4/5 bg-linear-to-tr from-blue-200 via-amber-100 to-blue-300 rounded-full blur-[30px] opacity-50"></div>
+        <div className="z-1 absolute top-0 -right-40 2xl:right-12 w-[45%] h-2/3 bg-linear-to-br from-amber-200 via-amber-100 via-35% to-blue-300 rounded-full blur-[30px] opacity-50"></div>
         {/* Title + Small Descriptions */}
         <div className="z-2 text-center flex flex-col items-center gap-6 pt-4">
           <h1 className="font-medium md:font-normal leading-[120%] text-2xl lg:text-[37px] xl:text-[56px] text-text">

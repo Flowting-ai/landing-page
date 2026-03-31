@@ -1,5 +1,5 @@
 "use client";
-import { ChevronLeft, Ellipsis, Moon, Sun, X } from "lucide-react";
+import { Ellipsis, Moon, Sun, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -89,27 +89,29 @@ export default function Navbar() {
       {/* Desktop */}
       <nav className="hidden lg:flex w-full h-auto font-geist">
         <div className="w-full sm:hidden block font-medium tracking-tight text-center text-lg lg:text-[18px] text-transparent bg-clip-text bg-linear-to-r from-zinc-300 via-zinc-700 to-zinc-300">
-          <p>SouvenirAI</p>
+          <p>Souvenir</p>
         </div>
         <div className="w-full h-12 lg:h-14 bg-nav-bg rounded-2xl shadow-xs shadow-main-border flex items-center justify-between pl-4 pr-2 md:px-5 py-2.5">
-          {/* Left - Logo*/}
-          <Link
-            href="/"
-            className="relative w-auto h-full flex items-center gap-2"
-          >
-            <Image
-              src="./logos/souvenir-logo.svg"
-              alt="Souvenir AI Logo"
-              width={28}
-              height={28}
-              className="w-6 h-6 lg:w-7 lg:h-7"
-            />
+          {/* Left: logo link + nav links (siblings — no nested <a>) */}
+          <div className="relative flex min-w-0 flex-1 items-center justify-start gap-1 sm:gap-3 md:gap-4 h-full">
+            <Link
+              href="/"
+              className="flex shrink-0 items-center gap-2"
+            >
+              <Image
+                src="/logos/souvenir-logo.svg"
+                alt="Souvenir AI Logo"
+                width={28}
+                height={28}
+                className="w-6 h-6 lg:w-7 lg:h-7"
+              />
 
-            <p className="font-besley hidden sm:block font-medium tracking-tight text-sm md:text-base text-black lg:text-[18px]">
-              SouvenirAI
-            </p>
+              <p className="font-besley hidden sm:block font-medium tracking-tight text-sm md:text-base text-black lg:text-[18px]">
+                Souvenir
+              </p>
+            </Link>
 
-            <ul className="flex-1 flex items-center justify-center gap-4 px-4 mx-2">
+            <ul className="flex shrink-0 list-none items-center justify-start gap-1 md:gap-2">
               <li>
                 <Link
                   href="/"
@@ -143,7 +145,7 @@ export default function Navbar() {
                 </Link>
               </li>
             </ul>
-          </Link>
+          </div>
 
           {/* Right - Navigation CTAS & Theme Selector */}
           <div className="w-full md:w-auto h-full flex items-center justify-end gap-2 md:gap-3">
@@ -231,7 +233,7 @@ export default function Navbar() {
           {/* Logo */}
           <button className="bg-white/50 border border-main-border rounded-xl backdrop-blur-sm p-2">
             <Image
-              src="./logos/souvenir-logo.svg"
+              src="/logos/souvenir-logo.svg"
               alt="Souvenir AI Logo"
               width={28}
               height={28}
@@ -245,7 +247,7 @@ export default function Navbar() {
                 : "opacity-100"
             }`}
           >
-            SouvenirAI
+            Souvenir
           </h3>
           {/* Navigation CTA - opens slide-in menu */}
           <button
@@ -282,7 +284,7 @@ export default function Navbar() {
           <div className="relative w-full h-full flex flex-col overflow-hidden">
             <div className="z-2 bg-white/50 flex items-center justify-between border-b border-main-border backdrop-blur-xs px-5 py-4">
               <span className="font-medium tracking-tight text-lg text-transparent bg-clip-text bg-linear-to-br from-zinc-400 via-zinc-700 to-zinc-400">
-                SouvenirAI
+                Souvenir
               </span>
               <button
                 onClick={closeMobileMenu}
@@ -362,7 +364,7 @@ export default function Navbar() {
           </button>
         </div> */}
             <Image
-              src="./logos/souvenir-logo-chat.svg"
+              src="/logos/souvenir-logo-chat.svg"
               alt="Souvenir AI Logo"
               fill
               className="scale-192 z-1 absolute -translate-x-18 -translate-y-6 object-center object-contain opacity-30"

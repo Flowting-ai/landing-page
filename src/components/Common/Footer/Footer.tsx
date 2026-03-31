@@ -75,25 +75,25 @@ const FOOTER_LINKS_COMPANY = [
 const FOOTER_LINKS_SOCIALS = [
   {
     name: "Twitter",
-    href: "https://x.com/Flowtingai",
+    href: "https://x.com/getSouvenirAi",
     disabled: false,
     icon: <FaXTwitter />,
   },
   {
     name: "Discord",
-    href: "https://discord.gg/eXfnSe86dr",
+    href: "https://discord.gg/uwsp2HWcts",
     disabled: false,
     icon: <FaDiscord />,
   },
   {
     name: "LinkedIn",
-    href: "https://www.linkedin.com/company/flowting-ai/",
+    href: "https://www.linkedin.com/company/souvenirai/",
     disabled: false,
     icon: <FaLinkedinIn />,
   },
   {
     name: "Instagram",
-    href: "https://www.instagram.com/flowtingai?igsh=MXJuYXl5bDc2NDk5Zw==",
+    href: "https://www.instagram.com/getsouvenirai?igsh=MXJuYXl5bDc2NDk5Zw==",
     disabled: false,
     icon: <FaInstagram />,
   },
@@ -113,7 +113,7 @@ export default function Footer() {
         {/* Souvenir AI Logo */}
         <div className="w-full lg:w-1/2 flex items-center sm:items-start justify-center sm:justify-start gap-4 px-4 mb-16">
           <Image
-            src="./logos/souvenir-logo.svg"
+            src="/logos/souvenir-logo.svg"
             alt="Souvenir AI Logo"
             width={43}
             height={43}
@@ -121,7 +121,7 @@ export default function Footer() {
           />
           <div className="flex flex-col">
             <h3 className="font-besley font-normal leading-[120%] text-2xl lg:text-[36px] text-black">
-              SouvenirAI
+              Souvenir
               <br />
             </h3>
             {/* <p>Made with context.</p> */}
@@ -225,10 +225,10 @@ export default function Footer() {
       </div>
 
       {/* BOTTOM */}
-      <div className="relative w-full h-auto text-center lg:text-left px-4 lg:px-16 py-10">
+      <div className="relative w-full h-auto text-center lg:text-left px-4 lg:px-20 py-10">
         <div className="container mx-auto text-balance text-sm lg:text-base text-footer-text flex flex-col lg:flex-row gap-4 pt-4">
           <div className="w-auto text-center md:text-left">
-            <p className="">&copy; {currentYear} SouvenirAI. Made with context.</p>
+            <p className="">&copy; {currentYear} Souvenir Inc. Made with context.</p>
             <p className="flex items-center justify-center sm:justify-start gap-2">
               <HiOutlineArrowTurnDownRight size={16} className="hidden md:block" />{" "}
               {`(Yes, an AI helped write this site. But a human approved it.)`}

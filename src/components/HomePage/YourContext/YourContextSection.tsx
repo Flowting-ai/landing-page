@@ -124,7 +124,7 @@ export default function YourContextSection() {
 
             {/* FlowtingAI Logo */}
             <Image
-              src="./logos/souvenir-logo-chat.svg"
+              src="/logos/souvenir-logo-chat.svg"
               alt="Souvenir AI Logo"
               width={16}
               height={16}

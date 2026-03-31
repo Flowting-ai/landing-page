@@ -10,42 +10,6 @@ const ContactForm: React.FC = () => {
   const [state, handleSubmit] = useForm("mzdadzpg");
   const containerRef = useRef(null);
 
-  // if (state.succeeded) {
-  //   return (
-  //     <section className="border w-full min-h-screen flex items-center justify-center">
-  //       <div className="container mx-auto flex items-center justify-center px-4 lg:px-0 py-20">
-  //         <div className="w-full max-w-2xl">
-  //           <div className="relative w-full h-auto min-h-96 flex items-center justify-center">
-  //             <div className="z-0 absolute inset-0 overflow-hidden rounded-2xl lg:rounded-3xl flex items-center justify-center">
-  //               {/* Animated BG */}
-  //               <Iridescence
-  //                 color={[0, 0.8, 1]}
-  //                 mouseReact
-  //                 amplitude={0.1}
-  //                 speed={1}
-  //               />
-
-  //               {/* Blur Glass */}
-  //               <div className="z-2 absolute inset-0 backdrop-blur-[5px]"></div>
-
-  //               {/* Content */}
-  //               <div className="z-3 relative text-center flex flex-col items-center justify-center gap-4">
-  //                 <h2 className="font-normal text-2xl lg:text-4xl text-black">
-  //                   Thank you!
-  //                 </h2>
-  //                 <p className="font-normal text-base lg:text-lg text-zinc-600 max-w-md">
-  //                   We&apos;ve received your message and will get back to you.
-  //                   soon.
-  //                 </p>
-  //               </div>
-  //             </div>
-  //           </div>
-  //         </div>
-  //       </div>
-  //     </section>
-  //   );
-  // }
-
   return (
     <>
       {state.submitting ? (
@@ -54,7 +18,7 @@ const ContactForm: React.FC = () => {
             Sending Message...
           </h3>
           <Image
-            src="./logos/souvenir-logo.svg"
+            src="/logos/souvenir-logo.svg"
             alt="Souvenir AI Logo"
             width={16}
             height={16}
@@ -69,7 +33,7 @@ const ContactForm: React.FC = () => {
             We will contact you soon.
           </h3>
           <Image
-            src="./logos/souvenir-logo.svg"
+            src="/logos/souvenir-logo.svg"
             alt="Souvenir AI Logo"
             width={16}
             height={16}
