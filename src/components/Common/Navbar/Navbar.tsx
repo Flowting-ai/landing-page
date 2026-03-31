@@ -198,7 +198,7 @@ export default function Navbar() {
             </div>
 
             <a
-              href="https://app.getsouvenir.com/"
+              href="https://app.getsouvenir.com/auth/login"
               target="_blank"
               rel="noopener noreferrer"
               className="text-xs md:text-sm lg:text-base text-foreground bg-main-bg hover:bg-zinc-300/40 border border-main-border rounded-xl shadow-sm px-4 py-2 transition-all duration-300"
@@ -210,7 +210,7 @@ export default function Navbar() {
                 href={"/contact"}
                 className="text-xs md:text-sm lg:text-base text-nav-bg bg-nav-button-bg border border-nav-button-bg rounded-xl shadow-sm px-4 py-2 transition-all duration-300"
               >
-                Get Started
+                Get In Touch
               </Link>
             )}
             {/* {pathname === "/contact" ? (
@@ -295,7 +295,7 @@ export default function Navbar() {
 
             <nav className="z-2 flex flex-col gap-2 p-4 pt-6">
               <a
-                href="https://app.getsouvenir.com/"
+                href="https://app.getsouvenir.com/auth/login"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={closeMobileMenu}
