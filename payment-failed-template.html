@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Payment Failed · Souvenir</title>
+    <link
+      rel="preconnect"
+      href="https://fonts.googleapis.com"
+      referrerpolicy="no-referrer"
+    />
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin
+      referrerpolicy="no-referrer"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Besley:wght@300;400;500&family=Geist:wght@300;400;500;600&display=swap"
+      rel="stylesheet"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      /* Base reset (copied from reset-password template) */
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: #f5f5f5;
+      }
+
+      body {
+        font-family: "Geist", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+        color: #525252;
+      }
+
+      table {
+        border-spacing: 0;
+        border-collapse: collapse;
+      }
+
+      img {
+        border: 0;
+        outline: 0;
+        text-decoration: none;
+        -ms-interpolation-mode: bicubic;
+        display: block;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: underline;
+      }
+
+      .email-root {
+        width: 100%;
+        background-color: #f5f5f5;
+        padding: 8px 0;
+      }
+
+      .email-container {
+        max-width: 600px;
+        width: 600px;
+        margin: 0 auto;
+        background-color: #ffffff;
+        box-sizing: border-box;
+      }
+
+      .email-inner-cell {
+        padding: 28px 34px;
+      }
+
+      .header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-bottom: 1px solid #e5e5e5;
+        padding-bottom: 16px;
+        margin-bottom: 24px;
+      }
+
+      .logo-link {
+        display: inline-flex;
+        align-items: center;
+        text-decoration: none;
+      }
+
+      .logo-icon {
+        width: 40px;
+        height: 40px;
+        margin-right: 8px;
+      }
+
+      .logo-text {
+        font-family: "Geist", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+        font-size: 37px;
+        font-weight: 300;
+        color: #171717;
+        letter-spacing: 0;
+      }
+
+      .social-links {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .social-icon {
+        width: 24px;
+        height: 24px;
+        display: inline-block;
+      }
+
+      .social-icon svg {
+        width: 24px;
+        height: 24px;
+        fill: #525252;
+      }
+
+      /* Content */
+      .title-row {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 16px;
+      }
+
+      .title-block {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .title {
+        font-family: "Besley", ui-serif, Georgia, "Times New Roman", serif;
+        font-weight: 500;
+        font-size: 24px;
+        line-height: 1.07;
+        letter-spacing: 0;
+        color: #1e1e1e;
+        margin: 0;
+      }
+
+      .subtitle {
+        font-family: "Geist", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 1.2;
+        letter-spacing: 0;
+        color: #1e1e1e;
+        margin: 0;
+      }
+
+      .tag-pill {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 4px 10px;
+        border-radius: 8px;
+        font-family: "Geist", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+        font-weight: 500;
+        font-size: 12px;
+        line-height: 1.2;
+        letter-spacing: 0;
+        white-space: nowrap;
+      }
+
+      .tag-failed {
+        background-color: #f87171;
+        color: #dc2626;
+      }
+
+      .body-text {
+        font-family: "Geist", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 1.2;
+        color: #525252;
+        margin: 0 0 24px 0;
+      }
+
+      /* Info box */
+      .info-box {
+        background-color: #f5f5f5;
+        border-radius: 12px;
+        padding: 16px 18px;
+        margin-bottom: 24px;
+      }
+
+      .info-row-split {
+        display: flex;
+        justify-content: space-between;
+        gap: 16px;
+      }
+
+      .info-col {
+        flex: 1;
+      }
+
+      .info-label {
+        font-family: "Geist", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 1.4;
+        letter-spacing: 0;
+        color: #1e1e1e;
+        margin: 0 0 8px 0;
+      }
+
+      .info-value {
+        font-family: "Geist", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 1.4;
+        letter-spacing: 0;
+        color: #1e1e1e;
+        margin: 0 0 8px 0;
+      }
+
+      .info-value-danger {
+        color: #dc2626;
+      }
+
+      .info-label:last-child,
+      .info-value:last-child {
+        margin-bottom: 0;
+      }
+
+      .button-row {
+        margin-bottom: 16px;
+      }
+
+      .primary-button {
+        max-width: 220px;
+        height: 40px;
+        max-height: 40px;
+        padding: 4px 14px;
+        border-radius: 8px;
+        background-color: #dc2626;
+        color: #fafafa;
+        text-align: center;
+        vertical-align: middle;
+        font-family: "Geist", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 1.5;
+        letter-spacing: 0.005em;
+        text-decoration: none;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .support-row {
+        border-bottom: 1px solid #e5e5e5;
+        padding-bottom: 16px;
+        margin-bottom: 24px;
+        font-family: "Geist", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 1.4;
+        color: #525252;
+      }
+
+      .support-row a {
+        text-decoration: underline;
+      }
+
+      /* Footer (matching reset-password, with clear separation from content) */
+      .footer {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 16px;
+      }
+
+      .footer-left-top {
+        font-family: Geist, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 1.2;
+        color: #525252;
+        margin: 0 0 8px 0;
+      }
+
+      .footer-left-bottom {
+        font-family: Geist, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 1.2;
+        color: #525252;
+        margin: 0;
+      }
+
+      .footer-right {
+        text-align: right;
+        font-family: Geist, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+          sans-serif;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 1.2;
+        color: #525252;
+      }
+
+      .footer-right a {
+        text-decoration: underline;
+        text-decoration-style: solid;
+        text-decoration-thickness: 0;
+        text-decoration-skip-ink: auto;
+      }
+
+      @media (max-width: 640px) {
+        .email-container {
+          width: 100% !important;
+          padding: 24px 16px !important;
+        }
+
+        .header,
+        .footer,
+        .title-row {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+
+        .footer-right {
+          text-align: left;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <table role="presentation" class="email-root" width="100%">
+      <tr>
+        <td align="center">
+          <table
+            role="presentation"
+            class="email-container"
+            width="600"
+            cellpadding="0"
+            cellspacing="0"
+          >
+            <tr>
+              <td class="email-inner-cell">
+                <!-- Header -->
+                <div class="header">
+                  <a
+                    href="https://www.getsouvenir.com/"
+                    class="logo-link"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <img
+                      src="https://souvenirai-storage.s3.us-east-1.amazonaws.com/public/SouvenirLogo.svg"
+                      alt="Souvenir logo mark"
+                      class="logo-icon"
+                      width="40"
+                      height="40"
+                    />
+                    <span class="logo-text">SouvenirAI</span>
+                  </a>
+
+                  <div class="social-links">
+                    <!-- LinkedIn -->
+                    <a
+                      href="https://www.linkedin.com/company/souvenir-ai"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="social-icon"
+                      aria-label="Souvenir on LinkedIn"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 448 512"
+                        role="img"
+                        aria-hidden="true"
+                      >
+                        <path
+                          d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.4V302.4c0-34.7-.7-79.2-48.24-79.2-48.3 0-55.7 37.7-55.7 76.7V448h-92.5V148.9h88.8v40.8h1.3c12.4-23.5 42.7-48.2 87.8-48.2 94 0 111.3 61.9 111.3 142.3V448z"
+                        />
+                      </svg>
+                    </a>
+
+                    <!-- X (Twitter) -->
+                    <a
+                      href="https://x.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="social-icon"
+                      aria-label="Souvenir on X"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 512 512"
+                        role="img"
+                        aria-hidden="true"
+                      >
+                        <path
+                          d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zm-24.7 374.7h39.1L151.1 85.1H109z"
+                        />
+                      </svg>
+                    </a>
+
+                    <!-- Instagram -->
+                    <a
+                      href="https://instagram.com"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="social-icon"
+                      aria-label="Souvenir on Instagram"
+                    >
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 24 24"
+                        role="img"
+                        aria-hidden="true"
+                      >
+                        <rect
+                          x="3"
+                          y="3"
+                          width="18"
+                          height="18"
+                          rx="5"
+                          ry="5"
+                          fill="none"
+                          stroke="#525252"
+                          stroke-width="2"
+                        />
+                        <circle
+                          cx="12"
+                          cy="12"
+                          r="4"
+                          fill="none"
+                          stroke="#525252"
+                          stroke-width="2"
+                        />
+                        <circle cx="17" cy="7" r="1.2" fill="#525252" />
+                      </svg>
+                    </a>
+                  </div>
+                </div>
+
+                <!-- Title + Tag -->
+                <div class="title-row">
+                  <div class="title-block">
+                    <h1 class="title">Payment Failed</h1>
+                    <p class="subtitle">
+                      We couldn't charge your Visa ending in {{CARD_LAST4}} for {{PAYMENT_PRICE}}
+                    </p>
+                  </div>
+                  <span class="tag-pill tag-failed">Failed</span>
+                </div>
+
+                <!-- Optional intro copy -->
+                <p class="body-text">
+                  There was an issue processing your recent payment. Please review the details
+                  below and update your payment method to avoid any interruption to your access.
+                </p>
+
+                <!-- Info box -->
+                <div class="info-box">
+                  <div class="info-row-split">
+                    <div class="info-col">
+                      <p class="info-label">Amount due</p>
+                      <p class="info-label">Next retry</p>
+                      <p class="info-label">Access suspended if not resolved by</p>
+                    </div>
+                    <div class="info-col" style="text-align: right">
+                      <p class="info-value">{{PAYMENT_PRICE}}</p>
+                      <p class="info-value">{{NEXT_RETRY_DATE}}</p>
+                      <p class="info-value info-value-danger">{{ACCESS_SUSPENSION_DATE}}</p>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Button -->
+                <div class="button-row">
+                  <a
+                    href="{{UPDATE_PAYMENT_METHOD_URL}}"
+                    class="primary-button"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Update Payment Method
+                  </a>
+                </div>
+
+                <!-- Need help row with border-b -->
+                <div class="support-row">
+                  Need help?
+                  <a href="{{SUPPORT_URL}}" target="_blank" rel="noopener noreferrer">
+                    Contact Support
+                  </a>
+                </div>
+
+                <!-- Footer -->
+                <div class="footer">
+                  <div>
+                    <p class="footer-left-top">Souvenir, Inc. · Delaware, USA</p>
+                    <p class="footer-left-bottom">
+                      © 2026 Souvenir, Inc. All rights reserved.
+                    </p>
+                  </div>
+                  <div class="footer-right">
+                    <a
+                      href="{{UNSUBSCRIBE_URL}}"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Unsubscribe
+                    </a>
+                    <span> · </span>
+                    <a
+                      href="{{PRIVACY_POLICY_URL}}"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Privacy Policy
+                    </a>
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </table>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>
+
