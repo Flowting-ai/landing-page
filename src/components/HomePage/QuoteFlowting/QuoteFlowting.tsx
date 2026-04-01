@@ -35,7 +35,7 @@ export default function QuoteFlowting() {
               </ul>
               <div className="w-full flex items-center justify-end">
                 <p className="font-geist font-medium tracking-tight text-sm md:text-lg lg:text-xl">
-                  - Team SouvenirAI
+                  - Team Souvenir
                 </p>
               </div>
             </div>
