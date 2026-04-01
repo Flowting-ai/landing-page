@@ -200,19 +200,19 @@ export default function Navbar() {
             </div>
 
             <a
-              href="https://app.getsouvenir.com/"
+              href="https://app.getsouvenir.com/auth/login"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-xs md:text-sm lg:text-base text-foreground bg-main-bg hover:bg-zinc-300/40 border border-main-border rounded-xl shadow-sm px-4 py-2 transition-all duration-300"
+              className="text-xs md:text-sm lg:text-base text-nav-bg bg-nav-button-bg border border-nav-button-bg rounded-xl shadow-sm px-4 py-2 transition-all duration-300"
             >
               Sign In
             </a>
             {pathname !== "/contact" && (
               <Link
                 href={"/contact"}
-                className="text-xs md:text-sm lg:text-base text-nav-bg bg-nav-button-bg border border-nav-button-bg rounded-xl shadow-sm px-4 py-2 transition-all duration-300"
+                className="text-xs md:text-sm lg:text-base text-foreground bg-main-bg hover:bg-zinc-300/40 border border-main-border rounded-xl shadow-sm px-4 py-2 transition-all duration-300"
               >
-                Get Started
+                Get In Touch
               </Link>
             )}
             {/* {pathname === "/contact" ? (
@@ -297,11 +297,11 @@ export default function Navbar() {
 
             <nav className="z-2 flex flex-col gap-2 p-4 pt-6">
               <a
-                href="https://app.getsouvenir.com/"
+                href="https://app.getsouvenir.com/auth/login"
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={closeMobileMenu}
-                className="text-foreground bg-main-bg border border-main-border rounded-xl shadow-sm px-4 py-3 text-center font-medium transition-all hover:bg-main-bg/80 active:scale-[0.98]"
+                className="text-nav-bg bg-nav-button-bg border border-nav-button-bg rounded-xl shadow-sm px-4 py-3 text-center font-medium transition-all hover:opacity-90 active:scale-[0.98]"
               >
                 Sign In
               </a>
@@ -309,7 +309,7 @@ export default function Navbar() {
                 <Link
                   href="/contact"
                   onClick={closeMobileMenu}
-                  className="text-nav-bg bg-nav-button-bg border border-nav-button-bg rounded-xl shadow-sm px-4 py-3 text-center font-medium transition-all hover:opacity-90 active:scale-[0.98]"
+                  className="text-foreground bg-main-bg border border-main-border rounded-xl shadow-sm px-4 py-3 text-center font-medium transition-all hover:bg-main-bg/80 active:scale-[0.98]"
                 >
                   Get Started
                 </Link>
