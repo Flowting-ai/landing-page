@@ -9,7 +9,13 @@ export type LegalSection = {
 };
 
 /** Hub shows all entries; only these have live routes (see `isLegalHubLinkEnabled`). */
-const LEGAL_HUB_LIVE_ROUTES = new Set<string>(["privacy-data/privacy-policy"]);
+const LEGAL_HUB_LIVE_ROUTES = new Set<string>([
+  "platform-terms/terms-of-service",
+  "privacy-data/privacy-policy",
+  "privacy-data/cookie-policy",
+  "platform-terms/acceptable-use-policy",
+  "security-trust/dmca-takedown-requests",
+]);
 
 export function isLegalHubLinkEnabled(sectionSlug: string, docSlug: string): boolean {
   return LEGAL_HUB_LIVE_ROUTES.has(`${sectionSlug}/${docSlug}`);
@@ -23,8 +29,8 @@ export const legalSections: LegalSection[] = [
     links: [
       { slug: "terms-of-service", label: "Terms of Service" },
       { slug: "acceptable-use-policy", label: "Acceptable Use Policy" },
-      { slug: "subscription-billing-terms", label: "Subscription & Billing Terms" },
-      { slug: "electronic-communications-consent", label: "Electronic Communications Consent" },
+      // { slug: "subscription-billing-terms", label: "Subscription & Billing Terms" },
+      // { slug: "electronic-communications-consent", label: "Electronic Communications Consent" },
     ],
   },
   {
@@ -32,28 +38,28 @@ export const legalSections: LegalSection[] = [
     title: "Privacy & Data",
     links: [
       { slug: "privacy-policy", label: "Privacy Policy" },
-      { slug: "cookie-policy", label: "Cookie Policy" },
-      { slug: "data-processing-agreement-dpa", label: "Data Processing Agreement (DPA)" },
-      { slug: "subprocessor-list", label: "Subprocessor List" },
+      { slug: "cookie-policy", label: "Cookie and Tracking Disclosure Policy" },
+      // { slug: "data-processing-agreement-dpa", label: "Data Processing Agreement (DPA)" },
+      // { slug: "subprocessor-list", label: "Subprocessor List" },
     ],
   },
-  {
-    slug: "ai-intellectual-property",
-    title: "AI & Intellectual Property",
-    links: [
-      { slug: "ai-usage-policy", label: "AI Usage Policy" },
-      { slug: "your-data-model-training", label: "Your Data & Model Training" },
-      { slug: "output-ownership-ip", label: "Output Ownership & IP" },
-    ],
-  },
+  // {
+  //   slug: "ai-intellectual-property",
+  //   title: "AI & Intellectual Property",
+  //   links: [
+  //     { slug: "ai-usage-policy", label: "AI Usage Policy" },
+  //     { slug: "your-data-model-training", label: "Your Data & Model Training" },
+  //     { slug: "output-ownership-ip", label: "Output Ownership & IP" },
+  //   ],
+  // },
   {
     slug: "security-trust",
     title: "Security & Trust",
     links: [
-      { slug: "security-practices", label: "Security Practices" },
-      { slug: "vulnerability-disclosure-policy", label: "Vulnerability Disclosure Policy" },
+      // { slug: "security-practices", label: "Security Practices" },
+      // { slug: "vulnerability-disclosure-policy", label: "Vulnerability Disclosure Policy" },
       { slug: "dmca-takedown-requests", label: "DMCA & Takedown Requests" },
-      { slug: "law-enforcement-guidelines", label: "Law Enforcement Guidelines" },
+      // { slug: "law-enforcement-guidelines", label: "Law Enforcement Guidelines" },
     ],
   },
 ];
