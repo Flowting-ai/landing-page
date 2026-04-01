@@ -39,21 +39,21 @@ const FOOTER_LINKS_COMPANY = [
     href: "/about",
     disabled: false,
   },
-  // {
-  //   name: "Terms of Service",
-  //   href: "/terms-and-conditions",
-  //   disabled: true,
-  // },
-  // {
-  //   name: "Privacy Policy",
-  //   href: "/privacy-policy",
-  //   disabled: true,
-  // },
-  // {
-  //   name: "Manage Cookies",
-  //   href: "/Manage Cookies",
-  //   disabled: true,
-  // },
+  {
+    name: "Privacy",
+    href: "/legal/privacy-data/privacy-policy",
+    disabled: false,
+  },
+  {
+    name: "Terms of Service",
+    href: "/legal/platform-terms/terms-of-service",
+    disabled: false,
+  },
+  {
+    name: "Other Policies",
+    href: "/legal",
+    disabled: false,
+  },
 ];
 // const FOOTER_LINKS_RESOURCES = [
 //   {
