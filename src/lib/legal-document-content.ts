@@ -35,8 +35,8 @@ function stubSection(n: number, title: string): LegalContentSection {
 }
 
 const privacyPolicyBody: LegalDocumentBody = {
-  lastUpdated: "April 1, 2026",
-  lastUpdatedIso: "2026-04-01",
+  lastUpdated: "April 5, 2026",
+  lastUpdatedIso: "2026-04-05",
   intro:
     'Souvenir, Inc. ("Souvenir," "we," "us," or "our") operates the Souvenir platform at getsouvenir.com, a unified AI workspace that connects multiple large language models and AI services into a single interface with persistent context management, intelligent model routing, workflow automation, and organizational tools. This Privacy Policy explains how we collect, use, disclose, store, and protect your personal information when you access or use our Services (as defined in our Terms of Service). It applies to all users of our Services in the United States, Canada, and India, and includes jurisdiction-specific disclosures for each. By creating an account or using our Services, you acknowledge that you have read and understood this Privacy Policy. Where required by applicable law, we will obtain your consent before processing your personal information.',
   toc: [
@@ -269,8 +269,8 @@ function defaultStubBody(): LegalDocumentBody {
 }
 
 const acceptableUsePolicyBody: LegalDocumentBody = {
-  lastUpdated: "April 1, 2026",
-  lastUpdatedIso: "2026-04-01",
+  lastUpdated: "April 5, 2026",
+  lastUpdatedIso: "2026-04-05",
   intro:
     "This AUP governs your use of Souvenir and is incorporated into our Terms of Service. Violations may result in suspension, termination, or reporting to law enforcement.",
   toc: [
@@ -423,8 +423,8 @@ const acceptableUsePolicyBody: LegalDocumentBody = {
 };
 
 const cookieAndTrackingDisclosurePolicyBody: LegalDocumentBody = {
-  lastUpdated: "April 1, 2026",
-  lastUpdatedIso: "2026-04-01",
+  lastUpdated: "April 5, 2026",
+  lastUpdatedIso: "2026-04-05",
   intro:
     "This Policy explains how Souvenir, Inc. uses cookies and tracking technologies on getsouvenir.com. Read together with our Privacy Policy and Terms of Service. Applies to users in the United States, Canada, and India.",
   toc: [
@@ -514,8 +514,8 @@ const cookieAndTrackingDisclosurePolicyBody: LegalDocumentBody = {
 };
 
 const dmcaTakedownRequestsBody: LegalDocumentBody = {
-  lastUpdated: "April 1, 2026",
-  lastUpdatedIso: "2026-04-01",
+  lastUpdated: "April 5, 2026",
+  lastUpdatedIso: "2026-04-05",
   intro: "Digital Millennium Copyright Act Notice and Takedown Procedures",
   toc: [
     { id: "respect-for-ip", label: "1. Respect for IP" },
@@ -616,8 +616,8 @@ const dmcaTakedownRequestsBody: LegalDocumentBody = {
 };
 
 const termsOfServiceBody: LegalDocumentBody = {
-  lastUpdated: "April 1, 2026",
-  lastUpdatedIso: "2026-04-01",
+  lastUpdated: "April 5, 2026",
+  lastUpdatedIso: "2026-04-05",
   intro:
     'Welcome to Souvenir! These Terms of Service ("Terms") govern your use of getsouvenir.com, the Souvenir web application, and any other products and services we may offer (together, our "Services"). These Terms are a contract between you and Souvenir, Inc. ("Souvenir," "we," "us," or "our"), incorporating our Acceptable Use Policy, Privacy Policy, and Cookie and Tracking Disclosure Policy by reference. By creating an account or accessing our Services, you agree to these Terms. If you do not agree, do not use the Services. Our Services are available to users in the United States, Canada, and India.',
   toc: [
