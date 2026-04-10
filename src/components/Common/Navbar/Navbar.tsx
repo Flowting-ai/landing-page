@@ -144,6 +144,14 @@ export default function Navbar() {
                   Pricing
                 </Link>
               </li>
+              <li>
+                <Link
+                  href="/contact"
+                  className="text-text hover:text-black hover:bg-zinc-200 rounded-[8px] px-4 py-2 transition-all duration-300"
+                >
+                  Contact
+                </Link>
+              </li>
             </ul>
           </div>
 
@@ -203,18 +211,26 @@ export default function Navbar() {
               href="https://app.getsouvenir.com/auth/login"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-xs md:text-sm lg:text-base text-nav-bg bg-nav-button-bg border border-nav-button-bg rounded-xl shadow-sm px-4 py-2 transition-all duration-300"
+              className="text-xs md:text-sm lg:text-base text-foreground bg-main-bg hover:bg-zinc-300/40 border border-main-border rounded-xl shadow-sm px-4 py-2 transition-all duration-300"
             >
               Sign In
             </a>
-            {pathname !== "/contact" && (
+            <a
+              href="https://app.getsouvenir.com/auth/login?screen_hint=signup"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs md:text-sm lg:text-base text-nav-bg bg-nav-button-bg border border-nav-button-bg rounded-xl shadow-sm px-4 py-2 transition-all duration-300"
+            >
+              Get Started
+            </a>
+            {/* {pathname !== "/contact" && (
               <Link
                 href={"/contact"}
                 className="text-xs md:text-sm lg:text-base text-foreground bg-main-bg hover:bg-zinc-300/40 border border-main-border rounded-xl shadow-sm px-4 py-2 transition-all duration-300"
               >
-                Get In Touch
+                Contact Us
               </Link>
-            )}
+            )} */}
             {/* {pathname === "/contact" ? (
               <Link
                 href="/"
@@ -301,11 +317,20 @@ export default function Navbar() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={closeMobileMenu}
-                className="text-nav-bg bg-nav-button-bg border border-nav-button-bg rounded-xl shadow-sm px-4 py-3 text-center font-medium transition-all hover:opacity-90 active:scale-[0.98]"
+                className="text-foreground bg-main-bg border border-main-border rounded-xl shadow-sm px-4 py-3 text-center font-medium transition-all hover:bg-main-bg/80 active:scale-[0.98]"
               >
                 Sign In
               </a>
-              {pathname === "/" || "/about" || "/features" ? (
+              <a
+                href="https://app.getsouvenir.com/auth/login?screen_hint=signup"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={closeMobileMenu}
+                className="text-nav-bg bg-nav-button-bg border border-nav-button-bg rounded-xl shadow-sm px-4 py-3 text-center font-medium transition-all hover:opacity-90 active:scale-[0.98]"
+              >
+                Get Started
+              </a>
+              {/* {pathname === "/" || "/about" || "/features" ? (
                 <Link
                   href="/contact"
                   onClick={closeMobileMenu}
@@ -313,16 +338,15 @@ export default function Navbar() {
                 >
                   Get Started
                 </Link>
-              ) : pathname === "/contact" ? (
-                null
-                // <Link
-                //   href="/"
-                //   onClick={closeMobileMenu}
-                //   className="text-text hover:text-black transition-colors px-4 py-3 text-center font-medium inline-flex items-center justify-center gap-1"
-                // >
-                //   <ChevronLeft className="w-4 h-4" /> Back to Home
-                // </Link>
-              ) : null}
+              ) : pathname === "/contact" ? (                
+                <Link
+                  href="/"
+                  onClick={closeMobileMenu}
+                  className="text-text hover:text-black transition-colors px-4 py-3 text-center font-medium inline-flex items-center justify-center gap-1"
+                >
+                  <ChevronLeft className="w-4 h-4" /> Back to Home
+                </Link>
+              ) : null} */}
 
               {/* Spacer Border Div */}
               <div className="border border-text/20 my-2" />
@@ -351,6 +375,12 @@ export default function Navbar() {
                 className="text-foreground bg-main-bg border border-main-border rounded-xl shadow-sm px-4 py-3 text-center font-medium transition-all hover:bg-main-bg/80 active:scale-[0.98]"
               >
                 Pricing
+              </Link>
+              <Link
+                href="/contact"
+                className="text-foreground bg-main-bg border border-main-border rounded-xl shadow-sm px-4 py-3 text-center font-medium transition-all hover:bg-main-bg/80 active:scale-[0.98]"
+              >
+                Contact
               </Link>
             </nav>
 
