@@ -125,7 +125,9 @@ export default function GoBuildSomething() {
             <h3 className="font-medium lg:font-normal leading-[116%] text-xl lg:text-[37px] text-text">
               Go Build Something.
             </h3>
-            <p className="font-geist font-normal text-text">One Workspace. All Models.</p>
+            <p className="font-geist font-normal text-text">
+              One Workspace. All Models.
+            </p>
           </div>
         )}
         {pathname === "/features" && (
@@ -145,12 +147,14 @@ export default function GoBuildSomething() {
               >
                 View Pricing
               </Link>
-              <Link
-                href="/contact"
-                className="text-nav-bg bg-nav-button-bg border border-nav-button-bg rounded-xl shadow-sm px-4 py-3 text-center font-medium transition-all hover:opacity-90 active:scale-[0.98]"
+              <a
+                href="https://app.getsouvenir.com/auth/login?screen_hint=signup"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-xs md:text-sm lg:text-base text-nav-bg bg-nav-button-bg border border-nav-button-bg rounded-xl shadow-sm px-4 py-2 transition-all duration-300"
               >
                 Get Started
-              </Link>
+              </a>
             </div>
             <div className="relative font-geist text-sm text-text/60 flex flex-col md:flex-row items-center justify-between p-8">
               <p>Chat & Models</p>
@@ -172,12 +176,14 @@ export default function GoBuildSomething() {
               </p>
             </div>
             <div className="font-geist flex items-center justify-center gap-4">
-              <Link
-                href="/contact"
-                className="text-nav-bg bg-nav-button-bg border border-nav-button-bg rounded-xl shadow-sm px-4 py-3 text-center font-medium transition-all hover:opacity-90 active:scale-[0.98]"
-              >
-                Get Started
-              </Link>
+              <a
+              href="https://app.getsouvenir.com/auth/login?screen_hint=signup"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs md:text-sm lg:text-base text-nav-bg bg-nav-button-bg border border-nav-button-bg rounded-xl shadow-sm px-4 py-2 transition-all duration-300"
+            >
+              Get Started
+              </a>
             </div>
           </div>
         )}

@@ -255,12 +255,14 @@ const PricingPage = () => {
 
                     {/* Get Started Button */}
                     <div className="pt-2">
-                      <Link
-                        href="/contact"
-                        className="flex items-center justify-center w-full cursor-pointer border border-[#171717] text-[#171717] rounded-[8px] py-2 text-sm font-medium hover:bg-[#171717] hover:text-white transition-all duration-300"
+                      <a
+                        href="https://app.getsouvenir.com/auth/login?screen_hint=signup"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-xs md:text-sm lg:text-base text-nav-bg bg-nav-button-bg border border-nav-button-bg rounded-xl shadow-sm px-4 py-2 transition-all duration-300"
                       >
                         Get Started
-                      </Link>
+                      </a>
                     </div>
                   </article>
                 );
@@ -324,12 +326,14 @@ const PricingPage = () => {
 
                       {/* Get Started Button */}
                       <div className="pt-2">
-                        <Link
-                          href="/contact"
-                          className="flex items-center justify-center w-full cursor-pointer bg-black text-[#F2F2F0] rounded-[8px] py-2 text-sm font-medium hover:bg-[#0A0A0A] transition-colors"
+                        <a
+                          href="https://app.getsouvenir.com/auth/login?screen_hint=signup"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-xs md:text-sm lg:text-base text-nav-bg bg-nav-button-bg border border-nav-button-bg rounded-xl shadow-sm px-4 py-2 transition-all duration-300"
                         >
                           Get Started
-                        </Link>
+                        </a>
                       </div>
                     </div>
                   </article>
@@ -386,12 +390,14 @@ const PricingPage = () => {
 
                   {/* Get Started Button */}
                   <div className="pt-2">
-                    <Link
-                      href="/contact"
-                      className="flex items-center justify-center w-full cursor-pointer bg-black text-[#F2F2F0] rounded-[8px] py-2 text-sm font-medium hover:bg-black transition-colors"
+                    <a
+                      href="https://app.getsouvenir.com/auth/login?screen_hint=signup"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-xs md:text-sm lg:text-base text-nav-bg bg-nav-button-bg border border-nav-button-bg rounded-xl shadow-sm px-4 py-2 transition-all duration-300"
                     >
                       Get Started
-                    </Link>
+                    </a>
                   </div>
                 </article>
               );

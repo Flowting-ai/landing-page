@@ -14,12 +14,14 @@ export default function JoinUs() {
             <br />
             the journey
           </h1>
-          <Link
-            href="/contact"
-            className="font-geist text-nav-bg bg-nav-button-bg border border-nav-button-bg rounded-xl shadow-sm px-4 py-2 text-center font-medium flex items-center gap-2 transition-all hover:opacity-90 active:scale-[0.98]"
-          >
-            Get Started <ArrowRight size={16} />
-          </Link>
+          <a
+              href="https://app.getsouvenir.com/auth/login?screen_hint=signup"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs md:text-sm lg:text-base text-nav-bg bg-nav-button-bg border border-nav-button-bg rounded-xl shadow-sm px-4 py-2 transition-all duration-300"
+            >
+              Get Started
+          </a>
         </div>
         {/* Gradient Bg */}
         <div className="z-1 absolute w-[35%] h-150 bg-linear-to-b from-amber-200/30 to-blue-300/30 rounded-full blur-xl"></div>
