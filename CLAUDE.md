@@ -8,6 +8,9 @@ You are building the **Souvenir marketing site**. This file loads every session.
 3. `.claude/skills/souvenir-taste/SKILL.md` — the taste rules (auto-loaded; obey it).
 Reference as needed: `docs/souvenir-learnings.md` (motion/taste/vocabulary), `ONBOARDING.md`,
 `SITE-MAP.md`, `docs/KAYA-CLAUDE-RULES.md` (product DS rules to inherit), `WEBSITE-SYSTEMS.md`.
+`docs/solutions/` — documented solutions to past problems (bugs, tooling, workflow) organized by
+category with YAML frontmatter (`module`, `tags`, `problem_type`); relevant when implementing or
+debugging in documented areas. (Distinct from `docs/LEARNINGS.md`, the append-only session log.)
 
 ## The learning loop (this is how we compound — non-negotiable)
 - **Whenever Chai gives corrective feedback, or you catch a mistake: BEFORE moving on, append an
