@@ -1,0 +1,56 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# env files (can opt-in for committing if needed)
+.env*
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# compound-engineering machine-local config
+.compound-engineering/*.local.yaml
+
+# heavy legacy media — NOT used by live (site) pages (only the scratch home-v1 / v/ routes).
+# Kept out of git history; local working copies are unaffected. brand/logos/features stay tracked.
+/public/*.mov
+/public/*.mp4
+/public/hero/
+/public/personas/
+/public/AboutPage/
+/public/FeaturesPage/
+/public/workflows/
+/public/about/
+/public/old-lottie/

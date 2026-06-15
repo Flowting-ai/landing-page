@@ -1,0 +1,182 @@
+/* ============================================================================
+   SOUVENIR WEBSITE — built on the Kaya Design System token base.
+   Imports the real KDS tokens, then adds a thin MARKETING layer on top
+   (larger display type, dark-section palette, brand coral accent, section
+   rhythm). Components reference the semantic aliases below.
+   ============================================================================ */
+
+@import "tailwindcss";
+@import "tw-animate-css";
+
+/* Real Kaya token system (vendored from may-day — re-sync from src/styles/tokens) */
+@import "../styles/tokens/primitives.css";
+@import "../styles/tokens/typography.css";
+@import "../styles/tokens/aliases.css";
+@import "../styles/tokens/semantic.css";
+
+@custom-variant dark (&:is(.dark *));
+
+/* ----------------------------------------------------------------------------
+   MARKETING SEMANTIC LAYER — maps KDS primitives to the aliases components use
+   ---------------------------------------------------------------------------- */
+:root {
+  /* Fonts → wired to next/font variables (set in layout.tsx) */
+  --font-title: var(--font-besley), Georgia, serif;
+  --font-body:  var(--font-geist-sans), system-ui, sans-serif;
+  --font-code:  var(--font-geist-mono), monospace;
+
+  /* Surfaces (KDS warm neutrals) */
+  --bg:            var(--neutral-50);    /* #F7F2ED warm cream */
+  --bg-subtle:     #FCFAF7;
+  --surface:       var(--neutral-white); /* #FFFFFF */
+  --surface-warm:  var(--neutral-100);   /* #EDE1D7 */
+
+  /* Ink */
+  --ink:           var(--neutral-900);   /* #26211E */
+  --ink-secondary: var(--neutral-700);   /* #524B47 */
+  --ink-muted:     var(--neutral-500);   /* #827A74 */
+  --ink-subtle:    var(--neutral-400);   /* #9C938B */
+
+  /* Lines */
+  --line:          var(--neutral-100);   /* #EDE1D7 */
+  --line-strong:   var(--neutral-200);   /* #D1C6BD */
+
+  /* Accent — matches the PRODUCT: warm-neutral monochrome (KDS has no coral).
+     Interactive weight comes from the dark KDS button, not a brand color. */
+  --accent:        var(--neutral-900);
+  --accent-hover:  var(--neutral-800);
+  --accent-soft:   var(--neutral-100);
+  --highlight:     var(--yellow-600);    /* ochre — only for small positive hints */
+  --highlight-soft:var(--yellow-100);
+
+  /* Dark-section palette (warm charcoal, derived from neutral-950) */
+  --dark-bg:       #1A130D;
+  --dark-surface:  #241B13;
+  --dark-ink:      var(--neutral-50);
+  --dark-ink-muted:#B6ACA4;              /* neutral-300 */
+  --dark-line:     rgba(247,242,237,0.12);
+
+  --focus-ring-c:  var(--neutral-900);
+
+  /* Radius */
+  --r-sm: 8px; --r-md: 12px; --r-lg: 16px; --r-xl: 20px; --r-2xl: 28px; --r-pill: 999px;
+
+  /* Shadow — KDS warm tone, embossed feel */
+  --shadow-sm: 0px 1px 2px rgba(82,75,71,.10), 0 0 0 1px rgba(59,54,50,.06);
+  --shadow-md: 0px 4px 14px rgba(82,75,71,.12), 0 0 0 1px rgba(59,54,50,.07);
+  --shadow-lg: 0px 24px 60px rgba(82,75,71,.18), 0px 3px 8px rgba(82,75,71,.08), 0 0 0 1px rgba(59,54,50,.06);
+  --shadow-inner: inset 0 1px 0 rgba(255,255,255,.75), inset 0 -1.5px 0 rgba(82,75,71,.07);
+
+  /* Layout */
+  --maxw: 1200px; --maxw-wide: 1280px;
+  --gutter: clamp(1.25rem, 5vw, 4rem);
+  --section-y: clamp(4.5rem, 9vw, 8rem);
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --dur-fast: .25s; --dur: .5s; --dur-slow: .8s;
+}
+
+/* ----------------------------------------------------------------------------
+   TAILWIND THEME BRIDGE — utilities (bg-bg, text-ink, font-display, text-display)
+   ---------------------------------------------------------------------------- */
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-subtle: var(--bg-subtle);
+  --color-surface: var(--surface);
+  --color-surface-warm: var(--surface-warm);
+
+  --color-ink: var(--ink);
+  --color-ink-secondary: var(--ink-secondary);
+  --color-ink-muted: var(--ink-muted);
+  --color-ink-subtle: var(--ink-subtle);
+
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+
+  --color-accent: var(--accent);
+  --color-accent-hover: var(--accent-hover);
+  --color-accent-soft: var(--accent-soft);
+  --color-highlight: var(--highlight);
+  --color-highlight-soft: var(--highlight-soft);
+
+  --color-dark-bg: var(--dark-bg);
+  --color-dark-surface: var(--dark-surface);
+  --color-dark-ink: var(--dark-ink);
+  --color-dark-ink-muted: var(--dark-ink-muted);
+
+  --font-display: var(--font-besley);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+
+  /* Fluid marketing type scale (display bigger than the product's 40px cap) */
+  --text-display: clamp(2.5rem, 1.7rem + 2.6vw, 4rem);      /* 40 → 64 */
+  --text-display--line-height: 1.05;
+  --text-display--letter-spacing: -0.02em;
+
+  --text-h1: clamp(2rem, 1.2rem + 3vw, 3.25rem);            /* 32 → 52 */
+  --text-h1--line-height: 1.08;
+  --text-h1--letter-spacing: -0.018em;
+
+  --text-h2: clamp(1.6rem, 1.1rem + 1.8vw, 2.5rem);         /* 26 → 40 */
+  --text-h2--line-height: 1.12;
+  --text-h2--letter-spacing: -0.012em;
+
+  --text-h3: clamp(1.25rem, 1.05rem + 0.8vw, 1.5rem);
+  --text-h3--line-height: 1.25;
+
+  --text-lead: clamp(1.125rem, 1rem + 0.55vw, 1.4rem);
+  --text-lead--line-height: 1.5;
+
+  --text-body: 1rem; --text-body--line-height: 1.65;
+  --text-small: 0.9375rem; --text-small--line-height: 1.5;
+  --text-micro: 0.8125rem; --text-micro--line-height: 1.4;
+}
+
+/* ----------------------------------------------------------------------------
+   BASE
+   ---------------------------------------------------------------------------- */
+html { scroll-behavior: smooth; background: var(--bg); -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+body { min-height: 100dvh; background: var(--bg); color: var(--ink); font-family: var(--font-body); }
+::selection { background: var(--accent-soft); color: var(--ink); }
+:focus-visible { outline: 2px solid var(--focus-ring-c); outline-offset: 2px; border-radius: 4px; }
+:focus:not(:focus-visible) { outline: none; }
+.font-display { font-family: var(--font-display), Georgia, serif; }
+
+/* Texture + glow helpers */
+.dotgrid {
+  background-image: radial-gradient(var(--line-strong) 1px, transparent 1px);
+  background-size: 22px 22px;
+  -webkit-mask-image: radial-gradient(ellipse 80% 70% at 50% 0%, #000 40%, transparent 75%);
+  mask-image: radial-gradient(ellipse 80% 70% at 50% 0%, #000 40%, transparent 75%);
+}
+.dotgrid-dark { background-image: radial-gradient(rgba(247,242,237,0.09) 1px, transparent 1px); background-size: 24px 24px; }
+.glow-warm { background: radial-gradient(closest-side, rgba(224,97,58,0.16), transparent 70%); filter: blur(22px); }
+.glow-coral-dark { background: radial-gradient(closest-side, rgba(224,97,58,0.42), rgba(143,116,39,0.16) 45%, transparent 72%); filter: blur(34px); }
+
+/* ── Mega-menu (Radix NavigationMenu) ─────────────────────────────────────── */
+.kds-mega-content {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 50%;
+  transform: translateX(-50%);
+}
+.kds-mega-surface {
+  overflow: hidden;
+  border-radius: var(--r-lg);
+  border: 1px solid var(--line);
+  background: var(--surface);
+  box-shadow: var(--shadow-lg);
+  transform-origin: top center;
+  animation: mega-in 200ms var(--ease-out);
+}
+@keyframes mega-in {
+  from { opacity: 0; transform: translateY(-6px) scale(0.985); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+  .kds-mega-surface { animation: none !important; }
+}
