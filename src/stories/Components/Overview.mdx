@@ -20,7 +20,7 @@ deliberately (see "Flagged" below) rather than copy-paste.
 
 **Atoms** — primitive, mostly self-contained.
 
-| Component | Live uses | Status |
+| Component | Live page uses | Status |
 |---|---|---|
 | Badge | ~22 | ✅ documented |
 | Avatar | ~12 | ✅ documented |
@@ -29,38 +29,49 @@ deliberately (see "Flagged" below) rather than copy-paste.
 | MessageBubble | ~3 | ✅ documented (ClientOnly) |
 | Eyebrow | ~1 | ✅ documented (Primitives) |
 | Button (CTA) | n/a (kaya/) | ✅ documented (Primitives) |
-| ChipButton · DeltaPill · Divider · Tooltip | 1 each | 🔜 Tier-2 (Stage 2) |
+| DeltaPill | via StatCard | ✅ documented |
+| Divider · ChipButton | sub-component | ✅ documented (general primitives) |
 
 **Molecules** — composed of atoms.
 
-| Component | Live uses | Status |
+| Component | Live page uses | Status |
 |---|---|---|
 | StatCard (Eyebrow + DeltaPill) | ~3 | ✅ documented |
 | SectionHeading · ShowcaseFrame · FinalCTABand | n/a | ✅ documented (Primitives) |
-| Tabs / TabItem · ModelSelector · ModelFeaturedCard | 1 each | 🔜 Tier-2 (Stage 2) |
-| Sparkline | 0 | 🔜 Tier-2 (concept-visual ingredient) |
+| Tabs / TabItem | sub-component | ✅ documented (general primitive) |
+| Tooltip | sub-component | ✅ documented (general primitive) |
 
-**Organisms** — bespoke marketing visuals already built from the above. Documented in Stage 2:
+**Organisms** — the bespoke marketing concept-visuals. Each is assembled **entirely from the
+documented atoms** (Avatar, Badge, MessageBubble, StatCard) inside a ShowcaseFrame — verified by
+grepping their imports. Self-contained (no props).
 
-| Organism | File |
-|---|---|
-| PersonaDashboard | `AIAgentsPage/PersonaDashboard.tsx` |
-| ChatPinVisual | `ChatspacePage/ChatPinVisual.tsx` |
-| CommandGrid | `SlackPage/CommandGrid.tsx` |
-| Per-page concept visuals | `*/visuals.tsx` (AIAgents, Brain, Chatspace, CompanyBrain, Personal, Slack) |
-| Section archetypes | see **Archetypes** (one example each) |
+| Organism | File | Built from |
+|---|---|---|
+| PersonaDashboard | `AIAgentsPage/PersonaDashboard.tsx` | Avatar, Badge |
+| ChatPinVisual | `ChatspacePage/ChatPinVisual.tsx` | Badge, MessageBubble |
+| CommandGrid | `SlackPage/CommandGrid.tsx` | sections, ui |
+| OrchestrationMap | `BrainPage/visuals.tsx` | Avatar, Badge, MessageBubble |
+| SlackWorkforceMap | `SlackPage/visuals.tsx` | Avatar, Badge |
+| UsageVisual | `AIAgentsPage/visuals.tsx` | StatCard |
+| _more per-page exports_ | `*/visuals.tsx` | (same atom set) |
+| Section archetypes | see **Archetypes** | tokens + primitives |
 
-> Note: the kickoff also named PinsBoard / AgentRosterGrid / CrewVisual / OrchestrationMap — those
-> don't exist under those names in the repo. Stage 2 documents the organisms that **actually exist**.
+> Note: the kickoff named PinsBoard / AgentRosterGrid / CrewVisual / OrchestrationMap — only
+> **OrchestrationMap** exists (a `BrainPage/visuals.tsx` export). The others don't exist under those
+> names; the table above documents the organisms that **actually exist**.
 
 ## Available, not yet surfaced (deferred)
 
-Product-app plumbing not used by marketing — vendored and importable, but **no stories** until a
-marketing visual needs one (avoids documenting surface we don't use):
+Vendored and importable, but **no stories** — grepping live imports shows **zero marketing usage**, so
+documenting them would be over-building (the rule: prioritize by real usage, defer unused plumbing):
 
-`UsageBarChart` · `StreamingIndicator` · `ChatInput` · `Checkbox` · `InputField` ·
-`Dropdown` / `DropdownMenuItem` / `DropdownSection` internals · `Popover` · `Switch` ·
-`ModelSelectItem` (0 live uses) · `Sparkline` is queued only as a concept-visual ingredient.
+- **Product-app plumbing:** `UsageBarChart` · `StreamingIndicator` · `ChatInput` · `Checkbox` ·
+  `InputField` · `Dropdown` / `DropdownMenuItem` / `DropdownSection` · `Popover` · `Switch`.
+- **Model-picker family** (0 marketing-page uses; the real organisms don't import them):
+  `ModelSelector` · `ModelSelectItem` · `ModelFeaturedCard`. The kickoff listed these as
+  "concept-visual ingredients," but the organisms are built from Avatar/Badge/MessageBubble/StatCard
+  instead — surface only if a future marketing visual actually needs the model picker.
+- **`Sparkline`** — 0 uses anywhere. Queued only if a metrics visual needs an inline trend line.
 
 ## Flagged for deliberate adaptation
 
