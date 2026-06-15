@@ -34,6 +34,19 @@ next session can follow, not a story. Format:
 
 ## Log
 
+### [2026-06-15] @storybook/nextjs doesn't inject next/font vars → Besley collapsed to system sans · (TYPOGRAPHY/BUILD)
+- **What happened / feedback:** Chai spotted that Storybook headings looked sans — "serif/sans, no
+  difference." Root cause: `@storybook/nextjs` did NOT inject the `next/font` `--font-besley` /
+  `--font-geist-*` variables into the preview iframe (the `useEffect` classList decorator didn't work
+  for stories OR MDX docs). With `--font-besley` empty, `font-family: var(--font-besley), Georgia, serif`
+  collapsed and text inherited the system sans — so Besley and Geist looked identical. The real site is
+  fine (Next self-hosts fonts server-side); this was Storybook-only.
+- **Rule going forward:** Load fonts in Storybook via `.storybook/preview-head.html` (Google Fonts CDN
+  link) + a `:root` block mapping the next/font variable names to the families
+  (`--font-besley: "Besley", …`). Don't rely on `@storybook/nextjs` next/font handling. Verify display
+  type renders as a *serif* in a screenshot — don't trust that the font "is configured."
+- **Promoted to:** n/a (Storybook config; lives in preview-head.html comment).
+
 ### [2026-06-15] Tailwind v4 scans markdown → Turbopack DEV 500s on doc code-examples · (PROCESS/BUILD)
 - **What happened / feedback:** S1 added MDX docs + a portable DESIGN.md that quote example classes
   like `text-[color:var()]` / `text-[var(--color)]` in prose. Tailwind v4 auto-scans ALL non-gitignored

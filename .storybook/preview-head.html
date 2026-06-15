@@ -1,0 +1,22 @@
+<!--
+  Storybook-only font loading. The real site self-hosts Besley/Geist/Geist Mono via
+  next/font (layout.tsx). Storybook's @storybook/nextjs next/font handling does NOT
+  inject the --font-* variables into the preview iframe, so headings collapsed to the
+  system sans (Besley looked identical to Geist). Load the same families from the
+  Google Fonts CDN here and define the next/font variable names so the whole token
+  chain (--font-title → var(--font-besley) → 'Besley') resolves to real type.
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link
+  href="https://fonts.googleapis.com/css2?family=Besley:ital,wght@0,400..800;1,400..800&family=Geist:wght@100..900&family=Geist+Mono:wght@100..900&display=swap"
+  rel="stylesheet"
+/>
+<style>
+  /* Map the next/font CSS-variable names (unset in Storybook) to the loaded families. */
+  :root {
+    --font-besley: "Besley", Georgia, serif;
+    --font-geist-sans: "Geist", system-ui, sans-serif;
+    --font-geist-mono: "Geist Mono", ui-monospace, monospace;
+  }
+</style>
