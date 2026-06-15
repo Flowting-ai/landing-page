@@ -61,20 +61,22 @@ Weights: `--font-weight-regular` 400 · `--font-weight-medium` 500 · `--font-we
 
 ---
 
-## Marketing tier (fluid, above the product cap)
+## Marketing tier (fluid, an expansion of the KDS scale)
 
-The product display tops out at 40px. Marketing **adds** a fluid, editorial tier on top — pushing the
-hero ceiling to 96px — for landing-page impact. Everything below uses `clamp()`.
+The product display tops out at 40px. Marketing **extends** the KDS scale with a fluid, editorial tier
+— pushing the hero ceiling to 96px — for landing-page impact. It isn't a parallel invention: the tier
+is **anchored to the KDS scale at its seams** (display starts at KDS display 40; h3 tops at KDS heading
+24; body = KDS body-lg 16; small = KDS body 14; micro = KDS code 13), then grows upward via `clamp()`.
 
-<Row token="--text-hero" label="Hero — 48 → 96px, Besley" display sample="Souvenir" />
-<Row token="--text-display" label="Display — 40 → 64px, Besley" display />
+<Row token="--text-hero" label="Hero — 48 → 96px, Besley · above the KDS cap" display sample="Souvenir" />
+<Row token="--text-display" label="Display — 40 → 64px, Besley · anchored at KDS display (40)" display />
 <Row token="--text-h1" label="H1 — 32 → 52px, Besley" display />
 <Row token="--text-h2" label="H2 — 26 → 40px, Besley" display />
-<Row token="--text-h3" label="H3 — 20 → 24px, Besley" display sample="A coordinated team of agents" />
+<Row token="--text-h3" label="H3 — 20 → 24px, Besley · tops at KDS heading (24)" display sample="A coordinated team of agents" />
 <Row token="--text-lead" label="Lead — 18 → 22px, Geist" sample="Souvenir brings your apps, scattered data, and daily workflows into a single operational layer." />
-<Row token="--text-body" label="Body — 16px, Geist" sample="From the first prompt to the final deliverable, in one workspace." />
-<Row token="--text-small" label="Small — 15px, Geist" sample="Managed from inside your Slack." />
-<Row token="--text-micro" label="Micro / eyebrow — 13px, Geist" sample="DESIGN SYSTEM" />
+<Row token="--text-body" label="Body — 16px, Geist · = KDS body-lg" sample="From the first prompt to the final deliverable, in one workspace." />
+<Row token="--text-small" label="Small — 14px, Geist · = KDS body" sample="Managed from inside your Slack." />
+<Row token="--text-micro" label="Micro / eyebrow — 13px, Geist · = KDS code" sample="DESIGN SYSTEM" />
 
 > **When to use which:** product-embedded UI inside a marketing page (e.g. a `ShowcaseFrame` mock,
 > `MessageBubble`, `StatCard`) uses the **inherited KDS ramp** so it reads as the real product.

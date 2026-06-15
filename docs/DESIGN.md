@@ -70,7 +70,7 @@ documented one-token fallback if brand ever objects to mauve.
 | `--text-display` | 40 → 64px | big section heads |
 | `--text-h1` / `--text-h2` / `--text-h3` | 32→52 / 26→40 / 20→24px | headings |
 | `--text-lead` | 18 → 22px | intro paragraphs |
-| `--text-body` / `--text-small` / `--text-micro` | 16 / 15 / 13px | body, labels, eyebrows |
+| `--text-body` / `--text-small` / `--text-micro` | 16 / 14 / 13px | body, labels, eyebrows (= KDS body-lg / body / code) |
 
 - **Measure ~65ch** (`--measure`); **`text-wrap: balance`** on headings; **no widows**; **tabular nums**
   on anything numeric. Hero ceiling capped at 96px — generous but restrained.

@@ -87,9 +87,11 @@
   --text-lead: clamp(1.125rem, 1rem + 0.55vw, 1.4rem);
   --text-lead--line-height: 1.5;
 
-  --text-body: 1rem; --text-body--line-height: 1.65;
-  --text-small: 0.9375rem; --text-small--line-height: 1.5;
-  --text-micro: 0.8125rem; --text-micro--line-height: 1.4;
+  /* Body/small/micro anchor to the KDS scale so the two tiers meet cleanly:
+     body = KDS body-lg (16), small = KDS body (14), micro = KDS code (13). */
+  --text-body: 1rem; --text-body--line-height: 1.65;          /* 16 = KDS body-lg */
+  --text-small: 0.875rem; --text-small--line-height: 1.5;     /* 14 = KDS body */
+  --text-micro: 0.8125rem; --text-micro--line-height: 1.4;    /* 13 = KDS code */
 }
 
 /* ----------------------------------------------------------------------------
