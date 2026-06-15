@@ -1,27 +1,7 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Besley } from "next/font/google";
 import Script from "next/script";
+import { fontVariables } from "@/lib/fonts";
 import "./globals.css";
-
-/* Fonts are loaded ONCE here via next/font (self-hosted, no render-blocking
-   Google @import). Geist = body/UI, Besley = display headings. */
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const besley = Besley({
-  variable: "--font-besley",
-  subsets: ["latin"],
-  display: "swap",
-});
 
 export const metadata: Metadata = {
   title: "Souvenir — Your company's AI brain, in Slack",
@@ -52,7 +32,7 @@ export default function RootLayout({
       </head>
       <body
         suppressHydrationWarning
-        className={`${geistSans.variable} ${geistMono.variable} ${besley.variable} min-h-dvh bg-bg text-ink antialiased`}
+        className={`${fontVariables} min-h-dvh bg-bg text-ink antialiased`}
       >
         {children}
       </body>

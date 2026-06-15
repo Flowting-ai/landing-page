@@ -1,0 +1,55 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Foundations/Spacing & Rhythm" />
+
+export const Bar = ({ token, label }) => (
+  <div style={{ display: "flex", alignItems: "center", gap: 16, padding: "8px 0", borderBottom: "1px solid var(--line)" }}>
+    <code style={{ fontFamily: "var(--font-code)", fontSize: 12, color: "var(--ink-muted)", width: 150, flexShrink: 0 }}>{token}</code>
+    <div style={{ height: 16, width: `var(${token})`, maxWidth: "100%", background: "var(--accent-soft)", borderRight: "2px solid var(--accent)", borderRadius: 3 }} />
+    <span style={{ fontFamily: "var(--font-body)", fontSize: 13, color: "var(--ink-muted)" }}>{label}</span>
+  </div>
+);
+
+export const RadiusBox = ({ token }) => (
+  <div style={{ textAlign: "center" }}>
+    <div style={{ width: 72, height: 72, background: "var(--surface-warm)", borderRadius: `var(${token})`, boxShadow: "var(--shadow-sm)", margin: "0 auto 6px" }} />
+    <code style={{ fontFamily: "var(--font-code)", fontSize: 12, color: "var(--ink-muted)" }}>{token}</code>
+  </div>
+);
+
+# Spacing & Rhythm
+
+Marketing pacing is deliberately *varied* — not one repeated section gap. The rhythm scale gives three
+deliberate vertical tempos so a page can breathe differently between beats.
+
+## Section rhythm
+
+<Bar token="--section-y-sm" label="Tight breaks — closely related beats" />
+<Bar token="--section-y" label="Default section rhythm" />
+<Bar token="--section-y-lg" label="Hero & major breaks — let it breathe" />
+
+## Layout
+
+<Bar token="--gutter" label="Page gutter (fluid)" />
+<div style={{ padding: "8px 0", fontFamily: "var(--font-body)", fontSize: 14, color: "var(--ink-muted)" }}>
+  <code style={{ fontFamily: "var(--font-code)" }}>--maxw</code> 1200 · <code style={{ fontFamily: "var(--font-code)" }}>--maxw-wide</code> 1280 · <code style={{ fontFamily: "var(--font-code)" }}>--measure</code> 65ch (text)
+</div>
+
+## Radius
+
+<div style={{ display: "flex", gap: 24, flexWrap: "wrap", padding: "16px 0" }}>
+  <RadiusBox token="--r-sm" />
+  <RadiusBox token="--r-md" />
+  <RadiusBox token="--r-lg" />
+  <RadiusBox token="--r-xl" />
+  <RadiusBox token="--r-2xl" />
+</div>
+
+## Rules (from souvenir-learnings §4)
+
+- **Nested radius = outer − padding.** Matching inner and outer radius leaves a visible gap.
+- **`gap` on the parent** for spacing between children — no trailing margins.
+- **`max-width`** on text containers to protect the measure.
+- **Asymmetry over default symmetry** — it creates interest; centered-everything reads as a template.
+- **Mobile:** `dvh` not `vh`; set `aspect-ratio` on media to prevent layout shift.
+- Watch `overflow: hidden` — it silently breaks sticky children.

@@ -1,0 +1,47 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Foundations/Elevation & Depth" />
+
+export const Card = ({ shadow, label, note }) => (
+  <div style={{ width: 200 }}>
+    <div style={{ height: 110, background: "var(--surface)", borderRadius: "var(--r-lg)", boxShadow: `var(${shadow})`, marginBottom: 10 }} />
+    <code style={{ fontFamily: "var(--font-code)", fontSize: 12, color: "var(--ink-muted)" }}>{shadow}</code>
+    <div style={{ fontFamily: "var(--font-body)", fontSize: 13, color: "var(--ink-muted)", marginTop: 2 }}>{label}{note ? ` — ${note}` : ""}</div>
+  </div>
+);
+
+# Elevation & Depth
+
+Depth here is **tactile, not floaty**. Souvenir should feel like a real, kept object — so shadows are
+**warm-tinted** (toward espresso, never neutral grey or blue) and paired with an **emboss** (a top
+inner highlight + bottom inner line) so surfaces read as *pressed/printed*, not hovering in space.
+
+## Shadow scale
+
+<div style={{ display: "flex", gap: 28, flexWrap: "wrap", padding: "16px 0", background: "var(--bg)" }}>
+  <Card shadow="--shadow-sm" label="Resting" note="chips, inputs, small cards" />
+  <Card shadow="--shadow-md" label="Raised" note="hover, popovers" />
+  <Card shadow="--shadow-lg" label="Floating" note="ShowcaseFrame, modals" />
+</div>
+
+## The emboss (what makes it feel printed)
+
+`--shadow-inner` = `inset 0 1px 0 rgba(255,255,255,.75)` (top highlight) + `inset 0 -1.5px 0 rgba(82,75,71,.07)`
+(bottom warm line). Layer it *over* a surface's outer shadow. This is the single most identity-bearing
+depth move — the vendored Kaya Button and `ShowcaseFrame` both use it.
+
+<div style={{ display: "flex", gap: 28, padding: "16px 0" }}>
+  <div style={{ width: 220, height: 90, background: "var(--surface)", borderRadius: "var(--r-lg)", boxShadow: "var(--shadow-md), var(--shadow-inner)" }} />
+  <div style={{ alignSelf: "center", fontFamily: "var(--font-body)", fontSize: 13, color: "var(--ink-muted)" }}>
+    <code style={{ fontFamily: "var(--font-code)" }}>--shadow-md, --shadow-inner</code><br />outer depth + inner emboss
+  </div>
+</div>
+
+## Rules
+
+- **Warm shadows only.** All shadow tokens are tinted with `rgba(82,75,71,…)` (espresso), never grey/blue.
+- **Press = `scale(0.97)`** (vendored Button uses `0.98`) — physical feedback, ~150ms.
+- **Squircle**, not a plain border-radius, on the hero CTA + framed surfaces (figma-squircle / the Kaya
+  Button's `useSquircle`) — the corner curvature is part of the tactile signature.
+- **Heavy craft is hero-only** (layered shadows / grain) — it's an LCP/perf cost; don't sprinkle it.
+- **Every surface earns its elevation** — if it doesn't lift on purpose, keep it flat on the canvas.

@@ -1,0 +1,33 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Foundations/Overview" />
+
+# Souvenir — Marketing Design System
+
+**"Souvenir is the memory your work keeps."** This Storybook is the marketing design-system home: a
+Docs-first, token-driven, theme-switchable view of the system the site is built from.
+
+## How this fits together (single source of truth)
+
+- **Tokens are canonical.** The CSS variables in `src/styles/tokens/*` are the one source of truth.
+  The vendored Kaya files (`primitives`, `typography`, `aliases`, `semantic`) are **read-only**; the
+  marketing layer lives in `marketing.css` and only *extends* them. Storybook reads FROM these tokens;
+  the website consumes the same ones.
+- **The `souvenir-taste` skill is the canonical taste authority.** `docs/DESIGN.md` and this Storybook
+  are **regenerated from the tokens + the skill** — don't hand-edit them into drift.
+- **Scope = the design-system layer**, not production pages: foundations, reusable primitives, and one
+  example per section archetype. Full-page verification lives on `scripts/shot.mjs` + the `design-audit`
+  loop — never mirrored into stories (avoids drift + the RSC tax).
+
+## The three pillars (every section must pass)
+
+1. **Tell me what it is** — clarity over clever. If a visitor can't tell what we sell, it failed.
+2. **Make me feel it** — Kaya tactility; immerse in the problem before the relief.
+3. **Keep it unmistakably ours** — never the templated SaaS rhythm. Craft is the moat.
+
+## Start here
+
+**Foundations** → Color · Typography · Spacing & Rhythm · Motion · Elevation & Depth.
+**Primitives** → the reusable building blocks. **Archetypes** → the varied section catalogue.
+
+Use the toolbar **theme** toggle to preview the mauve default vs. the ochre fallback.

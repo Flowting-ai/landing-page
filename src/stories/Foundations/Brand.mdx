@@ -1,0 +1,88 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+import Logo from "../../components/site/Logo";
+
+<Meta title="Foundations/Brand" />
+
+export const Field = ({ dark, children, label }) => (
+  <div style={{ marginBottom: 14 }}>
+    <div style={{ fontFamily: "var(--font-body)", fontSize: 12, color: "var(--ink-muted)", marginBottom: 8 }}>{label}</div>
+    <div style={{
+      display: "flex", alignItems: "center", gap: 32, flexWrap: "wrap",
+      padding: "32px 28px", borderRadius: "var(--r-lg)",
+      background: dark ? "var(--dark-bg)" : "var(--surface)",
+      border: "1px solid var(--line)",
+    }}>
+      {children}
+    </div>
+  </div>
+);
+
+# Brand
+
+The marketing site and the product share **one** brand. The wordmark, the mark, and the
+Besley/Geist pairing must read identically across both — this is non-negotiable. All assets live in
+`public/brand/` and render through `@/components/site/Logo`, a single mask-recolored SVG component
+(`background: currentColor`) so the *same* files work on light and dark by swapping a text color.
+
+## Logo lockups
+
+`Logo` has four variants. Recolor by setting the text color (`text-ink` on light, `text-dark-ink`
+on dark) — never ship a second hard-coded color file.
+
+<Field label="Lockup — mark + wordmark. Default. Use in nav, footer, hero.">
+  <Logo variant="lockup" height={32} className="text-ink" />
+</Field>
+
+<Field label="Wordmark — type only. Use when the mark is redundant or space is tight.">
+  <Logo variant="wordmark" height={26} className="text-ink" />
+</Field>
+
+<Field label="Wordmark + AI — the product sub-brand lockup.">
+  <Logo variant="wordmarkAi" height={26} className="text-ink" />
+</Field>
+
+<Field label="Mark — standalone glyph. Favicon, avatars, tight square slots, social.">
+  <Logo variant="mark" height={40} className="text-ink" />
+</Field>
+
+## On light + on dark
+
+Same files, recolored. On light the logo is **ink** (`--ink`); on dark it's **`--dark-ink`** (warm
+cream) — never pure white, to match the warm system.
+
+<Field label="On light (--surface)">
+  <Logo variant="lockup" height={30} className="text-ink" />
+  <Logo variant="mark" height={36} className="text-ink" />
+</Field>
+
+<Field dark label="On dark (--dark-bg)">
+  <Logo variant="lockup" height={30} className="text-dark-ink" />
+  <Logo variant="mark" height={36} className="text-dark-ink" />
+</Field>
+
+## Clearspace & minimum size
+
+- **Clearspace:** keep clear margin around the logo equal to the **height of the mark** on all sides.
+  Nothing — text, edges, other logos — intrudes into it.
+- **Minimum size:** lockup no smaller than **20px** tall; mark no smaller than **16px**. Below that,
+  switch to the mark-only.
+- The mask technique means the logo is always **monochrome** — it takes one color from
+  `currentColor`. There is no multi-color logo; don't invent one.
+
+<div style={{ display: "flex", alignItems: "center", gap: 24, padding: "28px", border: "1px dashed var(--line-strong)", borderRadius: "var(--r-lg)" }}>
+  <div style={{ outline: "1px dashed var(--accent)", outlineOffset: 14, display: "inline-flex" }}>
+    <Logo variant="lockup" height={30} className="text-ink" />
+  </div>
+  <span style={{ fontFamily: "var(--font-body)", fontSize: 13, color: "var(--ink-muted)" }}>
+    dashed = clearspace ≈ mark height on every side
+  </span>
+</div>
+
+## Do's & Don'ts
+
+**Do** — recolor via text color · keep clearspace · use the mark in tight/square slots · pair with
+Besley/Geist (see Typography).
+
+**Don't** — ❌ recolor the logo with the **mauve accent** or any brand hue (it's ink/cream only) ·
+❌ stretch, skew, rotate, or add effects (glow/shadow/outline) · ❌ place the lockup on a busy photo
+without a solid plate · ❌ recreate the wordmark in a different typeface · ❌ drop below minimum size.

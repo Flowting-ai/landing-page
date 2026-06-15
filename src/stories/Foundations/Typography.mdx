@@ -1,0 +1,95 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Foundations/Typography" />
+
+export const Family = ({ font, name, role, sample }) => (
+  <div style={{ padding: "16px 0", borderBottom: "1px solid var(--line)" }}>
+    <div style={{ fontFamily: "var(--font-body)", fontSize: 12, color: "var(--ink-muted)", marginBottom: 6 }}>
+      <strong style={{ color: "var(--ink)" }}>{name}</strong> — {role}
+    </div>
+    <div style={{ fontFamily: font, fontSize: 30, color: "var(--ink)", lineHeight: 1.2 }}>{sample}</div>
+  </div>
+);
+
+export const Row = ({ token, label, sample = "The memory your work keeps", display, fixed }) => (
+  <div style={{ padding: "16px 0", borderBottom: "1px solid var(--line)" }}>
+    <div style={{ display: "flex", gap: 12, marginBottom: 6, flexWrap: "wrap" }}>
+      <code style={{ fontFamily: "var(--font-code)", fontSize: 12, color: "var(--ink-muted)" }}>{token}</code>
+      <span style={{ fontFamily: "var(--font-body)", fontSize: 12, color: "var(--ink-subtle)" }}>{label}</span>
+    </div>
+    <div
+      style={{
+        fontFamily: display ? "var(--font-title)" : "var(--font-body)",
+        fontSize: fixed ? `var(${token})` : `var(${token})`,
+        lineHeight: fixed ? `var(${token.replace("--font-size", "--line-height")})` : `var(${token}--line-height, 1.2)`,
+        letterSpacing: `var(${token}--letter-spacing, normal)`,
+        color: "var(--ink)",
+        textWrap: "balance",
+      }}
+    >
+      {sample}
+    </div>
+  </div>
+);
+
+# Typography
+
+Two typefaces, shared with the product — **never** substitute. **Besley** (serif) carries display +
+all headings and is where the warm, editorial, kept-object feeling lives. **Geist** (sans) carries
+body, UI, and labels; **Geist Mono** carries code.
+
+<Family font="var(--font-title)" name="Besley" role="display & headings (serif)" sample="Souvenir — the memory your work keeps" />
+<Family font="var(--font-body)" name="Geist" role="body, UI, labels (sans)" sample="From the first prompt to the final deliverable, in one workspace." />
+<Family font="var(--font-code)" name="Geist Mono" role="code, command chips" sample="@Souvenir summarize this thread" />
+
+---
+
+## Inherited KDS type ramp
+
+The product's scale (`src/styles/tokens/typography.css`) — the marketing layer **inherits** this
+verbatim; it is the shared foundation. Sizes are fixed px (product UI), in contrast to the fluid
+marketing tier below.
+
+<Row token="--font-size-display" label="Display — 40 / 48, Besley" display fixed sample="Display" />
+<Row token="--font-size-heading" label="Heading — 24 / 32, Besley" display fixed sample="Heading" />
+<Row token="--font-size-body-lg" label="Body large — 16 / 22, Geist" fixed sample="Body large — the comfortable reading size for product UI." />
+<Row token="--font-size-body" label="Body — 14 / 22, Geist" fixed sample="Body — the default product UI text size." />
+<Row token="--font-size-caption" label="Caption — 11 / 16, Geist" fixed sample="CAPTION — labels, eyebrows, badge text" />
+<Row token="--font-size-code" label="Code — 13 / 16, Geist Mono" fixed sample="const souvenir = memory" />
+
+Weights: `--font-weight-regular` 400 · `--font-weight-medium` 500 · `--font-weight-semibold` 600.
+
+---
+
+## Marketing tier (fluid, above the product cap)
+
+The product display tops out at 40px. Marketing **adds** a fluid, editorial tier on top — pushing the
+hero ceiling to 96px — for landing-page impact. Everything below uses `clamp()`.
+
+<Row token="--text-hero" label="Hero — 48 → 96px, Besley" display sample="Souvenir" />
+<Row token="--text-display" label="Display — 40 → 64px, Besley" display />
+<Row token="--text-h1" label="H1 — 32 → 52px, Besley" display />
+<Row token="--text-h2" label="H2 — 26 → 40px, Besley" display />
+<Row token="--text-h3" label="H3 — 20 → 24px, Besley" display sample="A coordinated team of agents" />
+<Row token="--text-lead" label="Lead — 18 → 22px, Geist" sample="Souvenir brings your apps, scattered data, and daily workflows into a single operational layer." />
+<Row token="--text-body" label="Body — 16px, Geist" sample="From the first prompt to the final deliverable, in one workspace." />
+<Row token="--text-small" label="Small — 15px, Geist" sample="Managed from inside your Slack." />
+<Row token="--text-micro" label="Micro / eyebrow — 13px, Geist" sample="DESIGN SYSTEM" />
+
+> **When to use which:** product-embedded UI inside a marketing page (e.g. a `ShowcaseFrame` mock,
+> `MessageBubble`, `StatCard`) uses the **inherited KDS ramp** so it reads as the real product.
+> Marketing *chrome* around it — heroes, section heads, leads — uses the **marketing tier**. Don't mix:
+> a marketing hero never uses `--font-size-display`, and a product mock never uses `--text-hero`.
+
+## Rules (from souvenir-learnings §2)
+
+- **Fluid `clamp()` sizing** for marketing, never per-breakpoint; the product ramp stays fixed px.
+- Every size comes from a token — **never free-set** a font size.
+- **Measure ~65ch** (`--measure`); **`text-wrap: balance`** on headings; **no widows**.
+- **Tabular nums** on anything numeric. **Hero capped at 96px** — generous but restrained.
+- Let **Besley carry the emotion** — one big serif line beats a busy stack.
+
+> **Tailwind v4 gotcha:** an arbitrary color set as a bare CSS-var (the bracket-var form) is dropped
+> silently — use a semantic utility or type the arbitrary value with the `color:` prefix; font sizes
+> need the `length:` prefix. (Examples live in the `souvenir-taste` skill so Storybook's markdown
+> isn't scanned as real classes.)

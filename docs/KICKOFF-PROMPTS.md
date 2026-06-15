@@ -51,17 +51,25 @@ Marketing design-system session. Read CLAUDE.md, docs/STRATEGY.md (esp. §0, §2
 skill, and docs/souvenir-learnings.md (§2 typography, §3 color, §4 layout). PLAN first, get my
 approval, THEN implement.
 
-A. Bounded research (~20 min, then stop): how strong teams structure a *marketing* design system +
-   Storybook (foundation pages, token pages, section-archetype catalogs). Do NOT re-litigate the
-   stack (extend Kaya + shadcn/Radix + CSS-var tokens + Motion/GSAP). Recommend: real Storybook 8 vs
-   a lightweight in-app /design-system showcase route — pick the lighter one unless Storybook is
-   clearly worth it. Summarize + recommend; install nothing yet.
+DECISION LOCKED — do NOT re-litigate: the marketing design-system home is **Storybook** (Docs-first,
+token-driven, theme-switchable). The CSS-variable tokens are the SINGLE source of truth; Storybook
+reads FROM them and the website consumes the same tokens. There is NO in-app /design-system route.
+Stack is fixed (extend Kaya + shadcn/Radix + CSS-var tokens + Motion/GSAP; Storybook on Next 16 +
+Tailwind v4). Separate Storybook instance in THIS repo for now; KDS already has its own at :6006 —
+folding the two into one is a deliberate FUTURE option, not this session.
 
-B. Propose the marketing token layer on top of Kaya (show me, get approval):
+A. Bounded setup research (~15 min, then stop): the minimal-friction way to run Storybook 8/9 on
+   Next 16 (RSC) + Tailwind v4 + Besley/Geist — postcss/vite config, font loading, and wrapping KDS
+   components that need ClientOnly / MessageBubble. Summarize the config plan; do NOT chase full-page
+   RSC parity. Then install + scaffold Storybook.
+
+B. Propose the marketing token layer on top of Kaya (show me, get approval BEFORE writing tokens):
    - Display/editorial type scale (push hero ceiling via clamp), section rhythm/spacing scale,
      marketing motion tokens (durations/easings/stagger from souvenir-learnings).
    - ACCENT (locked): --accent: var(--purple-600) (#674F68), hover var(--purple-700), soft
      var(--purple-50); --highlight: var(--yellow-600) for stats/positive only; CTA stays Kaya espresso.
+   - Theme switching: wire a Storybook theme toggle so the mauve default AND the ochre fallback (the
+     documented one-token swap) preview live across everything.
    - Section-archetype catalogue (hero, problem-immersion, feature-row, proof, comparison, CTA,
      footer) — deliberately varied, not one repeated rhythm.
 
@@ -71,17 +79,24 @@ C. After approval: implement the tokens. REMOVE ALL CORAL — grep first: `grep 
    the coral glow with a mauve/neutral treatment per the new tokens. Also update DESIGN-FOUNDATIONS.md
    accent table. Re-grep to prove zero coral remains. Don't touch the imported Kaya product tokens.
 
-D. Scaffold the showcase (Storybook or /design-system route) displaying every token, primitive, and
-   section archetype.
+D. Build Storybook content scoped to the DESIGN-SYSTEM layer ONLY (not full production pages):
+   - Docs (MDX): Color & roles WITH the intention/rationale behind each choice, Typography (Typeset),
+     Spacing/rhythm, Motion tokens, Depth/elevation.
+   - Stories for the reusable primitives (SectionHeading, FeatureSplit, TriSection, FinalCTABand,
+     ShowcaseFrame, Comparison, ui/*) + ONE representative example per section archetype.
+   - Do NOT mirror every site page into stories (drift + RSC tax). Full-page verification stays on the
+     scripts/shot.mjs + design-audit loop, never Storybook.
 
 E. Gap-check + emit a portable DESIGN.md: compare our souvenir-taste skill against the 9-section
    DESIGN.md format (Visual Theme/Atmosphere, Color & Roles, Typography, Component Stylings, Layout,
    Depth & Elevation, Do's & Don'ts, Responsive, Agent Prompt Guide). Fill the gaps (esp. Depth &
    Elevation + an Agent Prompt Guide), then write `docs/DESIGN.md` DERIVED from STRATEGY + the skill +
-   the real Kaya tokens — tool-agnostic, so it works in Figma/Cursor/Lovable too. Note in it that the
-   souvenir-taste skill is canonical and DESIGN.md is regenerated from it (no hand-drift).
+   the real Kaya tokens — tool-agnostic, so it works in Figma/Cursor/Lovable too. Note that
+   souvenir-taste is canonical and DESIGN.md + Storybook are regenerated from the tokens/skill (no hand-drift).
 
-Verify: showcase renders, no overflow at 390/768/1024, no console errors. Run /ce-compound.
+Verify: Storybook builds + renders, theme toggle works, no console errors; the site still builds with
+the new tokens (no overflow at 390/768/1024 via the screenshot loop). When done + verified, stage +
+commit (repo baseline = 9a714b2); don't push. Run /ce-compound.
 ```
 
 ---

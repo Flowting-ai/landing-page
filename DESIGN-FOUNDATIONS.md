@@ -1,9 +1,10 @@
 # Souvenir Website — Design Foundations
 
-> ⚠️ **PARTIALLY SUPERSEDED (Jun 15).** The accent here (coral `#E0613A`) is OUTDATED — the locked
-> decision is **dusty mauve** (`--accent: var(--purple-600)` #674F68) on a monochrome canvas. See
-> `docs/STRATEGY.md` §0 for the canonical color system. Treat this file as historical for the accent;
-> the rest (type/spacing/structure notes) is still useful background.
+> ✅ **ACCENT UPDATED (Jun 15) — dusty mauve.** The accent table below now reflects the locked
+> decision: **dusty mauve** (`--accent: var(--purple-600)` #674F68, hover `purple-700`, soft
+> `purple-50`) on a warm monochrome canvas. The earlier coral has been fully removed from the codebase.
+> Canonical source: the `souvenir-taste` skill + `docs/DESIGN.md`; see `docs/STRATEGY.md` §0 for the
+> color rationale. Tokens themselves live in `src/styles/tokens/marketing.css`.
 
 The visual language for the website rebuild. Source of truth lives in code:
 `src/app/globals.css` (tokens) + `src/components/ui/*` (primitives).
@@ -21,14 +22,16 @@ collages, no fake looping animations, no heavy Lottie/video payload.
 | Page background | `--bg` | `#FAF8F5` |
 | Surface / cards | `--surface` | `#FFFFFF` |
 | Warm panel | `--surface-warm` | `#F3EDE4` |
-| Primary ink | `--ink` | `#211C18` (warm near-black, never `#000`) |
-| Muted ink | `--ink-muted` | `#6F665E` |
-| Accent (coral) | `--accent` | `#E0613A` — primary action + links ONLY |
-| Highlight (gold) | `--highlight` | `#C8932B` — stats/highlights, sparing |
-| Dark section | `--dark-bg` | `#17120F` (warm charcoal) |
+| Primary ink | `--ink` | `var(--neutral-900)` #26211E (warm near-black, never `#000`) |
+| Muted ink | `--ink-muted` | `var(--neutral-500)` #827A74 |
+| Accent (dusty mauve) | `--accent` | `var(--purple-600)` #674F68 — links, eyebrows, the one signature visual/page. NOT the CTA. |
+| Accent hover / soft | `--accent-hover` / `--accent-soft` | `var(--purple-700)` #513853 / `var(--purple-50)` #F8ECF9 |
+| Highlight (ochre) | `--highlight` | `var(--yellow-600)` #8F7427 — stats / positive hints, sparing |
+| Primary CTA | (Kaya button) | the vendored `@/components/kaya/Button` espresso/dark button — unchanged |
+| Dark section | `--dark-bg` | `#1A130D` (warm charcoal) |
 
 **Colorblind rule (Chai is red-green colorblind):** meaning is never carried by
-color alone — buttons have shape + label + position; coral is decorative/CTA, not
+color alone — buttons have shape + label + position; mauve is decorative only, never
 a status signal. Focus ring is high-contrast ink, not a color.
 
 ## Type
@@ -55,7 +58,8 @@ a status signal. Focus ring is high-contrast ink, not a color.
 ## Primitives
 
 - `ui/Container` — centered column, standard gutter + max width.
-- `ui/Button` — `primary` (coral) / `secondary` (outline) / `ghost`; `md` / `lg`.
+- CTA = `@/components/kaya/Button` (vendored espresso/dark, interaction locked). `ui/Button`'s
+  `accent` variant now uses dusty mauve (`--accent`), not coral.
 - `ui/Reveal` — scroll-reveal wrapper (above).
 
 ## Salvage decisions (old repo)

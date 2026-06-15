@@ -1,81 +1,35 @@
 /* ============================================================================
    SOUVENIR WEBSITE — built on the Kaya Design System token base.
-   Imports the real KDS tokens, then adds a thin MARKETING layer on top
-   (larger display type, dark-section palette, brand coral accent, section
-   rhythm). Components reference the semantic aliases below.
+   Imports the real KDS tokens, then a thin MARKETING layer on top (dusty-mauve
+   signature accent, larger display type, dark-section palette, section rhythm).
+   All marketing TOKENS live in src/styles/tokens/marketing.css; this file holds
+   the Tailwind bridge, base styles, and utility/glow classes.
    ============================================================================ */
 
 @import "tailwindcss";
 @import "tw-animate-css";
 
-/* Real Kaya token system (vendored from may-day — re-sync from src/styles/tokens) */
+/* Don't scan markdown for class candidates. Docs/skills/Storybook MDX quote
+   example classes like `text-[color:var(...)]` in prose; Tailwind v4 would
+   extract those and emit malformed CSS (empty/`...` var()), which Turbopack dev
+   rejects outright. No Tailwind utility is ever authored in markdown — site
+   classes live in .tsx — so excluding it is safe and prevents the whole class. */
+@source not "../../**/*.md";
+@source not "../../**/*.mdx";
+
+/* Real Kaya token system — VENDORED, read-only. Re-sync from KDS; never edit. */
 @import "../styles/tokens/primitives.css";
 @import "../styles/tokens/typography.css";
 @import "../styles/tokens/aliases.css";
 @import "../styles/tokens/semantic.css";
 
+/* Marketing token layer — extends Kaya. Imported AFTER the vendored files. */
+@import "../styles/tokens/marketing.css";
+
 @custom-variant dark (&:is(.dark *));
 
-/* ----------------------------------------------------------------------------
-   MARKETING SEMANTIC LAYER — maps KDS primitives to the aliases components use
-   ---------------------------------------------------------------------------- */
-:root {
-  /* Fonts → wired to next/font variables (set in layout.tsx) */
-  --font-title: var(--font-besley), Georgia, serif;
-  --font-body:  var(--font-geist-sans), system-ui, sans-serif;
-  --font-code:  var(--font-geist-mono), monospace;
-
-  /* Surfaces (KDS warm neutrals) */
-  --bg:            var(--neutral-50);    /* #F7F2ED warm cream */
-  --bg-subtle:     #FCFAF7;
-  --surface:       var(--neutral-white); /* #FFFFFF */
-  --surface-warm:  var(--neutral-100);   /* #EDE1D7 */
-
-  /* Ink */
-  --ink:           var(--neutral-900);   /* #26211E */
-  --ink-secondary: var(--neutral-700);   /* #524B47 */
-  --ink-muted:     var(--neutral-500);   /* #827A74 */
-  --ink-subtle:    var(--neutral-400);   /* #9C938B */
-
-  /* Lines */
-  --line:          var(--neutral-100);   /* #EDE1D7 */
-  --line-strong:   var(--neutral-200);   /* #D1C6BD */
-
-  /* Accent — matches the PRODUCT: warm-neutral monochrome (KDS has no coral).
-     Interactive weight comes from the dark KDS button, not a brand color. */
-  --accent:        var(--neutral-900);
-  --accent-hover:  var(--neutral-800);
-  --accent-soft:   var(--neutral-100);
-  --highlight:     var(--yellow-600);    /* ochre — only for small positive hints */
-  --highlight-soft:var(--yellow-100);
-
-  /* Dark-section palette (warm charcoal, derived from neutral-950) */
-  --dark-bg:       #1A130D;
-  --dark-surface:  #241B13;
-  --dark-ink:      var(--neutral-50);
-  --dark-ink-muted:#B6ACA4;              /* neutral-300 */
-  --dark-line:     rgba(247,242,237,0.12);
-
-  --focus-ring-c:  var(--neutral-900);
-
-  /* Radius */
-  --r-sm: 8px; --r-md: 12px; --r-lg: 16px; --r-xl: 20px; --r-2xl: 28px; --r-pill: 999px;
-
-  /* Shadow — KDS warm tone, embossed feel */
-  --shadow-sm: 0px 1px 2px rgba(82,75,71,.10), 0 0 0 1px rgba(59,54,50,.06);
-  --shadow-md: 0px 4px 14px rgba(82,75,71,.12), 0 0 0 1px rgba(59,54,50,.07);
-  --shadow-lg: 0px 24px 60px rgba(82,75,71,.18), 0px 3px 8px rgba(82,75,71,.08), 0 0 0 1px rgba(59,54,50,.06);
-  --shadow-inner: inset 0 1px 0 rgba(255,255,255,.75), inset 0 -1.5px 0 rgba(82,75,71,.07);
-
-  /* Layout */
-  --maxw: 1200px; --maxw-wide: 1280px;
-  --gutter: clamp(1.25rem, 5vw, 4rem);
-  --section-y: clamp(4.5rem, 9vw, 8rem);
-
-  /* Motion */
-  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
-  --dur-fast: .25s; --dur: .5s; --dur-slow: .8s;
-}
+/* Marketing tokens (--bg, --ink, --accent, radius, shadow, rhythm, motion …)
+   now live in src/styles/tokens/marketing.css, imported above. */
 
 /* ----------------------------------------------------------------------------
    TAILWIND THEME BRIDGE — utilities (bg-bg, text-ink, font-display, text-display)
@@ -109,8 +63,13 @@
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 
-  /* Fluid marketing type scale (display bigger than the product's 40px cap) */
-  --text-display: clamp(2.5rem, 1.7rem + 2.6vw, 4rem);      /* 40 → 64 */
+  /* Fluid marketing type scale (display bigger than the product's 40px cap).
+     Type tokens live in the @theme bridge so Tailwind emits text-* utilities. */
+  --text-hero: clamp(3rem, 1.7rem + 6vw, 6rem);             /* 48 → 96 editorial hero */
+  --text-hero--line-height: 1.0;
+  --text-hero--letter-spacing: -0.025em;
+
+  --text-display: clamp(2.5rem, 1.7rem + 2.6vw, 4rem);      /* 40 → 64 big section heads */
   --text-display--line-height: 1.05;
   --text-display--letter-spacing: -0.02em;
 
@@ -151,8 +110,15 @@ body { min-height: 100dvh; background: var(--bg); color: var(--ink); font-family
   mask-image: radial-gradient(ellipse 80% 70% at 50% 0%, #000 40%, transparent 75%);
 }
 .dotgrid-dark { background-image: radial-gradient(rgba(247,242,237,0.09) 1px, transparent 1px); background-size: 24px 24px; }
-.glow-warm { background: radial-gradient(closest-side, rgba(224,97,58,0.16), transparent 70%); filter: blur(22px); }
-.glow-coral-dark { background: radial-gradient(closest-side, rgba(224,97,58,0.42), rgba(143,116,39,0.16) 45%, transparent 72%); filter: blur(34px); }
+
+/* Hero ambience — warm-neutral espresso wash. Heroes keep the warmth but carry
+   no brand color; mauve stays reserved for one signature moment per page (see
+   .glow-signature). Chroma reduced, not faked with opacity. */
+.glow-warm { background: radial-gradient(closest-side, rgba(82,75,71,0.14), transparent 70%); filter: blur(24px); }
+
+/* The signature dusty-mauve glow — for the ONE accent moment on dark sections
+   (CTA bands). Built from --accent so it follows the live theme (mauve / ochre). */
+.glow-signature { background: radial-gradient(closest-side, color-mix(in oklch, var(--accent) 38%, transparent), color-mix(in oklch, var(--accent) 12%, transparent) 45%, transparent 72%); filter: blur(34px); }
 
 /* ── Mega-menu (Radix NavigationMenu) ─────────────────────────────────────── */
 .kds-mega-content {

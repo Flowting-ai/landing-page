@@ -21,8 +21,8 @@ const sizes: Record<Size, string> = {
 };
 
 /* primary = KDS dark (matches the product + the reference sites).
-   accent = coral, for moments that need brand warmth. Meaning never rides on
-   color alone — label + position carry it (colorblind-safe). */
+   accent = dusty mauve (--accent), the signature note for rare accent moments.
+   Meaning never rides on color alone — label + position carry it (colorblind-safe). */
 const variants: Record<Variant, string> = {
   primary:
     "text-dark-ink " +

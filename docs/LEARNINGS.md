@@ -34,6 +34,36 @@ next session can follow, not a story. Format:
 
 ## Log
 
+### [2026-06-15] Tailwind v4 scans markdown → Turbopack DEV 500s on doc code-examples · (PROCESS/BUILD)
+- **What happened / feedback:** S1 added MDX docs + a portable DESIGN.md that quote example classes
+  like `text-[color:var()]` / `text-[var(--color)]` in prose. Tailwind v4 auto-scans ALL non-gitignored
+  files (incl. `.md`/`.mdx`), extracted those as candidates, and emitted malformed CSS (`color: var();`).
+  `next build` only WARNED; the **Turbopack dev server returned 500** on the same CSS. (Pre-existing empty
+  `text-[color:var()]` typos in HANDOFF.md / DESIGN-REFINEMENT-PLAN.md were also dormant offenders.)
+- **Rule going forward:** Never rely on prod-build warnings alone — verify on `next dev` too. Markdown
+  never authors Tailwind utilities, so exclude it: `@source not "../../**/*.md"` + `*.mdx` in globals.css
+  (added). Also gitignore `storybook-static/` so its bundles aren't scanned/committed.
+- **Promoted to:** n/a (build-config rule; lives in globals.css comment).
+
+### [2026-06-15] Coral scope was bigger than the kickoff listed — .glow-warm + inline var(--coral) · (COLOR)
+- **What happened / feedback:** Kickoff named 4 `.glow-coral-dark` files. Re-grep found coral also baked
+  into `.glow-warm` as `rgba(224,97,58,…)` (consumed by 16 hero files) AND an inline
+  `var(--coral,#d9685a)` in SlackPage/visuals.tsx + a stale comment in ui/Button.tsx.
+- **Rule going forward:** Grep BOTH the hex (`E0613A`) and the decimal-RGB form (`224, *97, *58`) when
+  detoxing a color — named-class greps miss raw rgb() and inline fallbacks. `.glow-coral-dark` →
+  `.glow-signature` (mauve, from `--accent`); `.glow-warm` → warm-neutral espresso wash.
+- **Promoted to:** souvenir-taste (no-coral rule already present).
+
+### [2026-06-15] Marketing DS home = Storybook (Docs-first, token-driven) — LOCKED · (PROCESS/DESIGN-SYSTEM)
+- **What happened / feedback:** Weighed in-app `/design-system` route vs Storybook. Chai's goal is a
+  durable, shareable, brand-facing reference (palette + intention, type, spacing) that outlives pages
+  and feeds marketing-asset/branding work + future theming — that goal makes Storybook the right home.
+- **Rule going forward:** Tokens (CSS vars) = single source of truth; Storybook reads from them; site
+  consumes them; NO in-app route. Scope Storybook to the DS layer (tokens, primitives, one example per
+  archetype) — never mirror full pages (drift + RSC tax); pages verified via `scripts/shot.mjs` +
+  `design-audit`. Theme toggle previews mauve↔ochre. Separate instance now; KDS-fold-in is a future option.
+- **Promoted to:** STRATEGY.md §0 (LOCKED) + S1 prompt in docs/KICKOFF-PROMPTS.md.
+
 ### [2026-06-15] design-audit had no repo-discoverable screenshot step — added scripts/shot.mjs · (PROCESS)
 - **What happened / feedback:** S0 review found the design-audit skill + agent told to "use the repo's
   screenshot step," but none existed in-repo — only the external `~/.shot-harness`. The agent would have

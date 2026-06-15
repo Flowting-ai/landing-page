@@ -11,7 +11,7 @@ export default function VariantB() {
     <main className="relative min-h-dvh bg-dark-bg overflow-hidden">
       {/* glow + grid */}
       <div className="dotgrid-dark pointer-events-none absolute inset-0 opacity-60" />
-      <div className="glow-coral-dark pointer-events-none absolute left-1/2 -translate-x-1/2 -top-40 h-[640px] w-[900px]" />
+      <div className="glow-signature pointer-events-none absolute left-1/2 -translate-x-1/2 -top-40 h-[640px] w-[900px]" />
 
       {/* dark top bar */}
       <header className="relative z-10 border-b border-[var(--dark-line)]">

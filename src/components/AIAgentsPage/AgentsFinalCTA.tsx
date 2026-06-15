@@ -11,7 +11,7 @@ export default function AgentsFinalCTA() {
       <Container wide>
         <div className="relative overflow-hidden rounded-[var(--r-2xl)] bg-dark-bg px-6 py-16 sm:px-10 sm:py-20">
           <div className="dotgrid-dark pointer-events-none absolute inset-0 opacity-60" />
-          <div className="glow-coral-dark pointer-events-none absolute left-1/2 top-0 h-[360px] w-[560px] -translate-x-1/2 opacity-40" />
+          <div className="glow-signature pointer-events-none absolute left-1/2 top-0 h-[360px] w-[560px] -translate-x-1/2 opacity-40" />
 
           <div className="relative flex flex-col items-center text-center">
             {/* connector band */}

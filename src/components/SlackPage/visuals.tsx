@@ -85,7 +85,7 @@ export function CommandChip({ children }: { children: string }) {
     <div className="flex items-center gap-2 rounded-[var(--r-md)] border border-line bg-bg-subtle px-3 py-2.5" style={{ boxShadow: "var(--shadow-inner)" }}>
       <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded-[7px] border border-line bg-surface font-mono text-[var(--text-micro)] text-ink-subtle">{"</>"}</span>
       <p className="font-sans text-[var(--text-small)] text-ink-secondary">
-        <span className="font-medium text-[color:var(--coral,#d9685a)]">@Souvenir</span> {children}
+        <span className="font-medium text-[color:var(--accent)]">@Souvenir</span> {children}
       </p>
     </div>
   );

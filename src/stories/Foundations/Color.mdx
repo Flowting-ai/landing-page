@@ -1,0 +1,68 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Foundations/Color" />
+
+export const Swatch = ({ token, name, note, dark }) => (
+  <div style={{ display: "flex", alignItems: "center", gap: 14, padding: "10px 0", borderBottom: "1px solid var(--line)" }}>
+    <div style={{ width: 56, height: 56, borderRadius: "var(--r-md)", background: `var(${token})`, boxShadow: "inset 0 0 0 1px rgba(0,0,0,.08)", flexShrink: 0 }} />
+    <div style={{ fontFamily: "var(--font-body)" }}>
+      <div style={{ fontWeight: 600, color: "var(--ink)" }}>{name}</div>
+      <code style={{ fontFamily: "var(--font-code)", fontSize: 13, color: "var(--ink-muted)" }}>{token}</code>
+      {note && <div style={{ fontSize: 13, color: "var(--ink-muted)", marginTop: 2 }}>{note}</div>}
+    </div>
+  </div>
+);
+
+# Color & Roles
+
+The canvas is a **warm cream → espresso monochrome (~90%)**. Color is seasoning, never wallpaper.
+Everything extends the vendored Kaya ramps — the marketing layer only assigns *roles*, it never
+invents new hexes.
+
+> **Why monochrome.** The product is intangible AI orchestration; the brand bet is to make it feel
+> like a warm, *kept* object. A restrained warm-neutral field does the emotional work (paper, leather,
+> developed film) and lets a single accent note land. A rainbow palette would read as generic SaaS —
+> the one thing we're avoiding.
+
+## Surfaces & ink
+
+<Swatch token="--bg" name="Background" note="Warm cream — the 90% canvas" />
+<Swatch token="--surface" name="Surface / cards" />
+<Swatch token="--surface-warm" name="Warm panel" />
+<Swatch token="--ink" name="Ink (primary text)" note="Warm near-black — never #000" />
+<Swatch token="--ink-muted" name="Ink muted" />
+<Swatch token="--line" name="Line" />
+<Swatch token="--line-strong" name="Line strong" />
+
+## Accent — dusty mauve (LOCKED, decorative only)
+
+<Swatch token="--accent" name="Accent — dusty mauve" note="purple-600 #674F68 · links, eyebrows, the ONE signature visual per page" />
+<Swatch token="--accent-hover" name="Accent hover" note="purple-700 #513853" />
+<Swatch token="--accent-soft" name="Accent soft" note="purple-50 #F8ECF9 · tints reduce chroma, not opacity" />
+<Swatch token="--highlight" name="Highlight — ochre" note="yellow-600 #8F7427 · stats / positive hints ONLY" />
+
+> **Why mauve, used this sparingly.** It's the *muted* purple from Kaya (the product deliberately
+> dropped the saturated brand purple), so at a signature dose on a warm field it reads as a kept,
+> personal note — not a tech-brand statement. Blanketing it everywhere would burn that. **One
+> signature moment per page.**
+
+## The CTA is not the accent
+
+The primary call-to-action is the vendored **`@/components/kaya/Button`** (espresso/dark, embossed,
+squircle). Mauve is for links and the signature visual — it never becomes the button. Keeping
+interactive weight in the dark button and identity in the mauve note means neither competes.
+
+## Hard rules
+
+- **Colorblind (red–green):** meaning is **never** carried by color alone — pair shape + label +
+  position. The accent is decorative/CTA, **never a status signal**. The focus ring is **ink**, not a color.
+- **Tints reduce chroma, not opacity.** Lowering opacity greys a color out; pulling chroma keeps it
+  alive. Build palettes/gradients in **OKLCH** so midpoints don't go muddy.
+- **No coral.** The former `#E0613A` is fully removed; never reintroduce it.
+
+## Theme toggle (mauve ⇄ ochre)
+
+Use the toolbar **theme** switch. It flips `data-theme` on the real token layer
+(`src/styles/tokens/marketing.css`), so the **ochre fallback** — the documented one-token accent swap
+should brand ever object to mauve — previews live across every story. This is truthful: the same
+switch would work on the site.

@@ -1,0 +1,76 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Components/Overview" />
+
+# Component Library
+
+The marketing site is built on the **vendored KDS components** in `src/components/*` — the same atoms
+the product ships. This library **documents** them (and the bespoke marketing organisms built from
+them); it does not re-port or duplicate anything.
+
+## Adapt, don't fork (the rule)
+
+The vendored atom is the **single source of truth**. A "marketing version" means the atom **adapted
+via tokens/props or a thin variant** — shared interaction/identity, marketing-tunable surface — like
+the CTA Button (locked interaction, marketing sizing). It **never** means a duplicated component that
+drifts. If an atom needs a genuine *structural* marketing adaptation, we flag it and decide
+deliberately (see "Flagged" below) rather than copy-paste.
+
+## The tree
+
+**Atoms** — primitive, mostly self-contained.
+
+| Component | Live uses | Status |
+|---|---|---|
+| Badge | ~22 | ✅ documented |
+| Avatar | ~12 | ✅ documented |
+| Chip | ~3 | ✅ documented |
+| IconButton | ~3 | ✅ documented |
+| MessageBubble | ~3 | ✅ documented (ClientOnly) |
+| Eyebrow | ~1 | ✅ documented (Primitives) |
+| Button (CTA) | n/a (kaya/) | ✅ documented (Primitives) |
+| ChipButton · DeltaPill · Divider · Tooltip | 1 each | 🔜 Tier-2 (Stage 2) |
+
+**Molecules** — composed of atoms.
+
+| Component | Live uses | Status |
+|---|---|---|
+| StatCard (Eyebrow + DeltaPill) | ~3 | ✅ documented |
+| SectionHeading · ShowcaseFrame · FinalCTABand | n/a | ✅ documented (Primitives) |
+| Tabs / TabItem · ModelSelector · ModelFeaturedCard | 1 each | 🔜 Tier-2 (Stage 2) |
+| Sparkline | 0 | 🔜 Tier-2 (concept-visual ingredient) |
+
+**Organisms** — bespoke marketing visuals already built from the above. Documented in Stage 2:
+
+| Organism | File |
+|---|---|
+| PersonaDashboard | `AIAgentsPage/PersonaDashboard.tsx` |
+| ChatPinVisual | `ChatspacePage/ChatPinVisual.tsx` |
+| CommandGrid | `SlackPage/CommandGrid.tsx` |
+| Per-page concept visuals | `*/visuals.tsx` (AIAgents, Brain, Chatspace, CompanyBrain, Personal, Slack) |
+| Section archetypes | see **Archetypes** (one example each) |
+
+> Note: the kickoff also named PinsBoard / AgentRosterGrid / CrewVisual / OrchestrationMap — those
+> don't exist under those names in the repo. Stage 2 documents the organisms that **actually exist**.
+
+## Available, not yet surfaced (deferred)
+
+Product-app plumbing not used by marketing — vendored and importable, but **no stories** until a
+marketing visual needs one (avoids documenting surface we don't use):
+
+`UsageBarChart` · `StreamingIndicator` · `ChatInput` · `Checkbox` · `InputField` ·
+`Dropdown` / `DropdownMenuItem` / `DropdownSection` internals · `Popover` · `Switch` ·
+`ModelSelectItem` (0 live uses) · `Sparkline` is queued only as a concept-visual ingredient.
+
+## Flagged for deliberate adaptation
+
+- **Button → marketing `lg` size:** a larger, more generous CTA size is wanted for marketing. Deferred
+  — `kaya/*` is read-only; the right move is an **additive geometry-only size** upstreamed into KDS,
+  not a fork. Pending sign-off (see Primitives → Button).
+- _(none others yet — add here when an atom can't be adapted by tokens/props alone.)_
+
+## Each story carries
+
+Variants + states + a one-line **marketing-usage note**. Tokens only — no magic numbers. Product
+surfaces (MessageBubble, StatCard) use the **inherited KDS type ramp**; marketing chrome uses the
+marketing tier (see Foundations → Typography).

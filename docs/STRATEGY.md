@@ -23,6 +23,14 @@
 - **Positioning → 50/50, one unified core story.** Equal-weight branch to "for you" / "for your
   team" (Linear model: consumer-grade brand, monetize B2B). Home stops being a lopsided router.
 - **First page for the loop → Home.**
+- **Marketing design-system home → Storybook (LOCKED Jun 15).** Docs-first, token-driven,
+  theme-switchable. CSS-variable tokens are the single source of truth; Storybook reads from them and
+  the site consumes the same tokens (no in-app `/design-system` route). Scope Storybook to the
+  design-system layer (tokens, primitives, ONE example per archetype) — NOT full production pages;
+  full-page verification stays on the `scripts/shot.mjs` + `design-audit` loop. Rationale: a durable,
+  shareable, brand-facing reference (color + intention, type, spacing) that outlives any page and
+  feeds marketing-asset/branding work; theme toggle previews the mauve→ochre one-token swap live.
+  Separate instance in this repo; folding into KDS's Storybook (:6006) is a deliberate future option.
 
 ## 1. North-star philosophy (the spine)
 **Souvenir is the memory your work keeps.** Make the intangible orchestration product *feel* like a

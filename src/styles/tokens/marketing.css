@@ -1,0 +1,88 @@
+/* ============================================================================
+   MARKETING TOKEN LAYER — the thin marketing system on top of the vendored
+   Kaya tokens (primitives → typography → aliases → semantic).
+
+   Imported AFTER the four Kaya token files in globals.css, so the vendored
+   Kaya files stay byte-for-byte re-syncable and ALL marketing-specific tokens
+   live here (extend-not-fork, enforced structurally). Tokens only — no magic
+   numbers in components. Glow/utility *classes* live in globals.css, not here.
+   ============================================================================ */
+
+:root {
+  /* Fonts → wired to the next/font variables (layout.tsx + Storybook preview) */
+  --font-title: var(--font-besley), Georgia, serif;
+  --font-body:  var(--font-geist-sans), system-ui, sans-serif;
+  --font-code:  var(--font-geist-mono), monospace;
+
+  /* Surfaces (KDS warm neutrals) */
+  --bg:            var(--neutral-50);    /* #F7F2ED warm cream */
+  --bg-subtle:     #FCFAF7;
+  --surface:       var(--neutral-white); /* #FFFFFF */
+  --surface-warm:  var(--neutral-100);   /* #EDE1D7 */
+
+  /* Ink */
+  --ink:           var(--neutral-900);   /* #26211E */
+  --ink-secondary: var(--neutral-700);   /* #524B47 */
+  --ink-muted:     var(--neutral-500);   /* #827A74 */
+  --ink-subtle:    var(--neutral-400);   /* #9C938B */
+
+  /* Lines */
+  --line:          var(--neutral-100);   /* #EDE1D7 */
+  --line-strong:   var(--neutral-200);   /* #D1C6BD */
+
+  /* Accent — LOCKED dusty mauve, from Kaya's purple ramp. Used DECORATIVELY
+     only (links, eyebrows, the ONE signature visual per page) — never a status
+     signal (colorblind rule). The primary CTA stays the Kaya espresso button. */
+  --accent:        var(--purple-600);   /* #674F68 dusty mauve */
+  --accent-hover:  var(--purple-700);   /* #513853 */
+  --accent-soft:   var(--purple-50);    /* #F8ECF9 pale lavender (chroma, not opacity) */
+  --highlight:     var(--yellow-600);   /* #8F7427 ochre — stats / positive hints ONLY */
+  --highlight-soft:var(--yellow-100);
+
+  /* Dark-section palette (warm charcoal, derived from neutral-950) */
+  --dark-bg:       #1A130D;
+  --dark-surface:  #241B13;
+  --dark-ink:      var(--neutral-50);
+  --dark-ink-muted:#B6ACA4;              /* neutral-300 */
+  --dark-line:     rgba(247,242,237,0.12);
+
+  --focus-ring-c:  var(--neutral-900);   /* focus ring is ink, never a color */
+
+  /* Radius */
+  --r-sm: 8px; --r-md: 12px; --r-lg: 16px; --r-xl: 20px; --r-2xl: 28px; --r-pill: 999px;
+
+  /* Shadow — KDS warm tone, embossed feel */
+  --shadow-sm: 0px 1px 2px rgba(82,75,71,.10), 0 0 0 1px rgba(59,54,50,.06);
+  --shadow-md: 0px 4px 14px rgba(82,75,71,.12), 0 0 0 1px rgba(59,54,50,.07);
+  --shadow-lg: 0px 24px 60px rgba(82,75,71,.18), 0px 3px 8px rgba(82,75,71,.08), 0 0 0 1px rgba(59,54,50,.06);
+  --shadow-inner: inset 0 1px 0 rgba(255,255,255,.75), inset 0 -1.5px 0 rgba(82,75,71,.07);
+
+  /* Layout + section rhythm (a scale, not one repeated value) */
+  --maxw: 1200px; --maxw-wide: 1280px;
+  --gutter: clamp(1.25rem, 5vw, 4rem);
+  --measure: 65ch;                          /* protect the line-length / measure */
+  --section-y-sm: clamp(3rem, 6vw, 5rem);   /* tight breaks */
+  --section-y:    clamp(4.5rem, 9vw, 8rem); /* default section rhythm */
+  --section-y-lg: clamp(6rem, 12vw, 11rem); /* hero & major breaks */
+
+  /* Motion — easing lookup (no ease-in, no bounce), duration tiers, stagger.
+     Source rules: docs/souvenir-learnings.md §1. */
+  --ease-out:      cubic-bezier(0.16, 1, 0.3, 1);   /* enter/exit — fast start = responsive */
+  --ease-in-out:   cubic-bezier(0.65, 0, 0.35, 1);  /* on-screen move / morph */
+  --dur-hover:     .15s;   /* hover color/opacity */
+  --dur-fast:      .25s;   /* UI tier — keep < 300ms */
+  --dur:           .5s;    /* default marketing transition */
+  --dur-slow:      .8s;
+  --dur-signature: 1.1s;   /* the one signature moment per page (marketing latitude) */
+  --stagger:       40ms;   /* assemble-into-place reveals; all-at-once reads as a flash */
+}
+
+/* Ochre fallback theme — the documented one-token accent swap. Flipping
+   `data-theme` on the real token layer (here, not Storybook-only) keeps the
+   Storybook preview truthful and lets the site adopt ochre wholesale if brand
+   ever objects to mauve. Mauve is the default; this is the escape hatch. */
+[data-theme="ochre"] {
+  --accent:       var(--yellow-600);
+  --accent-hover: var(--yellow-700);
+  --accent-soft:  var(--yellow-100);
+}
