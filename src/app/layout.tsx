@@ -15,7 +15,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning className={fontVariables}>
       <head>
         <Script
           src="https://www.googletagmanager.com/gtag/js?id=G-ZLCFW0RLZJ"
@@ -32,7 +32,7 @@ export default function RootLayout({
       </head>
       <body
         suppressHydrationWarning
-        className={`${fontVariables} min-h-dvh bg-bg text-ink antialiased`}
+        className="min-h-dvh bg-bg text-ink antialiased"
       >
         {children}
       </body>

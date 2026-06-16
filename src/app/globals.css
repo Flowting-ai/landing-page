@@ -102,7 +102,9 @@ body { min-height: 100dvh; background: var(--bg); color: var(--ink); font-family
 ::selection { background: var(--accent-soft); color: var(--ink); }
 :focus-visible { outline: 2px solid var(--focus-ring-c); outline-offset: 2px; border-radius: 4px; }
 :focus:not(:focus-visible) { outline: none; }
-.font-display { font-family: var(--font-display), Georgia, serif; }
+/* Reference --font-besley directly (the next/font var, now on :root via <html>),
+   not the @theme-inline --font-display which is build-time only and empty at runtime. */
+.font-display { font-family: var(--font-besley), Georgia, serif; }
 
 /* Texture + glow helpers */
 .dotgrid {
