@@ -68,6 +68,25 @@ a warm, tangible, kept object. Every section serves three pillars:
 - Tailwind v4: `text-[var(--color)]` is dropped silently → use a semantic util or
   `text-[color:var(...)]`. Font-size vars (`text-[length:var(--text-h2)]`) are fine.
 
+## The visual ladder + KDS classification (used by the `visual-director` skill)
+When choosing a section's visual, pick a **rung** — bias toward *drawing the idea*, not showing the UI:
+- **line-glyph** — a minimal line-drawn glyph/diagram that encodes the one idea. Default for most feature sections.
+- **concept-card** — a small abstracted card standing for a concept (never a dense product screenshot).
+- **schematic** — a diagram of a flow / relationship / map (e.g. a connector constellation, an orchestration map).
+- **product-window** — real product UI inside a `ShowcaseFrame`. Reserved for the ONE hero proof per page.
+- **atmosphere** — ambient warmth / depth / texture with no literal subject.
+- **none** — type + space only; let Besley carry the section.
+
+For each direction, classify how it relates to KDS:
+- **use** — render the existing KDS / marketing component as-is.
+- **manipulate** (DEFAULT) — strip / re-skin a KDS primitive: reuse its tactile + emboss work, restyle for marketing.
+- **build** — a bespoke new component, when boldness serves the vision and nothing existing fits. Don't let
+  "reuse" flatten a section that wants a signature glyph.
+
+**Subtle vs signature switch:** almost everything is *subtle* (ambient, secondary); exactly ONE *signature*
+("grab-onto") moment per page may be bold — it reads as a peak only because everything around it stays quiet.
+(Full motion detail: the `motion-and-easing` skill + `docs/motion.md`.)
+
 ## Banned patterns (the anti-slop list)
 - The repeated hero → stat-trio → 3 feature-splits → comparison → CTA rhythm. Vary archetypes.
 - Solution-first openers where a problem-first immersion would land harder.
