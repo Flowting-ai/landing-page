@@ -19,7 +19,7 @@ export default function LandingHero() {
   }, { scope });
 
   return (
-    <section ref={scope} className="relative overflow-hidden" style={{ paddingBlock: "var(--section-y-lg)" }}>
+    <section ref={scope} className="relative overflow-hidden" style={{ paddingTop: "var(--section-y-sm)", paddingBottom: "var(--section-y-lg)" }}>
       {/* Dappled foliage shadow — warm "light through leaves" cast on the cream.
           Full-bleed behind the centered hero, masked to dissolve before the content. */}
       <div

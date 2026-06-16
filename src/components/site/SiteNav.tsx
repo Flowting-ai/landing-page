@@ -24,7 +24,7 @@ export default function SiteNav() {
   const close = () => setOpen(false);
 
   return (
-    <header className="sticky top-0 z-50 pt-3">
+    <header className="sticky top-0 z-50">
       <Container wide>
         {/* glassy rounded bar (Figma 4818-11839: rounded-13, translucent, neutral-200 border) */}
         <div
