@@ -70,7 +70,8 @@ anchor copy to Figma, responsive reflow, screenshot-verify, commit.
       (6 connectors → 900+ Connectors → Brain → Ad Copywriter / Customer Quote Drafter / Email & SMS
       Lifecycle). Inserted after Problem. (Side automation cards + model logos deferred as a refinement.)
 - [x] **1.4 Turn** — built (`Turn.tsx`), minimal centered pivot line, Besley, correct rhythm. Confirmed.
-- [ ] **1.5 Two ways** — true 50/50, equal CTA weight, parallel structure; `<Section>` header.
+- [x] **1.5 Two ways** — both paths now use the same espresso CTA (true 50/50 equal billing);
+      parallel card structure retained. (Header kept centered via SectionHeading — fits the symmetric fork.)
 - [ ] **1.6 Slack × Brain (#11)** — `NodeMap`: Brain + Slack joined, rows (Research board / AI Agents /
       Automation Flows) with model + avatar chips and the `+` join nodes.
 - [ ] **1.7 Personas (#12)** — `Roster`: Drafter/Scout/Handle cards, @handles, Private/Research badges,
