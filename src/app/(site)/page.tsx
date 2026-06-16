@@ -6,6 +6,7 @@ import Relief from "@/components/LandingPage/Relief";
 import Turn from "@/components/LandingPage/Turn";
 import FeatureSplit from "@/components/AIAgentsPage/FeatureSplit";
 import Pillars from "@/components/LandingPage/Pillars";
+import BrainProof from "@/components/LandingPage/BrainProof";
 import CategoryTable from "@/components/LandingPage/CategoryTable";
 import FinalCTABand from "@/components/sections/FinalCTABand";
 import SlackBrainMap from "@/components/LandingPage/SlackBrainMap";
@@ -30,6 +31,7 @@ export default function Home() {
         visual={<SlackBrainMap />}
       />
       <Pillars />
+      <BrainProof />
       <CategoryTable />
       <FinalCTABand
         title="One Brain. A coordinated team of agents."

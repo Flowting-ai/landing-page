@@ -84,8 +84,9 @@ anchor copy to Figma, responsive reflow, screenshot-verify, commit.
 - [x] **1.9 Coordinated team (#14)** — `TeamRoster.tsx`: alternating Scout/Drafter/Ops/Analyst/Recruiter
       rows (role · @handle) via `<Roster>` offset, + the "Ask Chief in Slack" coordination note.
       Wired into Pillar 03 ("full AI department"). Removed the now-dead ROSTER const + Avatar import.
-- [ ] **1.10 Brain proof (#15)** — the ONE `Window`/`ShowcaseFrame`: composed Brain chat (sidebar,
-      thread, model selector, input) from KDS chat parts.
+- [x] **1.10 Brain proof (#15)** — `BrainProof.tsx`: the one `ShowcaseFrame` product window — nav rail
+      (Brain active) + thread (MessageBubble user/assistant, "Memory on" badge) + model-selector input,
+      from real KDS chat parts (ClientOnly). Inserted after Pillars, before Why-us.
 - [ ] **1.11 Why-us (CategoryTable)** — tighten to genuinely differentiating rows; icon+label (colorblind).
 - [ ] **1.12 Resolution (CTA)** — Figma close: app-grid backdrop + the dark band, mauve `.glow-signature`,
       clear CTA(s).
