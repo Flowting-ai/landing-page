@@ -87,9 +87,11 @@ anchor copy to Figma, responsive reflow, screenshot-verify, commit.
 - [x] **1.10 Brain proof (#15)** — `BrainProof.tsx`: the one `ShowcaseFrame` product window — nav rail
       (Brain active) + thread (MessageBubble user/assistant, "Memory on" badge) + model-selector input,
       from real KDS chat parts (ClientOnly). Inserted after Pillars, before Why-us.
-- [ ] **1.11 Why-us (CategoryTable)** — tighten to genuinely differentiating rows; icon+label (colorblind).
-- [ ] **1.12 Resolution (CTA)** — Figma close: app-grid backdrop + the dark band, mauve `.glow-signature`,
-      clear CTA(s).
+- [x] **1.11 Why-us (CategoryTable)** — cut 9→6 differentiating rows; competitor cells now dash-marker
+      + label (icon+label, colorblind-safe), Souvenir ✓+label.
+- [x] **1.12 Resolution (CTA)** — added an opt-in `appGrid` to FinalCTABand (Home only; shared component
+      safe): faded full-bleed app-icon grid backdrop, radial-masked to dissolve toward centre, dark band,
+      mauve `.glow-signature`, dual CTA. Matches Figma #16 close.
 
 ### PASS 1 — Layout-system hygiene (one predictable rhythm; token-expressed, low-risk)
 > ⛔ **This loop run stops after Phase 3.2.** Do PASS 1 + finish Phase 1–3, then halt — do NOT

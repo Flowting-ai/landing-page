@@ -5,34 +5,61 @@ import { ConnectorIcon } from "@strange-huge/icons/connectors";
 
 const CONNECTORS = ["slack", "figma", "notion", "gmail", "linear", "stripe", "github", "hubspot"];
 
-/** Shared dark final-CTA band with connector icons. Used across product pages. */
+/** Shared dark final-CTA band with connector icons. Used across product pages.
+ *  `appGrid` (Home close, Figma #16) swaps the connector row for a faded
+ *  full-bleed app-icon grid backdrop behind the band content. */
 export default function FinalCTABand({
   title,
   body,
   primary = "Book a Demo",
   secondary = "Join Discord Community",
+  appGrid = false,
 }: {
   title: string;
   body: string;
   primary?: string;
   secondary?: string;
+  appGrid?: boolean;
 }) {
   return (
     <section className="px-[var(--gutter)] py-[var(--section-y)]">
       <Container wide>
         <div className="relative overflow-hidden rounded-[var(--r-2xl)] bg-dark-bg px-6 py-16 sm:px-10 sm:py-20">
-          <div className="dotgrid-dark pointer-events-none absolute inset-0 opacity-60" />
-          <div className="glow-signature pointer-events-none absolute left-1/2 top-0 h-[360px] w-[560px] -translate-x-1/2 opacity-40" />
-          <div className="relative flex flex-col items-center text-center">
-            <Reveal>
-              <div className="mb-8 flex flex-wrap items-center justify-center gap-2.5">
-                {CONNECTORS.map((c) => (
-                  <span key={c} className="flex h-10 w-10 items-center justify-center rounded-[10px] border border-[var(--dark-line)] bg-[var(--dark-surface)]">
-                    <ConnectorIcon id={c} size={20} />
+          {appGrid ? (
+            // faded app-icon grid backdrop — masked to dissolve toward the centre
+            // so the headline stays legible (valid ConnectorIcon ids only).
+            <div
+              aria-hidden
+              className="pointer-events-none absolute inset-0 opacity-[0.14]"
+              style={{
+                WebkitMaskImage: "radial-gradient(120% 75% at 50% 50%, transparent 28%, #000 85%)",
+                maskImage: "radial-gradient(120% 75% at 50% 50%, transparent 28%, #000 85%)",
+              }}
+            >
+              <div className="grid h-full grid-cols-5 place-items-center gap-3 p-3 sm:grid-cols-8">
+                {Array.from({ length: 32 }).map((_, i) => (
+                  <span key={i} className="flex h-11 w-11 items-center justify-center rounded-[10px] border border-[var(--dark-line)] bg-[var(--dark-surface)]">
+                    <ConnectorIcon id={CONNECTORS[i % CONNECTORS.length]} size={20} />
                   </span>
                 ))}
               </div>
-            </Reveal>
+            </div>
+          ) : (
+            <div className="dotgrid-dark pointer-events-none absolute inset-0 opacity-60" />
+          )}
+          <div className="glow-signature pointer-events-none absolute left-1/2 top-0 h-[360px] w-[560px] -translate-x-1/2 opacity-40" />
+          <div className="relative flex flex-col items-center text-center">
+            {!appGrid && (
+              <Reveal>
+                <div className="mb-8 flex flex-wrap items-center justify-center gap-2.5">
+                  {CONNECTORS.map((c) => (
+                    <span key={c} className="flex h-10 w-10 items-center justify-center rounded-[10px] border border-[var(--dark-line)] bg-[var(--dark-surface)]">
+                      <ConnectorIcon id={c} size={20} />
+                    </span>
+                  ))}
+                </div>
+              </Reveal>
+            )}
             <Reveal delay={0.08}>
               <h2 className="font-display max-w-[20ch] text-[length:var(--text-h1)] leading-[var(--text-h1--line-height)] tracking-[var(--text-h1--letter-spacing)] text-dark-ink">{title}</h2>
             </Reveal>

@@ -34,6 +34,7 @@ export default function Home() {
       <BrainProof />
       <CategoryTable />
       <FinalCTABand
+        appGrid
         title="One Brain. A coordinated team of agents."
         body="Souvenir brings your apps, scattered data, and daily workflows into a single operational layer — with a dedicated workforce of AI Assistants to run your work on autopilot."
       />
