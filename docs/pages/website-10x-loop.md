@@ -66,10 +66,10 @@ anchor copy to Figma, responsive reflow, screenshot-verify, commit.
 - [x] **1.2 Problem (#9 Chaos)** — `Scatter` of chat bubbles + browser-tab pile on the `<Visual>`
       diorama, signature assemble wired. Matches Figma #9. (Tab favicons = neutral placeholders;
       real app logos deferred to an asset-pull.)
-- [ ] **1.3 Souvenir relief (#10)** — `NodeMap`: connectors (Ads/Gmail/Quickbooks/Slack/Salesforce/
-      Sheets) → "900+ Connectors" → Brain → "Agents" (Ad Copywriter / Customer Quote Drafter / Email &
-      SMS Lifecycle) + automation cards (Morning Briefing, Utilization Report) + model logos.
-- [ ] **1.4 Turn** — keep minimal; confirm rhythm + Besley.
+- [x] **1.3 Souvenir relief (#10)** — `Relief.tsx`: "With Souvenir" badge + Besley headline + `NodeMap`
+      (6 connectors → 900+ Connectors → Brain → Ad Copywriter / Customer Quote Drafter / Email & SMS
+      Lifecycle). Inserted after Problem. (Side automation cards + model logos deferred as a refinement.)
+- [x] **1.4 Turn** — built (`Turn.tsx`), minimal centered pivot line, Besley, correct rhythm. Confirmed.
 - [ ] **1.5 Two ways** — true 50/50, equal CTA weight, parallel structure; `<Section>` header.
 - [ ] **1.6 Slack × Brain (#11)** — `NodeMap`: Brain + Slack joined, rows (Research board / AI Agents /
       Automation Flows) with model + avatar chips and the `+` join nodes.

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import LandingHero from "@/components/LandingPage/LandingHero";
 import TwoWays from "@/components/LandingPage/TwoWays";
 import Breaking from "@/components/LandingPage/Breaking";
+import Relief from "@/components/LandingPage/Relief";
 import Turn from "@/components/LandingPage/Turn";
 import FeatureSplit from "@/components/AIAgentsPage/FeatureSplit";
 import Pillars from "@/components/LandingPage/Pillars";
@@ -19,6 +20,7 @@ export default function Home() {
     <>
       <LandingHero />
       <Breaking />
+      <Relief />
       <Turn />
       <TwoWays />
       <FeatureSplit
