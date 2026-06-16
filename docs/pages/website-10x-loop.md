@@ -52,8 +52,9 @@ download only true assets; **(c)** build from one of 4 archetypes; **(d)** wrap 
       runtime measurement; reflow (stack) on mobile. Written to `docs/solutions/design-patterns/concept-visuals.md`.
 - [x] **0.2** `<Visual>` diorama frame built (`components/sections/Visual.tsx`) — warm/panel/bare
       surface, emboss, optional dashed-focus boundary, aspect-ratio. Storybook story added.
-- [ ] **0.3** Build `<NodeMap nodes edges>` primitive (absolute nodes + inline SVG edges, tokenized,
-      mobile = vertical stack). Storybook story with a sample graph.
+- [x] **0.3** `<NodeMap nodes edges>` built (`components/sections/NodeMap.tsx`) — absolute KDS nodes +
+      inline SVG cubic-bezier edges in a fixed viewBox, mobile reflow to stack. Storybook story verified
+      (connectors→900+→Brain→agents renders cleanly on the <Visual> panel).
 - [ ] **0.4** Build `<Scatter>` primitive (z-layered offset cards; `assemble` prop reuses the §2
       motion spec). Storybook story.
 
