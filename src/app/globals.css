@@ -65,9 +65,9 @@
 
   /* Fluid marketing type scale (display bigger than the product's 40px cap).
      Type tokens live in the @theme bridge so Tailwind emits text-* utilities. */
-  --text-hero: clamp(3rem, 1.7rem + 6vw, 6rem);             /* 48 → 96 editorial hero */
-  --text-hero--line-height: 1.0;
-  --text-hero--letter-spacing: -0.025em;
+  --text-hero: clamp(2rem, 1.2rem + 2.2vw, 2.625rem);       /* 32 → 42 editorial hero (smaller, per Chai) */
+  --text-hero--line-height: 1.12;
+  --text-hero--letter-spacing: -0.02em;
 
   --text-display: clamp(2.5rem, 1.7rem + 2.6vw, 4rem);      /* 40 → 64 big section heads */
   --text-display--line-height: 1.05;
