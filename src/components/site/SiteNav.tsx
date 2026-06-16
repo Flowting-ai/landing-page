@@ -35,8 +35,10 @@ export default function SiteNav() {
             <Logo variant="lockup" height={24} className="text-ink" />
           </a>
 
-          {/* desktop mega-menu nav (centered) */}
-          <div className="absolute left-1/2 hidden -translate-x-1/2 md:block">
+          {/* desktop mega-menu nav (centered). Shown at lg+ only — the centered
+              menu needs ~1024px to clear the logo + CTAs; below that it collided
+              (Pricing/About clipped behind the buttons), so 768–1023 uses the sheet. */}
+          <div className="absolute left-1/2 hidden -translate-x-1/2 lg:block">
             <MegaMenu />
           </div>
 
@@ -51,7 +53,7 @@ export default function SiteNav() {
               aria-label={open ? "Close menu" : "Open menu"}
               aria-expanded={open}
               onClick={() => setOpen((v) => !v)}
-              className="ml-1 flex h-10 w-10 items-center justify-center rounded-[var(--r-md)] text-ink hover:bg-surface-warm md:hidden"
+              className="ml-1 flex h-10 w-10 items-center justify-center rounded-[var(--r-md)] text-ink hover:bg-surface-warm lg:hidden"
             >
               {open ? <X size={20} /> : <Menu size={20} />}
             </button>
@@ -59,9 +61,9 @@ export default function SiteNav() {
         </div>
       </Container>
 
-      {/* mobile sheet */}
+      {/* mobile / tablet sheet (below lg) */}
       {open && (
-        <Container wide className="md:hidden">
+        <Container wide className="lg:hidden">
           <div className="mt-2 rounded-[16px] border border-line bg-surface p-3" style={{ boxShadow: "var(--shadow-md)" }}>
             <span className="block px-2.5 pb-1 pt-1 font-sans text-[var(--text-micro)] font-medium uppercase tracking-[0.1em] text-ink-subtle">Product</span>
             {PRODUCT.map((it) => <MobileRow key={it.label} item={it} onPick={close} />)}

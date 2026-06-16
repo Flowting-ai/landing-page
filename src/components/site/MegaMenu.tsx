@@ -122,7 +122,7 @@ function SolutionPanel() {
 
 export default function MegaMenu() {
   return (
-    <NavigationMenu.Root delayDuration={80} className="relative hidden md:block">
+    <NavigationMenu.Root delayDuration={80} className="relative hidden lg:block">
       <NavigationMenu.List className="flex items-center gap-1.5">
         <NavigationMenu.Item>
           <NavigationMenu.Trigger className={triggerCls}>
