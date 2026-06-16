@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import LandingHero from "@/components/LandingPage/LandingHero";
 import TwoWays from "@/components/LandingPage/TwoWays";
 import Breaking from "@/components/LandingPage/Breaking";
+import Turn from "@/components/LandingPage/Turn";
 import FeatureSplit from "@/components/AIAgentsPage/FeatureSplit";
 import Pillars from "@/components/LandingPage/Pillars";
 import CategoryTable from "@/components/LandingPage/CategoryTable";
@@ -17,8 +18,9 @@ export default function Home() {
   return (
     <>
       <LandingHero />
-      <TwoWays />
       <Breaking />
+      <Turn />
+      <TwoWays />
       <FeatureSplit
         eyebrow="Intelligent context layer"
         title="Your knowledge, deeply understood. Acted on."
