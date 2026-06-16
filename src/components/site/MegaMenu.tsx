@@ -51,7 +51,7 @@ const LINKS = [
 ];
 
 const triggerCls =
-  "group inline-flex items-center gap-1 rounded-[8px] px-2 py-1.5 font-sans text-[var(--text-small)] text-ink-secondary outline-none transition-colors hover:text-ink data-[state=open]:text-ink";
+  "group inline-flex items-center gap-1 rounded-[8px] px-2 py-1.5 font-sans text-[var(--text-small)] text-ink-secondary outline-none transition-colors hover:text-[color:var(--accent)] data-[state=open]:text-[color:var(--accent)]";
 
 function Row({ item, onPick }: { item: MenuItem; onPick?: () => void }) {
   return (
@@ -147,7 +147,7 @@ export default function MegaMenu() {
         {LINKS.map((l) => (
           <NavigationMenu.Item key={l.label}>
             <NavigationMenu.Link asChild>
-              <a href={l.href} className="inline-flex items-center rounded-[8px] px-2 py-1.5 font-sans text-[var(--text-small)] text-ink-secondary transition-colors hover:text-ink">{l.label}</a>
+              <a href={l.href} className="inline-flex items-center rounded-[8px] px-2 py-1.5 font-sans text-[var(--text-small)] text-ink-secondary transition-colors hover:text-[color:var(--accent)]">{l.label}</a>
             </NavigationMenu.Link>
           </NavigationMenu.Item>
         ))}

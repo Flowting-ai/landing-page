@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { ConnectorIcon } from "@strange-huge/icons/connectors";
 import Container from "@/components/ui/Container";
@@ -21,15 +21,25 @@ function MobileRow({ item, onPick }: { item: MenuItem; onPick: () => void }) {
 
 export default function SiteNav() {
   const [open, setOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
   const close = () => setOpen(false);
+
+  // Scrolled state: the floating pill firms up once you leave the top — a touch
+  // more opaque + a stronger warm shadow, so it reads as lifted over content.
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
     <header className="sticky top-0 z-50 pt-6">
       <Container wide>
         {/* glassy rounded bar (Figma 4818-11839: rounded-13, translucent, neutral-200 border) */}
         <div
-          className="relative flex items-center justify-between rounded-[13px] border border-line-strong bg-surface/70 px-3 py-2 backdrop-blur-md"
-          style={{ boxShadow: "var(--shadow-sm)" }}
+          className={`relative flex items-center justify-between rounded-[13px] border border-line-strong px-3 py-2 backdrop-blur-md transition-[background-color,box-shadow] duration-300 ${scrolled ? "bg-surface/85" : "bg-surface/70"}`}
+          style={{ boxShadow: scrolled ? "var(--shadow-md)" : "var(--shadow-sm)" }}
         >
           <a href="/" aria-label="Souvenir home" className="inline-flex items-center px-1.5">
             <Logo variant="lockup" height={24} className="text-ink" />

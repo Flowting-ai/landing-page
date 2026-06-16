@@ -120,8 +120,10 @@ anchor copy to Figma, responsive reflow, screenshot-verify, commit.
       chapters; espresso CTA intact, zero inline hex/px, no navy; no overflow 390/768/1024/1440, no console errors.
 
 ### Phase 2 — Chrome
-- [ ] **2.1 Nav** — optimize the floating pill: tighter height/baseline, mauve link hover, espresso CTA,
-      ink focus rings, scrolled-state shadow, real mobile menu. (Clipping + top-start already fixed.)
+- [x] **2.1 Nav** — scrolled-state polish: pill firms up past the top (bg 0.7→0.85 + shadow-sm→md,
+      300ms transition); mauve link hover + open-state on MegaMenu triggers and Pricing/About (verified
+      rgb(103,79,104)=#674F68). Espresso CTA + ink focus + mobile sheet already in place; clipping +
+      24px offset done earlier.
 - [ ] **2.2 Footer** — editorial footer matching the system (columns, wordmark, the spine line).
 
 ### Phase 3 — Motion & micro (the "feel")
