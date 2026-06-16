@@ -3,22 +3,14 @@ import Reveal from "@/components/ui/Reveal";
 import SectionHeading from "@/components/sections/SectionHeading";
 import { Avatar } from "@/components/Avatar";
 import { Badge } from "@/components/Badge";
+import PersonaRoster from "@/components/LandingPage/PersonaRoster";
 
 const ROSTER = ["Scout", "Drafter", "Ops", "Analyst", "Recruiter"];
 
 function PillarVisual({ kind }: { kind: number }) {
   if (kind === 0) {
-    return (
-      <div className="flex flex-col gap-2">
-        {["Drafter", "Scout"].map((n) => (
-          <div key={n} className="flex items-center gap-2.5 rounded-[var(--r-md)] border border-line bg-surface px-3 py-2.5" style={{ boxShadow: "var(--shadow-sm)" }}>
-            <Avatar name={n} size="sm" color="var(--neutral-700)" />
-            <span className="font-sans text-[var(--text-small)] font-medium text-ink">{n}</span>
-            <span className="ml-auto"><Badge label="Active" color="Green" /></span>
-          </div>
-        ))}
-      </div>
-    );
+    // #12 personas roster — the "team of Assistants" pillar
+    return <PersonaRoster />;
   }
   if (kind === 1) {
     return (

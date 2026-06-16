@@ -75,8 +75,9 @@ anchor copy to Figma, responsive reflow, screenshot-verify, commit.
 - [x] **1.6 Slack × Brain (#11)** — `SlackBrainMap.tsx`: Brain+Slack header joined via `+` nodes down
       to Research board / AI Agents (+12) / Automation Flows rows with model dots + avatar stacks.
       Wired as the visual for the "Your knowledge, deeply understood" FeatureSplit (replaced SlackWorkforceMap).
-- [ ] **1.7 Personas (#12)** — `Roster`: Drafter/Scout/Handle cards, @handles, Private/Research badges,
-      one elevated card with description + dashed-focus boundary.
+- [x] **1.7 Personas (#12)** — built `<Roster>` primitive + `PersonaRoster.tsx`: Drafter/Scout/Handle
+      cards (@handles, Private/Research badges), Scout elevated with description (the "live one").
+      Wired into Pillar 01 ("A team of Assistants"). (Avatar initials placeholder for persona illustrations.)
 - [ ] **1.8 Automations (#13)** — `Scatter`: overlapping cards (Floor Briefing / Morning Briefing /
       Utilization Report / Catalog Integrity) with schedule badges + connector icons, depth/offset.
 - [ ] **1.9 Coordinated team (#14)** — `Roster`: Scout/Drafter/Ops/Analyst/Recruiter alternating
