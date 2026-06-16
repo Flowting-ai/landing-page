@@ -72,8 +72,9 @@ anchor copy to Figma, responsive reflow, screenshot-verify, commit.
 - [x] **1.4 Turn** — built (`Turn.tsx`), minimal centered pivot line, Besley, correct rhythm. Confirmed.
 - [x] **1.5 Two ways** — both paths now use the same espresso CTA (true 50/50 equal billing);
       parallel card structure retained. (Header kept centered via SectionHeading — fits the symmetric fork.)
-- [ ] **1.6 Slack × Brain (#11)** — `NodeMap`: Brain + Slack joined, rows (Research board / AI Agents /
-      Automation Flows) with model + avatar chips and the `+` join nodes.
+- [x] **1.6 Slack × Brain (#11)** — `SlackBrainMap.tsx`: Brain+Slack header joined via `+` nodes down
+      to Research board / AI Agents (+12) / Automation Flows rows with model dots + avatar stacks.
+      Wired as the visual for the "Your knowledge, deeply understood" FeatureSplit (replaced SlackWorkforceMap).
 - [ ] **1.7 Personas (#12)** — `Roster`: Drafter/Scout/Handle cards, @handles, Private/Research badges,
       one elevated card with description + dashed-focus boundary.
 - [ ] **1.8 Automations (#13)** — `Scatter`: overlapping cards (Floor Briefing / Morning Briefing /

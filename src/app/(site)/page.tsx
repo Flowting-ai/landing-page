@@ -8,7 +8,7 @@ import FeatureSplit from "@/components/AIAgentsPage/FeatureSplit";
 import Pillars from "@/components/LandingPage/Pillars";
 import CategoryTable from "@/components/LandingPage/CategoryTable";
 import FinalCTABand from "@/components/sections/FinalCTABand";
-import { SlackWorkforceMap } from "@/components/SlackPage/visuals";
+import SlackBrainMap from "@/components/LandingPage/SlackBrainMap";
 
 export const metadata: Metadata = {
   title: "Souvenir — All your apps unified into one AI Brain",
@@ -27,7 +27,7 @@ export default function Home() {
         eyebrow="Intelligent context layer"
         title="Your knowledge, deeply understood. Acted on."
         body="Any tool can pull information from your apps. Souvenir goes further — the Brain develops a rich understanding of your knowledge and puts it to work. Our AI Assistants don't just tell you things. They execute real work."
-        visual={<SlackWorkforceMap />}
+        visual={<SlackBrainMap />}
       />
       <Pillars />
       <CategoryTable />
