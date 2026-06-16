@@ -81,8 +81,9 @@ anchor copy to Figma, responsive reflow, screenshot-verify, commit.
 - [x] **1.8 Automations (#13)** — `AutomationScatter.tsx`: overlapping pile (Floor / Morning /
       Utilization / Catalog) with ochre schedule + warm trigger badges, z-ordered so titles stay
       legible. Wired into Pillar 02 ("Background automation"). (Connector icons on cards deferred.)
-- [ ] **1.9 Coordinated team (#14)** — `Roster`: Scout/Drafter/Ops/Analyst/Recruiter alternating
-      rows with @handles + one-line roles + the "Ask Chief in Slack" note.
+- [x] **1.9 Coordinated team (#14)** — `TeamRoster.tsx`: alternating Scout/Drafter/Ops/Analyst/Recruiter
+      rows (role · @handle) via `<Roster>` offset, + the "Ask Chief in Slack" coordination note.
+      Wired into Pillar 03 ("full AI department"). Removed the now-dead ROSTER const + Avatar import.
 - [ ] **1.10 Brain proof (#15)** — the ONE `Window`/`ShowcaseFrame`: composed Brain chat (sidebar,
       thread, model selector, input) from KDS chat parts.
 - [ ] **1.11 Why-us (CategoryTable)** — tighten to genuinely differentiating rows; icon+label (colorblind).

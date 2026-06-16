@@ -1,12 +1,10 @@
 import Container from "@/components/ui/Container";
 import Reveal from "@/components/ui/Reveal";
 import SectionHeading from "@/components/sections/SectionHeading";
-import { Avatar } from "@/components/Avatar";
 import { Badge } from "@/components/Badge";
 import PersonaRoster from "@/components/LandingPage/PersonaRoster";
 import AutomationScatter from "@/components/LandingPage/AutomationScatter";
-
-const ROSTER = ["Scout", "Drafter", "Ops", "Analyst", "Recruiter"];
+import TeamRoster from "@/components/LandingPage/TeamRoster";
 
 function PillarVisual({ kind }: { kind: number }) {
   if (kind === 0) {
@@ -18,15 +16,8 @@ function PillarVisual({ kind }: { kind: number }) {
     return <AutomationScatter />;
   }
   if (kind === 2) {
-    return (
-      <div className="flex flex-wrap gap-2">
-        {ROSTER.map((r) => (
-          <span key={r} className="inline-flex items-center gap-2 rounded-[var(--r-pill)] border border-line bg-surface px-2.5 py-1.5 font-sans text-[var(--text-micro)] text-ink-secondary" style={{ boxShadow: "var(--shadow-sm)" }}>
-            <Avatar name={r} size="xs" color="var(--neutral-700)" />{r}
-          </span>
-        ))}
-      </div>
-    );
+    // #14 coordinated team roster — the "full AI department" pillar
+    return <TeamRoster />;
   }
   return (
     <div className="flex flex-col gap-1.5">
