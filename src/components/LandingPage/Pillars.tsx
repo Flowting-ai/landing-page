@@ -4,6 +4,7 @@ import SectionHeading from "@/components/sections/SectionHeading";
 import { Avatar } from "@/components/Avatar";
 import { Badge } from "@/components/Badge";
 import PersonaRoster from "@/components/LandingPage/PersonaRoster";
+import AutomationScatter from "@/components/LandingPage/AutomationScatter";
 
 const ROSTER = ["Scout", "Drafter", "Ops", "Analyst", "Recruiter"];
 
@@ -13,16 +14,8 @@ function PillarVisual({ kind }: { kind: number }) {
     return <PersonaRoster />;
   }
   if (kind === 1) {
-    return (
-      <div className="flex flex-col gap-2">
-        {[["Morning Briefing", "Daily · 8 AM"], ["Utilization Report", "Weekly"]].map(([t, w]) => (
-          <div key={t} className="flex items-center justify-between rounded-[var(--r-md)] border border-line bg-surface px-3 py-2.5" style={{ boxShadow: "var(--shadow-sm)" }}>
-            <span className="flex items-center gap-2 font-sans text-[var(--text-small)] font-medium text-ink"><span className="flex h-6 w-6 items-center justify-center rounded-full bg-ink text-[var(--text-micro)] text-dark-ink">↻</span>{t}</span>
-            <span className="font-sans text-[var(--text-micro)] text-ink-subtle">{w}</span>
-          </div>
-        ))}
-      </div>
-    );
+    // #13 automations scatter — the "background automation" pillar
+    return <AutomationScatter />;
   }
   if (kind === 2) {
     return (

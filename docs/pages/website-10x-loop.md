@@ -78,8 +78,9 @@ anchor copy to Figma, responsive reflow, screenshot-verify, commit.
 - [x] **1.7 Personas (#12)** — built `<Roster>` primitive + `PersonaRoster.tsx`: Drafter/Scout/Handle
       cards (@handles, Private/Research badges), Scout elevated with description (the "live one").
       Wired into Pillar 01 ("A team of Assistants"). (Avatar initials placeholder for persona illustrations.)
-- [ ] **1.8 Automations (#13)** — `Scatter`: overlapping cards (Floor Briefing / Morning Briefing /
-      Utilization Report / Catalog Integrity) with schedule badges + connector icons, depth/offset.
+- [x] **1.8 Automations (#13)** — `AutomationScatter.tsx`: overlapping pile (Floor / Morning /
+      Utilization / Catalog) with ochre schedule + warm trigger badges, z-ordered so titles stay
+      legible. Wired into Pillar 02 ("Background automation"). (Connector icons on cards deferred.)
 - [ ] **1.9 Coordinated team (#14)** — `Roster`: Scout/Drafter/Ops/Analyst/Recruiter alternating
       rows with @handles + one-line roles + the "Ask Chief in Slack" note.
 - [ ] **1.10 Brain proof (#15)** — the ONE `Window`/`ShowcaseFrame`: composed Brain chat (sidebar,
