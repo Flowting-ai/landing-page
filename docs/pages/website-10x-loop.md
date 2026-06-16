@@ -102,8 +102,9 @@ anchor copy to Figma, responsive reflow, screenshot-verify, commit.
       Relief/BrainProof on the bigger `--text-display`; aligned to match SectionHeading/FeatureSplit/
       Pillars/CategoryTable). Hero = hero tier; pillar/path titles = h3; body = body. Italic spans are
       same-size tonal shifts (already correct). All token-driven, no inline px.
-- [ ] **P1.2 One spacing system** — 4/8-based tokens everywhere. Section padding = large tiers;
-      heading→body and body→CTA = mid tiers; stacked-section separation = largest. No hand-tuned 18/26/34px.
+- [x] **P1.2 One spacing system** — audited: already satisfied. Every section uses `--section-y`
+      (hero uses the larger -sm/-lg tiers); child spacing is all Tailwind's 4px scale; **zero** arbitrary
+      `[..px]` or hand-tuned 18/26/34px values. No code change — verified clean, not manufactured churn.
 - [ ] **P1.3 Before/after chapter** — mirror Chaos vs With-Souvenir as a clean 2-col chapter, shared
       h2, aligned card padding (reuse later for Company Brain Without/With).
 - [ ] **P1.4 Matched Two-ways cards** — equal structure, equal heights, CTAs baseline-aligned.
