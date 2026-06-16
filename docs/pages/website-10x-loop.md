@@ -91,9 +91,31 @@ anchor copy to Figma, responsive reflow, screenshot-verify, commit.
 - [ ] **1.12 Resolution (CTA)** — Figma close: app-grid backdrop + the dark band, mauve `.glow-signature`,
       clear CTA(s).
 
+### PASS 1 — Layout-system hygiene (one predictable rhythm; token-expressed, low-risk)
+> ⛔ **This loop run stops after Phase 3.2.** Do PASS 1 + finish Phase 1–3, then halt — do NOT
+> start Phase 4/5/6. **Rejections (hard):** no brown→navy gradient CTA / no navy anywhere (keep the
+> Kaya espresso button); do NOT cap the hero at 40px (marketing display tier lives above 40); zero
+> inline hex or arbitrary px Tailwind (`text-[32px]`, `#6b4b30`) — everything through Kaya/marketing tokens.
+- [x] **P1.0 Hero decouple + top** — hero in its own container, top padding tokenized (`--section-y-sm`),
+      decoupled from the decorative foliage; nav flush to top; hero 42px, no clip, no dead gap. Done.
+- [ ] **P1.1 Type scale as tokens** — define/confirm the marketing tier (display = Besley fluid
+      ~44→72 for hero; then h2 / h3 / body / meta). Apply consistently: hero = display; section titles
+      ("Six tabs…", "Two ways…", "Your knowledge…", "One Workspace…", "There is no second place.") = h2;
+      pillar titles + "Souvenir for Individuals/Teams" = h3; paragraphs/bullets/table = body. Italic
+      spans = tonal shift at the SAME size as their headline, never a second oversized tier.
+- [ ] **P1.2 One spacing system** — 4/8-based tokens everywhere. Section padding = large tiers;
+      heading→body and body→CTA = mid tiers; stacked-section separation = largest. No hand-tuned 18/26/34px.
+- [ ] **P1.3 Before/after chapter** — mirror Chaos vs With-Souvenir as a clean 2-col chapter, shared
+      h2, aligned card padding (reuse later for Company Brain Without/With).
+- [ ] **P1.4 Matched Two-ways cards** — equal structure, equal heights, CTAs baseline-aligned.
+- [ ] **P1.5 Templatize Pillars 01–04** — one structure (label → h3 → body → visual), predictable
+      vertical rhythm between them.
+- [ ] **P1 done when:** type from tokens (hero = display tier); one spacing scale, scroll reads as even
+      chapters; espresso CTA intact, zero inline hex/px, no navy; no overflow 390/768/1024/1440, no console errors.
+
 ### Phase 2 — Chrome
 - [ ] **2.1 Nav** — optimize the floating pill: tighter height/baseline, mauve link hover, espresso CTA,
-      ink focus rings, scrolled-state shadow, real mobile menu.
+      ink focus rings, scrolled-state shadow, real mobile menu. (Clipping + top-start already fixed.)
 - [ ] **2.2 Footer** — editorial footer matching the system (columns, wordmark, the spine line).
 
 ### Phase 3 — Motion & micro (the "feel")
