@@ -9,7 +9,7 @@ const meta = {
   title: "Primitives/Scatter",
   component: Scatter,
   parameters: { layout: "padded" },
-  args: { assemble: true },
+  args: { assemble: true, items: [] }, // render story supplies its own items
   argTypes: { assemble: { control: "boolean" } },
   decorators: [(Story) => <div style={{ maxWidth: 760, margin: "0 auto", padding: 32 }}><Story /></div>],
 } satisfies Meta<typeof Scatter>;

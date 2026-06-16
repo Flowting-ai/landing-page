@@ -10,6 +10,7 @@ const meta = {
   title: "Primitives/NodeMap",
   component: NodeMap,
   parameters: { layout: "padded" },
+  args: { nodes: [] }, // render stories supply their own data; satisfies the required prop
   decorators: [(Story) => <div style={{ maxWidth: 760, margin: "0 auto", padding: 32 }}><Story /></div>],
 } satisfies Meta<typeof NodeMap>;
 export default meta;
