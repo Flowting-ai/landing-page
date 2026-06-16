@@ -47,11 +47,11 @@ download only true assets; **(c)** build from one of 4 archetypes; **(d)** wrap 
 ## NEXT TO DO (ordered queue)
 
 ### Phase 0 — Visual foundations (build once, every section inherits)
-- [ ] **0.1** Quick research scan (≤15 min): how Linear/Vercel/Antimetal/Retool build system-map
-      visuals; capture 2–3 SVG connector-path techniques (elbow vs curve, responsive viewBox) +
-      the dashed-focus motif. Write findings to `docs/solutions/design-patterns/concept-visuals.md`.
-- [ ] **0.2** Build `<Visual>` diorama frame (sibling to `<Section>`): cream/foliage backdrop,
-      padding, emboss, optional dashed-focus boundary, responsive container. Storybook story.
+- [x] **0.1** Quick research scan: hand-coded SVG beats a graph lib for static marketing diagrams;
+      SVG-over-nodes layer (pointer-events:none) in a fixed viewBox %-coord space → responsive, no
+      runtime measurement; reflow (stack) on mobile. Written to `docs/solutions/design-patterns/concept-visuals.md`.
+- [x] **0.2** `<Visual>` diorama frame built (`components/sections/Visual.tsx`) — warm/panel/bare
+      surface, emboss, optional dashed-focus boundary, aspect-ratio. Storybook story added.
 - [ ] **0.3** Build `<NodeMap nodes edges>` primitive (absolute nodes + inline SVG edges, tokenized,
       mobile = vertical stack). Storybook story with a sample graph.
 - [ ] **0.4** Build `<Scatter>` primitive (z-layered offset cards; `assemble` prop reuses the §2
