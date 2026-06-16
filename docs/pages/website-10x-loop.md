@@ -55,8 +55,9 @@ download only true assets; **(c)** build from one of 4 archetypes; **(d)** wrap 
 - [x] **0.3** `<NodeMap nodes edges>` built (`components/sections/NodeMap.tsx`) — absolute KDS nodes +
       inline SVG cubic-bezier edges in a fixed viewBox, mobile reflow to stack. Storybook story verified
       (connectors→900+→Brain→agents renders cleanly on the <Visual> panel).
-- [ ] **0.4** Build `<Scatter>` primitive (z-layered offset cards; `assemble` prop reuses the §2
-      motion spec). Storybook story.
+- [x] **0.4** `<Scatter>` built (`components/sections/Scatter.tsx`) — z-layered offset cards,
+      centering/rotation separated from the GSAP layer, `assemble` prop = the signature scatter→settle,
+      mobile reflow to stack. Storybook story verified (overlapping automation cards land cleanly).
 
 ### Phase 1 — Sections, built to the Figma (the spine)
 For each: resolve the Figma child node, set header via `<Section>`, build the visual via an archetype,
