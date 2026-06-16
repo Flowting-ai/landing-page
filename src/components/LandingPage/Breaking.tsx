@@ -1,105 +1,67 @@
-"use client";
-
-import { useRef } from "react";
-import gsap from "gsap";
-import { useGSAP } from "@gsap/react";
 import Container from "@/components/ui/Container";
 import Reveal from "@/components/ui/Reveal";
 import { Badge } from "@/components/Badge";
-import { ConnectorIcon } from "@strange-huge/icons/connectors";
+import Visual from "@/components/sections/Visual";
+import Scatter, { type ScatterItem } from "@/components/sections/Scatter";
 
-gsap.registerPlugin(useGSAP);
+/** Problem (home.md §2, Figma #9 "Chaos"): scattered chat bubbles over a pile of
+ *  browser tabs — the felt low. The signature scatter→settle entrance lives here
+ *  (Scatter `assemble`). Pure problem; the turn that follows is the pivot. */
 
-const TABS = ["Zapier", "Manus", "Gemini", "Make", "Claude", "Notion"];
-const NODES = ["Research board", "AI Agents", "Automation Flows", "Memory & Pins"];
-const CONNECTORS = ["slack", "gmail", "notion", "stripe", "github", "linear"];
+const TABS = ["Zapier", "Manus", "Gemini", "Make", "Claude", "Notion", "ChatGPT", "Figma"];
+
+function Bubble({ text, flip = false }: { text: string; flip?: boolean }) {
+  const avatar = <span aria-hidden className="h-11 w-11 shrink-0 rounded-full bg-line-strong" />;
+  const bubble = (
+    <span className="max-w-[16rem] rounded-[var(--r-lg)] border border-line bg-surface px-4 py-2.5 font-sans text-[var(--text-small)] text-ink" style={{ boxShadow: "var(--shadow-sm)" }}>
+      {text}
+    </span>
+  );
+  return <div className="flex items-center gap-3">{flip ? (<>{bubble}{avatar}</>) : (<>{avatar}{bubble}</>)}</div>;
+}
+
+const BUBBLES: ScatterItem[] = [
+  { id: "b1", x: 50, y: 18, z: 4, rotate: -1, node: <Bubble text="Which AI for which job? Nobody knows." /> },
+  { id: "b2", x: 32, y: 40, z: 3, rotate: 1, node: <Bubble flip text="Every employee uses AI alone." /> },
+  { id: "b3", x: 56, y: 56, z: 2, rotate: -1, node: <Bubble text="Every employee uses AI alone." /> },
+  { id: "b4", x: 38, y: 72, z: 1, rotate: 2, node: <Bubble flip text="Every employee uses AI alone." /> },
+];
 
 export default function Breaking() {
-  const scope = useRef<HTMLElement | null>(null);
-
-  // The page's ONE signature moment: the Souvenir side's fragments (connectors,
-  // the Brain, the nodes) start scattered and ASSEMBLE into order as the section
-  // enters — "the memory your work keeps" made physical. transform/opacity only,
-  // ~40ms stagger, ease-out, plays once, full static under reduced-motion.
-  useGSAP(() => {
-    const els = gsap.utils.toArray<HTMLElement>("[data-assemble]");
-    if (!els.length) return;
-    const reduce = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches ?? false;
-    if (reduce) { gsap.set(els, { opacity: 1, x: 0, y: 0, rotate: 0, scale: 1 }); return; }
-
-    els.forEach((el, i) => {
-      const dir = i % 2 ? 1 : -1;
-      gsap.set(el, { opacity: 0, x: dir * (22 + (i % 3) * 16), y: -16 - (i % 4) * 12, rotate: dir * (4 + (i % 3) * 3), scale: 0.92 });
-    });
-
-    const io = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((e) => {
-          if (e.isIntersecting) {
-            gsap.to(els, { opacity: 1, x: 0, y: 0, rotate: 0, scale: 1, duration: 0.7, ease: "power3.out", stagger: 0.04 });
-            io.disconnect();
-          }
-        });
-      },
-      { threshold: 0.25, rootMargin: "0px 0px -10% 0px" },
-    );
-    if (scope.current) io.observe(scope.current);
-    return () => io.disconnect();
-  }, { scope });
-
   return (
-    <section ref={scope} className="py-[var(--section-y)]">
+    <section className="py-[var(--section-y)]">
       <Container>
-        <div className="text-center">
+        <div className="flex flex-col items-start text-left">
           <Reveal>
-            <h2 className="font-display mx-auto max-w-[24ch] text-[length:var(--text-h2)] leading-[var(--text-h2--line-height)] tracking-[var(--text-h2--letter-spacing)] text-ink">
-              The way work happens <em className="italic text-ink-muted">is breaking.</em>
+            <Badge label="Chaos" color="Red" />
+          </Reveal>
+          <Reveal delay={0.06}>
+            <h2 className="font-display mt-4 max-w-[24ch] text-[length:var(--text-display)] leading-[var(--text-display--line-height)] tracking-[var(--text-display--letter-spacing)] text-ink text-balance">
+              Six tabs. Six accounts. Zero shared memory. <em className="italic text-ink-muted">Your team is the manual bridge.</em>
             </h2>
           </Reveal>
         </div>
-        <div className="mt-12 grid gap-5 lg:grid-cols-2">
-          {/* problem */}
-          <Reveal>
-            <div className="relative flex h-full flex-col rounded-[var(--r-2xl)] border border-line bg-surface p-6 sm:p-8" style={{ boxShadow: "var(--shadow-sm)" }}>
-              <span aria-hidden className="pointer-events-none absolute inset-0 rounded-[var(--r-2xl)]" style={{ boxShadow: "var(--shadow-inner)" }} />
-              <Badge label="The problem" color="Red" />
-              <h3 className="font-display mt-4 max-w-[22ch] text-[length:var(--text-h3)] leading-snug text-ink">Six tabs. Six accounts. Zero shared memory. Your team is the manual bridge.</h3>
-              <div className="mt-6 flex flex-col gap-1.5">
+
+        <div className="mt-12">
+          <Visual surface="warm" padded={false} className="overflow-hidden">
+            <div className="relative">
+              <Scatter items={BUBBLES} assemble aspect="16 / 9" className="px-4 sm:px-8 pt-8" />
+              {/* browser-tab pile — bleeds off the bottom edge, like the Figma */}
+              <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 flex flex-wrap items-end gap-x-0 gap-y-2 px-4 sm:px-8 pb-0 opacity-95">
                 {TABS.map((t, i) => (
-                  <div key={t} className="flex items-center gap-2 rounded-[var(--r-sm)] border border-line bg-bg-subtle px-3 py-2" style={{ marginLeft: `${i * 10}px`, boxShadow: "var(--shadow-sm)" }}>
-                    <span className="flex gap-1"><span className="h-2 w-2 rounded-full bg-line-strong" /><span className="h-2 w-2 rounded-full bg-line-strong" /></span>
-                    <span className="font-mono text-[var(--text-micro)] text-ink-muted">{t.toLowerCase()}.com / new-chat</span>
-                  </div>
+                  <span
+                    key={t}
+                    className="flex translate-y-2 items-center gap-2 rounded-t-[10px] border border-line border-b-0 bg-surface px-3 py-2"
+                    style={{ marginLeft: i === 0 ? 0 : -6, boxShadow: "var(--shadow-sm)" }}
+                  >
+                    <span className="h-3.5 w-3.5 rounded-[3px] bg-line-strong" />
+                    <span className="font-sans text-[var(--text-micro)] text-ink-secondary">{t}</span>
+                    <span className="font-sans text-[var(--text-micro)] text-ink-subtle">×</span>
+                  </span>
                 ))}
               </div>
-              <p className="mt-5 font-sans text-[var(--text-small)] italic text-ink-subtle">“Which AI for which job? Nobody knows. Every employee uses AI alone.”</p>
             </div>
-          </Reveal>
-          {/* souvenir — the signature assemble lives here */}
-          <Reveal delay={0.1}>
-            <div className="relative flex h-full flex-col rounded-[var(--r-2xl)] border border-line-strong bg-bg-subtle p-6 sm:p-8" style={{ boxShadow: "var(--shadow-sm)" }}>
-              <span aria-hidden className="pointer-events-none absolute inset-0 rounded-[var(--r-2xl)]" style={{ boxShadow: "var(--shadow-inner)" }} />
-              <div className="glow-warm pointer-events-none absolute right-0 top-1/3 h-[240px] w-[300px] opacity-50" />
-              <div className="relative">
-                <Badge label="With Souvenir" color="Green" />
-                <h3 className="font-display mt-4 max-w-[22ch] text-[length:var(--text-h3)] leading-snug text-ink">One workspace. Coordinated Assistants. The Brain remembers everything.</h3>
-                <div className="mt-6 flex flex-col items-center gap-3">
-                  <div className="flex flex-wrap items-center justify-center gap-2">
-                    {CONNECTORS.map((c) => (
-                      <span key={c} data-assemble className="flex h-8 w-8 items-center justify-center rounded-[9px] border border-line bg-surface" style={{ boxShadow: "var(--shadow-sm)" }}><ConnectorIcon id={c} size={17} /></span>
-                    ))}
-                  </div>
-                  <span data-assemble className="inline-flex items-center rounded-[var(--r-pill)] border border-line-strong bg-surface px-3.5 py-1.5 font-sans text-[var(--text-small)] font-semibold text-ink" style={{ boxShadow: "var(--shadow-sm)" }}>900+ Connectors</span>
-                  <span data-assemble className="flex h-12 w-12 items-center justify-center rounded-full bg-ink text-dark-ink font-display text-[16px]" style={{ boxShadow: "var(--shadow-lg)" }}>S</span>
-                </div>
-                <div className="mt-5 flex flex-wrap justify-center gap-2">
-                  {NODES.map((n) => (
-                    <span key={n} data-assemble className="inline-flex items-center gap-2 rounded-[var(--r-pill)] border border-line bg-surface px-3 py-1.5 font-sans text-[var(--text-small)] text-ink-secondary" style={{ boxShadow: "var(--shadow-sm)" }}><span className="h-1.5 w-1.5 rounded-full bg-ink-subtle" />{n}</span>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </Reveal>
+          </Visual>
         </div>
       </Container>
     </section>

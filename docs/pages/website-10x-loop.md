@@ -62,11 +62,10 @@ download only true assets; **(c)** build from one of 4 archetypes; **(d)** wrap 
 ### Phase 1 — Sections, built to the Figma (the spine)
 For each: resolve the Figma child node, set header via `<Section>`, build the visual via an archetype,
 anchor copy to Figma, responsive reflow, screenshot-verify, commit.
-- [ ] **1.1 Hero** — refine to Figma `6044-25777` hero: centered, Besley ~42, foliage; tune line-wrap
-      + the CTA; confirm fits ~one viewport at 1440. (Hero baseline already shipped.)
-- [ ] **1.2 Problem (#9 Chaos)** — `Scatter`: floating chat bubbles ("Which AI for which job?",
-      "Every employee uses AI alone") + the browser-tab strip (Zapier/Manus/Gemini/Make/Claude/Notion).
-      This is the emotional low; wire the **signature assemble** here.
+- [x] **1.1 Hero** — centered, Besley ~42, foliage, single CTA, responsive. Shipped.
+- [x] **1.2 Problem (#9 Chaos)** — `Scatter` of chat bubbles + browser-tab pile on the `<Visual>`
+      diorama, signature assemble wired. Matches Figma #9. (Tab favicons = neutral placeholders;
+      real app logos deferred to an asset-pull.)
 - [ ] **1.3 Souvenir relief (#10)** — `NodeMap`: connectors (Ads/Gmail/Quickbooks/Slack/Salesforce/
       Sheets) → "900+ Connectors" → Brain → "Agents" (Ad Copywriter / Customer Quote Drafter / Email &
       SMS Lifecycle) + automation cards (Morning Briefing, Utilization Report) + model logos.
