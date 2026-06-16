@@ -36,7 +36,7 @@ export default function Breaking() {
             <Badge label="Chaos" color="Red" />
           </Reveal>
           <Reveal delay={0.06}>
-            <h2 className="font-display mt-4 max-w-[24ch] text-[length:var(--text-display)] leading-[var(--text-display--line-height)] tracking-[var(--text-display--letter-spacing)] text-ink text-balance">
+            <h2 className="font-display mt-4 max-w-[24ch] text-[length:var(--text-h2)] leading-[var(--text-h2--line-height)] tracking-[var(--text-h2--letter-spacing)] text-ink text-balance">
               Six tabs. Six accounts. Zero shared memory. <em className="italic text-ink-muted">Your team is the manual bridge.</em>
             </h2>
           </Reveal>

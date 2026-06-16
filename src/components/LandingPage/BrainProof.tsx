@@ -25,7 +25,7 @@ export default function BrainProof() {
             </span>
           </Reveal>
           <Reveal delay={0.06}>
-            <h2 className="font-display mt-4 max-w-[24ch] text-[length:var(--text-display)] leading-[var(--text-display--line-height)] tracking-[var(--text-display--letter-spacing)] text-ink text-balance">
+            <h2 className="font-display mt-4 max-w-[24ch] text-[length:var(--text-h2)] leading-[var(--text-h2--line-height)] tracking-[var(--text-h2--letter-spacing)] text-ink text-balance">
               One place to think. <em className="italic text-ink-muted">Every model, every memory, on tap.</em>
             </h2>
           </Reveal>

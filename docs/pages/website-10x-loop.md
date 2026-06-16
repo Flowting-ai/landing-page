@@ -98,11 +98,10 @@ anchor copy to Figma, responsive reflow, screenshot-verify, commit.
 > inline hex or arbitrary px Tailwind (`text-[32px]`, `#6b4b30`) — everything through Kaya/marketing tokens.
 - [x] **P1.0 Hero decouple + top** — hero in its own container, top padding tokenized (`--section-y-sm`),
       decoupled from the decorative foliage; nav flush to top; hero 42px, no clip, no dead gap. Done.
-- [ ] **P1.1 Type scale as tokens** — define/confirm the marketing tier (display = Besley fluid
-      ~44→72 for hero; then h2 / h3 / body / meta). Apply consistently: hero = display; section titles
-      ("Six tabs…", "Two ways…", "Your knowledge…", "One Workspace…", "There is no second place.") = h2;
-      pillar titles + "Souvenir for Individuals/Teams" = h3; paragraphs/bullets/table = body. Italic
-      spans = tonal shift at the SAME size as their headline, never a second oversized tier.
+- [x] **P1.1 Type scale as tokens** — section titles now consistently `--text-h2` (was: Breaking/
+      Relief/BrainProof on the bigger `--text-display`; aligned to match SectionHeading/FeatureSplit/
+      Pillars/CategoryTable). Hero = hero tier; pillar/path titles = h3; body = body. Italic spans are
+      same-size tonal shifts (already correct). All token-driven, no inline px.
 - [ ] **P1.2 One spacing system** — 4/8-based tokens everywhere. Section padding = large tiers;
       heading→body and body→CTA = mid tiers; stacked-section separation = largest. No hand-tuned 18/26/34px.
 - [ ] **P1.3 Before/after chapter** — mirror Chaos vs With-Souvenir as a clean 2-col chapter, shared
