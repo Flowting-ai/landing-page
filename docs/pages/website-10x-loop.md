@@ -105,11 +105,15 @@ anchor copy to Figma, responsive reflow, screenshot-verify, commit.
 - [x] **P1.2 One spacing system** — audited: already satisfied. Every section uses `--section-y`
       (hero uses the larger -sm/-lg tiers); child spacing is all Tailwind's 4px scale; **zero** arbitrary
       `[..px]` or hand-tuned 18/26/34px values. No code change — verified clean, not manufactured churn.
-- [ ] **P1.3 Before/after chapter** — mirror Chaos vs With-Souvenir as a clean 2-col chapter, shared
-      h2, aligned card padding (reuse later for Company Brain Without/With).
-- [ ] **P1.4 Matched Two-ways cards** — equal structure, equal heights, CTAs baseline-aligned.
-- [ ] **P1.5 Templatize Pillars 01–04** — one structure (label → h3 → body → visual), predictable
-      vertical rhythm between them.
+- [x] **P1.3 Before/after pair** — Chaos (Breaking) and With-Souvenir (Relief) now mirror: identical
+      header grammar (Badge → mt-4 h2 max-w-[24ch] → text-balance), same `<Visual surface="warm">`
+      diorama, and aligned 16/10 aspect (was 16/9 vs 16/10). Kept as sequential beats (problem→turn→
+      relief arc) rather than forced side-by-side — the conservative call Chai approved.
+- [x] **P1.4 Matched Two-ways cards** — already satisfied by construction: both cards are
+      `flex h-full flex-col` in a 2-col grid (equal heights), CTA in `flex-1 flex items-end` (baseline-
+      aligned at the bottom), parallel structure, equal espresso CTAs. Verified, no churn.
+- [x] **P1.5 Templatize Pillars** — already satisfied: all 4 render via one `PILLARS.map` structure
+      (label → h3 → body → PillarVisual), `flex h-full flex-col`, uniform rhythm. Verified, no churn.
 - [ ] **P1 done when:** type from tokens (hero = display tier); one spacing scale, scroll reads as even
       chapters; espresso CTA intact, zero inline hex/px, no navy; no overflow 390/768/1024/1440, no console errors.
 

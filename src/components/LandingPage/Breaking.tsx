@@ -45,7 +45,7 @@ export default function Breaking() {
         <div className="mt-12">
           <Visual surface="warm" padded={false} className="overflow-hidden">
             <div className="relative">
-              <Scatter items={BUBBLES} assemble aspect="16 / 9" className="px-4 sm:px-8 pt-8" />
+              <Scatter items={BUBBLES} assemble aspect="16 / 10" className="px-4 sm:px-8 pt-8" />
               {/* browser-tab pile — bleeds off the bottom edge, like the Figma */}
               <div aria-hidden className="pointer-events-none absolute inset-x-0 bottom-0 flex flex-wrap items-end gap-x-0 gap-y-2 px-4 sm:px-8 pb-0 opacity-95">
                 {TABS.map((t, i) => (
