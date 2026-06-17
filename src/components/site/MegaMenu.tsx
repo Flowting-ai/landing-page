@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { createPortal } from "react-dom";
 import { usePathname } from "next/navigation";
 import * as NavigationMenu from "@radix-ui/react-navigation-menu";
 import { AnimatePresence, motion } from "framer-motion";
@@ -202,45 +201,14 @@ function SolutionPanel() {
   );
 }
 
-/** OpenAI-style page dim + blur behind an open panel. Portaled to body so it
-    covers the viewport; below the header z so the nav + panel stay crisp. */
-function Backdrop({ open }: { open: boolean }) {
-  // SSR-safe without an effect: server has no document → null; on the client the
-  // portal is empty while closed, so server/client initial output both render
-  // nothing (open is false on load) — no hydration mismatch.
-  if (typeof document === "undefined") return null;
-  return createPortal(
-    <AnimatePresence>
-      {open && (
-        <motion.div
-          aria-hidden
-          className="nav-backdrop"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
-        />
-      )}
-    </AnimatePresence>,
-    document.body,
-  );
-}
-
 export default function MegaMenu() {
   const pathname = usePathname() ?? "/";
   const group = activeGroup(pathname);
-  const [value, setValue] = useState("");
 
   return (
-    <NavigationMenu.Root
-      value={value}
-      onValueChange={setValue}
-      delayDuration={80}
-      className="relative hidden lg:block"
-    >
-      <Backdrop open={value !== ""} />
+    <NavigationMenu.Root delayDuration={80} className="relative hidden lg:block">
       <NavigationMenu.List className="flex items-center gap-1.5">
-        <NavigationMenu.Item value="product">
+        <NavigationMenu.Item>
           <NavigationMenu.Trigger className={triggerCls} data-active={group === "product"}>
             Product
             <ChevronDown size={14} className="transition-transform group-data-[state=open]:rotate-180" />
@@ -248,7 +216,7 @@ export default function MegaMenu() {
           <NavigationMenu.Content className="nav-content"><ProductPanel /></NavigationMenu.Content>
         </NavigationMenu.Item>
 
-        <NavigationMenu.Item value="solution">
+        <NavigationMenu.Item>
           <NavigationMenu.Trigger className={triggerCls} data-active={group === "solution"}>
             Solution
             <ChevronDown size={14} className="transition-transform group-data-[state=open]:rotate-180" />

@@ -182,18 +182,6 @@ body { min-height: 100dvh; background: var(--bg); color: var(--ink); font-family
 .site-nav__logo[data-scrolled="true"] .nav-logo-word { opacity: 0; }
 .site-nav__logo[data-scrolled="true"] .nav-logo-mark { opacity: 1; }
 
-/* ── Mega-menu backdrop (OpenAI-style dim + blur of the page behind an open
-   panel). Sits below the header (z-50) so the nav + panel stay crisp on top;
-   purely visual (pointer-events: none) — the hover model closes on mouseleave. */
-.nav-backdrop {
-  position: fixed; inset: 0; z-index: 40;
-  /* Subtle focus wash, not a wall — a faint dim so the open panel reads as the
-     foreground, kept gentle on the warm cream canvas. */
-  background: color-mix(in oklch, var(--ink) 6%, transparent);
-  -webkit-backdrop-filter: blur(1px); backdrop-filter: blur(1px);
-  pointer-events: none;
-}
-
 /* ── Mega-menu viewport (shared, size-morphs between panels) ──────────────── */
 .nav-viewport-position {
   position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
@@ -207,10 +195,14 @@ body { min-height: 100dvh; background: var(--bg); color: var(--ink); font-family
   width: var(--radix-navigation-menu-viewport-width);
   height: var(--radix-navigation-menu-viewport-height);
   overflow: hidden;
-  /* The real KDS dropdown surface — popover bg + popover shadow + dropdown
-     radius (12px, matching Popover variant="dropdown"), not a generic card. */
+  /* KDS dropdown surface (popover shadow + 12px dropdown radius) made into a
+     FROSTED panel: the surface is slightly translucent and carries its OWN
+     backdrop-blur, so only what's directly behind the card blurs — the rest of
+     the page is untouched. Card content stays crisp on top. */
   border-radius: 12px;
-  background: var(--popover-bg);
+  background: color-mix(in oklch, var(--popover-bg) 82%, transparent);
+  -webkit-backdrop-filter: blur(20px) saturate(1.4);
+  backdrop-filter: blur(20px) saturate(1.4);
   box-shadow: var(--shadow-popover);
   transform-origin: top center;
   /* The morph: Product (wide) ↔ Solution (narrow) glide rather than pop. */
