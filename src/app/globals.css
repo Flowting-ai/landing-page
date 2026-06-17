@@ -133,9 +133,9 @@ body { min-height: 100dvh; background: var(--bg); color: var(--ink); font-family
 /* --nav-shell-h is on :root so the body-portaled drawer/scrim can read it too. */
 :root { --nav-shell-h: 5.25rem; }
 .site-nav { --nav-radius: 13px; --nav-pill-maxw: 70rem; }
-/* Shell carries the page gutter so the FLUSH bar spans the whole width (logo at
-   the left margin, CTAs at the right) — aligned to the hero, no container cap. */
-.site-nav__shell { display: flex; align-items: center; min-height: var(--nav-shell-h); padding-inline: var(--gutter); }
+/* Shell is full-bleed; the FLUSH pill mirrors the page Container (maxw + gutter)
+   so the logo aligns to the hero's content edge, not a narrower nav gutter. */
+.site-nav__shell { display: flex; align-items: center; min-height: var(--nav-shell-h); }
 
 .site-nav__pill {
   position: relative;
@@ -151,16 +151,16 @@ body { min-height: 100dvh; background: var(--bg); color: var(--ink); font-family
     box-shadow 320ms var(--ease-out),
     -webkit-backdrop-filter 320ms var(--ease-out), backdrop-filter 320ms var(--ease-out);
 }
-/* FLUSH (over the hero): whole width, NO fill / border / blur / shadow. The bar
-   reads as part of the hero. Horizontal padding stays 0 so content sits at the
-   page gutter the shell provides. */
+/* FLUSH (over the hero): NO fill / border / blur / shadow — reads as part of the
+   hero. Mirrors the page Container (max-width --maxw + --gutter, centered) so the
+   logo sits exactly above the hero's content edge and the CTA above its right edge. */
 .site-nav__pill.is-flush {
-  max-width: 100%;
-  padding: 0.5rem 0;
+  max-width: var(--maxw);
+  margin-inline: auto;
+  padding: 0.5rem var(--gutter);
   background-color: transparent;
   border-color: transparent;
   box-shadow: none;
-  -webkit-backdrop-filter: blur(0); backdrop-filter: blur(0);
 }
 /* PILL (scrolled past mid-hero): contracts to a centered floating pill; fill +
    border + blur + shadow are earned now that product content scrolls beneath. */

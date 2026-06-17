@@ -13,7 +13,7 @@ import MegaMenu, { PRODUCT, SOLUTION_AUDIENCES, LINKS, type MenuItem } from "./M
 
 // Logo footprint, derived from the asset ratios in Logo.tsx so the wordmark→mark
 // swap is absorbed left-anchored (no push on the nav links).
-const LOGO_H = 22;
+const LOGO_H = 26;
 const WORDMARK_RATIO = 2876 / 634; // mirrors Logo.tsx wordmark aspect
 const WORD_W = Math.round(LOGO_H * WORDMARK_RATIO);
 const MARK_W = LOGO_H;
@@ -68,7 +68,7 @@ export default function SiteNav() {
         {/* Outer shell holds a CONSTANT reserved height; the morph is all on the pill. */}
         <div className="site-nav__shell">
             <div className={`site-nav__pill ${scrolled ? "is-pill" : "is-flush"}`}>
-              <Link href="/" aria-label="Souvenir home" className="inline-flex items-center px-1.5">
+              <Link href="/" aria-label="Souvenir home" className="inline-flex items-center">
                 <span
                   className="site-nav__logo"
                   data-scrolled={scrolled}
