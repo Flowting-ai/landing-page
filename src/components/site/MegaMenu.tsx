@@ -94,7 +94,7 @@ function itemIcon(item: MenuItem, size: number) {
 /** Item card — embossed icon tile + label/sublabel, on the Kaya card skeleton.
     Icon is TOP-aligned with the label. Lifts on hover with the shared
     SHADOW_CARD; `onHover` drives the preview pane. NavigationMenu.Link for a11y. */
-function NavCard({ item, onPick, onHover }: { item: MenuItem; onPick?: () => void; onHover?: (i: MenuItem) => void }) {
+function NavCard({ item, onPick, onHover, active = false }: { item: MenuItem; onPick?: () => void; onHover?: (i: MenuItem) => void; active?: boolean }) {
   return (
     <NavigationMenu.Link asChild>
       <a
@@ -102,22 +102,24 @@ function NavCard({ item, onPick, onHover }: { item: MenuItem; onPick?: () => voi
         onClick={onPick}
         onMouseEnter={() => onHover?.(item)}
         onFocus={() => onHover?.(item)}
-        className="group flex items-start gap-3 rounded-[10px] p-2.5 transition-[background-color,box-shadow] duration-150 hover:bg-surface hover:shadow-[var(--card-shadow)]"
+        data-active={active}
+        className="group flex items-center gap-3 rounded-[10px] p-2.5 transition-[background-color,box-shadow] duration-150 hover:bg-surface hover:shadow-[var(--card-shadow)] data-[active=true]:bg-surface data-[active=true]:shadow-[var(--card-shadow)]"
         style={{ ["--card-shadow" as string]: SHADOW_CARD }}
       >
-        {/* Icon tile — on card hover the rectangle warms + darkens (surface →
-            warm neutral) and the glyph picks up the mauve accent. */}
+        {/* Icon tile — warms + darkens and the glyph picks up mauve when the row
+            is hovered OR active (its preview is showing). */}
         <span
-          className="flex h-[38px] w-[38px] shrink-0 items-center justify-center rounded-[9px] bg-surface text-ink transition-colors duration-150 group-hover:bg-surface-warm group-hover:text-[color:var(--accent)]"
+          className="flex h-[38px] w-[38px] shrink-0 items-center justify-center rounded-[9px] bg-surface text-ink transition-colors duration-150 group-hover:bg-surface-warm group-hover:text-[color:var(--accent)] group-data-[active=true]:bg-surface-warm group-data-[active=true]:text-[color:var(--accent)]"
           style={{ boxShadow: SHADOW_CARD }}
         >
           {itemIcon(item, 20)}
         </span>
-        {/* pt-px nudges the label's cap-height into line with the icon-tile top */}
-        <span className="flex min-w-0 flex-col pt-px">
+        <span className="flex min-w-0 flex-col">
           <span className="font-sans text-[var(--text-small)] font-semibold leading-tight tracking-[-0.01em] text-ink">{item.label}</span>
-          <span className="mt-1 font-sans text-[var(--text-micro)] leading-snug text-ink-muted">{item.desc}</span>
+          <span className="mt-0.5 font-sans text-[var(--text-micro)] leading-snug text-ink-muted">{item.desc}</span>
         </span>
+        {/* chevron appears on hover/active — affords "see more" */}
+        <ArrowUpRightOneIcon size={14} className="ml-auto shrink-0 text-ink-subtle opacity-0 transition-opacity duration-150 group-hover:opacity-100 group-data-[active=true]:opacity-100" />
       </a>
     </NavigationMenu.Link>
   );
@@ -175,11 +177,10 @@ function StackRail() {
     The connector rail stays pinned below. A fixed min-height keeps it steady. */
 function SheetAside({ hovered }: { hovered: MenuItem | null }) {
   return (
-    <div className="flex w-[320px] shrink-0 flex-col gap-3 self-stretch border-l border-line pl-8">
+    <div className="flex flex-1 flex-col gap-3 self-stretch border-l border-line pl-10">
       {/* FIXED height so the gold card and every preview occupy the exact same
-          box — swapping never resizes the pane (no sheet height jump). The cards
-          fill it via h-full. */}
-      <div className="relative h-[232px] shrink-0">
+          box — swapping never resizes the pane (no sheet height jump). */}
+      <div className="relative h-[244px] shrink-0">
         <AnimatePresence mode="wait" initial={false}>
           <motion.div
             key={hovered ? hovered.label : "__featured"}
@@ -239,10 +240,10 @@ function ProductPanel() {
   return (
     <div onMouseLeave={() => setHovered(null)}>
       <div className={sheetInner} style={sheetInnerStyle}>
-        <div className="flex flex-1 flex-col">
+        <div className="flex w-[388px] shrink-0 flex-col">
           <span className={eyebrowCls}>Product</span>
-          <div className="grid flex-1 grid-cols-2 gap-x-6 gap-y-1.5">
-            {PRODUCT.map((it) => <NavCard key={it.label} item={it} onHover={setHovered} />)}
+          <div className="flex flex-1 flex-col gap-0.5">
+            {PRODUCT.map((it) => <NavCard key={it.label} item={it} onHover={setHovered} active={hovered?.label === it.label} />)}
           </div>
         </div>
         <SheetAside hovered={hovered} />
@@ -262,9 +263,9 @@ function SolutionPanel() {
   return (
     <div onMouseLeave={() => setHovered(null)}>
       <div className={sheetInner} style={sheetInnerStyle}>
-        <div className="flex flex-1 flex-col">
+        <div className="flex w-[388px] shrink-0 flex-col">
           {/* KDS Tabs — the animated sliding-pill segmented control, reused as-is. */}
-          <Tabs value={active} onValueChange={(v) => { setActive(v); setHovered(null); }} className="mb-3 w-[340px]">
+          <Tabs value={active} onValueChange={(v) => { setActive(v); setHovered(null); }} className="mb-3 w-full">
             <TabsList fluid>
               {SOLUTION_AUDIENCES.map((a) => (
                 <TabsTrigger key={a.id} value={a.id}>{a.tab}</TabsTrigger>
@@ -279,9 +280,9 @@ function SolutionPanel() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -6 }}
               transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
-              className="grid min-h-[9rem] grid-cols-2 gap-x-6 gap-y-1.5"
+              className="flex min-h-[12rem] flex-col gap-0.5"
             >
-              {current.items.map((it) => <NavCard key={it.label} item={it} onHover={setHovered} />)}
+              {current.items.map((it) => <NavCard key={it.label} item={it} onHover={setHovered} active={hovered?.label === it.label} />)}
             </motion.div>
           </AnimatePresence>
         </div>
