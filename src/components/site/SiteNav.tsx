@@ -43,10 +43,12 @@ export default function SiteNav() {
   const pathname = usePathname() ?? "/";
   const close = () => setOpen(false);
 
-  // Flush → pill: the pill firms up once you leave the calm hero top. Threshold
-  // is generous (32px) so the flush state is actually experienced at rest.
+  // Flush → pill: the bar stays full-width and fill-free over the hero, then
+  // condenses into the floating pill once you've scrolled ~halfway down the
+  // first screen (≈ halfway through a viewport-tall hero). Threshold reads
+  // innerHeight each scroll so it stays correct across resizes/orientation.
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 32);
+    const onScroll = () => setScrolled(window.scrollY > window.innerHeight * 0.5);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
