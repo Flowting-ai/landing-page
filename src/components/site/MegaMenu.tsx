@@ -71,12 +71,17 @@ const triggerCls =
 const linkCls =
   "inline-flex items-center rounded-[8px] px-2 py-1.5 font-sans text-[var(--text-small)] font-medium tracking-[-0.01em] transition-colors hover:text-[color:var(--accent)] data-[active=true]:text-ink";
 
+// Smaller, quieter section eyebrow (KDS caption = 11px, down from 13px micro).
 const eyebrowCls =
-  "block px-1 pb-2 font-sans text-[var(--text-micro)] font-medium uppercase tracking-[0.12em] text-ink-subtle";
+  "block px-1 pb-2 font-sans text-[length:var(--font-size-caption)] font-medium uppercase tracking-[0.14em] text-ink-subtle";
 
-/** Item card — embossed icon tile + strong label/sublabel hierarchy on KDS
-    surface tokens. Lifts on hover (surface-card shadow). Wrapped in
-    NavigationMenu.Link for keyboard + route semantics. */
+// The Kaya card skeleton — shared verbatim by Pin + PersonaCard so our nav cards
+// read as the same family: a soft 2px drop + a 1px neutral ring.
+const SHADOW_CARD = "0px 2px 2.8px 0px var(--neutral-700-12), 0px 0px 0px 1px var(--neutral-100)";
+
+/** Item card — embossed icon tile + label/sublabel, on the Kaya card skeleton.
+    Icon is TOP-aligned with the label (not centered against the 2-line block).
+    Lifts on hover with the shared SHADOW_CARD. NavigationMenu.Link for a11y. */
 function NavCard({ item, onPick }: { item: MenuItem; onPick?: () => void }) {
   const icon = item.connector ? (
     <ConnectorIcon id={item.connector} size={20} />
@@ -88,17 +93,19 @@ function NavCard({ item, onPick }: { item: MenuItem; onPick?: () => void }) {
       <a
         href={item.href}
         onClick={onPick}
-        className="group flex items-center gap-3 rounded-[10px] border border-transparent p-2.5 transition-[background-color,border-color,box-shadow] duration-150 hover:border-line hover:bg-surface hover:shadow-[var(--shadow-surface-card-hover)]"
+        className="group flex items-start gap-3 rounded-[10px] p-2.5 transition-[background-color,box-shadow] duration-150 hover:bg-surface hover:shadow-[var(--card-shadow)]"
+        style={{ ["--card-shadow" as string]: SHADOW_CARD }}
       >
         <span
           className="flex h-[38px] w-[38px] shrink-0 items-center justify-center rounded-[9px] text-ink transition-colors group-hover:text-[color:var(--accent)]"
-          style={{ background: "var(--surface)", border: "1px solid var(--line)", boxShadow: "var(--shadow-sm)" }}
+          style={{ background: "var(--surface)", boxShadow: SHADOW_CARD }}
         >
           {icon}
         </span>
-        <span className="flex min-w-0 flex-col">
-          <span className="font-sans text-[var(--text-small)] font-semibold tracking-[-0.01em] text-ink">{item.label}</span>
-          <span className="font-sans text-[var(--text-micro)] leading-snug text-ink-muted">{item.desc}</span>
+        {/* pt-px nudges the label's cap-height into line with the icon-tile top */}
+        <span className="flex min-w-0 flex-col pt-px">
+          <span className="font-sans text-[var(--text-small)] font-semibold leading-tight tracking-[-0.01em] text-ink">{item.label}</span>
+          <span className="mt-1 font-sans text-[var(--text-micro)] leading-snug text-ink-muted">{item.desc}</span>
         </span>
       </a>
     </NavigationMenu.Link>
@@ -219,14 +226,43 @@ function SolutionPanel() {
   );
 }
 
+/** Full-screen page blur behind an open panel (the panel stays solid on top).
+    Rendered INSIDE the Root — NOT portaled to body — so it shares the header's
+    stacking context (the header lives in a `.isolate` wrapper, so a body-level
+    portal would paint above the nav). backdrop-filter still blurs the page
+    behind it across contexts; the nav List + Viewport layer above it via z. */
+function Backdrop({ open }: { open: boolean }) {
+  return (
+    <AnimatePresence>
+      {open && (
+        <motion.div
+          aria-hidden
+          className="nav-backdrop"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
+        />
+      )}
+    </AnimatePresence>
+  );
+}
+
 export default function MegaMenu() {
   const pathname = usePathname() ?? "/";
   const group = activeGroup(pathname);
+  const [value, setValue] = useState("");
 
   return (
-    <NavigationMenu.Root delayDuration={80} className="relative hidden lg:block">
-      <NavigationMenu.List className="flex items-center gap-1.5">
-        <NavigationMenu.Item>
+    <NavigationMenu.Root
+      value={value}
+      onValueChange={setValue}
+      delayDuration={80}
+      className="relative hidden lg:block"
+    >
+      <Backdrop open={value !== ""} />
+      <NavigationMenu.List className="relative z-[1] flex items-center gap-1.5">
+        <NavigationMenu.Item value="product">
           <NavigationMenu.Trigger className={triggerCls} data-active={group === "product"}>
             Product
             <ChevronDown size={14} className="transition-transform group-data-[state=open]:rotate-180" />
@@ -234,7 +270,7 @@ export default function MegaMenu() {
           <NavigationMenu.Content className="nav-content"><ProductPanel /></NavigationMenu.Content>
         </NavigationMenu.Item>
 
-        <NavigationMenu.Item>
+        <NavigationMenu.Item value="solution">
           <NavigationMenu.Trigger className={triggerCls} data-active={group === "solution"}>
             Solution
             <ChevronDown size={14} className="transition-transform group-data-[state=open]:rotate-180" />

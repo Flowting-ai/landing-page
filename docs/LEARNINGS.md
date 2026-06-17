@@ -34,16 +34,29 @@ next session can follow, not a story. Format:
 
 ## Log
 
-### [2026-06-17] Mega-menu "blur behind the panel" = frost the panel, NOT a full-screen overlay · (MOTION/COMPONENTS)
-- **What happened / feedback:** Built the OpenAI-style "blur behind the open menu" as a full-viewport
-  fixed overlay (dim + backdrop-blur). Chai: too heavy ("blurring out everything"), then clarified the
-  actual intent — the blur belongs **behind the card, card crisp on top, not the whole screen.**
-- **Rule going forward:** For a dropdown "blur behind the card" effect, frost the **panel surface
-  itself** — translucent bg (`color-mix(--popover-bg 82%, transparent)`) + its own `backdrop-filter:
-  blur(20px) saturate(1.4)` — so only what's directly behind the card blurs; the rest of the page stays
-  untouched. Don't reach for a full-screen overlay unless the design explicitly wants the whole page
-  dimmed. If an overlay IS wanted on the warm cream canvas, keep it faint (≤6% ink dim).
-- **Promoted to:** n/a (nav build record; pattern note).
+### [2026-06-17] "Blur behind the dropdown" = full-screen backdrop BEHIND + solid panel ON TOP (not a frosted panel) · (COMPONENTS/CSS)
+- **What happened / feedback:** Two wrong turns on the same effect. First built a full-screen dim+blur
+  overlay (too heavy). Then over-corrected to a *frosted translucent panel* (panel itself blurred, no
+  backdrop). Chai's actual intent: the **full-screen backdrop SHOULD exist and carry the blur, sitting
+  BEHIND**; the dropdown panel + items sit **on top at 100% solid fill** (no opacity, no blur on the
+  panel). Plus: a body-portaled backdrop painted OVER the nav because the header lives inside a
+  `<div class="relative isolate">` wrapper — `isolation: isolate` scopes the header's `z-50` locally, so
+  a body-level z-40 backdrop outranks the whole header subtree.
+- **Rule going forward:** For "blur the page behind an open menu": one full-screen `backdrop-filter`
+  element BEHIND (carries blur + a light dim), panel/cards 100% solid on top. Do NOT frost the panel.
+  And do NOT portal the backdrop to `document.body` when the nav sits in an `isolate`/transformed
+  wrapper — render it INSIDE the menu Root so it shares that stacking context, then layer the nav List
+  + Viewport above it with explicit z (backdrop z-0, content z-1). `backdrop-filter` still blurs the
+  page across stacking-context boundaries (it's a composite-time effect). Verify by checking an
+  ancestor chain for `isolation:isolate` / `transform` / positioned-z before assuming `z-50` wins.
+- **Promoted to:** docs/solutions/design-patterns/scroll-state-nav-radix-portals.md (add a note).
+
+### [2026-06-17] ⚠️ SUPERSEDED — the frosted-panel approach was the wrong turn · (MOTION/COMPONENTS)
+- **Correction:** An earlier draft of this entry said to frost the panel surface (translucent +
+  own backdrop-filter) instead of a full-screen overlay. That was the over-correction Chai rejected.
+  See the [2026-06-17] entry above ("full-screen backdrop BEHIND + solid panel ON TOP") for the
+  binding rule: the backdrop is real and full-screen, the panel is 100% solid. Kept only as a record
+  of the dead end — do not follow this paragraph.
 
 ### [2026-06-17] Nav dropdown items must be CARDS, not stock DropdownMenuItem rows · (COMPONENTS/DESIGN)
 - **What happened / feedback:** Marketing mega-menu first used flat custom rows, then the stock KDS
