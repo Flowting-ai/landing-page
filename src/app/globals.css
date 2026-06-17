@@ -187,8 +187,10 @@ body { min-height: 100dvh; background: var(--bg); color: var(--ink); font-family
    purely visual (pointer-events: none) — the hover model closes on mouseleave. */
 .nav-backdrop {
   position: fixed; inset: 0; z-index: 40;
-  background: color-mix(in oklch, var(--ink) 16%, transparent);
-  -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px);
+  /* Subtle focus wash, not a wall — a faint dim so the open panel reads as the
+     foreground, kept gentle on the warm cream canvas. */
+  background: color-mix(in oklch, var(--ink) 6%, transparent);
+  -webkit-backdrop-filter: blur(1px); backdrop-filter: blur(1px);
   pointer-events: none;
 }
 
