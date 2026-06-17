@@ -182,6 +182,16 @@ body { min-height: 100dvh; background: var(--bg); color: var(--ink); font-family
 .site-nav__logo[data-scrolled="true"] .nav-logo-word { opacity: 0; }
 .site-nav__logo[data-scrolled="true"] .nav-logo-mark { opacity: 1; }
 
+/* ── Mega-menu backdrop (OpenAI-style dim + blur of the page behind an open
+   panel). Sits below the header (z-50) so the nav + panel stay crisp on top;
+   purely visual (pointer-events: none) — the hover model closes on mouseleave. */
+.nav-backdrop {
+  position: fixed; inset: 0; z-index: 40;
+  background: color-mix(in oklch, var(--ink) 16%, transparent);
+  -webkit-backdrop-filter: blur(3px); backdrop-filter: blur(3px);
+  pointer-events: none;
+}
+
 /* ── Mega-menu viewport (shared, size-morphs between panels) ──────────────── */
 .nav-viewport-position {
   position: absolute; top: 100%; left: 50%; transform: translateX(-50%);

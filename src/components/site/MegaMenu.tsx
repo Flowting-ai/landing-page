@@ -1,13 +1,14 @@
 "use client";
 
 import { useState } from "react";
+import { createPortal } from "react-dom";
 import { usePathname } from "next/navigation";
 import * as NavigationMenu from "@radix-ui/react-navigation-menu";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import {
   UserAiIcon, BrainTwoIcon, ChatOneIcon, NeuralNetworkIcon,
-  DashboardSquareOneIcon, WorkflowSquareTenIcon,
+  DashboardSquareOneIcon, WorkflowSquareTenIcon, ArrowUpRightOneIcon,
 } from "@strange-huge/icons";
 import { ConnectorIcon } from "@strange-huge/icons/connectors";
 import { DropdownMenuItem } from "@/components/DropdownMenuItem";
@@ -29,6 +30,9 @@ const PRODUCT: MenuItem[] = [
   { label: "Slack Manager", desc: "Delegate from inside Slack", href: "/product/slack", connector: "slack" },
   { label: "Unified Chatspace", desc: "Every model, one prompt", href: "/product/chatspace", Icon: ChatOneIcon },
 ];
+
+// "Works in your stack" rail — only IDs that render in @strange-huge/icons/connectors.
+const STACK = ["slack", "gmail", "notion", "github", "linear", "figma"];
 
 export type Audience = { id: string; tab: string; items: MenuItem[] };
 
@@ -72,8 +76,7 @@ const linkCls =
 
 /** A menu row built on the real KDS DropdownMenuItem — embossed hover + accent
     bar + auto-sized icon slot. Wrapped in NavigationMenu.Link for keyboard/route
-    semantics; tabIndex=-1 on the item suppresses a double tab-stop (the anchor
-    is the focus target). */
+    semantics; tabIndex=-1 on the item suppresses a double tab-stop. */
 function NavRow({ item, onPick }: { item: MenuItem; onPick?: () => void }) {
   const icon = item.connector ? (
     <ConnectorIcon id={item.connector} />
@@ -89,12 +92,69 @@ function NavRow({ item, onPick }: { item: MenuItem; onPick?: () => void }) {
   );
 }
 
+/** The one accent moment in the nav: a mauve gradient promo card (ElevenLabs /
+    Glean "featured" pattern), pointing at the team flagship. */
+function FeaturedCard() {
+  return (
+    <NavigationMenu.Link asChild>
+      <a
+        href="/solutions/company-brain"
+        className="group relative flex flex-1 flex-col justify-between overflow-hidden rounded-[10px] border border-line p-3 transition-shadow hover:shadow-[var(--shadow-sm)]"
+        style={{ background: "linear-gradient(150deg, var(--accent-soft), color-mix(in oklch, var(--surface) 88%, var(--accent)))" }}
+      >
+        <div className="flex items-start justify-between">
+          <span className="inline-flex h-8 w-8 items-center justify-center rounded-[8px] border border-line bg-surface text-[color:var(--accent)]">
+            <NeuralNetworkIcon size={18} />
+          </span>
+          <span className="font-sans text-[var(--text-micro)] font-semibold uppercase tracking-[0.1em] text-[color:var(--accent)]">New</span>
+        </div>
+        <div className="mt-4">
+          <p className="flex items-center gap-1 font-sans text-[var(--text-small)] font-semibold text-ink">
+            The Company Brain
+            <ArrowUpRightOneIcon size={15} />
+          </p>
+          <p className="mt-0.5 font-sans text-[var(--text-micro)] leading-snug text-ink-muted">
+            One shared brain for your whole team — context, memory, automations.
+          </p>
+        </div>
+      </a>
+    </NavigationMenu.Link>
+  );
+}
+
+/** "Works in your stack" connector rail — Glean's "where you work" zone, our tokens. */
+function StackRail() {
+  return (
+    <div className="rounded-[10px] border border-line bg-bg-subtle p-3">
+      <span className="block font-sans text-[var(--text-micro)] font-medium uppercase tracking-[0.1em] text-ink-subtle">
+        Works in your stack
+      </span>
+      <div className="mt-2 flex items-center gap-2">
+        {STACK.map((id) => (
+          <span key={id} className="inline-flex h-8 w-8 items-center justify-center rounded-[8px] border border-line bg-surface">
+            <ConnectorIcon id={id} size={18} />
+          </span>
+        ))}
+        <span className="ml-0.5 font-sans text-[var(--text-micro)] font-medium text-ink-muted">+250</span>
+      </div>
+    </div>
+  );
+}
+
+/** Product panel — Glean-style multi-zone: rich KDS rows on the left, a bold
+    featured card + connector rail on the right. Uses the menu's full width. */
 function ProductPanel() {
   return (
-    <div className="p-2" style={{ width: 588 }}>
-      <DropdownMenuItem variant="header" label="Product" fluid />
-      <div className="grid grid-cols-2 gap-1">
-        {PRODUCT.map((it) => <NavRow key={it.label} item={it} />)}
+    <div className="flex gap-3 p-2" style={{ width: 720 }}>
+      <div className="flex flex-1 flex-col">
+        <DropdownMenuItem variant="header" label="Product" fluid />
+        <div className="grid flex-1 grid-cols-2 gap-1">
+          {PRODUCT.map((it) => <NavRow key={it.label} item={it} />)}
+        </div>
+      </div>
+      <div className="flex w-[244px] flex-col gap-2 border-l border-line pl-3">
+        <FeaturedCard />
+        <StackRail />
       </div>
     </div>
   );
@@ -108,7 +168,7 @@ function SolutionPanel() {
   const current = SOLUTION_AUDIENCES.find((a) => a.id === active)!;
 
   return (
-    <div className="p-2" style={{ width: 320 }}>
+    <div className="p-2" style={{ width: 340 }}>
       {/* segmented switcher */}
       <div className="mb-1 flex gap-1 rounded-[10px] border border-line bg-bg-subtle p-1">
         {SOLUTION_AUDIENCES.map((a) => (
@@ -142,14 +202,45 @@ function SolutionPanel() {
   );
 }
 
+/** OpenAI-style page dim + blur behind an open panel. Portaled to body so it
+    covers the viewport; below the header z so the nav + panel stay crisp. */
+function Backdrop({ open }: { open: boolean }) {
+  // SSR-safe without an effect: server has no document → null; on the client the
+  // portal is empty while closed, so server/client initial output both render
+  // nothing (open is false on load) — no hydration mismatch.
+  if (typeof document === "undefined") return null;
+  return createPortal(
+    <AnimatePresence>
+      {open && (
+        <motion.div
+          aria-hidden
+          className="nav-backdrop"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.22, ease: [0.16, 1, 0.3, 1] }}
+        />
+      )}
+    </AnimatePresence>,
+    document.body,
+  );
+}
+
 export default function MegaMenu() {
   const pathname = usePathname() ?? "/";
   const group = activeGroup(pathname);
+  const [value, setValue] = useState("");
 
   return (
-    <NavigationMenu.Root delayDuration={80} className="relative hidden lg:block">
+    <NavigationMenu.Root
+      value={value}
+      onValueChange={setValue}
+      delayDuration={80}
+      className="relative hidden lg:block"
+    >
+      <Backdrop open={value !== ""} />
       <NavigationMenu.List className="flex items-center gap-1.5">
-        <NavigationMenu.Item>
+        <NavigationMenu.Item value="product">
           <NavigationMenu.Trigger className={triggerCls} data-active={group === "product"}>
             Product
             <ChevronDown size={14} className="transition-transform group-data-[state=open]:rotate-180" />
@@ -157,7 +248,7 @@ export default function MegaMenu() {
           <NavigationMenu.Content className="nav-content"><ProductPanel /></NavigationMenu.Content>
         </NavigationMenu.Item>
 
-        <NavigationMenu.Item>
+        <NavigationMenu.Item value="solution">
           <NavigationMenu.Trigger className={triggerCls} data-active={group === "solution"}>
             Solution
             <ChevronDown size={14} className="transition-transform group-data-[state=open]:rotate-180" />
