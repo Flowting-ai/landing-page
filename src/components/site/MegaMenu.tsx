@@ -115,20 +115,19 @@ function NavCard({ item, onPick }: { item: MenuItem; onPick?: () => void }) {
   );
 }
 
-/** "Works in your stack" connector rail — Glean's "where you work" zone, our tokens. */
+/** "Works in your stack" connector rail — bare brand logos (no chip frames),
+    hairline-separated, on a clean type scale. */
 function StackRail() {
   return (
-    <div className="rounded-[12px] border border-line bg-bg-subtle p-3.5">
+    <div className="mt-1 border-t border-line pt-3.5">
       <span className="block font-sans text-[length:var(--font-size-caption)] font-medium uppercase tracking-[0.14em] text-ink-subtle">
         Works in your stack
       </span>
-      <div className="mt-3 flex items-center gap-2">
+      <div className="mt-3 flex items-center gap-3.5">
         {STACK.map((id) => (
-          <span key={id} className="inline-flex h-9 w-9 items-center justify-center rounded-[9px] border border-line bg-surface" style={{ boxShadow: "var(--shadow-sm)" }}>
-            <ConnectorIcon id={id} size={19} />
-          </span>
+          <ConnectorIcon key={id} id={id} size={24} />
         ))}
-        <span className="ml-1 font-sans text-[var(--text-micro)] font-semibold text-ink-muted">+250</span>
+        <span className="font-sans text-[var(--text-small)] font-medium tabular-nums text-ink-muted">+250</span>
       </div>
     </div>
   );

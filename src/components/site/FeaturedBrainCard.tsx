@@ -3,6 +3,7 @@
 import { useRef, type CSSProperties } from "react";
 import * as NavigationMenu from "@radix-ui/react-navigation-menu";
 import { NeuralNetworkIcon, ArrowUpRightOneIcon } from "@strange-huge/icons";
+import { Badge } from "@/components/Badge";
 
 /**
  * The Company Brain featured card — the nav's one signature moment.
@@ -119,19 +120,23 @@ export default function FeaturedBrainCard({
           >
             <NeuralNetworkIcon size={19} />
           </span>
-          <span
-            className="rounded-full bg-surface px-2 py-0.5 font-sans text-[10px] font-semibold uppercase tracking-[0.12em] text-[color:var(--accent)]"
-            style={{ border: "1px solid var(--line)" }}
-          >
-            New
-          </span>
+          {/* KDS Badge (Yellow/gold palette) — no more hand-rolled pill. */}
+          <Badge label="NEW" color="Yellow" />
         </div>
         <div className="relative z-[1] mt-5">
-          <p className="flex items-center gap-1 font-sans text-[var(--text-small)] font-semibold tracking-[-0.01em] text-[color:var(--dark-ink)]">
+          {/* Gold title + light cream body — readable on the dark espresso field
+              (explicit inline colors, not Tailwind arbitrary, so nothing drops). */}
+          <p
+            className="flex items-center gap-1 font-sans text-[var(--text-small)] font-semibold tracking-[-0.01em]"
+            style={{ color: "var(--yellow-200)" }}
+          >
             The Company Brain
             <ArrowUpRightOneIcon size={15} />
           </p>
-          <p className="mt-1 font-sans text-[var(--text-micro)] leading-snug text-[color:var(--dark-ink-muted)]">
+          <p
+            className="mt-1 font-sans text-[var(--text-micro)] leading-snug"
+            style={{ color: "var(--neutral-300)" }}
+          >
             Shared memory, context, and automations for your whole team.
           </p>
         </div>
