@@ -34,6 +34,29 @@ next session can follow, not a story. Format:
 
 ## Log
 
+### [2026-06-17] Mega-menu "blur behind the panel" = frost the panel, NOT a full-screen overlay · (MOTION/COMPONENTS)
+- **What happened / feedback:** Built the OpenAI-style "blur behind the open menu" as a full-viewport
+  fixed overlay (dim + backdrop-blur). Chai: too heavy ("blurring out everything"), then clarified the
+  actual intent — the blur belongs **behind the card, card crisp on top, not the whole screen.**
+- **Rule going forward:** For a dropdown "blur behind the card" effect, frost the **panel surface
+  itself** — translucent bg (`color-mix(--popover-bg 82%, transparent)`) + its own `backdrop-filter:
+  blur(20px) saturate(1.4)` — so only what's directly behind the card blurs; the rest of the page stays
+  untouched. Don't reach for a full-screen overlay unless the design explicitly wants the whole page
+  dimmed. If an overlay IS wanted on the warm cream canvas, keep it faint (≤6% ink dim).
+- **Promoted to:** n/a (nav build record; pattern note).
+
+### [2026-06-17] Nav dropdown items must be CARDS, not stock DropdownMenuItem rows · (COMPONENTS/DESIGN)
+- **What happened / feedback:** Marketing mega-menu first used flat custom rows, then the stock KDS
+  `DropdownMenuItem` (bare 20px icon slot) — Chai still read both as "the old ones," wanted the
+  richness/cataloging of ElevenLabs/Glean mega-menus.
+- **Rule going forward:** For marketing mega-menus, build item **cards** on KDS *tokens* (not the stock
+  row component): embossed icon **tile** (`--surface` + `--line` + `--shadow-sm`, ~38px rounded-9) +
+  bold label + muted sublabel, hover-lift via `--shadow-surface-card-hover`. `DropdownMenuItem`'s 20px
+  icon slot can't hold a tile, so it's the wrong primitive for a rich mega-menu — reserve it for true
+  in-product context menus. Pair with a featured gradient card (the one mauve accent moment) + a
+  connector rail. Copy = one sharp, product-true line per item.
+- **Promoted to:** n/a (nav build record; reusable mega-menu recipe).
+
 ### [2026-06-16] Component-scoped CSS vars don't reach Radix Portals — put shared metrics on :root · (COMPONENTS/CSS)
 - **What happened / feedback:** The mobile drawer (now a Radix `Dialog`) renders into a `<body>` portal.
   `--nav-shell-h` was defined on `.site-nav`, so `top: var(--nav-shell-h)` inside the portaled drawer
