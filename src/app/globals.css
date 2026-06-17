@@ -237,6 +237,75 @@ body { min-height: 100dvh; background: var(--bg); color: var(--ink); font-family
 @keyframes nav-c-to-l   { from { opacity: 1; transform: none; } to { opacity: 0; transform: translateX(-14px); } }
 @keyframes nav-c-to-r   { from { opacity: 1; transform: none; } to { opacity: 0; transform: translateX(14px); } }
 
+/* ── Featured "Company Brain" card — interactive: perspective tilt + cursor
+   specular + iridescent sheen + noise. All knobs are CSS vars (overridable via
+   the component's `tweaks` prop). JS sets --mx/--my (cursor %), --rx/--ry (tilt),
+   --bc-active (0|1 hover). Reduced-motion: tilt + specular disabled, static sheen. */
+.brain-card {
+  /* knobs */
+  --bc-radius: 14px;
+  --bc-tilt-max: 9deg;
+  --bc-sheen-opacity: 0.55;
+  --bc-spec-opacity: 0.5;
+  --bc-spec-size: 150px;
+  --bc-noise-opacity: 0.5;
+  --bc-glow-opacity: 0.55;
+  --bc-lift: -2px;
+  /* live state (set from JS) */
+  --mx: 50%; --my: 50%; --rx: 0deg; --ry: 0deg; --bc-active: 0;
+
+  position: relative;
+  border-radius: var(--bc-radius);
+  transform: perspective(720px) rotateX(var(--rx)) rotateY(var(--ry)) translateY(calc(var(--bc-active) * var(--bc-lift)));
+  transform-style: preserve-3d;
+  transition: transform 160ms var(--ease-out), box-shadow 200ms var(--ease-out);
+  isolation: isolate;
+  will-change: transform;
+}
+/* colored glow that blooms under the card on hover */
+.brain-card::after {
+  content: ""; position: absolute; inset: -1px; z-index: -1;
+  border-radius: inherit;
+  background: radial-gradient(120% 140% at var(--mx) 0%, color-mix(in oklch, var(--accent) 55%, transparent), transparent 70%);
+  opacity: calc(var(--bc-active) * var(--bc-glow-opacity));
+  filter: blur(14px);
+  transition: opacity 240ms var(--ease-out);
+}
+.brain-card__layer { position: absolute; inset: 0; border-radius: inherit; pointer-events: none; }
+/* iridescent sheen — multi-hue, follows the cursor, soft-light blend */
+.brain-card__sheen {
+  background: conic-gradient(from 210deg at var(--mx) var(--my),
+    color-mix(in oklch, var(--purple-500) 60%, transparent),
+    color-mix(in oklch, var(--blue-500) 55%, transparent),
+    color-mix(in oklch, var(--green-500) 45%, transparent),
+    color-mix(in oklch, var(--yellow-500) 55%, transparent),
+    color-mix(in oklch, var(--red-500) 45%, transparent),
+    color-mix(in oklch, var(--purple-500) 60%, transparent));
+  mix-blend-mode: soft-light;
+  opacity: calc(0.16 + var(--bc-active) * var(--bc-sheen-opacity));
+  transition: opacity 240ms var(--ease-out);
+}
+/* specular highlight — bright spot tracking the cursor */
+.brain-card__spec {
+  background: radial-gradient(var(--bc-spec-size) var(--bc-spec-size) at var(--mx) var(--my),
+    var(--neutral-white-70), transparent 60%);
+  mix-blend-mode: screen;
+  opacity: calc(var(--bc-active) * var(--bc-spec-opacity));
+  transition: opacity 200ms var(--ease-out);
+}
+/* subtle film-grain noise (inline SVG feTurbulence) */
+.brain-card__noise {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-size: 120px 120px;
+  mix-blend-mode: overlay;
+  opacity: calc(var(--bc-noise-opacity) * 0.12);
+}
+@media (prefers-reduced-motion: reduce) {
+  .brain-card { transform: none !important; transition: none !important; }
+  .brain-card__spec { opacity: 0 !important; }
+  .brain-card__sheen { opacity: 0.18 !important; }
+}
+
 /* ── Mobile drawer (Radix Dialog) ─────────────────────────────────────────── */
 .site-nav__scrim {
   position: fixed; inset: 0; z-index: 40;

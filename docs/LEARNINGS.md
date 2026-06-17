@@ -34,6 +34,25 @@ next session can follow, not a story. Format:
 
 ## Log
 
+### [2026-06-17] Iridescence/specular needs a DARK base; reuse KDS Tabs + tile-hover from the palette · (DESIGN/COMPONENTS)
+- **What happened / feedback:** Chai asked for a rich Company-Brain featured card (perspective tilt,
+  cursor specular glow, iridescent bright areas, noise) + KDS Tabs for the audience switcher + a warm
+  icon-tile hover + a better backdrop blur. First built the iridescent card on the light mauve surface —
+  the sheen/specular were nearly invisible (soft-light rainbow on cream reads as nothing).
+- **Rule going forward:** Iridescent sheen + white specular only read on a **dark field** (espresso
+  `--dark-bg`/`--dark-surface`) — that's why KDS `ModelFeaturedCard`'s rainbow lives on its selected/dark
+  state. Build such effects as layered absolutely-positioned divs (sheen `conic-gradient` soft-light,
+  specular `radial` white screen tracking `--mx/--my`, noise `feTurbulence` overlay, mauve glow
+  `::after`), driven by pointer→CSS-vars, every aspect a CSS-var knob, and **reduced-motion disables
+  tilt+specular** (verified `transform:none`). Reuse don't rebuild: audience switcher = KDS `Tabs`
+  (`TabsList fluid` + `TabsTrigger`); icon-tile hover warms via `--surface-warm` (neutral-100); backdrop
+  blur = warm `neutral-50` veil (not grey ink) + `blur(22px) saturate(1.15)`.
+- **Taste note (flag for Chai):** an iridescent specular card brushes souvenir-taste's "no gratuitous
+  glow/aurora" ban and the "one signature moment per page" rule (Home already has scatter→assemble). It's
+  allowed here as the nav's transient signature, directed by Chai, token-built (not a copy-paste lib).
+  Confirm it doesn't fight the page signature.
+- **Promoted to:** n/a (nav build record; revisit if taste guidance tightens).
+
 ### [2026-06-17] OpenAI-style mega-menu = full-width opaque SHEET + page blurred below (floating card never reads on a sparse hero) · (COMPONENTS/DESIGN)
 - **What happened / feedback:** Kept trying to get OpenAI's blur with a centered floating card +
   backdrop-blur; it never "popped." Root cause is NOT technical — `backdrop-filter` works fine, but our

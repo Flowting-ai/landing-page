@@ -7,10 +7,11 @@ import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import {
   UserAiIcon, BrainTwoIcon, ChatOneIcon, NeuralNetworkIcon,
-  DashboardSquareOneIcon, WorkflowSquareTenIcon, ArrowUpRightOneIcon,
+  DashboardSquareOneIcon, WorkflowSquareTenIcon,
 } from "@strange-huge/icons";
 import { ConnectorIcon } from "@strange-huge/icons/connectors";
 import { Tabs, TabsList, TabsTrigger } from "@/components/Tabs";
+import FeaturedBrainCard from "./FeaturedBrainCard";
 
 export type MenuItem = {
   label: string;
@@ -114,42 +115,6 @@ function NavCard({ item, onPick }: { item: MenuItem; onPick?: () => void }) {
   );
 }
 
-/** The one accent moment in the nav: a mauve gradient promo card (ElevenLabs /
-    Glean "featured" pattern), pointing at the team flagship. */
-function FeaturedCard() {
-  return (
-    <NavigationMenu.Link asChild>
-      <a
-        href="/solutions/company-brain"
-        className="group relative flex flex-1 flex-col justify-between overflow-hidden rounded-[12px] border border-line p-4 transition-shadow hover:shadow-[var(--shadow-surface-card-hover)]"
-        style={{ background: "linear-gradient(155deg, var(--accent-soft) 0%, color-mix(in oklch, var(--surface) 86%, var(--accent)) 55%, var(--surface) 100%)" }}
-      >
-        {/* faint oversized glyph — depth, not decoration */}
-        <span aria-hidden className="pointer-events-none absolute -right-5 -top-4 text-[color:var(--accent)]" style={{ opacity: 0.1 }}>
-          <NeuralNetworkIcon size={104} />
-        </span>
-        <div className="relative flex items-center justify-between">
-          <span className="inline-flex h-9 w-9 items-center justify-center rounded-[9px] border border-line bg-surface text-[color:var(--accent)]" style={{ boxShadow: "var(--shadow-sm)" }}>
-            <NeuralNetworkIcon size={19} />
-          </span>
-          <span className="rounded-full bg-surface px-2 py-0.5 font-sans text-[10px] font-semibold uppercase tracking-[0.12em] text-[color:var(--accent)]" style={{ border: "1px solid var(--line)" }}>
-            New
-          </span>
-        </div>
-        <div className="relative mt-5">
-          <p className="flex items-center gap-1 font-sans text-[var(--text-small)] font-semibold tracking-[-0.01em] text-ink">
-            The Company Brain
-            <ArrowUpRightOneIcon size={15} />
-          </p>
-          <p className="mt-1 font-sans text-[var(--text-micro)] leading-snug text-ink-muted">
-            Shared memory, context, and automations for your whole team.
-          </p>
-        </div>
-      </a>
-    </NavigationMenu.Link>
-  );
-}
-
 /** "Works in your stack" connector rail — Glean's "where you work" zone, our tokens. */
 function StackRail() {
   return (
@@ -174,7 +139,7 @@ function StackRail() {
 function SheetAside() {
   return (
     <div className="flex w-[300px] shrink-0 flex-col gap-3 self-stretch border-l border-line pl-8">
-      <FeaturedCard />
+      <FeaturedBrainCard />
       <StackRail />
     </div>
   );
