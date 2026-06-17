@@ -199,18 +199,52 @@ function SheetAside({ hovered }: { hovered: MenuItem | null }) {
 const sheetInner = "mx-auto flex w-full gap-10 py-7";
 const sheetInnerStyle = { maxWidth: "var(--maxw)", paddingInline: "var(--gutter)" } as const;
 
+// Secondary IA surfaced in the sheet footer (real routes only).
+const FOOTER_LINKS = [
+  { label: "Pricing", href: "/pricing" },
+  { label: "Integrations", href: "/integrations" },
+  { label: "Guide", href: "/guide" },
+];
+
+/** Utility footer bar — a full-width strip grounding the sheet: secondary links
+    on the left, a forward action on the right (Stripe/Glean pattern). */
+function SheetFooter() {
+  return (
+    <div className="border-t border-line" style={{ background: "var(--bg-subtle)" }}>
+      <div className="mx-auto flex items-center justify-between py-3" style={sheetInnerStyle}>
+        <div className="flex items-center gap-6">
+          {FOOTER_LINKS.map((l) => (
+            <NavigationMenu.Link asChild key={l.label}>
+              <a href={l.href} className="font-sans text-[var(--text-small)] text-ink-muted transition-colors hover:text-ink">{l.label}</a>
+            </NavigationMenu.Link>
+          ))}
+        </div>
+        <NavigationMenu.Link asChild>
+          <a href="/about" className="inline-flex items-center gap-1 font-sans text-[var(--text-small)] font-semibold tracking-[-0.01em] text-ink transition-colors hover:text-[color:var(--accent)]">
+            Book a demo
+            <ArrowUpRightOneIcon size={15} />
+          </a>
+        </NavigationMenu.Link>
+      </div>
+    </div>
+  );
+}
+
 /** Product sheet — left: item cards (hover → preview). right: preview/featured aside. */
 function ProductPanel() {
   const [hovered, setHovered] = useState<MenuItem | null>(null);
   return (
-    <div className={sheetInner} style={sheetInnerStyle} onMouseLeave={() => setHovered(null)}>
-      <div className="flex flex-1 flex-col">
-        <span className={eyebrowCls}>Product</span>
-        <div className="grid flex-1 grid-cols-2 gap-x-6 gap-y-1.5">
-          {PRODUCT.map((it) => <NavCard key={it.label} item={it} onHover={setHovered} />)}
+    <div onMouseLeave={() => setHovered(null)}>
+      <div className={sheetInner} style={sheetInnerStyle}>
+        <div className="flex flex-1 flex-col">
+          <span className={eyebrowCls}>Product</span>
+          <div className="grid flex-1 grid-cols-2 gap-x-6 gap-y-1.5">
+            {PRODUCT.map((it) => <NavCard key={it.label} item={it} onHover={setHovered} />)}
+          </div>
         </div>
+        <SheetAside hovered={hovered} />
       </div>
-      <SheetAside hovered={hovered} />
+      <SheetFooter />
     </div>
   );
 }
@@ -223,31 +257,34 @@ function SolutionPanel() {
   const current = SOLUTION_AUDIENCES.find((a) => a.id === active)!;
 
   return (
-    <div className={sheetInner} style={sheetInnerStyle} onMouseLeave={() => setHovered(null)}>
-      <div className="flex flex-1 flex-col">
-        {/* KDS Tabs — the animated sliding-pill segmented control, reused as-is. */}
-        <Tabs value={active} onValueChange={(v) => { setActive(v); setHovered(null); }} className="mb-3 w-[340px]">
-          <TabsList fluid>
-            {SOLUTION_AUDIENCES.map((a) => (
-              <TabsTrigger key={a.id} value={a.id}>{a.tab}</TabsTrigger>
-            ))}
-          </TabsList>
-        </Tabs>
+    <div onMouseLeave={() => setHovered(null)}>
+      <div className={sheetInner} style={sheetInnerStyle}>
+        <div className="flex flex-1 flex-col">
+          {/* KDS Tabs — the animated sliding-pill segmented control, reused as-is. */}
+          <Tabs value={active} onValueChange={(v) => { setActive(v); setHovered(null); }} className="mb-3 w-[340px]">
+            <TabsList fluid>
+              {SOLUTION_AUDIENCES.map((a) => (
+                <TabsTrigger key={a.id} value={a.id}>{a.tab}</TabsTrigger>
+              ))}
+            </TabsList>
+          </Tabs>
 
-        <AnimatePresence mode="wait" initial={false}>
-          <motion.div
-            key={active}
-            initial={{ opacity: 0, y: 6 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -6 }}
-            transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
-            className="grid min-h-[9rem] grid-cols-2 gap-x-6 gap-y-1.5"
-          >
-            {current.items.map((it) => <NavCard key={it.label} item={it} onHover={setHovered} />)}
-          </motion.div>
-        </AnimatePresence>
+          <AnimatePresence mode="wait" initial={false}>
+            <motion.div
+              key={active}
+              initial={{ opacity: 0, y: 6 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -6 }}
+              transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
+              className="grid min-h-[9rem] grid-cols-2 gap-x-6 gap-y-1.5"
+            >
+              {current.items.map((it) => <NavCard key={it.label} item={it} onHover={setHovered} />)}
+            </motion.div>
+          </AnimatePresence>
+        </div>
+        <SheetAside hovered={hovered} />
       </div>
-      <SheetAside hovered={hovered} />
+      <SheetFooter />
     </div>
   );
 }
