@@ -190,41 +190,42 @@ body { min-height: 100dvh; background: var(--bg); color: var(--ink); font-family
    List (z-1) + Viewport (z-1); pointer-events:none keeps the hover-close model. */
 .nav-backdrop {
   position: fixed; inset: 0; z-index: 0;
-  background: color-mix(in oklch, var(--ink) 8%, transparent);
-  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+  /* PURE blur, no color/dim — the grey tint was what muddied it (OpenAI uses
+     essentially no fill, just the blur). */
+  background: transparent;
+  -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
   pointer-events: none;
 }
 
-/* ── Mega-menu viewport (shared, size-morphs between panels) ──────────────── */
+/* ── Mega-menu sheet (OpenAI-style) — a FULL-WIDTH opaque sheet anchored under
+   the nav. The page below it blurs (via .nav-backdrop); the sheet itself is 100%
+   solid. Content inside is gutter-aligned to the page container. Only the HEIGHT
+   morphs between panels (the sheet is always full width). */
 .nav-viewport-position {
-  position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
-  z-index: 1; /* above .nav-backdrop (z-0) so the panel stays crisp */
-  display: flex; justify-content: center;
-  padding-top: 10px;
+  position: fixed; top: var(--nav-shell-h); left: 0;
+  width: 100vw;
+  z-index: 1; /* above .nav-backdrop (z-0) so the sheet stays crisp */
   pointer-events: none;
 }
 .nav-viewport {
-  position: relative;
   pointer-events: auto;
-  width: var(--radix-navigation-menu-viewport-width);
+  /* Force full-bleed — override Radix's inline content-width var. */
+  width: 100vw;
   height: var(--radix-navigation-menu-viewport-height);
   overflow: hidden;
-  /* The KDS dropdown surface — SOLID 100% fill (no opacity, no blur on the panel
-     itself; the blur lives on the full-screen backdrop behind). popover shadow +
-     12px dropdown radius, matching Popover variant="dropdown". */
-  border-radius: 12px;
   background: var(--popover-bg);
-  box-shadow: var(--shadow-popover);
+  border-top: 1px solid var(--line);
+  border-radius: 0 0 var(--r-lg) var(--r-lg);
+  box-shadow: var(--shadow-lg);
   transform-origin: top center;
-  /* The morph: Product (wide) ↔ Solution (narrow) glide rather than pop. */
-  transition: width 300ms var(--ease-out), height 300ms var(--ease-out);
+  transition: height 320ms var(--ease-out);
 }
 .nav-viewport[data-state="open"]   { animation: nav-vp-in 200ms var(--ease-out); }
 .nav-viewport[data-state="closed"] { animation: nav-vp-out 150ms var(--ease-out); }
 @keyframes nav-vp-in  { from { opacity: 0; transform: translateY(-6px) scale(0.985); } to { opacity: 1; transform: none; } }
 @keyframes nav-vp-out { from { opacity: 1; transform: none; } to { opacity: 0; transform: translateY(-6px) scale(0.985); } }
 
-.nav-content { position: absolute; top: 0; left: 0; }
+.nav-content { position: absolute; top: 0; left: 0; right: 0; }
 .nav-content[data-motion="from-start"] { animation: nav-c-from-l 220ms var(--ease-out); }
 .nav-content[data-motion="from-end"]   { animation: nav-c-from-r 220ms var(--ease-out); }
 .nav-content[data-motion="to-start"]   { animation: nav-c-to-l 160ms var(--ease-out); }

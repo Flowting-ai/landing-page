@@ -81,7 +81,10 @@ export default function SiteNav() {
 
               {/* desktop mega-menu nav (centered). Shown at lg+ only — the centered
                   menu needs ~1024px to clear the logo + CTAs; below that the drawer wins. */}
-              <div className="absolute left-1/2 hidden -translate-x-1/2 lg:block">
+              {/* Centered via auto-margins (NOT -translate-x-1/2): Tailwind's
+                  `translate` property would establish a fixed-positioning
+                  containing block and trap the full-width mega-sheet. */}
+              <div className="absolute inset-x-0 mx-auto hidden w-fit lg:block">
                 <MegaMenu />
               </div>
 

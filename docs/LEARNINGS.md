@@ -34,6 +34,33 @@ next session can follow, not a story. Format:
 
 ## Log
 
+### [2026-06-17] OpenAI-style mega-menu = full-width opaque SHEET + page blurred below (floating card never reads on a sparse hero) · (COMPONENTS/DESIGN)
+- **What happened / feedback:** Kept trying to get OpenAI's blur with a centered floating card +
+  backdrop-blur; it never "popped." Root cause is NOT technical — `backdrop-filter` works fine, but our
+  hero is mostly empty warm cream, so blurring it shows almost nothing (OpenAI's page is dense/colorful,
+  so their blur is dramatic). The real structural difference: OpenAI's menu is a **full-width opaque
+  sheet** anchored under the nav, with the page blurred **below** it. Chai chose the sheet.
+- **Rule going forward:** For a marketing mega-menu that needs the OpenAI effect, build a **full-bleed
+  opaque sheet** (`position:fixed; left:0; width:100vw; top:var(--nav-shell-h)`), 100% solid fill,
+  content in a gutter-aligned `max-width:var(--maxw)` container; full-screen `backdrop-filter` blur sits
+  behind/below. Don't expect a floating-card + blur to read on a near-empty canvas — there's nothing to
+  blur. Height morphs between panels; width stays full.
+- **Promoted to:** docs/solutions/design-patterns/scroll-state-nav-radix-portals.md (sheet note).
+
+### [2026-06-17] Tailwind v4 `-translate-x-1/2` uses the `translate` PROPERTY → it traps `position:fixed` children · (CSS/GOTCHA)
+- **What happened / feedback:** A full-width `position:fixed; left:0; width:100vw` mega-sheet rendered at
+  x=554 (centered) and 1440 wide overflowing, not at left:0. The cause: its ancestor used Tailwind v4
+  `-translate-x-1/2`, which compiles to the **`translate` CSS property** (`translate: -50% 0`), NOT
+  `transform`. The `translate` property establishes a containing block for fixed descendants — so the
+  sheet anchored to the centered wrapper, not the viewport. `getComputedStyle(el).transform` reads
+  `none` (it's on `translate`), so a transform-only ancestor scan MISSES it.
+- **Rule going forward:** When `position:fixed` is mysteriously offset, check ancestors for the
+  `translate` / `scale` / `rotate` **individual properties** AND `transform` AND `filter` /
+  `backdrop-filter` / `perspective` / `will-change` / `contain` / `container-type` — any of them creates
+  a containing block. Center without trapping fixed children via `absolute inset-x-0 mx-auto w-fit`
+  (auto-margins) instead of `left-1/2 -translate-x-1/2`.
+- **Promoted to:** docs/solutions/design-patterns/scroll-state-nav-radix-portals.md.
+
 ### [2026-06-17] "Blur behind the dropdown" = full-screen backdrop BEHIND + solid panel ON TOP (not a frosted panel) · (COMPONENTS/CSS)
 - **What happened / feedback:** Two wrong turns on the same effect. First built a full-screen dim+blur
   overlay (too heavy). Then over-corrected to a *frosted translucent panel* (panel itself blurred, no

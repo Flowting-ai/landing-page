@@ -151,77 +151,90 @@ function FeaturedCard() {
 /** "Works in your stack" connector rail — Glean's "where you work" zone, our tokens. */
 function StackRail() {
   return (
-    <div className="rounded-[12px] border border-line bg-bg-subtle p-3">
-      <span className="block font-sans text-[var(--text-micro)] font-medium uppercase tracking-[0.12em] text-ink-subtle">
+    <div className="rounded-[12px] border border-line bg-bg-subtle p-3.5">
+      <span className="block font-sans text-[length:var(--font-size-caption)] font-medium uppercase tracking-[0.14em] text-ink-subtle">
         Works in your stack
       </span>
-      <div className="mt-2.5 flex items-center gap-2">
+      <div className="mt-3 flex items-center gap-2">
         {STACK.map((id) => (
-          <span key={id} className="inline-flex h-8 w-8 items-center justify-center rounded-[8px] border border-line bg-surface" style={{ boxShadow: "var(--shadow-sm)" }}>
-            <ConnectorIcon id={id} size={18} />
+          <span key={id} className="inline-flex h-9 w-9 items-center justify-center rounded-[9px] border border-line bg-surface" style={{ boxShadow: "var(--shadow-sm)" }}>
+            <ConnectorIcon id={id} size={19} />
           </span>
         ))}
-        <span className="ml-0.5 font-sans text-[var(--text-micro)] font-semibold text-ink-muted">+250</span>
+        <span className="ml-1 font-sans text-[var(--text-micro)] font-semibold text-ink-muted">+250</span>
       </div>
     </div>
   );
 }
 
-/** Product panel — Glean-style multi-zone: rich item cards on the left, a bold
-    featured card + connector rail on the right. Uses the menu's full width. */
+/** Shared right-hand aside for both sheets — featured card over the connector
+    rail. Keeps the two panels visually consistent across the full-width sheet. */
+function SheetAside() {
+  return (
+    <div className="flex w-[300px] shrink-0 flex-col gap-3 self-stretch border-l border-line pl-8">
+      <FeaturedCard />
+      <StackRail />
+    </div>
+  );
+}
+
+// Full-width sheet inner container — gutter-aligned to the page content column.
+const sheetInner = "mx-auto flex w-full gap-10 py-7";
+const sheetInnerStyle = { maxWidth: "var(--maxw)", paddingInline: "var(--gutter)" } as const;
+
+/** Product sheet — left: item-card grid (gutter-aligned). right: shared aside. */
 function ProductPanel() {
   return (
-    <div className="flex gap-3 p-3" style={{ width: 812 }}>
+    <div className={sheetInner} style={sheetInnerStyle}>
       <div className="flex flex-1 flex-col">
         <span className={eyebrowCls}>Product</span>
-        <div className="grid flex-1 grid-cols-2 gap-1.5">
+        <div className="grid flex-1 grid-cols-2 gap-x-6 gap-y-1.5">
           {PRODUCT.map((it) => <NavCard key={it.label} item={it} />)}
         </div>
       </div>
-      <div className="flex w-[256px] flex-col gap-2.5 border-l border-line pl-3">
-        <FeaturedCard />
-        <StackRail />
-      </div>
+      <SheetAside />
     </div>
   );
 }
 
-/** Solution panel — audience switcher (segmented control + sliding pill) over
-    the same rich item cards. min-height holds the viewport steady across the
-    2-vs-3-item audiences. */
+/** Solution sheet — left: audience switcher + item cards. right: shared aside.
+    min-height holds the sheet steady across the 2-vs-3-item audiences. */
 function SolutionPanel() {
   const [active, setActive] = useState(SOLUTION_AUDIENCES[0].id);
   const current = SOLUTION_AUDIENCES.find((a) => a.id === active)!;
 
   return (
-    <div className="p-3" style={{ width: 372 }}>
-      <div className="mb-2 flex gap-1 rounded-[10px] border border-line bg-bg-subtle p-1">
-        {SOLUTION_AUDIENCES.map((a) => (
-          <button
-            key={a.id}
-            onClick={() => setActive(a.id)}
-            className="relative flex-1 rounded-[7px] px-3 py-1.5 font-sans text-[var(--text-micro)] font-medium transition-colors"
-          >
-            {active === a.id && (
-              <motion.span layoutId="sol-pill" className="absolute inset-0 rounded-[7px] bg-surface" style={{ boxShadow: "var(--shadow-sm)" }} transition={springs.moderate} />
-            )}
-            <span className={"relative z-10 " + (active === a.id ? "text-ink" : "text-ink-muted hover:text-ink")}>{a.tab}</span>
-          </button>
-        ))}
-      </div>
+    <div className={sheetInner} style={sheetInnerStyle}>
+      <div className="flex flex-1 flex-col">
+        <div className="mb-3 flex w-[320px] gap-1 rounded-[10px] border border-line bg-bg-subtle p-1">
+          {SOLUTION_AUDIENCES.map((a) => (
+            <button
+              key={a.id}
+              onClick={() => setActive(a.id)}
+              className="relative flex-1 rounded-[7px] px-3 py-1.5 font-sans text-[var(--text-micro)] font-medium transition-colors"
+            >
+              {active === a.id && (
+                <motion.span layoutId="sol-pill" className="absolute inset-0 rounded-[7px] bg-surface" style={{ boxShadow: "var(--shadow-sm)" }} transition={springs.moderate} />
+              )}
+              <span className={"relative z-10 " + (active === a.id ? "text-ink" : "text-ink-muted hover:text-ink")}>{a.tab}</span>
+            </button>
+          ))}
+        </div>
 
-      <AnimatePresence mode="wait" initial={false}>
-        <motion.div
-          key={active}
-          initial={{ opacity: 0, y: 6 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -6 }}
-          transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
-          className="flex min-h-[12.5rem] flex-col gap-1.5"
-        >
-          {current.items.map((it) => <NavCard key={it.label} item={it} />)}
-        </motion.div>
-      </AnimatePresence>
+        <AnimatePresence mode="wait" initial={false}>
+          <motion.div
+            key={active}
+            initial={{ opacity: 0, y: 6 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -6 }}
+            transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
+            className="grid min-h-[9rem] grid-cols-2 gap-x-6 gap-y-1.5"
+          >
+            {current.items.map((it) => <NavCard key={it.label} item={it} />)}
+          </motion.div>
+        </AnimatePresence>
+      </div>
+      <SheetAside />
     </div>
   );
 }
