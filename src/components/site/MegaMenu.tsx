@@ -10,7 +10,7 @@ import {
   DashboardSquareOneIcon, WorkflowSquareTenIcon, ArrowUpRightOneIcon,
 } from "@strange-huge/icons";
 import { ConnectorIcon } from "@strange-huge/icons/connectors";
-import { springs } from "@/lib/springs";
+import { Tabs, TabsList, TabsTrigger } from "@/components/Tabs";
 
 export type MenuItem = {
   label: string;
@@ -96,9 +96,11 @@ function NavCard({ item, onPick }: { item: MenuItem; onPick?: () => void }) {
         className="group flex items-start gap-3 rounded-[10px] p-2.5 transition-[background-color,box-shadow] duration-150 hover:bg-surface hover:shadow-[var(--card-shadow)]"
         style={{ ["--card-shadow" as string]: SHADOW_CARD }}
       >
+        {/* Icon tile — on card hover the rectangle warms + darkens (surface →
+            warm neutral) and the glyph picks up the mauve accent. */}
         <span
-          className="flex h-[38px] w-[38px] shrink-0 items-center justify-center rounded-[9px] text-ink transition-colors group-hover:text-[color:var(--accent)]"
-          style={{ background: "var(--surface)", boxShadow: SHADOW_CARD }}
+          className="flex h-[38px] w-[38px] shrink-0 items-center justify-center rounded-[9px] bg-surface text-ink transition-colors duration-150 group-hover:bg-surface-warm group-hover:text-[color:var(--accent)]"
+          style={{ boxShadow: SHADOW_CARD }}
         >
           {icon}
         </span>
@@ -206,20 +208,14 @@ function SolutionPanel() {
   return (
     <div className={sheetInner} style={sheetInnerStyle}>
       <div className="flex flex-1 flex-col">
-        <div className="mb-3 flex w-[320px] gap-1 rounded-[10px] border border-line bg-bg-subtle p-1">
-          {SOLUTION_AUDIENCES.map((a) => (
-            <button
-              key={a.id}
-              onClick={() => setActive(a.id)}
-              className="relative flex-1 rounded-[7px] px-3 py-1.5 font-sans text-[var(--text-micro)] font-medium transition-colors"
-            >
-              {active === a.id && (
-                <motion.span layoutId="sol-pill" className="absolute inset-0 rounded-[7px] bg-surface" style={{ boxShadow: "var(--shadow-sm)" }} transition={springs.moderate} />
-              )}
-              <span className={"relative z-10 " + (active === a.id ? "text-ink" : "text-ink-muted hover:text-ink")}>{a.tab}</span>
-            </button>
-          ))}
-        </div>
+        {/* KDS Tabs — the animated sliding-pill segmented control, reused as-is. */}
+        <Tabs value={active} onValueChange={setActive} className="mb-3 w-[340px]">
+          <TabsList fluid>
+            {SOLUTION_AUDIENCES.map((a) => (
+              <TabsTrigger key={a.id} value={a.id}>{a.tab}</TabsTrigger>
+            ))}
+          </TabsList>
+        </Tabs>
 
         <AnimatePresence mode="wait" initial={false}>
           <motion.div

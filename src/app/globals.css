@@ -190,10 +190,12 @@ body { min-height: 100dvh; background: var(--bg); color: var(--ink); font-family
    List (z-1) + Viewport (z-1); pointer-events:none keeps the hover-close model. */
 .nav-backdrop {
   position: fixed; inset: 0; z-index: 0;
-  /* PURE blur, no color/dim — the grey tint was what muddied it (OpenAI uses
-     essentially no fill, just the blur). */
-  background: transparent;
-  -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px);
+  /* Warm frosted glass — a soft warm veil (neutral-50, NOT grey ink) + a deeper
+     blur with a touch of saturation, so the page reads as softly out-of-focus
+     behind the sheet rather than greyed. */
+  background: var(--neutral-50-30);
+  -webkit-backdrop-filter: blur(22px) saturate(1.15);
+  backdrop-filter: blur(22px) saturate(1.15);
   pointer-events: none;
 }
 
