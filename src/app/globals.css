@@ -26,6 +26,10 @@
 /* Marketing token layer — extends Kaya. Imported AFTER the vendored files. */
 @import "../styles/tokens/marketing.css";
 
+/* Vendored kds- and kaya- support classes for the ChatBoard/Pinboard/Sidebar
+   (hero product window). Without these the Pinboard rail collapses. */
+@import "../styles/kds-chatboard.css";
+
 @custom-variant dark (&:is(.dark *));
 
 /* Marketing tokens (--bg, --ink, --accent, radius, shadow, rhythm, motion …)
@@ -124,29 +128,117 @@ body { min-height: 100dvh; background: var(--bg); color: var(--ink); font-family
    (CTA bands). Built from --accent so it follows the live theme (mauve / ochre). */
 .glow-signature { background: radial-gradient(closest-side, color-mix(in oklch, var(--accent) 38%, transparent), color-mix(in oklch, var(--accent) 12%, transparent) 45%, transparent 72%); filter: blur(34px); }
 
-/* ── Mega-menu (Radix NavigationMenu) ─────────────────────────────────────── */
-.kds-mega-content {
-  position: absolute;
-  top: calc(100% + 10px);
-  left: 50%;
-  transform: translateX(-50%);
+/* ── Site nav: flush → floating pill ──────────────────────────────────────────
+   The outer shell keeps a CONSTANT reserved height across states so the hero
+   never lurches at the scroll threshold; the whole morph happens on the inner
+   pill. Over the calm hero top the bar is flush (transparent, borderless); once
+   product content scrolls beneath it the pill firms up — blur/border earn their
+   keep for legibility. (See docs/LEARNINGS — nav V2.) */
+/* --nav-shell-h is on :root so the body-portaled drawer/scrim can read it too. */
+:root { --nav-shell-h: 5.25rem; }
+.site-nav { --nav-radius: 13px; --nav-pill-maxw: 70rem; }
+.site-nav__shell { display: flex; align-items: center; min-height: var(--nav-shell-h); }
+
+.site-nav__pill {
+  position: relative;
+  display: flex; align-items: center; justify-content: space-between;
+  width: 100%;
+  border: 1px solid transparent;
+  border-radius: var(--nav-radius);
+  /* One-shot threshold transitions (not scroll-linked per frame). Blur animates
+     the filter value itself — fading a backdrop-filtered layer via opacity flashes. */
+  transition:
+    max-width 320ms var(--ease-out), padding 320ms var(--ease-out),
+    background-color 320ms var(--ease-out), border-color 320ms var(--ease-out),
+    box-shadow 320ms var(--ease-out),
+    -webkit-backdrop-filter 320ms var(--ease-out), backdrop-filter 320ms var(--ease-out);
 }
-.kds-mega-surface {
+.site-nav__pill.is-flush {
+  max-width: 100%;
+  padding: 0.625rem 0.5rem;
+  background-color: transparent;
+  border-color: transparent;
+  box-shadow: none;
+  -webkit-backdrop-filter: blur(0); backdrop-filter: blur(0);
+}
+.site-nav__pill.is-pill {
+  max-width: var(--nav-pill-maxw);
+  margin-inline: auto;
+  padding: 0.375rem 0.75rem;
+  background-color: color-mix(in oklch, var(--surface) 85%, transparent);
+  border-color: var(--line-strong);
+  box-shadow: var(--shadow-md);
+  -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
+}
+
+/* Logo: wordmark over the hero, condensing to the mark in the pill. Width is
+   set inline from the asset ratios so the swap is absorbed left-anchored. */
+.site-nav__logo { position: relative; display: inline-flex; align-items: center; overflow: hidden; transition: width 320ms var(--ease-out); }
+.site-nav__logo > * { transition: opacity 240ms var(--ease-out); }
+.site-nav__logo .nav-logo-mark { position: absolute; left: 0; opacity: 0; }
+.site-nav__logo[data-scrolled="true"] .nav-logo-word { opacity: 0; }
+.site-nav__logo[data-scrolled="true"] .nav-logo-mark { opacity: 1; }
+
+/* ── Mega-menu viewport (shared, size-morphs between panels) ──────────────── */
+.nav-viewport-position {
+  position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+  display: flex; justify-content: center;
+  padding-top: 10px;
+  pointer-events: none;
+}
+.nav-viewport {
+  position: relative;
+  pointer-events: auto;
+  width: var(--radix-navigation-menu-viewport-width);
+  height: var(--radix-navigation-menu-viewport-height);
   overflow: hidden;
   border-radius: var(--r-lg);
   border: 1px solid var(--line);
   background: var(--surface);
   box-shadow: var(--shadow-lg);
   transform-origin: top center;
-  animation: mega-in 200ms var(--ease-out);
+  /* The morph: Product (wide) ↔ Solution (narrow) glide rather than pop. */
+  transition: width 300ms var(--ease-out), height 300ms var(--ease-out);
 }
-@keyframes mega-in {
-  from { opacity: 0; transform: translateY(-6px) scale(0.985); }
-  to   { opacity: 1; transform: translateY(0) scale(1); }
+.nav-viewport[data-state="open"]   { animation: nav-vp-in 200ms var(--ease-out); }
+.nav-viewport[data-state="closed"] { animation: nav-vp-out 150ms var(--ease-out); }
+@keyframes nav-vp-in  { from { opacity: 0; transform: translateY(-6px) scale(0.985); } to { opacity: 1; transform: none; } }
+@keyframes nav-vp-out { from { opacity: 1; transform: none; } to { opacity: 0; transform: translateY(-6px) scale(0.985); } }
+
+.nav-content { position: absolute; top: 0; left: 0; }
+.nav-content[data-motion="from-start"] { animation: nav-c-from-l 220ms var(--ease-out); }
+.nav-content[data-motion="from-end"]   { animation: nav-c-from-r 220ms var(--ease-out); }
+.nav-content[data-motion="to-start"]   { animation: nav-c-to-l 160ms var(--ease-out); }
+.nav-content[data-motion="to-end"]     { animation: nav-c-to-r 160ms var(--ease-out); }
+@keyframes nav-c-from-l { from { opacity: 0; transform: translateX(-14px); } to { opacity: 1; transform: none; } }
+@keyframes nav-c-from-r { from { opacity: 0; transform: translateX(14px); }  to { opacity: 1; transform: none; } }
+@keyframes nav-c-to-l   { from { opacity: 1; transform: none; } to { opacity: 0; transform: translateX(-14px); } }
+@keyframes nav-c-to-r   { from { opacity: 1; transform: none; } to { opacity: 0; transform: translateX(14px); } }
+
+/* ── Mobile drawer (Radix Dialog) ─────────────────────────────────────────── */
+.site-nav__scrim {
+  position: fixed; inset: 0; z-index: 40;
+  background: color-mix(in oklch, var(--ink) 26%, transparent);
+  -webkit-backdrop-filter: blur(2px); backdrop-filter: blur(2px);
 }
+.site-nav__scrim[data-state="open"]   { animation: nav-scrim-in 240ms var(--ease-out); }
+.site-nav__scrim[data-state="closed"] { animation: nav-scrim-out 180ms var(--ease-out); }
+@keyframes nav-scrim-in  { from { opacity: 0; } to { opacity: 1; } }
+@keyframes nav-scrim-out { from { opacity: 1; } to { opacity: 0; } }
+.site-nav__drawer {
+  position: fixed; z-index: 50; top: var(--nav-shell-h); left: 0; right: 0;
+  margin-inline: auto; max-width: var(--maxw-wide);
+  padding-inline: var(--gutter);
+  max-height: calc(100dvh - var(--nav-shell-h) - 1rem);
+  overflow-y: auto; outline: none;
+}
+.site-nav__drawer[data-state="open"]   { animation: nav-drawer-in 280ms var(--ease-out); }
+.site-nav__drawer[data-state="closed"] { animation: nav-drawer-out 200ms var(--ease-out); }
+@keyframes nav-drawer-in  { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: none; } }
+@keyframes nav-drawer-out { from { opacity: 1; transform: none; } to { opacity: 0; transform: translateY(-8px); } }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
-  .kds-mega-surface { animation: none !important; }
+  .nav-viewport, .nav-content, .site-nav__scrim, .site-nav__drawer { animation: none !important; }
 }

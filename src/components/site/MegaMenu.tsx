@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 import * as NavigationMenu from "@radix-ui/react-navigation-menu";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
@@ -50,8 +51,20 @@ const LINKS = [
   { label: "About", href: "/about" },
 ];
 
+/** Which top-level group owns the current route (drives the active treatment). */
+function activeGroup(pathname: string): "product" | "solution" | null {
+  if (pathname.startsWith("/product")) return "product";
+  if (pathname.startsWith("/solutions") || pathname === "/individuals") return "solution";
+  return null;
+}
+
+// Geist body for nav labels (never serif), nudged to medium + tighter tracking so
+// the bar reads considered, not default-shadcn. Active = ink + medium; mauve on hover/open.
+// No `outline-none` — let the global ink :focus-visible ring (--focus-ring-c) show through.
 const triggerCls =
-  "group inline-flex items-center gap-1 rounded-[8px] px-2 py-1.5 font-sans text-[var(--text-small)] text-ink-secondary outline-none transition-colors hover:text-[color:var(--accent)] data-[state=open]:text-[color:var(--accent)]";
+  "group inline-flex items-center gap-1 rounded-[8px] px-2 py-1.5 font-sans text-[var(--text-small)] font-medium tracking-[-0.01em] transition-colors hover:text-[color:var(--accent)] data-[state=open]:text-[color:var(--accent)] data-[active=true]:text-ink";
+const linkCls =
+  "inline-flex items-center rounded-[8px] px-2 py-1.5 font-sans text-[var(--text-small)] font-medium tracking-[-0.01em] transition-colors hover:text-[color:var(--accent)] data-[active=true]:text-ink";
 
 function Row({ item, onPick }: { item: MenuItem; onPick?: () => void }) {
   return (
@@ -80,7 +93,9 @@ function ProductPanel() {
   );
 }
 
-/** Solution panel with an audience switcher (segmented control + sliding pill). */
+/** Solution panel with an audience switcher (segmented control + sliding pill).
+    A min-height keeps the shared viewport from jittering when the audience
+    (2 vs 3 items) changes while the panel is open. */
 function SolutionPanel() {
   const [active, setActive] = useState(SOLUTION_AUDIENCES[0].id);
   const current = SOLUTION_AUDIENCES.find((a) => a.id === active)!;
@@ -103,7 +118,7 @@ function SolutionPanel() {
         ))}
       </div>
 
-      {/* audience content */}
+      {/* audience content — min-h fits the tallest audience (3 rows) so the viewport holds steady */}
       <AnimatePresence mode="wait" initial={false}>
         <motion.div
           key={active}
@@ -111,7 +126,7 @@ function SolutionPanel() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -6 }}
           transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
-          className="flex flex-col gap-0.5"
+          className="flex min-h-[11.5rem] flex-col gap-0.5"
         >
           {current.items.map((it) => <Row key={it.label} item={it} />)}
         </motion.div>
@@ -121,37 +136,44 @@ function SolutionPanel() {
 }
 
 export default function MegaMenu() {
+  const pathname = usePathname() ?? "/";
+  const group = activeGroup(pathname);
+
   return (
     <NavigationMenu.Root delayDuration={80} className="relative hidden lg:block">
       <NavigationMenu.List className="flex items-center gap-1.5">
         <NavigationMenu.Item>
-          <NavigationMenu.Trigger className={triggerCls}>
+          <NavigationMenu.Trigger className={triggerCls} data-active={group === "product"}>
             Product
             <ChevronDown size={14} className="transition-transform group-data-[state=open]:rotate-180" />
           </NavigationMenu.Trigger>
-          <NavigationMenu.Content className="kds-mega-content">
-            <div className="kds-mega-surface"><ProductPanel /></div>
-          </NavigationMenu.Content>
+          <NavigationMenu.Content className="nav-content"><ProductPanel /></NavigationMenu.Content>
         </NavigationMenu.Item>
 
         <NavigationMenu.Item>
-          <NavigationMenu.Trigger className={triggerCls}>
+          <NavigationMenu.Trigger className={triggerCls} data-active={group === "solution"}>
             Solution
             <ChevronDown size={14} className="transition-transform group-data-[state=open]:rotate-180" />
           </NavigationMenu.Trigger>
-          <NavigationMenu.Content className="kds-mega-content">
-            <div className="kds-mega-surface"><SolutionPanel /></div>
-          </NavigationMenu.Content>
+          <NavigationMenu.Content className="nav-content"><SolutionPanel /></NavigationMenu.Content>
         </NavigationMenu.Item>
 
-        {LINKS.map((l) => (
-          <NavigationMenu.Item key={l.label}>
-            <NavigationMenu.Link asChild>
-              <a href={l.href} className="inline-flex items-center rounded-[8px] px-2 py-1.5 font-sans text-[var(--text-small)] text-ink-secondary transition-colors hover:text-[color:var(--accent)]">{l.label}</a>
-            </NavigationMenu.Link>
-          </NavigationMenu.Item>
-        ))}
+        {LINKS.map((l) => {
+          const isActive = pathname === l.href;
+          return (
+            <NavigationMenu.Item key={l.label}>
+              <NavigationMenu.Link asChild active={isActive}>
+                <a href={l.href} className={linkCls} data-active={isActive} aria-current={isActive ? "page" : undefined}>{l.label}</a>
+              </NavigationMenu.Link>
+            </NavigationMenu.Item>
+          );
+        })}
       </NavigationMenu.List>
+
+      {/* Shared viewport: panels morph in size (Product wide ↔ Solution narrow). */}
+      <div className="nav-viewport-position">
+        <NavigationMenu.Viewport className="nav-viewport" />
+      </div>
     </NavigationMenu.Root>
   );
 }
