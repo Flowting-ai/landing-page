@@ -176,7 +176,10 @@ function StackRail() {
 function SheetAside({ hovered }: { hovered: MenuItem | null }) {
   return (
     <div className="flex w-[320px] shrink-0 flex-col gap-3 self-stretch border-l border-line pl-8">
-      <div className="relative flex min-h-[210px] flex-1 flex-col">
+      {/* FIXED height so the gold card and every preview occupy the exact same
+          box — swapping never resizes the pane (no sheet height jump). The cards
+          fill it via h-full. */}
+      <div className="relative h-[232px] shrink-0">
         <AnimatePresence mode="wait" initial={false}>
           <motion.div
             key={hovered ? hovered.label : "__featured"}
@@ -184,7 +187,7 @@ function SheetAside({ hovered }: { hovered: MenuItem | null }) {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -6 }}
             transition={{ duration: 0.16, ease: [0.16, 1, 0.3, 1] }}
-            className="flex flex-1 flex-col"
+            className="absolute inset-0 flex flex-col"
           >
             {hovered ? <ItemPreview item={hovered} /> : <FeaturedBrainCard />}
           </motion.div>
