@@ -133,7 +133,9 @@ body { min-height: 100dvh; background: var(--bg); color: var(--ink); font-family
 /* --nav-shell-h is on :root so the body-portaled drawer/scrim can read it too. */
 :root { --nav-shell-h: 5.25rem; }
 .site-nav { --nav-radius: 13px; --nav-pill-maxw: 70rem; }
-.site-nav__shell { display: flex; align-items: center; min-height: var(--nav-shell-h); }
+/* Shell carries the page gutter so the FLUSH bar spans the whole width (logo at
+   the left margin, CTAs at the right) — aligned to the hero, no container cap. */
+.site-nav__shell { display: flex; align-items: center; min-height: var(--nav-shell-h); padding-inline: var(--gutter); }
 
 .site-nav__pill {
   position: relative;
@@ -149,18 +151,23 @@ body { min-height: 100dvh; background: var(--bg); color: var(--ink); font-family
     box-shadow 320ms var(--ease-out),
     -webkit-backdrop-filter 320ms var(--ease-out), backdrop-filter 320ms var(--ease-out);
 }
+/* FLUSH (over the hero): whole width, NO fill / border / blur / shadow. The bar
+   reads as part of the hero. Horizontal padding stays 0 so content sits at the
+   page gutter the shell provides. */
 .site-nav__pill.is-flush {
   max-width: 100%;
-  padding: 0.625rem 0.5rem;
+  padding: 0.5rem 0;
   background-color: transparent;
   border-color: transparent;
   box-shadow: none;
   -webkit-backdrop-filter: blur(0); backdrop-filter: blur(0);
 }
+/* PILL (scrolled past mid-hero): contracts to a centered floating pill; fill +
+   border + blur + shadow are earned now that product content scrolls beneath. */
 .site-nav__pill.is-pill {
   max-width: var(--nav-pill-maxw);
   margin-inline: auto;
-  padding: 0.375rem 0.75rem;
+  padding: 0.375rem 0.5rem 0.375rem 0.75rem;
   background-color: color-mix(in oklch, var(--surface) 85%, transparent);
   border-color: var(--line-strong);
   box-shadow: var(--shadow-md);
@@ -188,10 +195,11 @@ body { min-height: 100dvh; background: var(--bg); color: var(--ink); font-family
   width: var(--radix-navigation-menu-viewport-width);
   height: var(--radix-navigation-menu-viewport-height);
   overflow: hidden;
-  border-radius: var(--r-lg);
-  border: 1px solid var(--line);
-  background: var(--surface);
-  box-shadow: var(--shadow-lg);
+  /* The real KDS dropdown surface — popover bg + popover shadow + dropdown
+     radius (12px, matching Popover variant="dropdown"), not a generic card. */
+  border-radius: 12px;
+  background: var(--popover-bg);
+  box-shadow: var(--shadow-popover);
   transform-origin: top center;
   /* The morph: Product (wide) ↔ Solution (narrow) glide rather than pop. */
   transition: width 300ms var(--ease-out), height 300ms var(--ease-out);

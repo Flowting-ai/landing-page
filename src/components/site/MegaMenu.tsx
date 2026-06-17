@@ -5,8 +5,12 @@ import { usePathname } from "next/navigation";
 import * as NavigationMenu from "@radix-ui/react-navigation-menu";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
-import { UserAiIcon, BrainTwoIcon, ChatOneIcon, UserIcon, UserAddOneIcon } from "@strange-huge/icons";
+import {
+  UserAiIcon, BrainTwoIcon, ChatOneIcon, NeuralNetworkIcon,
+  DashboardSquareOneIcon, WorkflowSquareTenIcon,
+} from "@strange-huge/icons";
 import { ConnectorIcon } from "@strange-huge/icons/connectors";
+import { DropdownMenuItem } from "@/components/DropdownMenuItem";
 import { springs } from "@/lib/springs";
 
 export type MenuItem = {
@@ -17,11 +21,13 @@ export type MenuItem = {
   connector?: string;
 };
 
+// subLabel is a short, one-line teaser (KDS DropdownMenuItem truncates) — not a
+// full sentence. Icons are pulled from @strange-huge/icons to match the product.
 const PRODUCT: MenuItem[] = [
-  { label: "AI Assistants", desc: "A coordinated team of AI assistants for every task.", href: "/product/ai-assistants", Icon: UserAiIcon },
-  { label: "Brain & Automation", desc: "Goal in, answer out — automations that run on their own.", href: "/product/brain", Icon: BrainTwoIcon },
-  { label: "Slack Manager", desc: "Delegate to your agents from inside Slack.", href: "/product/slack", connector: "slack" },
-  { label: "Unified Chatspace", desc: "Every frontier model, one prompt.", href: "/product/chatspace", Icon: ChatOneIcon },
+  { label: "AI Assistants", desc: "A specialist for every task", href: "/product/ai-assistants", Icon: UserAiIcon },
+  { label: "Brain & Automation", desc: "Goal in, answer out", href: "/product/brain", Icon: WorkflowSquareTenIcon },
+  { label: "Slack Manager", desc: "Delegate from inside Slack", href: "/product/slack", connector: "slack" },
+  { label: "Unified Chatspace", desc: "Every model, one prompt", href: "/product/chatspace", Icon: ChatOneIcon },
 ];
 
 export type Audience = { id: string; tab: string; items: MenuItem[] };
@@ -31,17 +37,17 @@ const SOLUTION_AUDIENCES: Audience[] = [
     id: "individuals",
     tab: "For Individuals",
     items: [
-      { label: "Personal AI OS", desc: "Your personal AI operating system.", href: "/individuals", Icon: UserIcon },
-      { label: "Unified Chatspace", desc: "Every frontier model, one prompt.", href: "/product/chatspace", Icon: ChatOneIcon },
+      { label: "Personal AI OS", desc: "Your personal AI workspace", href: "/individuals", Icon: DashboardSquareOneIcon },
+      { label: "Unified Chatspace", desc: "Every model, one prompt", href: "/product/chatspace", Icon: ChatOneIcon },
     ],
   },
   {
     id: "teams",
     tab: "For Teams",
     items: [
-      { label: "Company Brain", desc: "One shared brain for your whole team.", href: "/solutions/company-brain", Icon: UserAddOneIcon },
-      { label: "Slack Manager", desc: "Delegate to your agents from inside Slack.", href: "/product/slack", connector: "slack" },
-      { label: "Brain & Automation", desc: "Automations that run on their own.", href: "/product/brain", Icon: BrainTwoIcon },
+      { label: "Company Brain", desc: "One brain for your team", href: "/solutions/company-brain", Icon: NeuralNetworkIcon },
+      { label: "Slack Manager", desc: "Delegate from inside Slack", href: "/product/slack", connector: "slack" },
+      { label: "Brain & Automation", desc: "Automations that self-run", href: "/product/brain", Icon: BrainTwoIcon },
     ],
   },
 ];
@@ -58,25 +64,26 @@ function activeGroup(pathname: string): "product" | "solution" | null {
   return null;
 }
 
-// Geist body for nav labels (never serif), nudged to medium + tighter tracking so
-// the bar reads considered, not default-shadcn. Active = ink + medium; mauve on hover/open.
-// No `outline-none` — let the global ink :focus-visible ring (--focus-ring-c) show through.
+// No `outline-none` — let the global ink :focus-visible ring (--focus-ring-c) show.
 const triggerCls =
   "group inline-flex items-center gap-1 rounded-[8px] px-2 py-1.5 font-sans text-[var(--text-small)] font-medium tracking-[-0.01em] transition-colors hover:text-[color:var(--accent)] data-[state=open]:text-[color:var(--accent)] data-[active=true]:text-ink";
 const linkCls =
   "inline-flex items-center rounded-[8px] px-2 py-1.5 font-sans text-[var(--text-small)] font-medium tracking-[-0.01em] transition-colors hover:text-[color:var(--accent)] data-[active=true]:text-ink";
 
-function Row({ item, onPick }: { item: MenuItem; onPick?: () => void }) {
+/** A menu row built on the real KDS DropdownMenuItem — embossed hover + accent
+    bar + auto-sized icon slot. Wrapped in NavigationMenu.Link for keyboard/route
+    semantics; tabIndex=-1 on the item suppresses a double tab-stop (the anchor
+    is the focus target). */
+function NavRow({ item, onPick }: { item: MenuItem; onPick?: () => void }) {
+  const icon = item.connector ? (
+    <ConnectorIcon id={item.connector} />
+  ) : item.Icon ? (
+    <item.Icon />
+  ) : undefined;
   return (
     <NavigationMenu.Link asChild>
-      <a href={item.href} onClick={onPick} className="flex items-start gap-3 rounded-[10px] p-2.5 transition-colors hover:bg-surface-warm">
-        <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-[8px] border border-line bg-bg-subtle text-ink">
-          {item.connector ? <ConnectorIcon id={item.connector} size={18} /> : item.Icon ? <item.Icon size={18} /> : null}
-        </span>
-        <span className="flex flex-col">
-          <span className="font-sans text-[var(--text-small)] font-semibold text-ink">{item.label}</span>
-          <span className="font-sans text-[var(--text-micro)] leading-snug text-ink-muted">{item.desc}</span>
-        </span>
+      <a href={item.href} onClick={onPick} className="block rounded-[6px]">
+        <DropdownMenuItem label={item.label} subLabel={item.desc} icon={icon} accent fluid tabIndex={-1} />
       </a>
     </NavigationMenu.Link>
   );
@@ -84,10 +91,10 @@ function Row({ item, onPick }: { item: MenuItem; onPick?: () => void }) {
 
 function ProductPanel() {
   return (
-    <div className="p-3" style={{ width: 540 }}>
-      <span className="block px-2.5 pb-1.5 pt-1 font-sans text-[var(--text-micro)] font-medium uppercase tracking-[0.1em] text-ink-subtle">Product</span>
-      <div className="grid grid-cols-2 gap-0.5">
-        {PRODUCT.map((it) => <Row key={it.label} item={it} />)}
+    <div className="p-2" style={{ width: 588 }}>
+      <DropdownMenuItem variant="header" label="Product" fluid />
+      <div className="grid grid-cols-2 gap-1">
+        {PRODUCT.map((it) => <NavRow key={it.label} item={it} />)}
       </div>
     </div>
   );
@@ -101,9 +108,9 @@ function SolutionPanel() {
   const current = SOLUTION_AUDIENCES.find((a) => a.id === active)!;
 
   return (
-    <div className="p-3" style={{ width: 340 }}>
+    <div className="p-2" style={{ width: 320 }}>
       {/* segmented switcher */}
-      <div className="mb-2 flex gap-1 rounded-[10px] border border-line bg-bg-subtle p-1">
+      <div className="mb-1 flex gap-1 rounded-[10px] border border-line bg-bg-subtle p-1">
         {SOLUTION_AUDIENCES.map((a) => (
           <button
             key={a.id}
@@ -126,9 +133,9 @@ function SolutionPanel() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -6 }}
           transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
-          className="flex min-h-[11.5rem] flex-col gap-0.5"
+          className="flex min-h-[10.5rem] flex-col gap-1"
         >
-          {current.items.map((it) => <Row key={it.label} item={it} />)}
+          {current.items.map((it) => <NavRow key={it.label} item={it} />)}
         </motion.div>
       </AnimatePresence>
     </div>

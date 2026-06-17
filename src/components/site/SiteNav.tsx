@@ -7,7 +7,6 @@ import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { ConnectorIcon } from "@strange-huge/icons/connectors";
-import Container from "@/components/ui/Container";
 import { Button } from "@/components/kaya/Button";
 import Logo from "./Logo";
 import MegaMenu, { PRODUCT, SOLUTION_AUDIENCES, LINKS, type MenuItem } from "./MegaMenu";
@@ -68,7 +67,6 @@ export default function SiteNav() {
       <header className="site-nav sticky top-0 z-50">
         {/* Outer shell holds a CONSTANT reserved height; the morph is all on the pill. */}
         <div className="site-nav__shell">
-          <Container wide>
             <div className={`site-nav__pill ${scrolled ? "is-pill" : "is-flush"}`}>
               <Link href="/" aria-label="Souvenir home" className="inline-flex items-center px-1.5">
                 <span
@@ -107,7 +105,6 @@ export default function SiteNav() {
                 </button>
               </div>
             </div>
-          </Container>
         </div>
       </header>
 
