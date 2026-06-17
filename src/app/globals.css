@@ -26,10 +26,6 @@
 /* Marketing token layer — extends Kaya. Imported AFTER the vendored files. */
 @import "../styles/tokens/marketing.css";
 
-/* Vendored kds- and kaya- support classes for the ChatBoard/Pinboard/Sidebar
-   (hero product window). Without these the Pinboard rail collapses. */
-@import "../styles/kds-chatboard.css";
-
 @custom-variant dark (&:is(.dark *));
 
 /* Marketing tokens (--bg, --ink, --accent, radius, shadow, rhythm, motion …)
