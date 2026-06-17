@@ -7,7 +7,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import {
   UserAiIcon, BrainTwoIcon, ChatOneIcon, NeuralNetworkIcon,
-  DashboardSquareOneIcon, WorkflowSquareTenIcon,
+  DashboardSquareOneIcon, WorkflowSquareTenIcon, ArrowUpRightOneIcon,
 } from "@strange-huge/icons";
 import { ConnectorIcon } from "@strange-huge/icons/connectors";
 import { Tabs, TabsList, TabsTrigger } from "@/components/Tabs";
@@ -16,6 +16,8 @@ import FeaturedBrainCard from "./FeaturedBrainCard";
 export type MenuItem = {
   label: string;
   desc: string;
+  /** Longer one-sentence line shown in the hover preview pane. */
+  long: string;
   href: string;
   Icon?: React.ComponentType<{ size?: number }>;
   connector?: string;
@@ -24,10 +26,10 @@ export type MenuItem = {
 // Copy is parallel across both menus: a short verb/benefit line per item, ~3-5
 // words, same voice — so Product and Solution read as one consistent system.
 const PRODUCT: MenuItem[] = [
-  { label: "AI Assistants", desc: "A specialist for every task", href: "/product/ai-assistants", Icon: UserAiIcon },
-  { label: "Brain & Automation", desc: "Set a goal — it runs", href: "/product/brain", Icon: WorkflowSquareTenIcon },
-  { label: "Slack Manager", desc: "Run it all from Slack", href: "/product/slack", connector: "slack" },
-  { label: "Unified Chatspace", desc: "Every model, one chat", href: "/product/chatspace", Icon: ChatOneIcon },
+  { label: "AI Assistants", desc: "A specialist for every task", long: "A coordinated team of AI specialists that know your context and do the work.", href: "/product/ai-assistants", Icon: UserAiIcon },
+  { label: "Brain & Automation", desc: "Set a goal — it runs", long: "Hand off a goal; agents plan, run the multi-step work, and report back.", href: "/product/brain", Icon: WorkflowSquareTenIcon },
+  { label: "Slack Manager", desc: "Run it all from Slack", long: "Delegate to your agents and ship work without leaving your Slack channels.", href: "/product/slack", connector: "slack" },
+  { label: "Unified Chatspace", desc: "Every model, one chat", long: "Every frontier model in one chat that remembers, researches, and compares.", href: "/product/chatspace", Icon: ChatOneIcon },
 ];
 
 // "Works in your stack" rail — only IDs that render in @strange-huge/icons/connectors.
@@ -40,17 +42,17 @@ const SOLUTION_AUDIENCES: Audience[] = [
     id: "individuals",
     tab: "For Individuals",
     items: [
-      { label: "Personal AI OS", desc: "Your AI, fully yours", href: "/individuals", Icon: DashboardSquareOneIcon },
-      { label: "Unified Chatspace", desc: "Every model, one chat", href: "/product/chatspace", Icon: ChatOneIcon },
+      { label: "Personal AI OS", desc: "Your AI, fully yours", long: "Your personal AI operating system — memory, agents, and chat in one place.", href: "/individuals", Icon: DashboardSquareOneIcon },
+      { label: "Unified Chatspace", desc: "Every model, one chat", long: "Every frontier model in one chat that remembers, researches, and compares.", href: "/product/chatspace", Icon: ChatOneIcon },
     ],
   },
   {
     id: "teams",
     tab: "For Teams",
     items: [
-      { label: "Company Brain", desc: "One brain, whole team", href: "/solutions/company-brain", Icon: NeuralNetworkIcon },
-      { label: "Slack Manager", desc: "Run it all from Slack", href: "/product/slack", connector: "slack" },
-      { label: "Brain & Automation", desc: "Goals that run themselves", href: "/product/brain", Icon: BrainTwoIcon },
+      { label: "Company Brain", desc: "One brain, whole team", long: "One shared brain for your whole team — context, memory, and automations.", href: "/solutions/company-brain", Icon: NeuralNetworkIcon },
+      { label: "Slack Manager", desc: "Run it all from Slack", long: "Delegate to your agents and ship work without leaving your Slack channels.", href: "/product/slack", connector: "slack" },
+      { label: "Brain & Automation", desc: "Goals that run themselves", long: "Hand off a goal; agents plan, run the multi-step work, and report back.", href: "/product/brain", Icon: BrainTwoIcon },
     ],
   },
 ];
@@ -81,20 +83,25 @@ const eyebrowCls =
 // read as the same family: a soft 2px drop + a 1px neutral ring.
 const SHADOW_CARD = "0px 2px 2.8px 0px var(--neutral-700-12), 0px 0px 0px 1px var(--neutral-100)";
 
-/** Item card — embossed icon tile + label/sublabel, on the Kaya card skeleton.
-    Icon is TOP-aligned with the label (not centered against the 2-line block).
-    Lifts on hover with the shared SHADOW_CARD. NavigationMenu.Link for a11y. */
-function NavCard({ item, onPick }: { item: MenuItem; onPick?: () => void }) {
-  const icon = item.connector ? (
-    <ConnectorIcon id={item.connector} size={20} />
+function itemIcon(item: MenuItem, size: number) {
+  return item.connector ? (
+    <ConnectorIcon id={item.connector} size={size} />
   ) : item.Icon ? (
-    <item.Icon size={20} />
+    <item.Icon size={size} />
   ) : null;
+}
+
+/** Item card — embossed icon tile + label/sublabel, on the Kaya card skeleton.
+    Icon is TOP-aligned with the label. Lifts on hover with the shared
+    SHADOW_CARD; `onHover` drives the preview pane. NavigationMenu.Link for a11y. */
+function NavCard({ item, onPick, onHover }: { item: MenuItem; onPick?: () => void; onHover?: (i: MenuItem) => void }) {
   return (
     <NavigationMenu.Link asChild>
       <a
         href={item.href}
         onClick={onPick}
+        onMouseEnter={() => onHover?.(item)}
+        onFocus={() => onHover?.(item)}
         className="group flex items-start gap-3 rounded-[10px] p-2.5 transition-[background-color,box-shadow] duration-150 hover:bg-surface hover:shadow-[var(--card-shadow)]"
         style={{ ["--card-shadow" as string]: SHADOW_CARD }}
       >
@@ -104,13 +111,42 @@ function NavCard({ item, onPick }: { item: MenuItem; onPick?: () => void }) {
           className="flex h-[38px] w-[38px] shrink-0 items-center justify-center rounded-[9px] bg-surface text-ink transition-colors duration-150 group-hover:bg-surface-warm group-hover:text-[color:var(--accent)]"
           style={{ boxShadow: SHADOW_CARD }}
         >
-          {icon}
+          {itemIcon(item, 20)}
         </span>
         {/* pt-px nudges the label's cap-height into line with the icon-tile top */}
         <span className="flex min-w-0 flex-col pt-px">
           <span className="font-sans text-[var(--text-small)] font-semibold leading-tight tracking-[-0.01em] text-ink">{item.label}</span>
           <span className="mt-1 font-sans text-[var(--text-micro)] leading-snug text-ink-muted">{item.desc}</span>
         </span>
+      </a>
+    </NavigationMenu.Link>
+  );
+}
+
+/** Hover preview — the right pane swaps to this when an item is hovered: a big
+    glyph, the name, a longer line, and an Explore affordance. Crossfades in. */
+function ItemPreview({ item }: { item: MenuItem }) {
+  return (
+    <NavigationMenu.Link asChild>
+      <a
+        href={item.href}
+        className="group flex flex-1 flex-col justify-between overflow-hidden rounded-[14px] border border-line p-4"
+        style={{ background: "linear-gradient(160deg, var(--surface) 0%, var(--surface-warm) 130%)", boxShadow: SHADOW_CARD }}
+      >
+        <span
+          className="inline-flex h-11 w-11 items-center justify-center rounded-[11px] bg-surface text-[color:var(--accent)]"
+          style={{ boxShadow: SHADOW_CARD }}
+        >
+          {itemIcon(item, 24)}
+        </span>
+        <div className="mt-5">
+          <p className="font-sans text-[var(--text-body)] font-semibold tracking-[-0.01em] text-ink">{item.label}</p>
+          <p className="mt-1.5 font-sans text-[var(--text-small)] leading-snug text-ink-secondary">{item.long}</p>
+          <span className="mt-3 inline-flex items-center gap-1 font-sans text-[var(--text-micro)] font-medium text-[color:var(--accent)]">
+            Explore
+            <ArrowUpRightOneIcon size={14} />
+          </span>
+        </div>
       </a>
     </NavigationMenu.Link>
   );
@@ -134,12 +170,26 @@ function StackRail() {
   );
 }
 
-/** Shared right-hand aside for both sheets — featured card over the connector
-    rail. Keeps the two panels visually consistent across the full-width sheet. */
-function SheetAside() {
+/** Shared right-hand aside. Default (no hover) shows the gold Company Brain card
+    — the hero. Hovering a left item crossfades the pane to that item's preview.
+    The connector rail stays pinned below. A fixed min-height keeps it steady. */
+function SheetAside({ hovered }: { hovered: MenuItem | null }) {
   return (
-    <div className="flex w-[300px] shrink-0 flex-col gap-3 self-stretch border-l border-line pl-8">
-      <FeaturedBrainCard />
+    <div className="flex w-[320px] shrink-0 flex-col gap-3 self-stretch border-l border-line pl-8">
+      <div className="relative flex min-h-[210px] flex-1 flex-col">
+        <AnimatePresence mode="wait" initial={false}>
+          <motion.div
+            key={hovered ? hovered.label : "__featured"}
+            initial={{ opacity: 0, y: 6 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -6 }}
+            transition={{ duration: 0.16, ease: [0.16, 1, 0.3, 1] }}
+            className="flex flex-1 flex-col"
+          >
+            {hovered ? <ItemPreview item={hovered} /> : <FeaturedBrainCard />}
+          </motion.div>
+        </AnimatePresence>
+      </div>
       <StackRail />
     </div>
   );
@@ -149,32 +199,34 @@ function SheetAside() {
 const sheetInner = "mx-auto flex w-full gap-10 py-7";
 const sheetInnerStyle = { maxWidth: "var(--maxw)", paddingInline: "var(--gutter)" } as const;
 
-/** Product sheet — left: item-card grid (gutter-aligned). right: shared aside. */
+/** Product sheet — left: item cards (hover → preview). right: preview/featured aside. */
 function ProductPanel() {
+  const [hovered, setHovered] = useState<MenuItem | null>(null);
   return (
-    <div className={sheetInner} style={sheetInnerStyle}>
+    <div className={sheetInner} style={sheetInnerStyle} onMouseLeave={() => setHovered(null)}>
       <div className="flex flex-1 flex-col">
         <span className={eyebrowCls}>Product</span>
         <div className="grid flex-1 grid-cols-2 gap-x-6 gap-y-1.5">
-          {PRODUCT.map((it) => <NavCard key={it.label} item={it} />)}
+          {PRODUCT.map((it) => <NavCard key={it.label} item={it} onHover={setHovered} />)}
         </div>
       </div>
-      <SheetAside />
+      <SheetAside hovered={hovered} />
     </div>
   );
 }
 
-/** Solution sheet — left: audience switcher + item cards. right: shared aside.
-    min-height holds the sheet steady across the 2-vs-3-item audiences. */
+/** Solution sheet — left: audience switcher + item cards (hover → preview).
+    right: preview/featured aside. min-height holds the sheet steady. */
 function SolutionPanel() {
   const [active, setActive] = useState(SOLUTION_AUDIENCES[0].id);
+  const [hovered, setHovered] = useState<MenuItem | null>(null);
   const current = SOLUTION_AUDIENCES.find((a) => a.id === active)!;
 
   return (
-    <div className={sheetInner} style={sheetInnerStyle}>
+    <div className={sheetInner} style={sheetInnerStyle} onMouseLeave={() => setHovered(null)}>
       <div className="flex flex-1 flex-col">
         {/* KDS Tabs — the animated sliding-pill segmented control, reused as-is. */}
-        <Tabs value={active} onValueChange={setActive} className="mb-3 w-[340px]">
+        <Tabs value={active} onValueChange={(v) => { setActive(v); setHovered(null); }} className="mb-3 w-[340px]">
           <TabsList fluid>
             {SOLUTION_AUDIENCES.map((a) => (
               <TabsTrigger key={a.id} value={a.id}>{a.tab}</TabsTrigger>
@@ -191,11 +243,11 @@ function SolutionPanel() {
             transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
             className="grid min-h-[9rem] grid-cols-2 gap-x-6 gap-y-1.5"
           >
-            {current.items.map((it) => <NavCard key={it.label} item={it} />)}
+            {current.items.map((it) => <NavCard key={it.label} item={it} onHover={setHovered} />)}
           </motion.div>
         </AnimatePresence>
       </div>
-      <SheetAside />
+      <SheetAside hovered={hovered} />
     </div>
   );
 }
