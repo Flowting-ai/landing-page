@@ -241,6 +241,8 @@ body { min-height: 100dvh; background: var(--bg); color: var(--ink); font-family
    specular + iridescent sheen + noise. All knobs are CSS vars (overridable via
    the component's `tweaks` prop). JS sets --mx/--my (cursor %), --rx/--ry (tilt),
    --bc-active (0|1 hover). Reduced-motion: tilt + specular disabled, static sheen. */
+@property --bc-angle { syntax: "<angle>"; initial-value: 0deg; inherits: false; }
+
 .brain-card {
   /* knobs */
   --bc-radius: 14px;
@@ -262,6 +264,31 @@ body { min-height: 100dvh; background: var(--bg); color: var(--ink); font-family
   isolation: isolate;
   will-change: transform;
 }
+/* sparkly rotating border — a conic ring of gold/white/mauve glints masked to a
+   ~1.4px edge. Always softly live; brightens on hover. */
+.brain-card::before {
+  content: ""; position: absolute; inset: 0; z-index: 2; pointer-events: none;
+  border-radius: inherit;
+  padding: 1.4px;
+  background: conic-gradient(from var(--bc-angle),
+    transparent 0deg,
+    color-mix(in oklch, var(--yellow-200) 90%, white) 25deg,
+    var(--neutral-white) 40deg,
+    transparent 90deg,
+    color-mix(in oklch, var(--accent) 80%, white) 200deg,
+    transparent 250deg,
+    color-mix(in oklch, var(--yellow-300) 90%, white) 330deg,
+    transparent 360deg);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  opacity: calc(0.45 + var(--bc-active) * 0.5);
+  transition: opacity 240ms var(--ease-out);
+  animation: bc-spin 6s linear infinite;
+}
+@keyframes bc-spin { to { --bc-angle: 360deg; } }
+
 /* colored glow that blooms under the card on hover */
 .brain-card::after {
   content: ""; position: absolute; inset: -1px; z-index: -1;
@@ -300,8 +327,33 @@ body { min-height: 100dvh; background: var(--bg); color: var(--ink); font-family
   mix-blend-mode: overlay;
   opacity: calc(var(--bc-noise-opacity) * 0.12);
 }
+/* Gold-plated icon chip — metallic gold gradient + a sharp diagonal specular
+   streak + emboss ring, so it reads like a polished gold token. */
+.brain-card__icon {
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(135deg, #fff6da 0%, #e9cd84 26%, #c79b45 52%, #f3e2a6 68%, #b8923f 100%);
+  box-shadow:
+    inset 0 1px 0.5px rgba(255,255,255,0.75),
+    inset 0 -1px 1px rgba(120,86,20,0.55),
+    0 1px 2px rgba(82,75,71,0.25),
+    0 0 0 1px rgba(120,86,20,0.35);
+}
+/* sharp moving gleam across the gold */
+.brain-card__icon::after {
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(115deg, transparent 38%, rgba(255,255,255,0.85) 47%, rgba(255,255,255,0.1) 52%, transparent 60%);
+  transform: translateX(-30%);
+  transition: transform 500ms var(--ease-out);
+}
+.brain-card:hover .brain-card__icon::after { transform: translateX(30%); }
+.brain-card__icon > * { position: relative; z-index: 1; }
+
 @media (prefers-reduced-motion: reduce) {
   .brain-card { transform: none !important; transition: none !important; }
+  .brain-card::before { animation: none !important; }
+  .brain-card__icon::after { transition: none !important; }
   .brain-card__spec { opacity: 0 !important; }
   .brain-card__sheen { opacity: 0.18 !important; }
 }

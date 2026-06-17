@@ -113,15 +113,19 @@ export default function FeaturedBrainCard({
         <span aria-hidden className="brain-card__layer brain-card__spec" />
 
         {/* content */}
+        {/* NEW badge — pinned to the corner, equidistant from top + right. */}
+        <span className="absolute right-3 top-3 z-[2]">
+          <Badge label="NEW" color="Yellow" />
+        </span>
+
         <div className="relative z-[1] flex items-center justify-between">
+          {/* Gold-plated glossy icon chip (metallic gradient + sharp gleam). */}
           <span
-            className="inline-flex h-9 w-9 items-center justify-center rounded-[9px] border border-line bg-surface text-[color:var(--accent)]"
-            style={{ boxShadow: "var(--shadow-sm)" }}
+            className="brain-card__icon inline-flex h-9 w-9 items-center justify-center rounded-[9px]"
+            style={{ color: "#5a3f14" }}
           >
             <NeuralNetworkIcon size={19} />
           </span>
-          {/* KDS Badge (Yellow/gold palette) — no more hand-rolled pill. */}
-          <Badge label="NEW" color="Yellow" />
         </div>
         <div className="relative z-[1] mt-5">
           {/* Gold title + light cream body — readable on the dark espresso field

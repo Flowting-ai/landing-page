@@ -21,12 +21,13 @@ export type MenuItem = {
   connector?: string;
 };
 
-// Copy is sharp + product-true — one concrete line per item, no filler.
+// Copy is parallel across both menus: a short verb/benefit line per item, ~3-5
+// words, same voice — so Product and Solution read as one consistent system.
 const PRODUCT: MenuItem[] = [
-  { label: "AI Assistants", desc: "Specialist agents for every task", href: "/product/ai-assistants", Icon: UserAiIcon },
-  { label: "Brain & Automation", desc: "Set the goal — it runs the work", href: "/product/brain", Icon: WorkflowSquareTenIcon },
-  { label: "Slack Manager", desc: "Delegate from inside Slack", href: "/product/slack", connector: "slack" },
-  { label: "Unified Chatspace", desc: "Every frontier model, one chat", href: "/product/chatspace", Icon: ChatOneIcon },
+  { label: "AI Assistants", desc: "A specialist for every task", href: "/product/ai-assistants", Icon: UserAiIcon },
+  { label: "Brain & Automation", desc: "Set a goal — it runs", href: "/product/brain", Icon: WorkflowSquareTenIcon },
+  { label: "Slack Manager", desc: "Run it all from Slack", href: "/product/slack", connector: "slack" },
+  { label: "Unified Chatspace", desc: "Every model, one chat", href: "/product/chatspace", Icon: ChatOneIcon },
 ];
 
 // "Works in your stack" rail — only IDs that render in @strange-huge/icons/connectors.
@@ -39,17 +40,17 @@ const SOLUTION_AUDIENCES: Audience[] = [
     id: "individuals",
     tab: "For Individuals",
     items: [
-      { label: "Personal AI OS", desc: "Your whole AI workspace, solo", href: "/individuals", Icon: DashboardSquareOneIcon },
-      { label: "Unified Chatspace", desc: "Every frontier model, one chat", href: "/product/chatspace", Icon: ChatOneIcon },
+      { label: "Personal AI OS", desc: "Your AI, fully yours", href: "/individuals", Icon: DashboardSquareOneIcon },
+      { label: "Unified Chatspace", desc: "Every model, one chat", href: "/product/chatspace", Icon: ChatOneIcon },
     ],
   },
   {
     id: "teams",
     tab: "For Teams",
     items: [
-      { label: "Company Brain", desc: "One shared brain for the team", href: "/solutions/company-brain", Icon: NeuralNetworkIcon },
-      { label: "Slack Manager", desc: "Delegate from inside Slack", href: "/product/slack", connector: "slack" },
-      { label: "Brain & Automation", desc: "Automations that run themselves", href: "/product/brain", Icon: BrainTwoIcon },
+      { label: "Company Brain", desc: "One brain, whole team", href: "/solutions/company-brain", Icon: NeuralNetworkIcon },
+      { label: "Slack Manager", desc: "Run it all from Slack", href: "/product/slack", connector: "slack" },
+      { label: "Brain & Automation", desc: "Goals that run themselves", href: "/product/brain", Icon: BrainTwoIcon },
     ],
   },
 ];
