@@ -48,11 +48,19 @@ export default function SiteFooter() {
   return (
     <footer className="bg-bg text-ink">
       <FooterScene>
-        <Container wide className="flex min-h-[600px] flex-col justify-between py-16 sm:min-h-[680px] sm:py-20">
+        <Container wide className="flex min-h-[680px] flex-col justify-between py-16 sm:min-h-[760px] sm:py-20">
           {/* ── Top: brand + newsletter · link columns (over the field) ── */}
           <div className="grid gap-14 lg:grid-cols-[1.25fr_2fr]">
             <div className="max-w-sm">
-              <Logo variant="lockup" height={30} className="text-ink" />
+              {/* Brand moment: the gold Souvenir orb + wordmark */}
+              <div className="flex items-center gap-3">
+                <span
+                  aria-hidden
+                  className="h-11 w-11 shrink-0 select-none bg-contain bg-center bg-no-repeat"
+                  style={{ backgroundImage: "url(/brand/gold-orb.webp)" }}
+                />
+                <Logo variant="wordmark" height={24} className="text-ink" />
+              </div>
               <p className="mt-5 max-w-[19rem] font-sans text-[var(--text-small)] leading-relaxed text-ink-secondary">
                 The workspace that knows your context and runs the work — for individuals and teams.
               </p>
