@@ -13,6 +13,29 @@ function SectionBody({ body }: { body: string | LegalBlock[] }) {
           return <p key={i} className="max-w-[70ch] font-sans text-[var(--text-body)] leading-relaxed text-ink-muted">{b}</p>;
         if ("subhead" in b)
           return <h3 key={i} className="font-display text-[length:var(--text-small)] font-semibold text-ink">{b.subhead}</h3>;
+        if ("table" in b)
+          return (
+            <div key={i} className="max-w-[70ch] overflow-x-auto">
+              <table className="w-full border-collapse font-sans text-[var(--text-small)] text-ink-muted">
+                <thead>
+                  <tr>
+                    {b.table.head.map((h, j) => (
+                      <th key={j} className="border-b border-line py-2 pr-4 text-left font-semibold text-ink">{h}</th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {b.table.rows.map((row, r) => (
+                    <tr key={r} className="align-top">
+                      {row.map((cell, c) => (
+                        <td key={c} className="border-b border-line py-2.5 pr-4 leading-relaxed">{cell}</td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          );
         return (
           <ul key={i} className="flex max-w-[70ch] list-disc flex-col gap-2 pl-5 font-sans text-[var(--text-body)] leading-relaxed text-ink-muted marker:text-ink-subtle">
             {b.list.map((li, j) => <li key={j} className="pl-1">{li}</li>)}

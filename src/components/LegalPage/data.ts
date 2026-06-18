@@ -1,7 +1,11 @@
 // A section body is either a single paragraph (string) or an ordered list of
 // blocks: a plain string renders as a paragraph; a { list } renders as bullets;
 // a { subhead } renders as a small inline heading within the section.
-export type LegalBlock = string | { list: string[] } | { subhead: string };
+export type LegalBlock =
+  | string
+  | { list: string[] }
+  | { subhead: string }
+  | { table: { head: string[]; rows: string[][] } };
 export type LegalSection = { title: string; body: string | LegalBlock[] };
 export type LegalDoc = {
   slug: string;
@@ -202,39 +206,156 @@ export const LEGAL_DOCS: Record<string, LegalDoc> = {
     slug: "privacy",
     eyebrow: "Privacy & Data",
     title: "Privacy Policy",
-    updated: UPDATED,
+    updated: "June 14, 2026",
     sections: [
-      { title: "Overview", body: "Souvenir, Inc. (“Souvenir,” “we,” “us,” or “our”) operates the Souvenir platform at getsouvenir.com, a centralized workspace brain that connects multiple frontier AI models and tools into a single workspace with persistent context, intelligent model routing, automation, and organizational tools. This Privacy Policy explains how we collect, use, disclose, store, and protect your personal information when you access or use our Services. By creating an account or using our Services, you acknowledge that you have read and understood this Privacy Policy." },
-      { title: "Information We Collect", body: TODO },
-      { title: "How We Use Your Information", body: TODO },
-      { title: "AI Models and Third-Party Processing", body: TODO },
-      { title: "Data Storage and Retention", body: TODO },
-      { title: "International Data Transfers", body: TODO },
-      { title: "Your Rights and Choices", body: TODO },
-      { title: "Security", body: TODO },
-      { title: "Team and Workspace Data", body: TODO },
-      { title: "Children's Privacy", body: TODO },
-      { title: "Cookies and Tracking", body: TODO },
-      { title: "Do Not Track", body: TODO },
-      { title: "Third-Party Links", body: TODO },
-      { title: "Changes to This Policy", body: TODO },
-      { title: "Contact", body: "Privacy questions? Contact info@getsouvenir.com." },
+      { title: "Overview", body: [
+        "This Privacy Policy explains how Souvenir, Inc. (“Souvenir,” “we,” “us,” or “our”) collects, uses, shares, and protects personal information when you use the Souvenir products, the website at getsouvenir.com, our APIs, and related services (the “Service”).",
+        "By using the Service, you agree to this Privacy Policy. If you do not agree, do not use the Service.",
+        "Roles: For individual users, we generally act as a controller of your personal information. For business and organization customers, when we process data on the organization’s behalf (including data brought in through Connectors), we generally act as a processor / service provider, and the organization is the controller responsible for that data and for the lawful basis to process it.",
+      ] },
+      { title: "Information We Collect", body: [
+        { subhead: "Information you provide" },
+        { list: [
+          "Account information: name, email address, password or login credentials, and organization or team details.",
+          "Billing information: plan, credits, and transaction records. Card details are collected and processed by our payment processor, not stored by us.",
+          "Content you submit: prompts, messages, uploaded documents and files (e.g., PDF, DOCX, PPTX, XLSX, text, images), AI Assistant definitions, and instructions (“Your Content”).",
+          "Support communications: messages you send us.",
+        ] },
+        { subhead: "Information from your connected services (Connectors)" },
+        "When you enable a Connector (for example, Shopify, Slack, Meta Ads, Klaviyo, HubSpot, ShipStation, Google Drive, Gmail, and others), we and our integration providers access and process data from those services according to the permissions you grant. This may include:",
+        { list: [
+          "Access tokens / credentials needed to maintain the connection;",
+          "Business and operational data retrieved on your behalf (e.g., orders, customers, messages, analytics, records), which may itself contain personal information about your own customers or contacts.",
+        ] },
+        "You are responsible for ensuring you have the right to connect each account and to authorize this access.",
+        { subhead: "Information collected automatically" },
+        { list: [
+          "Usage data: features used, credits consumed, actions taken, timestamps, and interaction logs.",
+          "Device and log data: IP address, browser/device type, and similar technical data.",
+          "Cookies and similar technologies: used for authentication, preferences, and analytics. See the Cookies and Tracking section.",
+        ] },
+        { subhead: "Derived information" },
+        { list: [
+          "Memory and summaries: we may extract and store memories, summaries, or embeddings from your interactions and documents to power continuity, search, and personalization features.",
+        ] },
+        { subhead: "Information from our Slack managerial bot" },
+        "If the Souvenir Slack managerial bot is installed in a workspace, we process Slack data needed to operate the bot, including:",
+        { list: [
+          "Workspace and installation data: team/workspace identifiers and the OAuth access tokens issued to operate the app for that workspace;",
+          "Conversation content: messages and content in the channels or conversations where the bot is added, mentioned, or messaged, including any files or links shared with it;",
+          "Workspace metadata: user, channel, and team identifiers needed to route responses and apply permissions.",
+        ] },
+        "The bot only processes data in conversations it has been added to. This data is used to respond to requests and provide the Service, consistent with Slack’s API Terms of Service. We use Slack data only to provide the Service and not for advertising. Slack workspace administrators are the controllers of workspace content; direct requests about that content to your administrator.",
+      ] },
+      { title: "How We Use Information", body: [
+        "We use personal information to:",
+        { list: [
+          "Provide, operate, maintain, and secure the Service;",
+          "Generate AI Output in response to your inputs;",
+          "Execute Connector reads and actions you request or approve through Brain & Automation;",
+          "Authenticate users, manage accounts, organizations, and teams;",
+          "Process payments, manage credits, plans, trials, and prevent abuse of billing;",
+          "Provide personalization and memory features;",
+          "Monitor, debug, and improve the Service and develop new features;",
+          "Communicate with you about the Service, including service and security notices;",
+          "Detect, prevent, and address fraud, abuse, security, and legal issues;",
+          "Comply with legal obligations and enforce our Terms of Service.",
+        ] },
+        "Legal bases (where GDPR / UK GDPR applies): performance of a contract; our legitimate interests (securing and improving the Service, preventing abuse); consent (e.g., certain cookies, certain Connectors); and compliance with legal obligations.",
+      ] },
+      { title: "AI Model Providers and How Your Inputs Are Used", body: [
+        "To generate Output, we transmit your prompts and relevant context (which may include Your Content and Connector data) to third-party AI model providers, currently OpenAI, Anthropic, Google (Gemini), and Mistral.",
+        { list: [
+          "These providers process inputs to return Output to you.",
+          "We rely on these providers’ enterprise / API terms, under which, per their current policies, API inputs and outputs are not used to train their foundation models except as their terms permit. Their handling of data is governed by their own privacy terms.",
+          "We do not use Your Content to train our own or third parties’ foundation models without your consent.",
+        ] },
+      ] },
+      { title: "How We Share Information", body: [
+        "We share personal information with:",
+        { list: [
+          "Subprocessors and service providers who help operate the Service, under contracts requiring appropriate protection. Categories include: cloud infrastructure (Amazon Web Services — compute, storage including Amazon S3, databases via PostgreSQL, and caching via Redis); AI model providers (OpenAI, Anthropic, Google Gemini, and Mistral); Connector / integration providers (Composio and Nango); payment processing (Stripe); and analytics, email, and operational tooling.",
+          "Within your organization: if you use the Service as part of an organization, your account information, content, and usage may be accessible to that organization’s administrators and, where resources are shared, to other authorized members.",
+          "Third-party services you connect: when you direct the AI to take actions, we send data to those services as needed to perform the action.",
+          "Legal and safety: to comply with law, legal process, or governmental requests; to enforce our terms; and to protect the rights, property, or safety of Souvenir, our users, or others.",
+          "Business transfers: in connection with a merger, acquisition, financing, or sale of assets, subject to this Policy.",
+        ] },
+        "We do not sell your personal information, and we do not “share” it for cross-context behavioral advertising as those terms are defined under U.S. state privacy laws.",
+      ] },
+      { title: "Data Retention", body: [
+        { list: [
+          "We retain personal information for as long as your account is active and as needed to provide the Service.",
+          "We retain Your Content until you delete it or your account, subject to backups and legal / operational requirements.",
+          "We may retain certain data longer where required for legal compliance, dispute resolution, security, and enforcement of our agreements.",
+          "Some large Connector results may be stored temporarily as files within your chat to allow the AI to process them; these follow the same deletion controls as your other chat content.",
+        ] },
+      ] },
+      { title: "Security", body: "We implement reasonable technical and organizational measures to protect personal information, including encryption in transit and at rest, access controls, and isolation between accounts. No method of transmission or storage is completely secure, and we cannot guarantee absolute security. Protect your credentials and connected accounts, and notify us of any suspected compromise. If a security breach affecting your personal information occurs, we will notify you and the relevant authorities as required by applicable law." },
+      { title: "Your Rights and Choices", body: [
+        "Depending on your location, you may have rights to:",
+        { list: [
+          "Access the personal information we hold about you;",
+          "Correct inaccurate information;",
+          "Delete your information;",
+          "Port your information;",
+          "Object to or restrict certain processing;",
+          "Withdraw consent where processing is based on consent;",
+          "Opt out of sale / sharing / targeted advertising (note: we do not sell or share as defined by law).",
+        ] },
+        "To exercise these rights, contact contact@getsouvenir.com. We will verify your request and respond as required by law. You will not be discriminated against for exercising your rights. If you are part of an organization, please direct requests concerning organization-controlled data to that organization; we will assist them as the processor.",
+        "California (CCPA / CPRA), Virginia, Colorado, and other U.S. state residents have the rights described above. We do not sell your personal information, and we do not share it for cross-context behavioral advertising as defined by law. To opt out of any processing that may be considered “sale” or “sharing,” email contact@getsouvenir.com or enable a recognized opt-out preference signal (such as Global Privacy Control) in your browser, which we honor.",
+        "EU / UK / EEA residents have rights under GDPR / UK GDPR and may lodge a complaint with their supervisory authority. Where we transfer data outside the EEA or UK, we rely on Standard Contractual Clauses and will appoint an EU / UK representative if required by applicable law.",
+      ] },
+      { title: "Cookies and Tracking", body: "We use cookies and similar technologies for authentication, to remember your preferences, and to understand usage. You can control cookies through your browser settings; disabling some cookies may affect functionality. For more detail, see our Cookie Policy." },
+      { title: "International Data Transfers", body: "We are based in the United States and use infrastructure (including AWS) and subprocessors that may process data in the United States and other countries. Where we transfer personal data from the EEA, UK, or Switzerland, we rely on appropriate safeguards such as Standard Contractual Clauses where applicable." },
+      { title: "Children’s Privacy", body: "The Service is intended for users aged 16 and over (or the minimum age required in your jurisdiction). We do not knowingly collect personal information from children under that age. If you believe a child has provided us personal information, contact us and we will delete it." },
+      { title: "Third-Party Services", body: "The Service integrates with and links to third-party services. This Policy does not cover those third parties’ practices. Your use of connected services remains subject to their own privacy policies and terms." },
+      { title: "Changes to This Policy", body: "We may update this Privacy Policy from time to time and review it at least annually. If we make material changes, we will provide notice (for example, by email or in-product). The “Last updated” date reflects the latest revision. Your continued use after changes take effect constitutes acceptance." },
+      { title: "Contact Us", body: "Questions or requests regarding this Privacy Policy or your personal information: contact@getsouvenir.com — Souvenir, Inc. [MAILING ADDRESS — add registered business address before publishing]" },
     ],
   },
   cookies: {
     slug: "cookies",
     eyebrow: "Privacy & Data",
-    title: "Cookie and Tracking Policy",
-    updated: UPDATED,
+    title: "Cookie Policy",
+    updated: "June 14, 2026",
     sections: [
-      { title: "What Are Cookies", body: "Cookies are small text files stored on your device. Similar technologies include web beacons, pixels, local storage, and session storage. This Policy explains how Souvenir, Inc. uses these technologies at getsouvenir.com. Read together with our Privacy Policy and Terms of Service. Applies to users in the United States, Canada, and India." },
-      { title: "Types of Cookies We Use", body: "Strictly necessary (platform function, cannot be disabled — e.g. Auth0 session tokens, CSRF protection, load balancing), functional (preferences and settings), performance (how users interact with the Services), and analytics (speed, reliability, and error tracking)." },
-      { title: "Third-Party Sharing", body: TODO },
-      { title: "Consent", body: TODO },
-      { title: "Your Rights", body: TODO },
-      { title: "Enforcement", body: TODO },
-      { title: "Changes", body: TODO },
-      { title: "Contact", body: "Questions about cookies? Contact info@getsouvenir.com." },
+      { title: "Overview", body: [
+        "This Cookie Policy explains how Souvenir, Inc. (“Souvenir,” “we,” “us,” or “our”) uses cookies and similar technologies on the website at getsouvenir.com and within the Souvenir application (the “Service”). It should be read together with our Privacy Policy.",
+        "In short: We use cookies and local storage that are necessary to sign you in and run the Service, plus a limited set of analytics cookies to understand usage and improve the product. We do not use third-party advertising cookies and we do not sell your data.",
+      ] },
+      { title: "What Are Cookies?", body: [
+        "Cookies are small text files placed on your device when you visit a website. “Local storage” and similar technologies serve comparable purposes — storing small amounts of data in your browser. We use the term “cookies” in this policy to cover cookies, local storage, and similar technologies.",
+        "Cookies can be “first-party” (set by Souvenir) or “third-party” (set by a service we use, such as our analytics provider). They can be “session” cookies (deleted when you close your browser) or “persistent” cookies (kept until they expire or you remove them).",
+      ] },
+      { title: "How We Use Cookies", body: [
+        "We use cookies for the following purposes:",
+        { table: {
+          head: ["Category", "Purpose", "Can you disable?"],
+          rows: [
+            ["Strictly necessary", "Authenticate your session, keep you signed in, maintain security, remember consent choices, and enable core features of the Service. The Service will not function correctly without these.", "No — required for the Service to work"],
+            ["Preferences", "Remember settings such as interface preferences and recently used options so the Service behaves the way you expect.", "Yes — via browser settings"],
+            ["Analytics / performance", "Understand how the Service is used (features used, errors encountered, aggregate usage patterns) so we can debug and improve. We use Mixpanel for product analytics.", "Yes — via browser settings or our cookie controls where offered"],
+          ],
+        } },
+        "We do not use advertising or cross-site tracking cookies, and we do not allow third parties to use cookies on the Service to build advertising profiles.",
+      ] },
+      { title: "Third-Party Cookies", body: [
+        "Some cookies are set by service providers that help us operate the Service. The main one is:",
+        { list: [
+          "Mixpanel — product analytics, used to measure feature usage and diagnose issues. Mixpanel processes this data on our behalf as a service provider.",
+        ] },
+        "Authentication and payment flows may also set cookies via our providers (for example, our authentication provider and Stripe for billing) strictly to perform those functions. These third parties process data under their own privacy terms.",
+      ] },
+      { title: "Your Choices", body: [
+        { list: [
+          "Browser settings. Most browsers let you block or delete cookies, or alert you before one is set. Disabling strictly necessary cookies may prevent you from signing in or using parts of the Service.",
+          "Cookie controls. Where we offer an in-product or banner cookie control, you can use it to manage non-essential (analytics / preferences) cookies.",
+          "Do Not Track. Some browsers send a “Do Not Track” signal. Because there is no common industry standard for responding to these signals, we currently handle them through the controls described above.",
+        ] },
+      ] },
+      { title: "Changes to This Policy", body: "We may update this Cookie Policy from time to time. The “Last updated” date reflects the latest revision. Material changes will be communicated through the Service or by other reasonable means." },
+      { title: "Contact Us", body: "Questions about this Cookie Policy: contact@getsouvenir.com — Souvenir, Inc. [MAILING ADDRESS — add registered business address before publishing]" },
     ],
   },
   copyright: {
@@ -251,6 +372,170 @@ export const LEGAL_DOCS: Record<string, LegalDoc> = {
       { title: "Removal Process", body: TODO },
       { title: "Good Faith", body: TODO },
       { title: "Contact", body: "Copyright questions? Contact oliver@getsouvenir.com." },
+    ],
+  },
+  "connected-services": {
+    slug: "connected-services",
+    eyebrow: "Privacy & Data",
+    title: "Privacy Policy — Connected Services",
+    updated: "June 14, 2026",
+    sections: [
+      { title: "Scope", body: [
+        "This Privacy Policy describes how Souvenir, Inc. (“Souvenir,” “we,” “us,” or “our”) collects, uses, stores, and shares information when you use the Souvenir Meta (Facebook) app, the Souvenir Slack managerial bot, and other Connectors. It covers:",
+        { list: [
+          "the Souvenir web application available at getsouvenir.com (the “Service”);",
+          "the Souvenir app for Meta (our Facebook / Meta Platform application used to connect Meta advertising accounts); and",
+          "the Souvenir Slack managerial bot (our Slack application).",
+        ] },
+        "By using the Service, the Souvenir Meta app, or the Souvenir Slack bot, you agree to the practices described in this policy. If you do not agree, please do not use the Service. This policy took effect June 11, 2026. Contact: contact@getsouvenir.com",
+      ] },
+      { title: "Who We Are", body: [
+        "Souvenir is a centralized workspace brain driven by a coordinated team of AI Assistants. It lets you chat with AI models and, optionally, connect third-party business tools (such as Meta Ads, Shopify, Slack, HubSpot, Klaviyo, and others) so the assistants can retrieve and analyze your business data on your instruction.",
+        "Souvenir is the data controller for personal information collected through the Service. Where you connect your company’s third-party accounts and instruct Souvenir to process data from them, we act on your instructions with respect to that connected data.",
+      ] },
+      { title: "Information We Collect", body: [
+        { subhead: "Information you provide directly" },
+        { list: [
+          "Account information. When you sign up, our authentication provider (Auth0, an Okta company) collects your name, email address, and login credentials or social-login identity. We store your email, display name, and a unique account identifier. We never see or store your password if you use social login.",
+          "Billing information. Payments are processed by Stripe. Stripe collects your payment card details directly; we do not receive or store full card numbers. We store your Stripe customer ID, subscription plan, invoices / credit balances, and transaction history.",
+          "Chat content. Messages you send to the assistants, files and documents you upload (e.g., PDF, DOCX, XLSX, PPTX, images), and the assistants’ responses.",
+          "Configuration data. AI Assistants, projects, team and organization settings, and connector configurations you create.",
+          "Support communications. Anything you send us when contacting support.",
+        ] },
+        { subhead: "Information collected automatically" },
+        { list: [
+          "Usage and log data. Request logs, timestamps, feature usage, error logs, IP address, browser / device type, and credit / usage accounting records (which features and AI models you used and how much).",
+          "Cookies and similar technologies. We use cookies and local storage for authentication sessions and core functionality. We do not use third-party advertising cookies.",
+        ] },
+        { subhead: "Information from connected third-party services" },
+        "You may optionally connect third-party accounts (“Connectors”). We only access connected data when you ask an assistant to perform a task that requires it (for example, “summarize last month’s ad performance”).",
+        { subhead: "a) Meta (Facebook) — Souvenir Meta app" },
+        "When you connect a Meta Ads account, you authorize our Meta app through Meta’s OAuth consent flow. Through this connection we may receive:",
+        { list: [
+          "OAuth access tokens for your Meta account (managed through our authentication broker, Composio). We never receive or store your Facebook / Meta password.",
+          "Advertising data you direct an assistant to retrieve, under the ads_read and ads_management permissions: ad account metadata, campaigns, ad sets, ads, creatives, audiences, budgets, and performance insights (impressions, clicks, spend, conversions, and similar metrics).",
+          "Basic profile information associated with the connected Meta account (such as name and account ID) as returned by Meta during authorization.",
+        ] },
+        "We use Meta Platform Data only to provide the features you request inside Souvenir (retrieving, analyzing, and summarizing your advertising data). We do not sell Meta Platform Data, use it for advertising of our own, build profiles unrelated to the Service, or transfer it to data brokers. Our use of information received from Meta APIs adheres to the Meta Platform Terms and Developer Policies.",
+        { subhead: "b) Slack — Souvenir Slack managerial bot" },
+        "When a workspace admin or member installs the Souvenir bot via Slack’s OAuth consent flow, we collect and store:",
+        { list: [
+          "Workspace installation data: Slack workspace (team) ID and name, the bot access token (encrypted at rest), the bot’s user ID, the granted OAuth scopes, and which Souvenir account performed the installation.",
+          "Identity links: a mapping between your Souvenir account and your Slack user ID in each workspace, created when you link your Slack identity, so the bot can attribute requests to your Souvenir account.",
+          "Message content — only in limited cases: when you @-mention the bot in a channel; send the bot a direct message; use one of the bot’s slash commands; or when the bot reads the history of a thread it is participating in, in order to maintain conversational context for its reply.",
+        ] },
+        "The bot requests the following Slack scopes, for these purposes:",
+        { table: {
+          head: ["Scope", "Purpose"],
+          rows: [
+            ["app_mentions:read", "Receive messages that @-mention the bot"],
+            ["chat:write", "Post replies in channels, threads, and DMs"],
+            ["commands", "Provide slash commands"],
+            ["im:history", "Read direct messages sent to the bot"],
+            ["channels:history, groups:history, mpim:history", "Read the thread the bot is replying in, so replies have context"],
+            ["users:read", "Resolve Slack user IDs to display names"],
+          ],
+        } },
+        "The bot does not continuously monitor, archive, or index your workspace’s messages. Messages directed at the bot are processed to generate a response (including being sent to AI model providers) and retained as part of the associated Souvenir conversation history. If the bot is uninstalled from a workspace, or its tokens are revoked, we delete the stored installation record and bot token for that workspace automatically.",
+        { subhead: "c) Google, Shopify, and other connectors" },
+        "The Service supports additional connectors (e.g., Google Drive, Gmail, Shopify, HubSpot, Klaviyo, ShipStation, and others). For each, the same principles apply: we access data only through the permissions you grant via OAuth, only to fulfill tasks you request, and we store the tokens or credentials you provide encrypted at rest. We do not use data from any connected service for advertising or to train AI models. Souvenir’s use and transfer of information received from Google APIs adheres to the Google API Services User Data Policy, including its Limited Use requirements. You can disconnect any connector at any time, or revoke access from the third-party service’s own settings.",
+        { subhead: "d) Connector authentication brokers" },
+        "To connect third-party accounts securely, Souvenir uses specialized integration providers — Composio and Nango — that act strictly as processors on our behalf. They broker the OAuth flow, hold the resulting credentials encrypted, and relay API requests; they do not use your data for their own purposes. Connections are scoped to your individual account and isolated from other users. When you disconnect a connector in Souvenir, the corresponding connection record is deleted or unlinked, and we no longer have access to that account. You can also revoke access directly from the third-party service’s own security settings at any time.",
+      ] },
+      { title: "How We Use Information", body: [
+        "We use the information described above to:",
+        { list: [
+          "Provide and operate the Service — authenticate you, run AI conversations, execute connector tasks you request, and maintain your chat, AI Assistant, and project data.",
+          "Process payments and meter usage — manage subscriptions, credits, and billing through Stripe.",
+          "Generate AI responses — send relevant conversation content and connected data to AI model providers.",
+          "Maintain security — detect abuse, enforce access controls, and protect accounts and stored credentials.",
+          "Improve the Service — analyze aggregate usage patterns and diagnose errors. We use internal logs for debugging; we do not sell usage data.",
+          "Communicate with you — service announcements, billing notices, and support responses.",
+          "Comply with law — meet legal, accounting, and regulatory obligations.",
+        ] },
+        "We do not sell your personal information, and we do not use your data — including data obtained from Meta or Slack — for third-party advertising.",
+      ] },
+      { title: "AI Model Processing", body: [
+        "Souvenir generates responses using third-party large language model providers, currently OpenAI, Anthropic, Google (Gemini), and Mistral. When you chat with an assistant:",
+        { list: [
+          "your messages, relevant conversation history, uploaded document excerpts, and connected data needed to answer your request are transmitted to the selected model provider to generate a response;",
+          "we access these providers via their business / API offerings, under terms that prohibit them from using API-submitted data to train their models.",
+        ] },
+        "You control what you share in conversations and which connectors you enable.",
+      ] },
+      { title: "How We Share Information", body: [
+        "We share information only with:",
+        { list: [
+          "Service providers / sub-processors that process data on our behalf to run the Service;",
+          "Your team and organization, where you use shared workspaces, shared AI Assistants, team connectors, or chat sharing — content you share is visible to the users or teams you share it with;",
+          "Third-party services you connect, when executing your instructions (e.g., sending an API request to Meta or posting a message to Slack on your behalf);",
+          "Legal authorities, if required by law, subpoena, or to protect the rights, safety, or property of Souvenir, our users, or the public;",
+          "A successor entity, in connection with a merger, acquisition, or sale of assets, in which case this policy will continue to apply to previously collected data.",
+        ] },
+        "We never sell personal information or share it with data brokers.",
+      ] },
+      { title: "Sub-processors", body: [
+        { table: {
+          head: ["Provider", "Purpose"],
+          rows: [
+            ["Amazon Web Services (AWS)", "Cloud hosting (compute, database, storage) — United States"],
+            ["Auth0 (Okta)", "Authentication"],
+            ["Stripe", "Payments and billing"],
+            ["Composio", "Connector authentication and API brokering"],
+            ["Nango", "Connector authentication and API brokering (select connectors)"],
+            ["OpenAI", "AI model inference"],
+            ["Anthropic", "AI model inference"],
+            ["Google (Gemini)", "AI model inference"],
+            ["Mistral", "AI model inference"],
+            ["Slack Technologies", "Slack managerial bot platform"],
+            ["Meta Platforms", "Meta Ads API"],
+          ],
+        } },
+        "We may update this list as the Service evolves; material changes will be reflected in an updated policy. To request notice of subprocessor changes, email contact@getsouvenir.com.",
+      ] },
+      { title: "Data Security", body: "We protect your information using industry-standard measures, including encryption in transit (TLS / HTTPS) and at rest, access controls limiting production access to authorized personnel, and isolation of connected-account credentials to the account that created them. Credentials held by our integration providers are encrypted at rest. Slack bot tokens are deleted automatically on uninstall or revocation, and disconnecting a connector removes our stored link to that account. No method of transmission or storage is 100% secure, but we work to protect your information and will notify you of any breach affecting your personal information as required by law." },
+      { title: "Data Retention", body: [
+        { table: {
+          head: ["Data", "Retention"],
+          rows: [
+            ["Account information", "For the life of your account; deleted upon account deletion"],
+            ["Chat history, uploaded files, AI Assistants, projects", "Until you delete them or delete your account"],
+            ["Connector credentials / tokens", "Until you disconnect the connector or delete your account"],
+            ["Slack installation data (workspace, bot token)", "Until the bot is uninstalled or tokens are revoked, then deleted automatically"],
+            ["Connected third-party data retrieved for a task", "Retained as part of the relevant conversation / results until that conversation is deleted"],
+            ["Billing records", "As required by tax and accounting law"],
+            ["Server logs", "Rotated on a rolling basis"],
+          ],
+        } },
+      ] },
+      { title: "Data Deletion and Your Controls", body: [
+        "You can, at any time:",
+        { list: [
+          "Delete conversations, files, AI Assistants, and projects from within the Service.",
+          "Disconnect any connector (including Meta Ads) from the connectors page — this removes our access and stored credentials for that account. You can additionally revoke Souvenir’s access from the third party’s side (for Meta: Settings & Privacy → Settings → Business Integrations on Facebook; for Slack: remove the app from your workspace, which triggers automatic deletion of our stored installation data).",
+          "Delete your Souvenir account by contacting contact@getsouvenir.com (or via in-app account settings, where available). Account deletion removes your personal information, chat history, uploads, identity links, and stored connector credentials, except records we must retain for legal / billing compliance.",
+        ] },
+        { subhead: "Data deletion for Meta users" },
+        "If you used the Souvenir Meta app and want data obtained from Meta deleted, either disconnect the Meta Ads connector in Souvenir and delete any conversations that referenced it; or email contact@getsouvenir.com with the subject “Meta Data Deletion Request” from the email associated with your account. We will delete the data and confirm within 30 days.",
+      ] },
+      { title: "Your Privacy Rights", body: [
+        "Depending on where you live, you may have rights to:",
+        { list: [
+          "Access the personal information we hold about you;",
+          "Correct inaccurate information;",
+          "Delete your information;",
+          "Export your information in a portable format;",
+          "Restrict or object to certain processing;",
+          "Withdraw consent where processing is based on consent (e.g., by disconnecting a connector).",
+        ] },
+        "EEA / UK (GDPR): Our legal bases are performance of a contract (providing the Service), legitimate interests (security, service improvement), consent (optional connectors), and legal obligation (billing records). You may lodge a complaint with your local supervisory authority.",
+        "California (CCPA / CPRA): We do not sell or “share” personal information as defined by the CCPA. You may exercise access, deletion, and correction rights without discrimination.",
+        "To exercise any right, email contact@getsouvenir.com. We will respond within the timeframe required by applicable law (generally 30 days).",
+      ] },
+      { title: "International Data Transfers", body: "Our infrastructure is hosted in the United States (AWS). If you access the Service from outside the U.S., your information will be transferred to and processed in the U.S. Where required, we rely on appropriate safeguards such as standard contractual clauses with our sub-processors." },
+      { title: "Children’s Privacy", body: "The Service is intended for business use and is not directed at children under 16. We do not knowingly collect personal information from children. If you believe a child has provided us information, contact us and we will delete it." },
+      { title: "Changes to This Policy", body: "We may update this policy from time to time. We will post the updated version at this URL with a revised “Last updated” date, and for material changes we will notify you via the Service or email. Continued use after changes take effect constitutes acceptance." },
+      { title: "Contact Us", body: "Souvenir, Inc. — Email: contact@getsouvenir.com — Website: https://www.getsouvenir.com. [MAILING ADDRESS — add registered business address; Meta app review and GDPR both expect a physical address]" },
     ],
   },
 };

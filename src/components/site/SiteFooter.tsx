@@ -34,6 +34,8 @@ const COLUMNS = [
 const LEGAL = [
   { label: "Terms", href: "/legal/terms" },
   { label: "Privacy", href: "/legal/privacy" },
+  { label: "Connected Services", href: "/legal/connected-services" },
+  { label: "Cookies", href: "/legal/cookies" },
   { label: "Acceptable Use", href: "/legal/acceptable-use" },
 ];
 
