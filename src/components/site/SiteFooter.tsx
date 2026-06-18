@@ -1,11 +1,6 @@
-"use client";
-
-import { useState } from "react";
 import Container from "@/components/ui/Container";
 import Logo from "./Logo";
 import FooterScene from "./FooterScene";
-import { InputField } from "@/components/InputField";
-import { Button } from "@/components/kaya/Button";
 
 const COLUMNS = [
   {
@@ -43,8 +38,6 @@ const LEGAL = [
 ];
 
 export default function SiteFooter() {
-  const [email, setEmail] = useState("");
-
   return (
     <footer className="bg-bg text-ink">
       <FooterScene>
@@ -61,21 +54,9 @@ export default function SiteFooter() {
                 />
                 <Logo variant="wordmark" height={24} className="text-ink" />
               </div>
-              <p className="mt-5 max-w-[19rem] font-sans text-[var(--text-small)] leading-relaxed text-ink-secondary">
-                The workspace that knows your context and runs the work — for individuals and teams.
+              <p className="mt-5 max-w-[20rem] font-sans text-[var(--text-small)] leading-relaxed text-ink-secondary">
+                Your context, remembered. Your work, quietly done.
               </p>
-              <form className="mt-7 flex max-w-xs items-center gap-2" onSubmit={(e) => e.preventDefault()}>
-                <InputField
-                  type="email"
-                  size="small"
-                  placeholder="your@company.com"
-                  value={email}
-                  onChange={setEmail}
-                  aria-label="Email for newsletter"
-                  className="flex-1"
-                />
-                <Button type="submit" variant="default" size="md" className="shrink-0 px-4">Subscribe</Button>
-              </form>
             </div>
 
             {/* Prominent column headers (title-case ink, ~16px) + airy link rhythm */}
