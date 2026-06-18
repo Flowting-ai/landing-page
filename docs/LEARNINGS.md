@@ -34,19 +34,24 @@ next session can follow, not a story. Format:
 
 ## Log
 
-### [2026-06-17] Scenery footer — borrow the warm-horizon FEELING, not the cool palette · (FOOTER/COLOR)
-- **What happened / feedback:** Chai wanted an illustrated "warm scenery" footer (ref: a Nexiron
-  risograph landscape — blue sky, coral trees, green fields). That palette breaks three locked rules
-  (no coral, no blue, warm monochrome). Resolved by keeping the *mechanic* (a calm hand-drawn horizon
-  as the sign-off) and re-rendering it in our system: cream sky, taupe→espresso layered hills, ochre
-  tree line, ink lone tree, riso grain. Chai picked the warm-monochrome option.
-- **Rule going forward:** When a visual reference clashes with the locked palette, port the *idea* in
-  Souvenir tokens — don't copy the colors. Build scenery as hand-authored inline **SVG** (token fills
-  via `var(--…)`, `preserveAspectRatio="xMidYMax slice"` so the horizon anchors to the bottom and
-  fills any size) — no raster asset, no perf hit, respects "heavy craft = hero-only." Grain via
-  `feTurbulence` + low-opacity multiply. Overlay rule: dark text over the cream sky (top content),
-  cream text (`--dark-ink`) over the espresso field (bottom legal bar).
-- **Promoted to:** souvenir-taste (reinforces "evoke don't costume" + no-coral/blue).
+### [2026-06-17] Scenery footer — warm wheat-field IMAGE + cursor sunlight pool · (FOOTER/COLOR/MOTION)
+- **What happened / feedback:** Chai wanted an illustrated "warm scenery" footer. First ref (Nexiron
+  riso landscape) was blue+coral+green — breaks the locked palette. Iterated the image-gen prompt to a
+  warm wheat-field horizon with two small figures (on-palette: ochre/wheat/cream, no coral/blue/green),
+  then chose the AI-generated image over a hand-built SVG. Chai also floated a Three.js "sunlight
+  cursor" with real DirectionalLight shadows — declined as wrong-tool (flat PNG can't cast 3D shadows;
+  breaks the no-WebGL-by-default + one-signature-moment + footer-motion-none rules). Landed on a cheap
+  on-rule middle path: cursor-tracked sunlight glow + a few-px parallax.
+- **Rule going forward:** (1) When a reference clashes with the locked palette, fix it at the PROMPT
+  (warm wheat/ochre/cream, "no blue/green/coral") — don't copy the ref's colors. (2) Optimize AI images
+  for the site: resize to ~2× footer width (2880w) + `cwebp -q 72` → ~30KB; ship a `-sm` variant for
+  `max-width:640px`. (3) Full-bleed backdrop = `background-size:cover; position:center bottom` on an
+  oversized (`inset:-16px -20px`) layer so parallax never exposes an edge; text stays real HTML on top.
+  (4) This image is light wheat→cream everywhere → dark INK text throughout (no dark region for cream
+  text, unlike the earlier dark-field plan). (5) Sunlight pool = radial-gradient at cursor `--mx/--my`,
+  `mix-blend-mode:soft-light`, opacity gated by `--lit`; parallax = `translate3d(--px,--py,0)`;
+  reduced-motion drops both (static image remains).
+- **Promoted to:** souvenir-taste (evoke-don't-costume; no-WebGL-default) + the image-optimize recipe.
 
 ### [2026-06-15] @storybook/nextjs doesn't inject next/font vars → Besley collapsed to system sans · (TYPOGRAPHY/BUILD)
 - **What happened / feedback:** Chai spotted that Storybook headings looked sans — "serif/sans, no
