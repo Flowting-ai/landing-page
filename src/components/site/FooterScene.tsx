@@ -30,9 +30,10 @@ export default function FooterScene({ children }: { children: React.ReactNode })
       const y = (clientY - r.top) / r.height; // 0..1
       el.style.setProperty("--mx", `${(x * 100).toFixed(1)}%`);
       el.style.setProperty("--my", `${(y * 100).toFixed(1)}%`);
-      // parallax: image shifts a few px opposite the cursor
-      el.style.setProperty("--px", `${((0.5 - x) * 16).toFixed(1)}px`);
-      el.style.setProperty("--py", `${((0.5 - y) * 10).toFixed(1)}px`);
+      // parallax: small shift opposite the cursor — kept within the ~4% size
+      // overflow so the sides never expose a bare edge (no bleed).
+      el.style.setProperty("--px", `${((0.5 - x) * 8).toFixed(1)}px`);
+      el.style.setProperty("--py", `${((0.5 - y) * 6).toFixed(1)}px`);
       el.style.setProperty("--lit", "1");
     });
   }

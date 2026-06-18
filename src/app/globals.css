@@ -147,7 +147,8 @@ body { min-height: 100dvh; background: var(--bg); color: var(--ink); font-family
 
 /* ── Footer scene — illustrated wheat-field backdrop + cursor sunlight pool ──── */
 .footer-scene {
-  --mx: 50%; --my: 70%; --px: 0px; --py: 0px; --lit: 0; --zoom: 1.12;
+  --mx: 50%; --my: 70%; --px: 0px; --py: 0px; --lit: 0;
+  --scene-size: 104%; /* width-based: ~full width shown → figures small, no side crop */
   position: relative;
   overflow: hidden;
   isolation: isolate;
@@ -158,19 +159,19 @@ body { min-height: 100dvh; background: var(--bg); color: var(--ink); font-family
    zoom (--zoom) enlarges the scene; the top edge fades into the page via mask so
    the near-white image blends seamlessly (no visible footer box). */
 .footer-scene__img {
-  position: absolute; inset: -16px -20px;
+  position: absolute; inset: 0;
   background-image: url("/footer/scenery.webp");
-  background-size: cover;
+  /* width-based size shows ~the whole frame (figures stay tiny in the field) and
+     spans edge-to-edge — the slight >100% only gives parallax headroom so the
+     side never exposes a bare edge (no bleed). Anchored to the bottom. */
+  background-size: var(--scene-size) auto;
   background-position: center bottom;
-  transform: translate3d(var(--px), var(--py), 0) scale(var(--zoom));
-  transform-origin: center bottom;
+  background-repeat: no-repeat;
+  transform: translate3d(var(--px), var(--py), 0);
   transition: transform 400ms var(--ease-out);
   /* multiply over the cream footer fill: the image's white becomes the page
-     cream automatically (exact color match, no seam), while the path + figures
-     stay. A soft top fade still eases the very top into the page. */
+     cream automatically (exact color match, no seam); path + figures stay. */
   mix-blend-mode: multiply;
-  -webkit-mask-image: linear-gradient(to bottom, transparent 0%, #000 14%);
-  mask-image: linear-gradient(to bottom, transparent 0%, #000 14%);
   z-index: 0;
 }
 /* grain across the WHOLE footer — gives the flat cream fill the same printed
@@ -180,7 +181,7 @@ body { min-height: 100dvh; background: var(--bg); color: var(--ink); font-family
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
   background-size: 140px 140px;
   mix-blend-mode: multiply;
-  opacity: 0.07;
+  opacity: 0.11;
 }
 @media (max-width: 640px) {
   /* lighter mobile asset */
