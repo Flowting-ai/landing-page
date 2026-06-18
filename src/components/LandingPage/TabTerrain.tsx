@@ -87,7 +87,7 @@ export default function TabTerrain() {
           viewport: { once: false, amount: 0.15 },
           transition: {
             opacity: { duration: 0.7, ease: [0.16, 1, 0.3, 1] as const, delay: i * 0.04 },
-            x: { duration: 7, repeat: Infinity, ease: "easeInOut", delay: i * DRIFT_LAG },
+            x: { duration: 7, repeat: Infinity, ease: "easeInOut" as const, delay: i * DRIFT_LAG },
           },
         };
 
