@@ -158,11 +158,11 @@ body { min-height: 100dvh; background: var(--bg); color: var(--ink); font-family
     -webkit-backdrop-filter 320ms var(--ease-out), backdrop-filter 320ms var(--ease-out);
 }
 /* FLUSH (over the hero): NO fill / border / blur / shadow — reads as part of the
-   hero. Mirrors the page Container (max-width --maxw + --gutter, centered) so the
-   logo sits exactly above the hero's content edge and the CTA above its right edge. */
+   hero. Spans the FULL hero width with the standard page gutter, so the flush→pill
+   morph reads as a clear contraction (full-bleed → centered 70rem pill). */
 .site-nav__pill.is-flush {
-  max-width: var(--maxw);
-  margin-inline: auto;
+  max-width: none;
+  margin-inline: 0;
   padding: 0.5rem var(--gutter);
   background-color: transparent;
   border-color: transparent;
