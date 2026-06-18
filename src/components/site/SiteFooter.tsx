@@ -1,5 +1,6 @@
 import Container from "@/components/ui/Container";
 import Logo from "./Logo";
+import FooterScene from "./FooterScene";
 
 const COLUMNS = [
   {
@@ -9,87 +10,83 @@ const COLUMNS = [
       { label: "Brain & Automation", href: "/product/brain" },
       { label: "Slack Manager", href: "/product/slack" },
       { label: "Unified Chatspace", href: "/product/chatspace" },
-      { label: "Integrations", href: "/integrations" },
       { label: "Pricing", href: "/pricing" },
     ],
   },
   {
     title: "Solutions",
     links: [
-      { label: "Businesses", href: "/solutions/company-brain" },
-      { label: "Individuals", href: "/individuals" },
+      { label: "For Teams", href: "/solutions/company-brain" },
+      { label: "For Individuals", href: "/individuals" },
+      { label: "Integrations", href: "/integrations" },
     ],
   },
   {
     title: "Company",
     links: [
-      { label: "Contact", href: "/about" },
+      { label: "About", href: "/about" },
       { label: "Guide", href: "/guide" },
-      { label: "Blogs", href: "#" },
-    ],
-  },
-  {
-    title: "Legal",
-    links: [
-      { label: "Terms of Service", href: "/legal/terms" },
-      { label: "Privacy Policy", href: "/legal/privacy" },
-      { label: "Acceptable Use", href: "/legal/acceptable-use" },
-      { label: "Cookie Policy", href: "/legal/cookies" },
-      { label: "Copyright & DMCA", href: "/legal/copyright" },
+      { label: "Contact", href: "/about" },
     ],
   },
 ];
 
+const LEGAL = [
+  { label: "Terms", href: "/legal/terms" },
+  { label: "Privacy", href: "/legal/privacy" },
+  { label: "Acceptable Use", href: "/legal/acceptable-use" },
+];
+
 export default function SiteFooter() {
   return (
-    <footer className="bg-dark-bg text-dark-ink">
-      <Container wide className="py-16 sm:py-20">
-        <div className="grid gap-12 lg:grid-cols-[1.4fr_2fr]">
-          {/* brand + newsletter */}
-          <div className="max-w-sm">
-            <Logo variant="lockup" height={26} className="text-dark-ink" />
-            <p className="mt-4 font-sans text-[var(--text-small)] leading-relaxed text-dark-ink-muted">
-              The centralized workspace brain. A coordinated team of agents.
-            </p>
-            <div className="mt-7">
-              <label className="font-sans text-[var(--text-micro)] font-medium uppercase tracking-[0.12em] text-dark-ink-muted">
-                Newsletter
-              </label>
-              <div className="mt-2.5 flex gap-2">
-                <input
-                  type="email"
-                  placeholder="your@company.com"
-                  className="h-11 flex-1 rounded-[var(--r-md)] border border-[var(--dark-line)] bg-[var(--dark-surface)] px-3.5 font-sans text-[var(--text-small)] text-dark-ink placeholder:text-dark-ink-muted focus-visible:outline-2 focus-visible:outline-[var(--neutral-400)]"
+    <footer className="bg-bg text-ink">
+      <FooterScene>
+        <Container wide className="flex min-h-[680px] flex-col justify-between py-16 sm:min-h-[760px] sm:py-20">
+          {/* ── Top: brand + newsletter · link columns (over the field) ── */}
+          <div className="grid gap-14 lg:grid-cols-[1.25fr_2fr]">
+            <div className="max-w-sm">
+              {/* Brand moment: the gold Souvenir orb + wordmark */}
+              <div className="flex items-center gap-3">
+                <span
+                  aria-hidden
+                  className="h-11 w-11 shrink-0 select-none bg-contain bg-center bg-no-repeat"
+                  style={{ backgroundImage: "url(/brand/gold-orb.webp)" }}
                 />
-                <button className="h-11 rounded-[var(--r-md)] bg-dark-ink px-4 font-sans text-[var(--text-small)] font-medium text-ink transition-opacity hover:opacity-90">
-                  Subscribe
-                </button>
+                <Logo variant="wordmark" height={24} className="text-ink" />
               </div>
+              <p className="mt-5 max-w-[20rem] font-sans text-[var(--text-small)] leading-relaxed text-ink-secondary">
+                Your context, remembered. Your work, quietly done.
+              </p>
+            </div>
+
+            {/* Prominent column headers (title-case ink, ~16px) + airy link rhythm */}
+            <div className="grid grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-3">
+              {COLUMNS.map((col) => (
+                <div key={col.title}>
+                  <p className="font-sans text-[length:var(--font-size-body-lg)] font-semibold tracking-[-0.01em] text-ink">{col.title}</p>
+                  <ul className="mt-5 flex flex-col gap-3.5">
+                    {col.links.map((l) => (
+                      <li key={l.label}>
+                        <a href={l.href} className="font-sans text-[var(--text-small)] text-ink-secondary transition-colors hover:text-[color:var(--accent)]">{l.label}</a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
             </div>
           </div>
 
-          {/* link columns */}
-          <div className="grid grid-cols-2 gap-8 sm:grid-cols-4">
-            {COLUMNS.map((col) => (
-              <div key={col.title}>
-                <p className="font-sans text-[var(--text-micro)] font-semibold uppercase tracking-[0.1em] text-dark-ink-muted">{col.title}</p>
-                <ul className="mt-4 flex flex-col gap-3">
-                  {col.links.map((l) => (
-                    <li key={l.label}>
-                      <a href={l.href} className="font-sans text-[var(--text-small)] text-dark-ink/85 transition-colors hover:text-dark-ink">{l.label}</a>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
+          {/* ── Bottom: copyright (left) · underlined legal links (right) ── */}
+          <div className="mt-16 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <span className="font-sans text-[var(--text-micro)] text-ink-secondary">© 2026 Souvenir Inc. — the memory your work keeps.</span>
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
+              {LEGAL.map((l) => (
+                <a key={l.label} href={l.href} className="font-sans text-[var(--text-micro)] text-ink-muted underline underline-offset-4 decoration-[color:var(--line-strong)] transition-colors hover:text-ink hover:decoration-[color:var(--ink)]">{l.label}</a>
+              ))}
+            </div>
           </div>
-        </div>
-
-        <div className="mt-14 flex flex-col gap-2 border-t border-[var(--dark-line)] pt-6 sm:flex-row sm:items-center sm:justify-between">
-          <span className="font-sans text-[var(--text-micro)] text-dark-ink-muted">© 2026 Souvenir Inc. Made with context.</span>
-          <span className="font-sans text-[var(--text-micro)] text-dark-ink-muted">v2.0 — June 2026</span>
-        </div>
-      </Container>
+        </Container>
+      </FooterScene>
     </footer>
   );
 }
