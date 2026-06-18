@@ -34,6 +34,20 @@ next session can follow, not a story. Format:
 
 ## Log
 
+### [2026-06-17] Scenery footer — borrow the warm-horizon FEELING, not the cool palette · (FOOTER/COLOR)
+- **What happened / feedback:** Chai wanted an illustrated "warm scenery" footer (ref: a Nexiron
+  risograph landscape — blue sky, coral trees, green fields). That palette breaks three locked rules
+  (no coral, no blue, warm monochrome). Resolved by keeping the *mechanic* (a calm hand-drawn horizon
+  as the sign-off) and re-rendering it in our system: cream sky, taupe→espresso layered hills, ochre
+  tree line, ink lone tree, riso grain. Chai picked the warm-monochrome option.
+- **Rule going forward:** When a visual reference clashes with the locked palette, port the *idea* in
+  Souvenir tokens — don't copy the colors. Build scenery as hand-authored inline **SVG** (token fills
+  via `var(--…)`, `preserveAspectRatio="xMidYMax slice"` so the horizon anchors to the bottom and
+  fills any size) — no raster asset, no perf hit, respects "heavy craft = hero-only." Grain via
+  `feTurbulence` + low-opacity multiply. Overlay rule: dark text over the cream sky (top content),
+  cream text (`--dark-ink`) over the espresso field (bottom legal bar).
+- **Promoted to:** souvenir-taste (reinforces "evoke don't costume" + no-coral/blue).
+
 ### [2026-06-15] @storybook/nextjs doesn't inject next/font vars → Besley collapsed to system sans · (TYPOGRAPHY/BUILD)
 - **What happened / feedback:** Chai spotted that Storybook headings looked sans — "serif/sans, no
   difference." Root cause: `@storybook/nextjs` did NOT inject the `next/font` `--font-besley` /
