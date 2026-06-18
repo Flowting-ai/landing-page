@@ -48,15 +48,15 @@ export default function SiteFooter() {
   return (
     <footer className="bg-bg text-ink">
       <FooterScene>
-        <Container wide className="flex min-h-[560px] flex-col justify-between py-14 sm:min-h-[640px] sm:py-16">
-          {/* ── Top: brand + newsletter · link columns (over the wheat field) ── */}
-          <div className="grid gap-12 lg:grid-cols-[1.3fr_2fr]">
+        <Container wide className="flex min-h-[600px] flex-col justify-between py-16 sm:min-h-[680px] sm:py-20">
+          {/* ── Top: brand + newsletter · link columns (over the field) ── */}
+          <div className="grid gap-14 lg:grid-cols-[1.25fr_2fr]">
             <div className="max-w-sm">
-              <Logo variant="lockup" height={26} className="text-ink" />
-              <p className="mt-4 max-w-xs font-sans text-[var(--text-small)] leading-relaxed text-ink-secondary">
+              <Logo variant="lockup" height={30} className="text-ink" />
+              <p className="mt-5 max-w-[19rem] font-sans text-[var(--text-small)] leading-relaxed text-ink-secondary">
                 The workspace that knows your context and runs the work — for individuals and teams.
               </p>
-              <form className="mt-6 flex max-w-xs items-center gap-2" onSubmit={(e) => e.preventDefault()}>
+              <form className="mt-7 flex max-w-xs items-center gap-2" onSubmit={(e) => e.preventDefault()}>
                 <InputField
                   type="email"
                   size="small"
@@ -70,11 +70,12 @@ export default function SiteFooter() {
               </form>
             </div>
 
-            <div className="grid grid-cols-2 gap-8 sm:grid-cols-3">
+            {/* Prominent column headers (title-case ink, ~16px) + airy link rhythm */}
+            <div className="grid grid-cols-2 gap-x-8 gap-y-10 sm:grid-cols-3">
               {COLUMNS.map((col) => (
                 <div key={col.title}>
-                  <p className="font-sans text-[length:var(--font-size-caption)] font-semibold uppercase tracking-[0.12em] text-ink-muted">{col.title}</p>
-                  <ul className="mt-4 flex flex-col gap-2.5">
+                  <p className="font-sans text-[length:var(--font-size-body-lg)] font-semibold tracking-[-0.01em] text-ink">{col.title}</p>
+                  <ul className="mt-5 flex flex-col gap-3.5">
                     {col.links.map((l) => (
                       <li key={l.label}>
                         <a href={l.href} className="font-sans text-[var(--text-small)] text-ink-secondary transition-colors hover:text-[color:var(--accent)]">{l.label}</a>
@@ -86,12 +87,12 @@ export default function SiteFooter() {
             </div>
           </div>
 
-          {/* ── Bottom: legal bar (over the pale path — dark ink text) ── */}
+          {/* ── Bottom: copyright (left) · underlined legal links (right) ── */}
           <div className="mt-16 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <span className="font-sans text-[var(--text-micro)] text-ink-secondary">© 2026 Souvenir Inc. — the memory your work keeps.</span>
-            <div className="flex items-center gap-5">
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
               {LEGAL.map((l) => (
-                <a key={l.label} href={l.href} className="font-sans text-[var(--text-micro)] text-ink-muted underline-offset-4 transition-colors hover:text-ink hover:underline">{l.label}</a>
+                <a key={l.label} href={l.href} className="font-sans text-[var(--text-micro)] text-ink-muted underline underline-offset-4 decoration-[color:var(--line-strong)] transition-colors hover:text-ink hover:decoration-[color:var(--ink)]">{l.label}</a>
               ))}
             </div>
           </div>
