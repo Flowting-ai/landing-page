@@ -386,8 +386,70 @@ body { min-height: 100dvh; background: var(--bg); color: var(--ink); font-family
 @keyframes nav-drawer-in  { from { opacity: 0; transform: translateY(-8px); } to { opacity: 1; transform: none; } }
 @keyframes nav-drawer-out { from { opacity: 1; transform: none; } to { opacity: 0; transform: translateY(-8px); } }
 
+/* ── Footer scene — illustrated wheat-field backdrop + cursor sunlight pool ──── */
+.footer-scene {
+  --mx: 50%; --my: 70%; --px: 0px; --py: 0px; --lit: 0;
+  --scene-size: 104%; /* width-based: ~full width shown → figures small, no side crop */
+  position: relative;
+  overflow: hidden;
+  isolation: isolate;
+  /* The image carries its own baked warm gradient (top = #F8F2EB ≈ our cream),
+     so the footer fill is flat cream — the image's top dissolves into it
+     seamlessly and the warmth lives in the image toward the horizon. */
+  background: var(--bg);
+}
+/* scenery image — oversized so parallax never exposes an edge, anchored to the
+   bottom (figures/path), cover-cropping the sides on narrow screens. A modest
+   zoom (--zoom) enlarges the scene; the top edge fades into the page via mask so
+   the near-white image blends seamlessly (no visible footer box). */
+.footer-scene__img {
+  position: absolute; inset: 0;
+  background-image: url("/footer/scenery.webp");
+  /* width-based size shows ~the whole frame (figures stay tiny in the field) and
+     spans edge-to-edge — the slight >100% only gives parallax headroom so the
+     side never exposes a bare edge (no bleed). Anchored to the bottom. */
+  background-size: var(--scene-size) auto;
+  background-position: center bottom;
+  background-repeat: no-repeat;
+  transform: translate3d(var(--px), var(--py), 0);
+  transition: transform 400ms var(--ease-out);
+  /* Pre-composed image (gradient baked in) — no blend. A soft top fade still
+     dissolves its top edge into the flat cream page so there's zero seam and the
+     scene reads as emerging from the background. */
+  -webkit-mask-image: linear-gradient(to top, #000 30%, transparent 92%);
+  mask-image: linear-gradient(to top, #000 30%, transparent 92%);
+  z-index: 0;
+}
+/* grain across the WHOLE footer — gives the flat cream fill the same printed
+   texture as the image, so backdrop and illustration read as one surface. */
+.footer-scene__grain {
+  position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='g'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E");
+  background-size: 140px 140px;
+  mix-blend-mode: multiply;
+  opacity: 0.07;
+}
+@media (max-width: 640px) {
+  /* lighter mobile asset */
+  .footer-scene__img { background-image: url("/footer/scenery-sm.webp"); }
+}
+/* sunlight pool — a soft warm glow that follows the cursor; fades in on hover. */
+.footer-scene__sun {
+  position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background: radial-gradient(420px 420px at var(--mx) var(--my),
+    color-mix(in oklch, var(--yellow-200) 70%, white), transparent 62%);
+  mix-blend-mode: soft-light;
+  opacity: calc(var(--lit) * 0.9);
+  transition: opacity 360ms var(--ease-out);
+}
+.footer-scene__content { position: relative; z-index: 2; }
+
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+  /* nav */
   .nav-viewport, .nav-content, .site-nav__scrim, .site-nav__drawer { animation: none !important; }
+  /* footer scene: keep the static image, drop motion + the sunlight pool */
+  .footer-scene__img { transform: none !important; }
+  .footer-scene__sun { opacity: 0 !important; }
 }
