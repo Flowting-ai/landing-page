@@ -1,8 +1,27 @@
 import Container from "@/components/ui/Container";
-import type { LegalDoc } from "./data";
+import type { LegalDoc, LegalBlock } from "./data";
 
 const num = (i: number) => String(i + 1).padStart(2, "0");
 const slugify = (s: string) => s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+
+function SectionBody({ body }: { body: string | LegalBlock[] }) {
+  const blocks: LegalBlock[] = typeof body === "string" ? [body] : body;
+  return (
+    <div className="mt-3 flex flex-col gap-4">
+      {blocks.map((b, i) => {
+        if (typeof b === "string")
+          return <p key={i} className="max-w-[70ch] font-sans text-[var(--text-body)] leading-relaxed text-ink-muted">{b}</p>;
+        if ("subhead" in b)
+          return <h3 key={i} className="font-display text-[length:var(--text-small)] font-semibold text-ink">{b.subhead}</h3>;
+        return (
+          <ul key={i} className="flex max-w-[70ch] list-disc flex-col gap-2 pl-5 font-sans text-[var(--text-body)] leading-relaxed text-ink-muted marker:text-ink-subtle">
+            {b.list.map((li, j) => <li key={j} className="pl-1">{li}</li>)}
+          </ul>
+        );
+      })}
+    </div>
+  );
+}
 
 export default function LegalPage({ doc }: { doc: LegalDoc }) {
   return (
@@ -35,7 +54,7 @@ export default function LegalPage({ doc }: { doc: LegalDoc }) {
             {doc.sections.map((s, i) => (
               <section key={s.title} id={slugify(s.title)} className="scroll-mt-28">
                 <h2 className="font-display text-[length:var(--text-h3)] text-ink">{num(i)} &nbsp; {s.title}</h2>
-                <p className="mt-3 max-w-[70ch] font-sans text-[var(--text-body)] leading-relaxed text-ink-muted">{s.body}</p>
+                <SectionBody body={s.body} />
               </section>
             ))}
           </div>
