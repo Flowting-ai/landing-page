@@ -152,6 +152,87 @@ next session can follow, not a story. Format:
   `scripts/hero/{audit,live,poster}.mjs`. The Kaya DS source is **`~/may-day`** (Storybook :6006 +
   `storybook-static`); full icon source is `~/Downloads/strange-huge-icons-main`.
 - **Promoted to:** docs/HERO_LOOP_HANDOFF.md (environment section).
+### [2026-06-17] Iridescence/specular needs a DARK base; reuse KDS Tabs + tile-hover from the palette · (DESIGN/COMPONENTS)
+- **What happened / feedback:** Chai asked for a rich Company-Brain featured card (perspective tilt,
+  cursor specular glow, iridescent bright areas, noise) + KDS Tabs for the audience switcher + a warm
+  icon-tile hover + a better backdrop blur. First built the iridescent card on the light mauve surface —
+  the sheen/specular were nearly invisible (soft-light rainbow on cream reads as nothing).
+- **Rule going forward:** Iridescent sheen + white specular only read on a **dark field** (espresso
+  `--dark-bg`/`--dark-surface`) — that's why KDS `ModelFeaturedCard`'s rainbow lives on its selected/dark
+  state. Build such effects as layered absolutely-positioned divs (sheen `conic-gradient` soft-light,
+  specular `radial` white screen tracking `--mx/--my`, noise `feTurbulence` overlay, mauve glow
+  `::after`), driven by pointer→CSS-vars, every aspect a CSS-var knob, and **reduced-motion disables
+  tilt+specular** (verified `transform:none`). Reuse don't rebuild: audience switcher = KDS `Tabs`
+  (`TabsList fluid` + `TabsTrigger`); icon-tile hover warms via `--surface-warm` (neutral-100); backdrop
+  blur = warm `neutral-50` veil (not grey ink) + `blur(22px) saturate(1.15)`.
+- **Taste note (flag for Chai):** an iridescent specular card brushes souvenir-taste's "no gratuitous
+  glow/aurora" ban and the "one signature moment per page" rule (Home already has scatter→assemble). It's
+  allowed here as the nav's transient signature, directed by Chai, token-built (not a copy-paste lib).
+  Confirm it doesn't fight the page signature.
+- **Promoted to:** n/a (nav build record; revisit if taste guidance tightens).
+
+### [2026-06-17] OpenAI-style mega-menu = full-width opaque SHEET + page blurred below (floating card never reads on a sparse hero) · (COMPONENTS/DESIGN)
+- **What happened / feedback:** Kept trying to get OpenAI's blur with a centered floating card +
+  backdrop-blur; it never "popped." Root cause is NOT technical — `backdrop-filter` works fine, but our
+  hero is mostly empty warm cream, so blurring it shows almost nothing (OpenAI's page is dense/colorful,
+  so their blur is dramatic). The real structural difference: OpenAI's menu is a **full-width opaque
+  sheet** anchored under the nav, with the page blurred **below** it. Chai chose the sheet.
+- **Rule going forward:** For a marketing mega-menu that needs the OpenAI effect, build a **full-bleed
+  opaque sheet** (`position:fixed; left:0; width:100vw; top:var(--nav-shell-h)`), 100% solid fill,
+  content in a gutter-aligned `max-width:var(--maxw)` container; full-screen `backdrop-filter` blur sits
+  behind/below. Don't expect a floating-card + blur to read on a near-empty canvas — there's nothing to
+  blur. Height morphs between panels; width stays full.
+- **Promoted to:** docs/solutions/design-patterns/scroll-state-nav-radix-portals.md (sheet note).
+
+### [2026-06-17] Tailwind v4 `-translate-x-1/2` uses the `translate` PROPERTY → it traps `position:fixed` children · (CSS/GOTCHA)
+- **What happened / feedback:** A full-width `position:fixed; left:0; width:100vw` mega-sheet rendered at
+  x=554 (centered) and 1440 wide overflowing, not at left:0. The cause: its ancestor used Tailwind v4
+  `-translate-x-1/2`, which compiles to the **`translate` CSS property** (`translate: -50% 0`), NOT
+  `transform`. The `translate` property establishes a containing block for fixed descendants — so the
+  sheet anchored to the centered wrapper, not the viewport. `getComputedStyle(el).transform` reads
+  `none` (it's on `translate`), so a transform-only ancestor scan MISSES it.
+- **Rule going forward:** When `position:fixed` is mysteriously offset, check ancestors for the
+  `translate` / `scale` / `rotate` **individual properties** AND `transform` AND `filter` /
+  `backdrop-filter` / `perspective` / `will-change` / `contain` / `container-type` — any of them creates
+  a containing block. Center without trapping fixed children via `absolute inset-x-0 mx-auto w-fit`
+  (auto-margins) instead of `left-1/2 -translate-x-1/2`.
+- **Promoted to:** docs/solutions/design-patterns/scroll-state-nav-radix-portals.md.
+
+### [2026-06-17] "Blur behind the dropdown" = full-screen backdrop BEHIND + solid panel ON TOP (not a frosted panel) · (COMPONENTS/CSS)
+- **What happened / feedback:** Two wrong turns on the same effect. First built a full-screen dim+blur
+  overlay (too heavy). Then over-corrected to a *frosted translucent panel* (panel itself blurred, no
+  backdrop). Chai's actual intent: the **full-screen backdrop SHOULD exist and carry the blur, sitting
+  BEHIND**; the dropdown panel + items sit **on top at 100% solid fill** (no opacity, no blur on the
+  panel). Plus: a body-portaled backdrop painted OVER the nav because the header lives inside a
+  `<div class="relative isolate">` wrapper — `isolation: isolate` scopes the header's `z-50` locally, so
+  a body-level z-40 backdrop outranks the whole header subtree.
+- **Rule going forward:** For "blur the page behind an open menu": one full-screen `backdrop-filter`
+  element BEHIND (carries blur + a light dim), panel/cards 100% solid on top. Do NOT frost the panel.
+  And do NOT portal the backdrop to `document.body` when the nav sits in an `isolate`/transformed
+  wrapper — render it INSIDE the menu Root so it shares that stacking context, then layer the nav List
+  + Viewport above it with explicit z (backdrop z-0, content z-1). `backdrop-filter` still blurs the
+  page across stacking-context boundaries (it's a composite-time effect). Verify by checking an
+  ancestor chain for `isolation:isolate` / `transform` / positioned-z before assuming `z-50` wins.
+- **Promoted to:** docs/solutions/design-patterns/scroll-state-nav-radix-portals.md (add a note).
+
+### [2026-06-17] ⚠️ SUPERSEDED — the frosted-panel approach was the wrong turn · (MOTION/COMPONENTS)
+- **Correction:** An earlier draft of this entry said to frost the panel surface (translucent +
+  own backdrop-filter) instead of a full-screen overlay. That was the over-correction Chai rejected.
+  See the [2026-06-17] entry above ("full-screen backdrop BEHIND + solid panel ON TOP") for the
+  binding rule: the backdrop is real and full-screen, the panel is 100% solid. Kept only as a record
+  of the dead end — do not follow this paragraph.
+
+### [2026-06-17] Nav dropdown items must be CARDS, not stock DropdownMenuItem rows · (COMPONENTS/DESIGN)
+- **What happened / feedback:** Marketing mega-menu first used flat custom rows, then the stock KDS
+  `DropdownMenuItem` (bare 20px icon slot) — Chai still read both as "the old ones," wanted the
+  richness/cataloging of ElevenLabs/Glean mega-menus.
+- **Rule going forward:** For marketing mega-menus, build item **cards** on KDS *tokens* (not the stock
+  row component): embossed icon **tile** (`--surface` + `--line` + `--shadow-sm`, ~38px rounded-9) +
+  bold label + muted sublabel, hover-lift via `--shadow-surface-card-hover`. `DropdownMenuItem`'s 20px
+  icon slot can't hold a tile, so it's the wrong primitive for a rich mega-menu — reserve it for true
+  in-product context menus. Pair with a featured gradient card (the one mauve accent moment) + a
+  connector rail. Copy = one sharp, product-true line per item.
+- **Promoted to:** n/a (nav build record; reusable mega-menu recipe).
 
 ### [2026-06-16] Component-scoped CSS vars don't reach Radix Portals — put shared metrics on :root · (COMPONENTS/CSS)
 - **What happened / feedback:** The mobile drawer (now a Radix `Dialog`) renders into a `<body>` portal.

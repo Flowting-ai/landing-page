@@ -7,14 +7,13 @@ import { VisuallyHidden } from "@radix-ui/react-visually-hidden";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { ConnectorIcon } from "@strange-huge/icons/connectors";
-import Container from "@/components/ui/Container";
 import { Button } from "@/components/kaya/Button";
 import Logo from "./Logo";
 import MegaMenu, { PRODUCT, SOLUTION_AUDIENCES, LINKS, type MenuItem } from "./MegaMenu";
 
 // Logo footprint, derived from the asset ratios in Logo.tsx so the wordmark→mark
 // swap is absorbed left-anchored (no push on the nav links).
-const LOGO_H = 22;
+const LOGO_H = 26;
 const WORDMARK_RATIO = 2876 / 634; // mirrors Logo.tsx wordmark aspect
 const WORD_W = Math.round(LOGO_H * WORDMARK_RATIO);
 const MARK_W = LOGO_H;
@@ -68,9 +67,8 @@ export default function SiteNav() {
       <header className="site-nav sticky top-0 z-50">
         {/* Outer shell holds a CONSTANT reserved height; the morph is all on the pill. */}
         <div className="site-nav__shell">
-          <Container wide>
             <div className={`site-nav__pill ${scrolled ? "is-pill" : "is-flush"}`}>
-              <Link href="/" aria-label="Souvenir home" className="inline-flex items-center px-1.5">
+              <Link href="/" aria-label="Souvenir home" className="inline-flex items-center">
                 <span
                   className="site-nav__logo"
                   data-scrolled={scrolled}
@@ -83,7 +81,10 @@ export default function SiteNav() {
 
               {/* desktop mega-menu nav (centered). Shown at lg+ only — the centered
                   menu needs ~1024px to clear the logo + CTAs; below that the drawer wins. */}
-              <div className="absolute left-1/2 hidden -translate-x-1/2 lg:block">
+              {/* Centered via auto-margins (NOT -translate-x-1/2): Tailwind's
+                  `translate` property would establish a fixed-positioning
+                  containing block and trap the full-width mega-sheet. */}
+              <div className="absolute inset-x-0 mx-auto hidden w-fit lg:block">
                 <MegaMenu />
               </div>
 
@@ -107,7 +108,6 @@ export default function SiteNav() {
                 </button>
               </div>
             </div>
-          </Container>
         </div>
       </header>
 
