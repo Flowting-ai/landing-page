@@ -152,15 +152,10 @@ body { min-height: 100dvh; background: var(--bg); color: var(--ink); font-family
   position: relative;
   overflow: hidden;
   isolation: isolate;
-  /* Background is a subtle vertical cream gradient (not flat): cooler cream at
-     the top easing to a warmer cream toward the horizon — gives the empty sky
-     gentle depth. The image multiplies over this, so its white becomes this
-     gradient. (Matches the reference #F8F2EB → warm-cream, token-built.) */
-  background: linear-gradient(
-    to bottom,
-    var(--bg) 0%,
-    color-mix(in oklch, var(--bg) 86%, var(--yellow-100)) 100%
-  );
+  /* The image carries its own baked warm gradient (top = #F8F2EB ≈ our cream),
+     so the footer fill is flat cream — the image's top dissolves into it
+     seamlessly and the warmth lives in the image toward the horizon. */
+  background: var(--bg);
 }
 /* scenery image — oversized so parallax never exposes an edge, anchored to the
    bottom (figures/path), cover-cropping the sides on narrow screens. A modest
@@ -177,14 +172,11 @@ body { min-height: 100dvh; background: var(--bg); color: var(--ink); font-family
   background-repeat: no-repeat;
   transform: translate3d(var(--px), var(--py), 0);
   transition: transform 400ms var(--ease-out);
-  /* multiply over the cream footer fill: the image's white becomes the page
-     cream automatically (exact color match, no seam); path + figures stay. */
-  mix-blend-mode: multiply;
-  /* vertical fade — the scene is grounded at the bottom and DISSOLVES upward
-     into the cream page, so it reads as emerging from the background, not a
-     pasted block. Bottom ~28% stays full; fades out by the top. */
-  -webkit-mask-image: linear-gradient(to top, #000 28%, transparent 86%);
-  mask-image: linear-gradient(to top, #000 28%, transparent 86%);
+  /* Pre-composed image (gradient baked in) — no blend. A soft top fade still
+     dissolves its top edge into the flat cream page so there's zero seam and the
+     scene reads as emerging from the background. */
+  -webkit-mask-image: linear-gradient(to top, #000 30%, transparent 92%);
+  mask-image: linear-gradient(to top, #000 30%, transparent 92%);
   z-index: 0;
 }
 /* grain across the WHOLE footer — gives the flat cream fill the same printed
