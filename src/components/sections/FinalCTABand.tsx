@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Container from "@/components/ui/Container";
 import Reveal from "@/components/ui/Reveal";
 import { Button } from "@/components/kaya/Button";
@@ -49,17 +50,18 @@ export default function FinalCTABand({
           )}
           <div className="glow-signature pointer-events-none absolute left-1/2 top-0 h-[360px] w-[560px] -translate-x-1/2 opacity-40" />
           <div className="relative flex flex-col items-center text-center">
-            {!appGrid && (
-              <Reveal>
-                <div className="mb-8 flex flex-wrap items-center justify-center gap-2.5">
-                  {CONNECTORS.map((c) => (
-                    <span key={c} className="flex h-10 w-10 items-center justify-center rounded-[10px] border border-[var(--dark-line)] bg-[var(--dark-surface)]">
-                      <ConnectorIcon id={c} size={20} />
-                    </span>
-                  ))}
-                </div>
-              </Reveal>
-            )}
+            <Reveal>
+              <div className="relative mx-auto mb-7 h-14 w-14 sm:h-16 sm:w-16">
+                <Image
+                  src="/visuals/souvenir-gold.webp"
+                  alt="Souvenir"
+                  fill
+                  sizes="64px"
+                  className="object-contain drop-shadow-[var(--shadow-md)]"
+                  priority={false}
+                />
+              </div>
+            </Reveal>
             <Reveal delay={0.08}>
               <h2 className="font-display max-w-[20ch] text-[length:var(--text-h1)] leading-[var(--text-h1--line-height)] tracking-[var(--text-h1--letter-spacing)] text-dark-ink">{title}</h2>
             </Reveal>
@@ -72,6 +74,25 @@ export default function FinalCTABand({
                 <a href="#discord" className="inline-flex h-[3.25rem] items-center rounded-[var(--r-pill)] border border-[var(--dark-line)] px-7 font-sans text-[var(--text-body)] font-medium text-dark-ink transition-colors hover:bg-[var(--dark-surface)]">{secondary}</a>
               </div>
             </Reveal>
+            {!appGrid && (
+              <Reveal delay={0.26}>
+                <div className="mt-12 w-full max-w-[34rem] border-t border-[var(--dark-line)] pt-7">
+                  <p className="mb-4 font-sans text-[var(--text-micro)] font-medium uppercase tracking-[0.14em] text-dark-ink-muted">
+                    One brain across your stack
+                  </p>
+                  <div className="flex flex-wrap items-center justify-center gap-2.5 sm:gap-3.5">
+                    {CONNECTORS.map((c) => (
+                      <span
+                        key={c}
+                        className="flex h-10 w-10 shrink-0 items-center justify-center rounded-[var(--r-md)] border border-[var(--dark-line)] bg-[var(--dark-surface)]"
+                      >
+                        <ConnectorIcon id={c} size={20} />
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </Reveal>
+            )}
           </div>
         </div>
       </Container>

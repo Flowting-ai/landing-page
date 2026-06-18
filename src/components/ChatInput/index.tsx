@@ -943,6 +943,10 @@ export const ChatInput = React.forwardRef<HTMLDivElement, ChatInputProps>(
           gap:             '24px',
           width:           '100%',
           maxWidth:        '754px',
+          // Anchor text alignment so the composer never inherits `text-align`
+          // from a centered host (e.g. the marketing hero) — placeholder and
+          // typed text always read left-aligned, matching the product app.
+          textAlign:       'left',
           padding:         '20px',
           borderRadius:    '24px',
           backgroundColor: 'var(--chat-input-bg)',

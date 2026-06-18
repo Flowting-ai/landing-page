@@ -12,6 +12,8 @@ export default function Visual({
   surface = "warm",
   focus = false,
   padded = true,
+  bgImage,
+  bgOpacity = 0.5,
   aspect,
   className = "",
 }: {
@@ -21,6 +23,9 @@ export default function Visual({
   /** dashed "this is the live one" boundary (Figma selection motif) */
   focus?: boolean;
   padded?: boolean;
+  /** a texture/wash (e.g. the gold damask) rendered CLIPPED inside the panel box */
+  bgImage?: string;
+  bgOpacity?: number;
   /** e.g. "16 / 10" — reserve space to prevent layout shift */
   aspect?: string;
   className?: string;
@@ -30,6 +35,11 @@ export default function Visual({
 
   const style: CSSProperties = {
     backgroundColor: bg,
+    // warm panels gain a subtle radial depth — brighter toward upper-center so the focal
+    // element lifts off the surface; fades back to the flat warm tone at the edges.
+    ...(surface === "warm"
+      ? { backgroundImage: "radial-gradient(118% 92% at 50% 38%, color-mix(in oklch, var(--surface-warm) 72%, white) 0%, var(--surface-warm) 68%)" }
+      : {}),
     ...(surface !== "bare" ? { boxShadow: "var(--shadow-sm)" } : {}),
     ...(aspect ? { aspectRatio: aspect } : {}),
   };
@@ -39,6 +49,21 @@ export default function Visual({
       className={`relative overflow-hidden rounded-[var(--r-2xl)] ${padded ? "p-6 sm:p-10" : ""} ${className}`}
       style={style}
     >
+      {/* texture wash — clipped to the panel (overflow-hidden), faded via a radial mask */}
+      {bgImage && (
+        <span
+          aria-hidden
+          className="pointer-events-none absolute inset-0"
+          style={{
+            backgroundImage: `url(${bgImage})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            opacity: bgOpacity,
+            maskImage: "radial-gradient(92% 88% at 50% 42%, black 0%, transparent 90%)",
+            WebkitMaskImage: "radial-gradient(92% 88% at 50% 42%, black 0%, transparent 90%)",
+          }}
+        />
+      )}
       {/* emboss — top highlight + warm bottom line, like every KDS surface */}
       {surface !== "bare" && (
         <span aria-hidden className="pointer-events-none absolute inset-0 rounded-[var(--r-2xl)]" style={{ boxShadow: "var(--shadow-inner)" }} />

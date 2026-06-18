@@ -103,6 +103,31 @@ home, preserved).
   `GetStartedPage/`, `HomePage/` except where `/home-v1` uses it) are unused — safe to delete in a
   cleanup pass. Nothing imports them.
 
+## Environment & external sources (machine-state — mostly NOT in this repo)
+> The durable home for the local paths + run/verify setup a fresh session can't infer. A section
+> kickoff can just say "read ONBOARDING.md" instead of re-pasting these. (These are local to Chai's
+> machine — they may be absent in a cloud/CI run; fall back to the in-repo tokens + vendored copies.)
+- **Dev server:** `npx next dev -p 4321` — ALWAYS pass `-p 4321` (the `dev` script has no port flag and
+  defaults to 3000; the screenshot scripts assume 4321). Stuck CSS/build error after a *correct* fix =
+  Turbopack cache → kill dev, `rm -rf .next`, restart.
+- **Verify / screenshots:** repo scripts `node scripts/shot.mjs <route> <label> [768 1024]` (reduced-
+  motion full-page) and the hero-specific `scripts/hero/{audit,live,poster}.mjs`; plus the `design-audit`
+  skill. They borrow the Playwright install at **`~/.shot-harness`** (NOT in this repo — set up your own
+  in the cloud).
+- **Kaya Design System source = `~/may-day`** (the `kaya-design-system` repo). THE source for
+  re-vendoring or checking any KDS component. Storybook: `npm run storybook` → **:6006**; a prebuilt
+  `~/may-day/storybook-static` can be served with `python3 -m http.server` to screenshot real stories.
+  **Extend Kaya, never fork** — strip/restyle marketing tweaks via scoped CSS, don't edit vendored copies.
+- **Icons = `@strange-huge/icons`** (private repo — see Tech stack gotcha). Use ONLY via the `size`
+  prop, never inline SVG / CSS-scale. Valid `ConnectorIcon` IDs are listed in Design-system rules above.
+  LLM/model logos: `@strange-huge/icons/llm` → `<LlmIcon id="Claude" variant="color" />` (valid ids in
+  `LLM_COLOR`, e.g. Claude, OpenAI, Anthropic, Gemini). Full icon source: `~/Downloads/strange-huge-icons-main`.
+- **Live product front-end:** `~/Downloads/front-end-ds-dev (2).zip` — real product screens, if you need
+  a surface not in `~/may-day`. App reference screenshots of real pin/composer behaviour:
+  `~/Desktop/Screenshot 2026-06-16 at 11.56–57.* PM.png`.
+
 ## Companion docs in this repo
 - **`SITE-MAP.md`** — official nav→route map + per-page section/copy breakdowns + build status.
 - **`WEBSITE-SYSTEMS.md`** — SEO / GEO / CMS / analytics roadmap.
+- **`docs/STORY-SPINE.md`** — the Home narrative arc + per-section beats (the visual-director seed).
+- **`docs/HERO_LOOP_HANDOFF.md`** — the hero product-window loop: built-state, design, what remains.

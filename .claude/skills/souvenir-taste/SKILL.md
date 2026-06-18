@@ -35,8 +35,12 @@ a warm, tangible, kept object. Every section serves three pillars:
   use the Pin/Pinboard keepsake motif where natural.
 - Unhurried → marketing motion slower/more deliberate than product UI. **No bounce** (exception:
   the inherited KDS in-place text-swap spring, only for that micro-interaction).
-- Make it tangible → ONE abstracted concept-visual per section, NOT a dense product screenshot.
-  Reserve the product "window" (ShowcaseFrame) for a single hero proof per page.
+- Make it tangible → for SECONDARY/feature sections, prefer ONE abstracted concept-visual, NOT a
+  dense product screenshot. **EXCEPTION — the Home page is product-led (Linear "product outline"):**
+  the real product UI *is* the art. The hero leads with the full `ChatBoard` window (Sidebar · Chat
+  · Pinboard, rendered from the Kaya DS / `~/may-day`); later feature sections may show *partial*
+  product panels bleeding in from the edge. (Revised 2026-06-16 — supersedes the old "ONE
+  product-window, reserved for Proof" rule. See `docs/visuals/hero.md` + LEARNINGS.)
 - Restraint → one idea per section, generous whitespace, let Besley carry the emotion.
 - **Evoke, don't costume** → no sepia, Polaroid frames, retro clip-art. Heavy craft is hero-only.
 
@@ -73,7 +77,9 @@ When choosing a section's visual, pick a **rung** — bias toward *drawing the i
 - **line-glyph** — a minimal line-drawn glyph/diagram that encodes the one idea. Default for most feature sections.
 - **concept-card** — a small abstracted card standing for a concept (never a dense product screenshot).
 - **schematic** — a diagram of a flow / relationship / map (e.g. a connector constellation, an orchestration map).
-- **product-window** — real product UI inside a `ShowcaseFrame`. Reserved for the ONE hero proof per page.
+- **product-window** — real product UI (e.g. the `ChatBoard` from the Kaya DS) as the visual. On the
+  product-led Home page this is a PRIMARY rung, not a once-per-page exception: hero leads with the
+  full window; feature sections may show partial product panels bleeding in (Linear "product outline").
 - **atmosphere** — ambient warmth / depth / texture with no literal subject.
 - **none** — type + space only; let Besley carry the section.
 

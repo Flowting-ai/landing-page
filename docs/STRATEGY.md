@@ -23,6 +23,14 @@
 - **Positioning → 50/50, one unified core story.** Equal-weight branch to "for you" / "for your
   team" (Linear model: consumer-grade brand, monetize B2B). Home stops being a lopsided router.
 - **First page for the loop → Home.**
+- **Lean visual pipeline → static-default, source visuals outside code (LOCKED Jun 17).** Divergence
+  (what a section should look/feel like) happens in **Claude Design / image-gen** with the locked
+  style kit; convergence (make it real) happens in the repo as a **place-and-verify** step. Default
+  rung = a STATIC concept-visual — either a tokenized in-repo SVG (server component, no JS) or an
+  exported SVG/WebP placed via `<SectionVisual>` in `public/visuals/`. **Motion is reserved for the
+  hero's one signature**; a second engineered-motion beat only for a section the human explicitly
+  designates "signature" (bespoke carve-out). Variety comes from the *image*, not per-section
+  engineering. Rationale: open-ended taste-tuning inside code was the token sink; this caps it.
 - **Marketing design-system home → Storybook (LOCKED Jun 15).** Docs-first, token-driven,
   theme-switchable. CSS-variable tokens are the single source of truth; Storybook reads from them and
   the site consumes the same tokens (no in-app `/design-system` route). Scope Storybook to the

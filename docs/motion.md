@@ -34,9 +34,11 @@ it strictly — so the agent reasons about new cases instead of inventing its ow
 ## The one signature moment per page
 - **Exactly ONE** signature motion moment per page. Everything else is micro or static. *Why: a
   single signature is the beat people screenshot; five signatures is noise and tanks performance.*
-- **Home's signature = scatter → assemble**: fragments fly in and settle into order = "the memory
-  your work keeps," made physical. Spec: staggered (~40ms), ease-out, `transform`/`opacity` only,
-  plays **once**, full static fallback under reduced-motion.
+- **Home's signature = the Hero scripted loop** (reassigned from Breaking, 2026-06-16): one real
+  ask → context chips light → reply streams → artifact lands in the Pinboard; ~8s, re-runs on a
+  long hold. Non-interactive (`pointer-events: none`), gated hydration → on-view → motion-allowed.
+  **Default/SSR/no-JS/reduced-motion render = the completed end-frame** (also the LCP element); the
+  empty/start state is never a resting paint. See `docs/visuals/hero.md`.
 - The signature is allowed to be **bold** (the subtle-vs-signature switch in `souvenir-taste`).
   Everything around it stays quiet so it reads as the peak. *Why: a peak only reads as a peak
   against calm.*
@@ -77,8 +79,8 @@ it strictly — so the agent reasons about new cases instead of inventing its ow
 ## Per-section motion defaults (Home — quick reference)
 | Section | Motion default |
 |---|---|
-| Hero (foliage) | Quiet; a slow light-drift only if the foliage is committed. Static otherwise. |
-| Problem (Chaos) | **THE signature moment** — scatter → assemble. |
+| Hero (product window) | **THE signature moment** — the ~8s scripted ChatBoard loop. End-frame is the default render; loop plays after hydration→on-view→motion-allowed. |
+| Problem (Chaos) | Down-shifted (no longer the signature): a **restrained entrance assemble** — fewer pieces, shorter, no scroll-scrubbing, subordinate to the hero. Keep a visible heartbeat; never inert. |
 | Turn | None. |
 | Two ways | Hover micro only. |
 | Proof / Relief | Single entrance reveal. |

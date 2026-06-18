@@ -5,6 +5,9 @@ import Container from "@/components/ui/Container";
 import Reveal from "@/components/ui/Reveal";
 import { Button } from "@/components/kaya/Button";
 import { Badge } from "@/components/Badge";
+import { Slider } from "@/components/Slider";
+
+type Tier = { price: number; credits: string };
 
 type Group = { title: string; items: string[] };
 type Plan = {
@@ -14,6 +17,8 @@ type Plan = {
   monthly?: number;
   creditLabel?: string;
   marks?: string[];
+  /** credit tiers the per-card KDS Slider steps through (price → credits/mo) */
+  tiers?: Tier[];
   highlight?: { title: string; desc: string };
   intro?: string;
   groups: Group[];
@@ -29,6 +34,11 @@ const PLANS: Plan[] = [
     monthly: 12,
     creditLabel: "5,000 credits / month",
     marks: ["$12", "$25", "$100"],
+    tiers: [
+      { price: 12, credits: "5,000" },
+      { price: 25, credits: "12,000" },
+      { price: 100, credits: "60,000" },
+    ],
     highlight: { title: "1,000 free credits", desc: "No credit card required. Try every feature with real workloads before you pay." },
     groups: [
       { title: "Memory & Organization", items: ["Cross-model memory that compounds", "Unlimited Pins", "Project folders", "Highlights from any answer"] },
@@ -45,6 +55,13 @@ const PLANS: Plan[] = [
     monthly: 125,
     creditLabel: "60,000 credits / month",
     marks: ["$125", "$250", "$500", "$1k", "$2k"],
+    tiers: [
+      { price: 125, credits: "60,000" },
+      { price: 250, credits: "130,000" },
+      { price: 500, credits: "280,000" },
+      { price: 1000, credits: "600,000" },
+      { price: 2000, credits: "1,300,000" },
+    ],
     highlight: { title: "Souvenir Slack Manager", desc: "One bot in Slack & Microsoft Teams. The entire AI workforce, accessible by @-mention." },
     intro: "Everything in Individual, plus",
     groups: [
@@ -77,7 +94,13 @@ function Dot() {
 }
 
 function PlanCard({ plan, yearly }: { plan: Plan; yearly: boolean }) {
-  const price = plan.monthly ? (yearly ? Math.round(plan.monthly * 0.75) : plan.monthly) : null;
+  const tiers = plan.tiers;
+  const [tierIdx, setTierIdx] = useState(0);
+  const tier = tiers?.[tierIdx];
+  // price comes from the selected slider tier when tiers exist, else the flat monthly
+  const basePrice = tier ? tier.price : plan.monthly ?? null;
+  const price = basePrice !== null ? (yearly ? Math.round(basePrice * 0.75) : basePrice) : null;
+  const creditLabel = tier ? `${tier.credits} credits / month` : plan.creditLabel;
   return (
     <div className={"relative flex h-full flex-col rounded-[var(--r-2xl)] border p-6 sm:p-7 " + (plan.popular ? "border-line-strong bg-surface" : "border-line bg-surface")} style={{ boxShadow: plan.popular ? "var(--shadow-lg)" : "var(--shadow-sm)" }}>
       <span aria-hidden className="pointer-events-none absolute inset-0 rounded-[var(--r-2xl)]" style={{ boxShadow: "var(--shadow-inner)" }} />
@@ -105,11 +128,28 @@ function PlanCard({ plan, yearly }: { plan: Plan; yearly: boolean }) {
             <span className={"font-sans text-[var(--text-small)] " + (plan.dark ? "text-dark-ink-muted" : "text-ink-muted")}>/mo{yearly ? " · billed yearly" : ""}</span>
           </div>
           <div className={"mt-3 rounded-[var(--r-sm)] px-3 py-2 " + (plan.dark ? "bg-[var(--dark-surface)]" : "bg-surface")}>
-            <span className={"font-mono text-[var(--text-micro)] " + (plan.dark ? "text-dark-ink" : "text-ink")}>{plan.creditLabel}</span>
+            <span className={"font-mono text-[var(--text-micro)] tabular-nums " + (plan.dark ? "text-dark-ink" : "text-ink")}>{creditLabel}</span>
           </div>
-          <div className="mt-2 flex justify-between">
-            {plan.marks?.map((m) => <span key={m} className={"font-mono text-[var(--text-micro)] " + (plan.dark ? "text-dark-ink-muted" : "text-ink-subtle")}>{m}</span>)}
-          </div>
+          {tiers && tiers.length > 1 ? (
+            <div className="mt-3">
+              <Slider
+                aria-label={`Pick your ${plan.name === "Team" ? "team's volume" : "monthly credits"}`}
+                value={[tierIdx]}
+                min={0}
+                max={tiers.length - 1}
+                step={1}
+                onValueChange={(v) => setTierIdx(v[0] ?? 0)}
+                fillColor={plan.dark ? "var(--neutral-100)" : "var(--accent)"}
+              />
+              <div className="mt-2 flex justify-between">
+                {plan.marks?.map((m) => <span key={m} className={"font-mono text-[var(--text-micro)] " + (plan.dark ? "text-dark-ink-muted" : "text-ink-subtle")}>{m}</span>)}
+              </div>
+            </div>
+          ) : (
+            <div className="mt-2 flex justify-between">
+              {plan.marks?.map((m) => <span key={m} className={"font-mono text-[var(--text-micro)] " + (plan.dark ? "text-dark-ink-muted" : "text-ink-subtle")}>{m}</span>)}
+            </div>
+          )}
         </div>
       ) : (
         <div className="mt-4 rounded-[var(--r-lg)] bg-bg-subtle p-4" style={{ boxShadow: "var(--shadow-inner)" }}>

@@ -19,8 +19,8 @@ your knowledge understood and acted on → why it's different → one Brain, a c
 ## Per-section beats (seed — refine via each section's handoff)
 | # | Section | The one message | Emotional beat |
 |---|---|---|---|
-| 1 | LandingHero | The memory your work keeps — apps unified into one AI Brain | Arrival: calm promise, a kept thing |
-| 2 | Breaking | The way work happens today is breaking | Immersion: feel the scatter / friction |
+| 1 | LandingHero | The workspace that knows your context — and runs the work | Arrival: calm promise — your context understood and quietly working |
+| 2 | Breaking | The way work happens today is breaking | Immersion: feel the scatter / friction. **Motion: restrained entrance assemble, subordinate to the Hero signature** — states chaos→order quietly; momentum carried by the hero loop above, not re-spent here. |
 | 3 | Relief | One operational layer instead of the mess | Exhale: the calm after the chaos |
 | 4 | Turn | From manual work to automatic | The shift clicks |
 | 5 | TwoWays | For you · for your team (50/50, equal weight) | "this is for me" — both audiences |

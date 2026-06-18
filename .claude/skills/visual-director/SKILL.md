@@ -23,9 +23,35 @@ for the best one, and then defers to the human's call.
   learned back into the repo (what was chosen and *why*) so the next section is faster and more
   consistent. *Why: this is how the work speeds up instead of restarting every section.*
 
+## Cost discipline — the lean pipeline (READ FIRST)
+Open-ended taste iteration inside code is the expensive failure mode (rebuild → screenshot →
+re-tune, with no natural floor). Avoid it by separating **divergence** from **convergence**:
+- **Divergence** ("what should this look/feel like") happens **outside code** — in Claude Design /
+  image-gen / a still mockup, using the locked style kit (tokens, stroke, radius, shadow). The
+  human picks with their eye. Near-zero repo tokens.
+- **Convergence** ("make the chosen thing real") happens **in the repo** — place the asset, verify
+  once, done.
+
+**Default rung = a STATIC concept-visual**, sourced one of two ways:
+1. **Tokenized SVG/CSS built once in-repo** (server component, no JS) — for geometric/diagram visuals
+   (the bridge, node-maps). Cheap *because* it's static: no physics, no tuning loop.
+2. **Exported asset** (SVG preferred, WebP for textural/organic) made in Claude Design → dropped into
+   `public/visuals/<section>` and placed via `<SectionVisual src… alt…>` inside `<Visual>`. One place
+   + one screenshot.
+
+**Motion is the rare exception, not the texture.** The hero owns the page's ONE engineered signature.
+Quiet sections get a single CSS fade/rise reveal at most — **never a per-frame engine / physics toy.**
+A second engineered-motion beat is allowed ONLY for a section the human explicitly designates
+"signature" (the bespoke carve-out) — flag it and get the call before building it.
+
+**Variety ≠ bespoke engineering.** Vary the *image/metaphor* per section; keep the *implementation*
+uniform (a still in the standard slot). That's how the method stops resetting each section and the
+learning compounds. When raster: tight style kit (slop risk), optimize + lazy-load (LCP).
+
 ## The per-section loop
 Run these six steps for each section, in order. Steps 4 and 6 are **hard gates** — do not pass
-them without the stated condition.
+them without the stated condition. For a STATIC asset-slot section (the default), steps 4–5 collapse
+to: pick the visual outside code → place via `<SectionVisual>` → one verify.
 
 ### 1. Read context
 What does Souvenir do in this section, for whom (B2C / B2B), and what is the one message? Read the

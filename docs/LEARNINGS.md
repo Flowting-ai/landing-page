@@ -34,6 +34,125 @@ next session can follow, not a story. Format:
 
 ## Log
 
+### [2026-06-18] `@strange-huge/icons` ROOT import forces `"use client"` — server components 500 · (COMPONENTS/BUILD)
+- **What happened / feedback:** The home-completion workflow added general-icon imports (e.g.
+  `import { ArrowRightOneIcon } from "@strange-huge/icons"`) to several section files that were
+  server components. The icons ROOT entry does `import { motion } from "framer-motion"` at module
+  scope, so importing ANY general icon into a server component throws at render: "Attempted to call
+  createMotionComponent() from the server." Whole home page 500'd (error pinned to the first such
+  section, `<Turn/>`). Fix: add `"use client"` to every section importing from the icons root.
+- **Rule going forward:** Any file importing from the `@strange-huge/icons` ROOT (general icons like
+  `XxxIcon`) MUST be a client component (`"use client"`). The subpath entries `@strange-huge/icons/
+  connectors` (ConnectorIcon) and `/llm` (LlmIcon) are also client-bearing — treat the same. When
+  adding icons to a server component, add `"use client"` first. And: after a "correct" fix still
+  500s, it's the Turbopack cache — `pkill next dev; rm -rf .next; restart` (don't keep debugging code).
+- **Promoted to:** souvenir-taste (icon rule) + this log. Belongs in any agent prompt that adds icons.
+
+### [2026-06-18] Breaking shipped: tab-staircase + a SANCTIONED continuous-motion exception · (BREAKING/MOTION/PROCESS)
+- **What happened / feedback:** Long iteration on Breaking's visual. Path: scattered-bubbles → manual-bridge
+  node-map → interactive gooey blob (rejected: "crap", token sink) → static SVG bridge → tab terrain →
+  diagonal **staircase of ~19 labelled tool-cards** (the keeper). Chai's directional calls, in order: wider
+  diagonal angle (climb to top-right); clean **layered** stack not muddy overlap (taller panel + shadow-md);
+  rows clip at the panel's right edge (contained width, NOT full-bleed); add more steps up top to kill the
+  gap; bottom row bleeds off the bottom (no thin gap). Threads (logo-stitch + white-space drapes) were built
+  then **removed** at Chai's call. Copy changed to "A dozen tools. You're the only thread between them."
+- **Rule going forward:** (1) Breaking carries a **continuous horizontal drift** (rows drift left↔right in a
+  ~7s loop, per-row phase = a current traveling up; `AMP 15`, in-viewport-only, reduced-motion static). This
+  is a **deliberate, Chai-approved EXCEPTION** to "hero is the page's one signature" — kept subtle so it's
+  ambient, not competing. **Other sections do NOT inherit this** — they default to static / one-time reveal.
+  Flag perpetual motion every time; only build it on explicit say-so. (2) Logos in a multi-tool visual: use
+  ONLY library-valid ids (`slack,gmail,notion,stripe,github,linear,hubspot,figma` + LlmIcon `Claude,OpenAI,
+  Gemini`); pick the app set to fit that — never invent an icon id to keep a label. (3) Process lesson:
+  taste-tuning a bespoke motion component in-repo is the token sink the lean pipeline warns about — the
+  staircase only converged once it became a static-structure-first build with motion added last.
+- **Promoted to:** docs/visuals/breaking.md (full spec + the exception, banner-flagged).
+
+### [2026-06-17] Lean visual pipeline: static-default, diverge outside code, motion = hero only · (PROCESS/COST)
+- **What happened / feedback:** Breaking burned heavy tokens iterating a bespoke interactive blob
+  (drag physics → autonomous gooey metaballs) before Chai cut it: *"this is crap… refining this is
+  going to take a lot of tokens."* Root cause = doing open-ended TASTE exploration inside code
+  (rebuild→screenshot→re-tune, no floor) and building engineered motion where static was right.
+- **Rule going forward:** Separate **divergence** (what it should look/feel like → Claude Design /
+  image-gen, locked style kit, human picks by eye) from **convergence** (make it real → repo
+  place-and-verify). **Default every section to a STATIC concept-visual**: a tokenized in-repo SVG
+  (server component, no JS) OR an exported SVG/WebP placed via `<SectionVisual>` from
+  `public/visuals/`. **No per-frame motion / physics toys** — the hero owns the page's one signature;
+  a 2nd engineered-motion beat needs explicit "signature" designation (carve-out). Vary the *image*,
+  not the *implementation*. (Breaking shipped as a static SVG bridge.)
+- **Promoted to:** STRATEGY.md §0 (LOCKED) + visual-director skill ("Cost discipline — the lean pipeline").
+
+### [2026-06-17] Hero demo content tells a story — and the AI output must obey real product logic · (HERO/COPY)
+- **What happened / feedback:** Chai: "optimize the copy" meant the CONTENT INSIDE the hero (the
+  message, the generated reply, the pin heading, the sidebar project/recent names) — NOT the landing
+  headline. And the reply must not say "pinned on the right": the output is the *insight*; the USER
+  decides to pin it. Off-brand sidebar placeholders ("Roman history", "Sci-fi philosophy") broke the
+  illusion of a real operator's workspace.
+- **Rule going forward:** Treat every visible string in a product-window demo as narrative — message,
+  reply, pins, sidebar projects + recents must reinforce ONE coherent story (current: Sprint/research
+  synthesis). The AI output never announces UI side-effects it didn't choose ("pinned…"); model the real
+  causal flow (AI returns insight → user keeps it). Override template lorem via component props
+  (`sidebarProps={{projects, recents}}`), don't ship placeholders.
+- **Promoted to:** docs/visuals/hero.md + HERO_LOOP_HANDOFF.md.
+
+### [2026-06-17] Seamless demo loop: fade the changing content, never the whole window · (HERO/MOTION)
+- **What happened / feedback:** The loop reset flashed white. Cause: a full-window opacity fade revealed
+  the frame's `bg-surface` (which is WHITE) while the ChatBoard interior is cream.
+- **Rule going forward:** For a looping demo, reset by fading ONLY the elements that change (the assistant
+  turn), swapping content while invisible, then fading back in — keep the window fully opaque. Also: the
+  ask is already-sent (don't animate composing); the operator working is the story. And add a model-pick
+  beat (StreamingIndicator: thinking → choosing → lands on Claude w/ LlmIcon) — Souvenir choosing the
+  model is part of the value.
+- **Promoted to:** HERO_LOOP_HANDOFF.md (gotchas).
+
+### [2026-06-17] Animate a newly-added item via the host's OWN enter motion, not a bespoke flying overlay · (HERO/MOTION)
+- **What happened / feedback:** A "pin flies from message to board" overlay got "stuck" and duplicated
+  the real pin. Pinboard already wraps each pin in `EnterChunk`; a newly-added pin auto-animates
+  (opacity/y/blur, ease `[0.2,0,0,1]`).
+- **Rule going forward:** Before building a custom travel/overlay animation, check if the target list
+  already animates inserts — reuse that. Simpler, no duplication, no stuck overlay. For display-only
+  hover affordances (pointer-events:none), simulate the hover state (paint the bg) since real `:hover`
+  can't fire.
+- **Promoted to:** n/a.
+
+### [2026-06-17] Hero loop pin comes FROM the message — not a board appearance · (HERO/MOTION)
+- **What happened / feedback:** v1 made the summary pin just *appear* in the Pinboard. Chai: wrong — in
+  the real app the pin is "on the text": hover the assistant message → Pin·Copy·Regenerate row → click
+  Pin → that message lifts and flies into the board.
+- **Rule going forward:** Model causality, not just end-state. The hero loop now: reply streams → action
+  row fades in under the assistant `MessageBubble` → ghost cursor clicks Pin → a card (styled to match the
+  real Pin title) flies message→Pinboard top slot (transform/opacity only) → real `PIN_SUMMARY` lands and
+  the overlay crossfades out. Overlay exists ONLY during the fly (else it duplicates the real pin).
+- **Promoted to:** docs/visuals/hero.md (loop choreography) + HERO_LOOP_HANDOFF.md.
+
+### [2026-06-17] Vendored ChatInput inherited `text-align:center` from the centered hero · (COMPONENTS/CSS)
+- **What happened / feedback:** The composer placeholder "How can I help you today?" rendered centered in
+  the hero but left-aligned in the product. Cause: `text-align` *inherits*, and the hero section is
+  `text-center`; the chat thread escaped it via `text-left` but the ChatInput did not.
+- **Rule going forward:** A vendored DS component that must look identical in a centered marketing context
+  should anchor its own `textAlign:'left'` on its root, not rely on the host. Fixed on ChatInput root
+  (benefits every embed). When a vendored block looks mis-aligned, check inherited `text-align` first.
+- **Promoted to:** n/a (component-local fix).
+
+### [2026-06-17] Strip product chrome in marketing embeds via `[data-hero-window]`-scoped CSS, not forks · (COMPONENTS/KAYA)
+- **What happened:** The hero Pinboard showed full tool chrome (search, X, All-pins, filter, sort, Export,
+  Organize) — noise for a display-only result surface. Stripped via CSS scoped to `[data-hero-window]` in
+  kds-chatboard.css (aria-labels + structural `:has()` on the toolbar/footer rows). Kept title + pins.
+- **Rule going forward:** Hide marketing-only chrome with scoped CSS on the embed wrapper, never by editing
+  the vendored component — the DS copy stays faithful everywhere else. The Pinboard's ResizeObserver
+  re-pads the pin list automatically once the overlays collapse.
+- **Promoted to:** n/a.
+
+### [2026-06-17] Dev/tooling ops: dev port, Turbopack cache, shot harness, may-day source · (WORKFLOW)
+- **What happened / feedback:** Repeated friction this session: the `dev` script defaults to **:3000**
+  (no port flag) but everything assumes **:4321**; a CSS fix kept showing a stale build error until the
+  Turbopack cache was cleared; screenshots rely on a Playwright install outside the repo.
+- **Rule going forward:** Start dev with `npx next dev -p 4321` (always pass `-p 4321`). If a CSS/build
+  error persists after the fix is correct, kill dev + `rm -rf .next` + restart (Turbopack caches hard).
+  Screenshots borrow Playwright from `~/.shot-harness` (no repo dep) — see `scripts/shot.mjs` and
+  `scripts/hero/{audit,live,poster}.mjs`. The Kaya DS source is **`~/may-day`** (Storybook :6006 +
+  `storybook-static`); full icon source is `~/Downloads/strange-huge-icons-main`.
+- **Promoted to:** docs/HERO_LOOP_HANDOFF.md (environment section).
+
 ### [2026-06-16] Component-scoped CSS vars don't reach Radix Portals — put shared metrics on :root · (COMPONENTS/CSS)
 - **What happened / feedback:** The mobile drawer (now a Radix `Dialog`) renders into a `<body>` portal.
   `--nav-shell-h` was defined on `.site-nav`, so `top: var(--nav-shell-h)` inside the portaled drawer
@@ -75,6 +194,20 @@ next session can follow, not a story. Format:
   use a shared `NavigationMenu.Viewport` for panel size-morph (panels set their own width; give the
   varying-height panel a `min-height` so the viewport doesn't jitter on inner state change).
 - **Promoted to:** n/a (build record).
+
+### [2026-06-16] Vendoring a KDS component = its code **+ its global CSS** + client-mount strategy · (VENDOR/CHATBOARD)
+- **What happened / feedback:** Vendored the live `ChatBoard` (Sidebar·Chat·Pinboard) from may-day for
+  the hero. Components copied + rendered, but the **Pinboard rail collapsed and showed no pins** —
+  because the `kds-*`/`kaya-*` support classes (rail height, scrollbars) live in may-day's
+  `globals.css`, which I didn't port. Also hit: ChatBoard root is `height:100svh` (clips inside a
+  fixed frame), and it's a stateful **client component** → SSR hydration mismatch.
+- **Rule going forward:** Vendoring a Kaya organism/template needs THREE things: (1) the component dir
+  + its full `@/components` dep closure (recurse), (2) the `kds-*`/`kaya-*` **global CSS** it relies on
+  → `src/styles/kds-chatboard.css` (strip comments on extract; a stray `*/` inside a comment breaks the
+  build), (3) a **client-only mount** for anything heavy (approach A: static poster = SSR/LCP/
+  reduced-motion, live mounts after hydration). Set the embedded root to `height:100%` not `100svh`.
+  Check icon names per-subpath (`/llm`), not just the main entry.
+- **Promoted to:** docs/visuals/hero.md (build notes) + n/a (vendor playbook).
 
 ### [2026-06-16] Hero = product-led (real ChatBoard), NOT abstract concept-visuals · (HERO/VISUAL DIRECTION)
 - **What happened / feedback:** The visual-director loop proposed abstract concept-cards

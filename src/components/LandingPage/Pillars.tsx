@@ -1,8 +1,8 @@
 import Container from "@/components/ui/Container";
 import Reveal from "@/components/ui/Reveal";
 import SectionHeading from "@/components/sections/SectionHeading";
-import { Badge } from "@/components/Badge";
 import PersonaRoster from "@/components/LandingPage/PersonaRoster";
+import ModelPlayground from "@/components/LandingPage/ModelPlayground";
 import AutomationScatter from "@/components/LandingPage/AutomationScatter";
 import TeamRoster from "@/components/LandingPage/TeamRoster";
 
@@ -19,16 +19,8 @@ function PillarVisual({ kind }: { kind: number }) {
     // #14 coordinated team roster — the "full AI department" pillar
     return <TeamRoster />;
   }
-  return (
-    <div className="flex flex-col gap-1.5">
-      {["OpenAI", "Anthropic", "Gemini", "Mistral"].map((m, i) => (
-        <div key={m} className={"flex items-center justify-between rounded-[var(--r-sm)] border px-3 py-2 " + (i === 1 ? "border-line-strong bg-bg-subtle" : "border-line bg-surface")} style={{ boxShadow: "var(--shadow-sm)" }}>
-          <span className="font-sans text-[var(--text-small)] text-ink">{m}</span>
-          {i === 1 && <Badge label="Auto-routed" color="Neutral" />}
-        </div>
-      ))}
-    </div>
-  );
+  // #15 chatspace: every frontier model orbits one auto-routing hub
+  return <ModelPlayground />;
 }
 
 const PILLARS = [

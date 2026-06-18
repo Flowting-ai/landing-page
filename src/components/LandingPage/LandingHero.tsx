@@ -6,6 +6,7 @@ import { useGSAP } from "@gsap/react";
 import { ArrowRightOneIcon } from "@strange-huge/icons";
 import Container from "@/components/ui/Container";
 import { Button } from "@/components/kaya/Button";
+import HeroProductWindow from "@/components/LandingPage/HeroProductWindow";
 
 gsap.registerPlugin(useGSAP);
 
@@ -25,16 +26,18 @@ export default function LandingHero() {
       <Container className="relative z-10">
         <div className="mx-auto flex flex-col items-center text-center">
           <h1 data-reveal className="font-display mx-auto max-w-[60rem] text-[length:var(--text-hero)] leading-[var(--text-hero--line-height)] tracking-[var(--text-hero--letter-spacing)] text-ink text-balance">
-            A workspace where your team and a coordinated{" "}
-            <em className="font-display italic text-ink-muted">workforce of AI Assistants work side by side.</em>
+            The workspace that knows your context{" "}
+            <em className="font-display italic text-ink-secondary">and runs the work.</em>
           </h1>
-          <p data-reveal className="mt-6 max-w-[52ch] font-sans text-[length:var(--text-body)] leading-[var(--text-body--line-height)] text-ink-muted">
-            Most teams are stuck running AI in single-tab mode — one person, one chat, one model, no
-            memory. Souvenir gives your team and a coordinated workforce of AI Assistants shared access
-            to the same knowledge, the same tools, the same conversations.
+          <p data-reveal className="mt-6 max-w-[52ch] font-sans text-[length:var(--text-body)] leading-[var(--text-body--line-height)] text-ink-secondary">
+            Souvenir connects your apps into one shared context, then runs your multi-step work in the
+            background — for individuals and teams.
           </p>
           <div data-reveal className="mt-9" style={{ ["--font-size-body"]: "16px", ["--line-height-body"]: "24px" } as CSSProperties}>
             <Button variant="default" size="md" className="px-7 py-3" rightIcon={<ArrowRightOneIcon size={16} />}>Book a Demo</Button>
+          </div>
+          <div data-reveal className="mt-14 w-full">
+            <HeroProductWindow />
           </div>
         </div>
       </Container>
