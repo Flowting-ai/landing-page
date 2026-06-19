@@ -17,6 +17,7 @@ automatically by `src/components/analytics/Analytics.tsx`.
 | `nav_menu_click` | `link_label`, `location` | Mega-menu cards + footer-of-menu links, mobile nav links |
 | `footer_nav_click` | `link_label`, `group` | Site footer column links |
 | `footer_legal_click` | `link_label` | Site footer legal links (Terms, Privacy, …) |
+| `contact_form_submitted` | `location` | Contact page form submit (`contact_page`) |
 
 ## Recommended key events (mark as conversions in GA4)
 
@@ -25,6 +26,7 @@ In GA4 → Admin → Events, toggle "Mark as key event" for the high-intent ones
 - **`book_demo_click`** — primary conversion.
 - **`get_started_click`** — primary conversion.
 - **`pricing_cta_click`** — softer / mid-funnel conversion.
+- **`contact_form_submitted`** — form-fill conversion.
 
 The rest (`nav_menu_click`, `footer_*`, `discord_click`, `sign_in_click`) are
 navigation/engagement signals — useful for path analysis, not conversions.
@@ -32,9 +34,10 @@ navigation/engagement signals — useful for path analysis, not conversions.
 ## Not yet wired (need product surfaces to exist first)
 
 Form-submission conversions from the strategy doc — `demo_request_submitted`,
-`contact_form_submitted`, `signup_completed` — require the actual forms /
-thank-you pages. Add `trackEvent("demo_request_submitted")` on submit success
-(or fire on a `/thank-you-*` page view) once those exist.
+`signup_completed` — require the actual forms / thank-you pages. Add
+`trackEvent("demo_request_submitted")` on submit success (or fire on a
+`/thank-you-*` page view) once those exist. (`contact_form_submitted` is now
+wired — see above.)
 
 ## Adding a new CTA event
 

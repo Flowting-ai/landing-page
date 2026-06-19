@@ -2,6 +2,7 @@
 
 import { useState, type FormEvent } from "react";
 import { Button } from "@/components/kaya/Button";
+import { trackEvent } from "@/lib/gtag";
 
 const field = "mt-1.5 w-full rounded-[var(--r-md)] border border-line bg-bg-subtle px-3.5 py-2.5 font-sans text-[var(--text-small)] text-ink placeholder:text-ink-subtle outline-none focus:border-line-strong";
 
@@ -12,6 +13,7 @@ export default function ContactForm() {
 
   function onSubmit(e: FormEvent) {
     e.preventDefault();
+    trackEvent("contact_form_submitted", { location: "contact_page" });
     const subject = encodeURIComponent(`Souvenir enquiry — ${name || "website"}`);
     const body = encodeURIComponent(`${message}\n\n— ${name}${email ? ` (${email})` : ""}`);
     window.location.href = `mailto:info@getsouvenir.com?subject=${subject}&body=${body}`;
