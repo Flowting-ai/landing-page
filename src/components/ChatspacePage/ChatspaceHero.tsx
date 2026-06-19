@@ -6,6 +6,7 @@ import { useGSAP } from "@gsap/react";
 import Container from "@/components/ui/Container";
 import { Button } from "@/components/kaya/Button";
 import { trackEvent } from "@/lib/gtag";
+import { SIGNUP_URL, DEMO_URL } from "@/lib/links";
 import ChatPinVisual from "./ChatPinVisual";
 import ClientOnly from "@/components/ui/ClientOnly";
 
@@ -37,8 +38,8 @@ export default function ChatspaceHero() {
           lets you save outputs as pins, organize them into folders, and share AI work with your team.
         </p>
         <div data-reveal className="mt-8 flex flex-col sm:flex-row items-center gap-3" style={{ ["--font-size-body"]: "16px", ["--line-height-body"]: "24px" } as CSSProperties}>
-          <Button variant="default" size="md" className="px-7 py-3" onClick={() => trackEvent("get_started_click", { location: "chatspace" })}>Get started for free</Button>
-          <Button variant="secondary" size="md" className="px-7 py-3" onClick={() => trackEvent("book_demo_click", { location: "chatspace" })}>Book a Demo</Button>
+          <a href={SIGNUP_URL} className="inline-flex"><Button variant="default" size="md" className="px-7 py-3" onClick={() => trackEvent("get_started_click", { location: "chatspace" })}>Get started for free</Button></a>
+          <a href={DEMO_URL} target="_blank" rel="noreferrer" className="inline-flex"><Button variant="secondary" size="md" className="px-7 py-3" onClick={() => trackEvent("book_demo_click", { location: "chatspace" })}>Book a Demo</Button></a>
         </div>
       </Container>
 

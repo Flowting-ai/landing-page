@@ -2,6 +2,7 @@ import Container from "@/components/ui/Container";
 import Reveal from "@/components/ui/Reveal";
 import { Button } from "@/components/kaya/Button";
 import TrackCTA from "@/components/analytics/TrackCTA";
+import { DEMO_URL } from "@/lib/links";
 
 export default function FinalCTASection() {
   return (
@@ -35,7 +36,7 @@ export default function FinalCTASection() {
                 style={{ ["--font-size-body" as string]: "16px", ["--line-height-body" as string]: "24px" }}
               >
                 <TrackCTA event="book_demo_click" params={{ location: "final_cta" }}>
-                  <Button variant="default" size="md" className="px-7 py-3">Book a Demo</Button>
+                  <a href={DEMO_URL} target="_blank" rel="noreferrer" className="inline-flex"><Button variant="default" size="md" className="px-7 py-3">Book a Demo</Button></a>
                 </TrackCTA>
                 <TrackCTA event="discord_click" params={{ location: "final_cta" }}>
                   <a

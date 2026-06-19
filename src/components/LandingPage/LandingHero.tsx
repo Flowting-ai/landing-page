@@ -6,6 +6,7 @@ import { useGSAP } from "@gsap/react";
 import { ArrowRightOneIcon } from "@strange-huge/icons";
 import Container from "@/components/ui/Container";
 import { Button } from "@/components/kaya/Button";
+import { DEMO_URL } from "@/lib/links";
 import HeroProductWindow from "@/components/LandingPage/HeroProductWindow";
 
 gsap.registerPlugin(useGSAP);
@@ -34,7 +35,7 @@ export default function LandingHero() {
             background — for individuals and teams.
           </p>
           <div data-reveal className="mt-9" style={{ ["--font-size-body"]: "16px", ["--line-height-body"]: "24px" } as CSSProperties}>
-            <Button variant="default" size="md" className="px-7 py-3" rightIcon={<ArrowRightOneIcon size={16} />}>Book a Demo</Button>
+            <a href={DEMO_URL} target="_blank" rel="noreferrer" className="inline-flex"><Button variant="default" size="md" className="px-7 py-3" rightIcon={<ArrowRightOneIcon size={16} />}>Book a Demo</Button></a>
           </div>
           <div data-reveal className="mt-14 w-full">
             <HeroProductWindow />

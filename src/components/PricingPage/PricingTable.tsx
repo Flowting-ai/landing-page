@@ -7,6 +7,7 @@ import { Button } from "@/components/kaya/Button";
 import { trackEvent } from "@/lib/gtag";
 import { Badge } from "@/components/Badge";
 import { Slider } from "@/components/Slider";
+import { SIGNUP_URL, DEMO_URL } from "@/lib/links";
 
 type Tier = { price: number; credits: string };
 
@@ -24,6 +25,7 @@ type Plan = {
   intro?: string;
   groups: Group[];
   cta: string;
+  ctaHref: string;
   ctaVariant: "default" | "secondary";
   dark?: boolean;
 };
@@ -47,6 +49,7 @@ const PLANS: Plan[] = [
       { title: "Models & tools", items: ["Every major AI model", "Auto-route or pick manually", "Model Compare side-by-side", "Unlimited web search", "250+ connectors"] },
     ],
     cta: "Start free",
+    ctaHref: SIGNUP_URL,
     ctaVariant: "secondary",
   },
   {
@@ -72,6 +75,7 @@ const PLANS: Plan[] = [
       { title: "Support", items: ["Priority email support", "Online meeting support"] },
     ],
     cta: "Start a Team Workspace",
+    ctaHref: SIGNUP_URL,
     ctaVariant: "default",
     dark: true,
   },
@@ -86,6 +90,7 @@ const PLANS: Plan[] = [
       { title: "Support", items: ["Priority email support", "Online meeting support"] },
     ],
     cta: "Talk to sales",
+    ctaHref: DEMO_URL,
     ctaVariant: "secondary",
   },
 ];
@@ -174,7 +179,9 @@ function PlanCard({ plan, yearly }: { plan: Plan; yearly: boolean }) {
       </div>
 
       <div className="mt-7" style={{ ["--font-size-body" as string]: "15px", ["--line-height-body" as string]: "22px" }}>
-        <Button variant={plan.ctaVariant} size="md" className="w-full justify-center px-6 py-3" onClick={() => trackEvent("pricing_cta_click", { plan: plan.name, cta: plan.cta })}>{plan.cta}</Button>
+        <a href={plan.ctaHref} target={/^https?:/.test(plan.ctaHref) ? "_blank" : undefined} rel={/^https?:/.test(plan.ctaHref) ? "noreferrer" : undefined} className="block">
+          <Button variant={plan.ctaVariant} size="md" fluid className="justify-center px-6 py-3" onClick={() => trackEvent("pricing_cta_click", { plan: plan.name, cta: plan.cta })}>{plan.cta}</Button>
+        </a>
       </div>
     </div>
   );

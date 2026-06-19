@@ -5,6 +5,7 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import Container from "@/components/ui/Container";
 import { Button } from "@/components/kaya/Button";
+import { SIGNUP_URL, DEMO_URL } from "@/lib/links";
 import TabbedShowcase from "@/components/showcase/TabbedShowcase";
 import { trackEvent } from "@/lib/gtag";
 
@@ -51,8 +52,8 @@ export default function HeroSection() {
               className="mt-6 flex flex-col sm:flex-row gap-3"
               style={{ ["--font-size-body"]: "16px", ["--line-height-body"]: "24px" } as CSSProperties}
             >
-              <Button variant="default" size="md" className="px-7 py-3" onClick={() => trackEvent("get_started_click", { location: "hero" })}>Start free</Button>
-              <Button variant="secondary" size="md" className="px-7 py-3" onClick={() => trackEvent("book_demo_click", { location: "hero" })}>Book a demo</Button>
+              <a href={SIGNUP_URL} className="inline-flex"><Button variant="default" size="md" className="px-7 py-3" onClick={() => trackEvent("get_started_click", { location: "hero" })}>Start free</Button></a>
+              <a href={DEMO_URL} target="_blank" rel="noreferrer" className="inline-flex"><Button variant="secondary" size="md" className="px-7 py-3" onClick={() => trackEvent("book_demo_click", { location: "hero" })}>Book a demo</Button></a>
             </div>
             <p data-reveal className="mt-4 font-sans text-[var(--text-micro)] text-ink-subtle">
               1,000 credits free · no card required
