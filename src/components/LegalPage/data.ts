@@ -335,15 +335,16 @@ export const LEGAL_DOCS: Record<string, LegalDoc> = {
           rows: [
             ["Strictly necessary", "Authenticate your session, keep you signed in, maintain security, remember consent choices, and enable core features of the Service. The Service will not function correctly without these.", "No — required for the Service to work"],
             ["Preferences", "Remember settings such as interface preferences and recently used options so the Service behaves the way you expect.", "Yes — via browser settings"],
-            ["Analytics / performance", "Understand how the Service is used (features used, errors encountered, aggregate usage patterns) so we can debug and improve. We use Mixpanel for product analytics.", "Yes — via browser settings or our cookie controls where offered"],
+            ["Analytics / performance", "Understand how the Service is used (features used, errors encountered, aggregate usage patterns) so we can debug and improve. We use Google Analytics for website analytics and Mixpanel for in-product analytics.", "Yes — via browser settings or our cookie controls where offered"],
           ],
         } },
         "We do not use advertising or cross-site tracking cookies, and we do not allow third parties to use cookies on the Service to build advertising profiles.",
       ] },
       { title: "Third-Party Cookies", body: [
-        "Some cookies are set by service providers that help us operate the Service. The main one is:",
+        "Some cookies are set by service providers that help us operate the Service. The main ones are:",
         { list: [
-          "Mixpanel — product analytics, used to measure feature usage and diagnose issues. Mixpanel processes this data on our behalf as a service provider.",
+          "Google Analytics — website analytics, used to measure page views, traffic sources, and aggregate site usage (cookies such as _ga and _gid). Google processes this data on our behalf as a service provider.",
+          "Mixpanel — in-product analytics, used to measure feature usage and diagnose issues. Mixpanel processes this data on our behalf as a service provider.",
         ] },
         "Authentication and payment flows may also set cookies via our providers (for example, our authentication provider and Stripe for billing) strictly to perform those functions. These third parties process data under their own privacy terms.",
       ] },
