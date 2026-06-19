@@ -4,6 +4,7 @@ import { useState } from "react";
 import Container from "@/components/ui/Container";
 import Reveal from "@/components/ui/Reveal";
 import { Button } from "@/components/kaya/Button";
+import { trackEvent } from "@/lib/gtag";
 import { Badge } from "@/components/Badge";
 import { Slider } from "@/components/Slider";
 
@@ -173,7 +174,7 @@ function PlanCard({ plan, yearly }: { plan: Plan; yearly: boolean }) {
       </div>
 
       <div className="mt-7" style={{ ["--font-size-body" as string]: "15px", ["--line-height-body" as string]: "22px" }}>
-        <Button variant={plan.ctaVariant} size="md" className="w-full justify-center px-6 py-3">{plan.cta}</Button>
+        <Button variant={plan.ctaVariant} size="md" className="w-full justify-center px-6 py-3" onClick={() => trackEvent("pricing_cta_click", { plan: plan.name, cta: plan.cta })}>{plan.cta}</Button>
       </div>
     </div>
   );

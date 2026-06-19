@@ -1,6 +1,7 @@
 import Container from "@/components/ui/Container";
 import Reveal from "@/components/ui/Reveal";
 import { Button } from "@/components/kaya/Button";
+import TrackCTA from "@/components/analytics/TrackCTA";
 
 export default function FinalCTASection() {
   return (
@@ -33,13 +34,17 @@ export default function FinalCTASection() {
                 className="mt-9 flex flex-col sm:flex-row items-center gap-3"
                 style={{ ["--font-size-body" as string]: "16px", ["--line-height-body" as string]: "24px" }}
               >
-                <Button variant="default" size="md" className="px-7 py-3">Book a Demo</Button>
-                <a
-                  href="#discord"
-                  className="inline-flex h-[3.25rem] items-center rounded-[var(--r-pill)] border border-[var(--dark-line)] px-7 font-sans text-[var(--text-body)] font-medium text-dark-ink transition-colors hover:bg-[var(--dark-surface)]"
-                >
-                  Join Discord Community
-                </a>
+                <TrackCTA event="book_demo_click" params={{ location: "final_cta" }}>
+                  <Button variant="default" size="md" className="px-7 py-3">Book a Demo</Button>
+                </TrackCTA>
+                <TrackCTA event="discord_click" params={{ location: "final_cta" }}>
+                  <a
+                    href="#discord"
+                    className="inline-flex h-[3.25rem] items-center rounded-[var(--r-pill)] border border-[var(--dark-line)] px-7 font-sans text-[var(--text-body)] font-medium text-dark-ink transition-colors hover:bg-[var(--dark-surface)]"
+                  >
+                    Join Discord Community
+                  </a>
+                </TrackCTA>
               </div>
             </Reveal>
           </div>

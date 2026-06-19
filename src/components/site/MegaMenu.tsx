@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { usePathname } from "next/navigation";
+import { trackEvent } from "@/lib/gtag";
 import * as NavigationMenu from "@radix-ui/react-navigation-menu";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDown } from "lucide-react";
@@ -99,7 +100,7 @@ function NavCard({ item, onPick, onHover, active = false }: { item: MenuItem; on
     <NavigationMenu.Link asChild>
       <a
         href={item.href}
-        onClick={onPick}
+        onClick={() => { trackEvent("nav_menu_click", { link_label: item.label, location: "mega_menu" }); onPick?.(); }}
         onMouseEnter={() => onHover?.(item)}
         onFocus={() => onHover?.(item)}
         data-active={active}
@@ -219,12 +220,12 @@ function SheetFooter() {
         <div className="flex items-center gap-6">
           {FOOTER_LINKS.map((l) => (
             <NavigationMenu.Link asChild key={l.label}>
-              <a href={l.href} className="font-sans text-[var(--text-small)] text-ink-muted transition-colors hover:text-ink">{l.label}</a>
+              <a href={l.href} onClick={() => trackEvent("nav_menu_click", { link_label: l.label, location: "mega_menu_footer" })} className="font-sans text-[var(--text-small)] text-ink-muted transition-colors hover:text-ink">{l.label}</a>
             </NavigationMenu.Link>
           ))}
         </div>
         <NavigationMenu.Link asChild>
-          <a href="/about" className="inline-flex items-center gap-1 font-sans text-[var(--text-small)] font-semibold tracking-[-0.01em] text-ink transition-colors hover:text-[color:var(--accent)]">
+          <a href="/about" onClick={() => trackEvent("book_demo_click", { location: "mega_menu" })} className="inline-flex items-center gap-1 font-sans text-[var(--text-small)] font-semibold tracking-[-0.01em] text-ink transition-colors hover:text-[color:var(--accent)]">
             Book a demo
             <ArrowUpRightOneIcon size={15} />
           </a>

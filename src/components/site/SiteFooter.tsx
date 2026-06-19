@@ -1,6 +1,7 @@
 import Container from "@/components/ui/Container";
 import Logo from "./Logo";
 import FooterScene from "./FooterScene";
+import TrackCTA from "@/components/analytics/TrackCTA";
 
 const COLUMNS = [
   {
@@ -69,7 +70,9 @@ export default function SiteFooter() {
                   <ul className="mt-5 flex flex-col gap-3.5">
                     {col.links.map((l) => (
                       <li key={l.label}>
-                        <a href={l.href} className="font-sans text-[var(--text-small)] text-ink-secondary transition-colors hover:text-[color:var(--accent)]">{l.label}</a>
+                        <TrackCTA event="footer_nav_click" params={{ link_label: l.label, group: col.title }}>
+                          <a href={l.href} className="font-sans text-[var(--text-small)] text-ink-secondary transition-colors hover:text-[color:var(--accent)]">{l.label}</a>
+                        </TrackCTA>
                       </li>
                     ))}
                   </ul>
@@ -83,7 +86,9 @@ export default function SiteFooter() {
             <span className="font-sans text-[var(--text-micro)] text-ink-secondary">© 2026 Souvenir Inc. — the memory your work keeps.</span>
             <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
               {LEGAL.map((l) => (
-                <a key={l.label} href={l.href} className="font-sans text-[var(--text-micro)] text-ink-muted underline underline-offset-4 decoration-[color:var(--line-strong)] transition-colors hover:text-ink hover:decoration-[color:var(--ink)]">{l.label}</a>
+                <TrackCTA key={l.label} event="footer_legal_click" params={{ link_label: l.label }}>
+                  <a href={l.href} className="font-sans text-[var(--text-micro)] text-ink-muted underline underline-offset-4 decoration-[color:var(--line-strong)] transition-colors hover:text-ink hover:decoration-[color:var(--ink)]">{l.label}</a>
+                </TrackCTA>
               ))}
             </div>
           </div>

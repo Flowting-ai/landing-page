@@ -6,6 +6,7 @@ import { useGSAP } from "@gsap/react";
 import Container from "@/components/ui/Container";
 import { Button } from "@/components/kaya/Button";
 import TabbedShowcase from "@/components/showcase/TabbedShowcase";
+import { trackEvent } from "@/lib/gtag";
 
 gsap.registerPlugin(useGSAP);
 
@@ -50,8 +51,8 @@ export default function HeroSection() {
               className="mt-6 flex flex-col sm:flex-row gap-3"
               style={{ ["--font-size-body"]: "16px", ["--line-height-body"]: "24px" } as CSSProperties}
             >
-              <Button variant="default" size="md" className="px-7 py-3">Start free</Button>
-              <Button variant="secondary" size="md" className="px-7 py-3">Book a demo</Button>
+              <Button variant="default" size="md" className="px-7 py-3" onClick={() => trackEvent("get_started_click", { location: "hero" })}>Start free</Button>
+              <Button variant="secondary" size="md" className="px-7 py-3" onClick={() => trackEvent("book_demo_click", { location: "hero" })}>Book a demo</Button>
             </div>
             <p data-reveal className="mt-4 font-sans text-[var(--text-micro)] text-ink-subtle">
               1,000 credits free · no card required

@@ -8,6 +8,7 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { ConnectorIcon } from "@strange-huge/icons/connectors";
 import { Button } from "@/components/kaya/Button";
+import { trackEvent } from "@/lib/gtag";
 import Logo from "./Logo";
 import MegaMenu, { PRODUCT, SOLUTION_AUDIENCES, LINKS, type MenuItem } from "./MegaMenu";
 
@@ -89,8 +90,8 @@ export default function SiteNav() {
               </div>
 
               <div className="flex items-center gap-2.5">
-                <Button variant="secondary" size="md" className="hidden sm:inline-flex px-3.5">Sign in</Button>
-                <Button variant="default" size="md" className="px-4">
+                <Button variant="secondary" size="md" className="hidden sm:inline-flex px-3.5" onClick={() => trackEvent("sign_in_click", { location: "nav" })}>Sign in</Button>
+                <Button variant="default" size="md" className="px-4" onClick={() => trackEvent("get_started_click", { location: "nav" })}>
                   <span className="hidden sm:inline">Get started for free</span>
                   <span className="sm:hidden">Get started</span>
                 </Button>
@@ -143,7 +144,7 @@ export default function SiteNav() {
                 <a
                   key={l.label}
                   href={l.href}
-                  onClick={close}
+                  onClick={() => { trackEvent("nav_menu_click", { link_label: l.label, location: "mobile_nav" }); close(); }}
                   data-active={isActive}
                   aria-current={isActive ? "page" : undefined}
                   className="block rounded-[8px] px-2.5 py-2.5 font-sans text-[var(--text-body)] text-ink-secondary hover:bg-surface-warm hover:text-ink data-[active=true]:text-ink"
@@ -152,7 +153,7 @@ export default function SiteNav() {
                 </a>
               );
             })}
-            <a href="#signin" onClick={close} className="block rounded-[8px] px-2.5 py-2.5 font-sans text-[var(--text-body)] text-ink-secondary hover:bg-surface-warm hover:text-ink sm:hidden">Sign in</a>
+            <a href="#signin" onClick={() => { trackEvent("sign_in_click", { location: "mobile_nav" }); close(); }} className="block rounded-[8px] px-2.5 py-2.5 font-sans text-[var(--text-body)] text-ink-secondary hover:bg-surface-warm hover:text-ink sm:hidden">Sign in</a>
           </div>
         </Dialog.Content>
       </Dialog.Portal>
