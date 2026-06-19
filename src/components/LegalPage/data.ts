@@ -178,7 +178,7 @@ export const LEGAL_DOCS: Record<string, LegalDoc> = {
           "Force majeure: We are not liable for delays or failures caused by events beyond our reasonable control.",
         ] },
       ] },
-      { title: "Contact", body: "Questions about these Terms: contact@getsouvenir.com — Souvenir, Inc. [MAILING ADDRESS — add registered business address before publishing]" },
+      { title: "Contact", body: "Questions about these Terms: contact@getsouvenir.com — Souvenir, Inc. 211 28th Street, Des Moines, Iowa, USA." },
     ],
   },
   "acceptable-use": {
@@ -311,7 +311,7 @@ export const LEGAL_DOCS: Record<string, LegalDoc> = {
       { title: "Children’s Privacy", body: "The Service is intended for users aged 16 and over (or the minimum age required in your jurisdiction). We do not knowingly collect personal information from children under that age. If you believe a child has provided us personal information, contact us and we will delete it." },
       { title: "Third-Party Services", body: "The Service integrates with and links to third-party services. This Policy does not cover those third parties’ practices. Your use of connected services remains subject to their own privacy policies and terms." },
       { title: "Changes to This Policy", body: "We may update this Privacy Policy from time to time and review it at least annually. If we make material changes, we will provide notice (for example, by email or in-product). The “Last updated” date reflects the latest revision. Your continued use after changes take effect constitutes acceptance." },
-      { title: "Contact Us", body: "Questions or requests regarding this Privacy Policy or your personal information: contact@getsouvenir.com — Souvenir, Inc. [MAILING ADDRESS — add registered business address before publishing]" },
+      { title: "Contact Us", body: "Questions or requests regarding this Privacy Policy or your personal information: contact@getsouvenir.com — Souvenir, Inc. 211 28th Street, Des Moines, Iowa, USA." },
     ],
   },
   cookies: {
@@ -355,7 +355,7 @@ export const LEGAL_DOCS: Record<string, LegalDoc> = {
         ] },
       ] },
       { title: "Changes to This Policy", body: "We may update this Cookie Policy from time to time. The “Last updated” date reflects the latest revision. Material changes will be communicated through the Service or by other reasonable means." },
-      { title: "Contact Us", body: "Questions about this Cookie Policy: contact@getsouvenir.com — Souvenir, Inc. [MAILING ADDRESS — add registered business address before publishing]" },
+      { title: "Contact Us", body: "Questions about this Cookie Policy: contact@getsouvenir.com — Souvenir, Inc. 211 28th Street, Des Moines, Iowa, USA." },
     ],
   },
   copyright: {
@@ -535,7 +535,7 @@ export const LEGAL_DOCS: Record<string, LegalDoc> = {
       { title: "International Data Transfers", body: "Our infrastructure is hosted in the United States (AWS). If you access the Service from outside the U.S., your information will be transferred to and processed in the U.S. Where required, we rely on appropriate safeguards such as standard contractual clauses with our sub-processors." },
       { title: "Children’s Privacy", body: "The Service is intended for business use and is not directed at children under 16. We do not knowingly collect personal information from children. If you believe a child has provided us information, contact us and we will delete it." },
       { title: "Changes to This Policy", body: "We may update this policy from time to time. We will post the updated version at this URL with a revised “Last updated” date, and for material changes we will notify you via the Service or email. Continued use after changes take effect constitutes acceptance." },
-      { title: "Contact Us", body: "Souvenir, Inc. — Email: contact@getsouvenir.com — Website: https://www.getsouvenir.com. [MAILING ADDRESS — add registered business address; Meta app review and GDPR both expect a physical address]" },
+      { title: "Contact Us", body: "Souvenir, Inc. — Email: contact@getsouvenir.com — Mailing address: 211 28th Street, Des Moines, Iowa, USA. Website: https://www.getsouvenir.com." },
     ],
   },
 };
