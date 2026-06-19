@@ -11,6 +11,7 @@ import {
 } from "@strange-huge/icons";
 import { ConnectorIcon } from "@strange-huge/icons/connectors";
 import { Tabs, TabsList, TabsTrigger } from "@/components/Tabs";
+import { DEMO_URL } from "@/lib/links";
 import FeaturedBrainCard from "./FeaturedBrainCard";
 
 export type MenuItem = {
@@ -224,7 +225,7 @@ function SheetFooter() {
           ))}
         </div>
         <NavigationMenu.Link asChild>
-          <a href="/about" className="inline-flex items-center gap-1 font-sans text-[var(--text-small)] font-semibold tracking-[-0.01em] text-ink transition-colors hover:text-[color:var(--accent)]">
+          <a href={DEMO_URL} target="_blank" rel="noreferrer" className="inline-flex items-center gap-1 font-sans text-[var(--text-small)] font-semibold tracking-[-0.01em] text-ink transition-colors hover:text-[color:var(--accent)]">
             Book a demo
             <ArrowUpRightOneIcon size={15} />
           </a>

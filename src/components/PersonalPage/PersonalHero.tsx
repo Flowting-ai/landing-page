@@ -5,6 +5,7 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import Container from "@/components/ui/Container";
 import { Button } from "@/components/kaya/Button";
+import { SIGNUP_URL, DEMO_URL } from "@/lib/links";
 import { PersonalHeroVisual } from "./visuals";
 
 gsap.registerPlugin(useGSAP);
@@ -36,8 +37,8 @@ export default function PersonalHero() {
               AI work forever.
             </p>
             <div data-reveal className="mt-8 flex flex-col sm:flex-row items-start sm:items-center gap-3" style={{ ["--font-size-body"]: "16px", ["--line-height-body"]: "24px" } as CSSProperties}>
-              <Button variant="default" size="md" className="px-7 py-3">Get started for free</Button>
-              <Button variant="secondary" size="md" className="px-7 py-3">Book a Demo</Button>
+              <a href={SIGNUP_URL} className="inline-flex"><Button variant="default" size="md" className="px-7 py-3">Get started for free</Button></a>
+          <a href={DEMO_URL} target="_blank" rel="noreferrer" className="inline-flex"><Button variant="secondary" size="md" className="px-7 py-3">Book a Demo</Button></a>
             </div>
           </div>
           <div data-reveal className="min-w-0">

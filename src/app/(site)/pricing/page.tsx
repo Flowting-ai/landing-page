@@ -3,6 +3,7 @@ import PricingHero from "@/components/PricingPage/PricingHero";
 import PricingTable from "@/components/PricingPage/PricingTable";
 import { ReassuranceRow, TopUps, PricingFAQ } from "@/components/PricingPage/PricingExtras";
 import FinalCTABand from "@/components/sections/FinalCTABand";
+import { SIGNUP_URL, DEMO_URL } from "@/lib/links";
 
 export const metadata: Metadata = {
   title: "Pricing — Souvenir",
@@ -21,7 +22,9 @@ export default function PricingPage() {
         title="1,000 credits, on us. No card required."
         body="Test every Souvenir feature with real workloads. Pay only when you're ready."
         primary="Get started for free"
+        primaryHref={SIGNUP_URL}
         secondary="Talk to sales"
+        secondaryHref={DEMO_URL}
       />
     </>
   );

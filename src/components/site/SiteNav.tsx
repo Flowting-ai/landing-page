@@ -8,6 +8,7 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { ConnectorIcon } from "@strange-huge/icons/connectors";
 import { Button } from "@/components/kaya/Button";
+import { LOGIN_URL, SIGNUP_URL } from "@/lib/links";
 import Logo from "./Logo";
 import MegaMenu, { PRODUCT, SOLUTION_AUDIENCES, LINKS, type MenuItem } from "./MegaMenu";
 
@@ -89,11 +90,15 @@ export default function SiteNav() {
               </div>
 
               <div className="flex items-center gap-2.5">
-                <Button variant="secondary" size="md" className="hidden sm:inline-flex px-3.5">Sign in</Button>
-                <Button variant="default" size="md" className="px-4">
-                  <span className="hidden sm:inline">Get started for free</span>
-                  <span className="sm:hidden">Get started</span>
-                </Button>
+                <a href={LOGIN_URL} className="hidden sm:inline-flex">
+                  <Button variant="secondary" size="md" className="px-3.5">Sign in</Button>
+                </a>
+                <a href={SIGNUP_URL} className="inline-flex">
+                  <Button variant="default" size="md" className="px-4">
+                    <span className="hidden sm:inline">Get started for free</span>
+                    <span className="sm:hidden">Get started</span>
+                  </Button>
+                </a>
                 <button
                   ref={triggerRef}
                   type="button"
@@ -152,7 +157,7 @@ export default function SiteNav() {
                 </a>
               );
             })}
-            <a href="#signin" onClick={close} className="block rounded-[8px] px-2.5 py-2.5 font-sans text-[var(--text-body)] text-ink-secondary hover:bg-surface-warm hover:text-ink sm:hidden">Sign in</a>
+            <a href={LOGIN_URL} onClick={close} className="block rounded-[8px] px-2.5 py-2.5 font-sans text-[var(--text-body)] text-ink-secondary hover:bg-surface-warm hover:text-ink sm:hidden">Sign in</a>
           </div>
         </Dialog.Content>
       </Dialog.Portal>
