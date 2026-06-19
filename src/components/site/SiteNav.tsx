@@ -8,6 +8,7 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { ConnectorIcon } from "@strange-huge/icons/connectors";
 import { Button } from "@/components/kaya/Button";
+import { trackEvent } from "@/lib/gtag";
 import { LOGIN_URL, SIGNUP_URL } from "@/lib/links";
 import Logo from "./Logo";
 import MegaMenu, { PRODUCT, SOLUTION_AUDIENCES, LINKS, type MenuItem } from "./MegaMenu";
@@ -91,10 +92,10 @@ export default function SiteNav() {
 
               <div className="flex items-center gap-2.5">
                 <a href={LOGIN_URL} className="hidden sm:inline-flex">
-                  <Button variant="secondary" size="md" className="px-3.5">Sign in</Button>
+                  <Button variant="secondary" size="md" className="px-3.5" onClick={() => trackEvent("sign_in_click", { location: "nav" })}>Sign in</Button>
                 </a>
                 <a href={SIGNUP_URL} className="inline-flex">
-                  <Button variant="default" size="md" className="px-4">
+                  <Button variant="default" size="md" className="px-4" onClick={() => trackEvent("get_started_click", { location: "nav" })}>
                     <span className="hidden sm:inline">Get started for free</span>
                     <span className="sm:hidden">Get started</span>
                   </Button>
@@ -148,7 +149,7 @@ export default function SiteNav() {
                 <a
                   key={l.label}
                   href={l.href}
-                  onClick={close}
+                  onClick={() => { trackEvent("nav_menu_click", { link_label: l.label, location: "mobile_nav" }); close(); }}
                   data-active={isActive}
                   aria-current={isActive ? "page" : undefined}
                   className="block rounded-[8px] px-2.5 py-2.5 font-sans text-[var(--text-body)] text-ink-secondary hover:bg-surface-warm hover:text-ink data-[active=true]:text-ink"
@@ -157,7 +158,7 @@ export default function SiteNav() {
                 </a>
               );
             })}
-            <a href={LOGIN_URL} onClick={close} className="block rounded-[8px] px-2.5 py-2.5 font-sans text-[var(--text-body)] text-ink-secondary hover:bg-surface-warm hover:text-ink sm:hidden">Sign in</a>
+            <a href={LOGIN_URL} onClick={() => { trackEvent("sign_in_click", { location: "mobile_nav" }); close(); }} className="block rounded-[8px] px-2.5 py-2.5 font-sans text-[var(--text-body)] text-ink-secondary hover:bg-surface-warm hover:text-ink sm:hidden">Sign in</a>
           </div>
         </Dialog.Content>
       </Dialog.Portal>

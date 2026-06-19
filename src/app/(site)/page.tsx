@@ -13,7 +13,12 @@ import SlackBrainMap from "@/components/LandingPage/SlackBrainMap";
 
 export const metadata: Metadata = {
   title: "Souvenir — All your apps unified into one AI Brain",
-  description: "Souvenir unifies your disconnected tools into one intelligent workspace where a coordinated team of AI agents automate and execute real work across all your apps. Two ways to use it — for individuals and for teams.",
+  description:
+    "Souvenir unifies your disconnected tools into one intelligent workspace where a coordinated team of AI agents automate and execute real work across all your apps. Two ways to use it — for individuals and for teams.",
+  // Self-canonical for the root. openGraph/twitter inherit the root defaults
+  // (incl. the generated share image) — don't override openGraph here or the
+  // file-based og:image gets dropped.
+  alternates: { canonical: "/" },
 };
 
 export default function Home() {

@@ -4,6 +4,7 @@ import Reveal from "@/components/ui/Reveal";
 import { Button } from "@/components/kaya/Button";
 import { DEMO_URL } from "@/lib/links";
 import { ConnectorIcon } from "@strange-huge/icons/connectors";
+import TrackCTA from "@/components/analytics/TrackCTA";
 
 const CONNECTORS = ["slack", "figma", "notion", "gmail", "linear", "stripe", "github", "hubspot"];
 
@@ -77,10 +78,14 @@ export default function FinalCTABand({
             </Reveal>
             <Reveal delay={0.2}>
               <div className="mt-9 flex flex-col sm:flex-row items-center gap-3" style={{ ["--font-size-body" as string]: "16px", ["--line-height-body" as string]: "24px" }}>
-                <a href={primaryHref} target={primaryExternal ? "_blank" : undefined} rel={primaryExternal ? "noreferrer" : undefined} className="inline-flex">
-                  <Button variant="default" size="md" className="px-7 py-3">{primary}</Button>
-                </a>
-                <a href={secondaryHref} target={secondaryExternal ? "_blank" : undefined} rel={secondaryExternal ? "noreferrer" : undefined} className="inline-flex h-[3.25rem] items-center rounded-[var(--r-pill)] border border-[var(--dark-line)] px-7 font-sans text-[var(--text-body)] font-medium text-dark-ink transition-colors hover:bg-[var(--dark-surface)]">{secondary}</a>
+                <TrackCTA event="book_demo_click" params={{ location: "final_cta_band" }}>
+                  <a href={primaryHref} target={primaryExternal ? "_blank" : undefined} rel={primaryExternal ? "noreferrer" : undefined} className="inline-flex">
+                    <Button variant="default" size="md" className="px-7 py-3">{primary}</Button>
+                  </a>
+                </TrackCTA>
+                <TrackCTA event="discord_click" params={{ location: "final_cta_band" }}>
+                  <a href={secondaryHref} target={secondaryExternal ? "_blank" : undefined} rel={secondaryExternal ? "noreferrer" : undefined} className="inline-flex h-[3.25rem] items-center rounded-[var(--r-pill)] border border-[var(--dark-line)] px-7 font-sans text-[var(--text-body)] font-medium text-dark-ink transition-colors hover:bg-[var(--dark-surface)]">{secondary}</a>
+                </TrackCTA>
               </div>
             </Reveal>
             {!appGrid && (

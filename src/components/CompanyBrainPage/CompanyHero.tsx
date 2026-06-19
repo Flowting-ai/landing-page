@@ -5,6 +5,7 @@ import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import Container from "@/components/ui/Container";
 import { Button } from "@/components/kaya/Button";
+import { trackEvent } from "@/lib/gtag";
 import { SIGNUP_URL, DEMO_URL } from "@/lib/links";
 
 gsap.registerPlugin(useGSAP);
@@ -33,8 +34,8 @@ export default function CompanyHero() {
           One operational layer. A multi-agent workforce. Lives in the Slack you already use.
         </p>
         <div data-reveal className="mt-8 flex flex-col sm:flex-row items-center gap-3" style={{ ["--font-size-body"]: "16px", ["--line-height-body"]: "24px" } as CSSProperties}>
-          <a href={SIGNUP_URL} className="inline-flex"><Button variant="default" size="md" className="px-7 py-3">Get started for free</Button></a>
-          <a href={DEMO_URL} target="_blank" rel="noreferrer" className="inline-flex"><Button variant="secondary" size="md" className="px-7 py-3">Book a Demo</Button></a>
+          <a href={SIGNUP_URL} className="inline-flex"><Button variant="default" size="md" className="px-7 py-3" onClick={() => trackEvent("get_started_click", { location: "teams" })}>Get started for free</Button></a>
+          <a href={DEMO_URL} target="_blank" rel="noreferrer" className="inline-flex"><Button variant="secondary" size="md" className="px-7 py-3" onClick={() => trackEvent("book_demo_click", { location: "teams" })}>Book a Demo</Button></a>
         </div>
       </Container>
     </section>

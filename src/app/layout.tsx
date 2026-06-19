@@ -1,12 +1,36 @@
 import type { Metadata } from "next";
-import Script from "next/script";
 import { fontVariables } from "@/lib/fonts";
+import Analytics from "@/components/analytics/Analytics";
+import JsonLd from "@/components/seo/JsonLd";
+import { SITE_URL, SITE_NAME, SITE_TAGLINE, SITE_DESCRIPTION } from "@/lib/seo";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Souvenir — Your company's AI brain, in Slack",
-  description:
-    "Souvenir is an AI workforce that lives where your team works. Agents that remember your context, run your workflows, and connect every tool you use.",
+  metadataBase: new URL(SITE_URL),
+  // Pages set self-contained titles (e.g. "Brain & Automation — Souvenir"); this
+  // is only the fallback for any page that doesn't. No title template — it would
+  // double the brand name on the existing hand-written titles.
+  title: `${SITE_NAME} — ${SITE_TAGLINE}`,
+  description: SITE_DESCRIPTION,
+  applicationName: SITE_NAME,
+  openGraph: {
+    type: "website",
+    siteName: SITE_NAME,
+    url: SITE_URL,
+    title: `${SITE_NAME} — ${SITE_TAGLINE}`,
+    description: SITE_DESCRIPTION,
+    locale: "en_US",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${SITE_NAME} — ${SITE_TAGLINE}`,
+    description: SITE_DESCRIPTION,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large" },
+  },
 };
 
 export default function RootLayout({
@@ -17,18 +41,8 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning className={fontVariables}>
       <head>
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-ZLCFW0RLZJ"
-          strategy="afterInteractive"
-        />
-        <Script id="google-analytics" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-ZLCFW0RLZJ');
-          `}
-        </Script>
+        <JsonLd />
+        <Analytics />
       </head>
       <body
         suppressHydrationWarning

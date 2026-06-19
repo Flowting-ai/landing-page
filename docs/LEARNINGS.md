@@ -34,6 +34,11 @@ next session can follow, not a story. Format:
 
 ## Log
 
+### [2026-06-19] SEO foundation shipped — don't add a global title template or root canonical on this site · (SEO/METADATA)
+- **What happened / feedback:** Added a root `title.template` (`%s · Souvenir`) + root `alternates.canonical: "/"`. Build verification showed every page title doubled the brand (`Brain & Automation — Souvenir · Souvenir`) and EVERY subpage canonicalised to the home URL — which would deindex them. Pages here already use self-contained titles (`X — Souvenir`).
+- **Rule going forward:** No global title template (titles are self-contained; `pageMeta` appends ` — Souvenir` only if absent). Canonical is per-page/self-referencing via `pageMeta`, never a root default. With `output: "export"`, metadata image routes need `export const dynamic = "force-static"`, and a page that overrides `openGraph` drops the file-based `og:image` unless it re-adds it — so leave `openGraph` to inherit on the home page. Full rules now in the `seo` skill.
+- **Promoted to:** `.claude/skills/seo/SKILL.md` (new skill).
+
 ### [2026-06-18] `@strange-huge/icons` ROOT import forces `"use client"` — server components 500 · (COMPONENTS/BUILD)
 - **What happened / feedback:** The home-completion workflow added general-icon imports (e.g.
   `import { ArrowRightOneIcon } from "@strange-huge/icons"`) to several section files that were

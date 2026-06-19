@@ -4,6 +4,7 @@ import { useState } from "react";
 import Container from "@/components/ui/Container";
 import Reveal from "@/components/ui/Reveal";
 import { Button } from "@/components/kaya/Button";
+import { trackEvent } from "@/lib/gtag";
 import { Badge } from "@/components/Badge";
 import { Slider } from "@/components/Slider";
 import { SIGNUP_URL, DEMO_URL } from "@/lib/links";
@@ -179,7 +180,7 @@ function PlanCard({ plan, yearly }: { plan: Plan; yearly: boolean }) {
 
       <div className="mt-7" style={{ ["--font-size-body" as string]: "15px", ["--line-height-body" as string]: "22px" }}>
         <a href={plan.ctaHref} target={/^https?:/.test(plan.ctaHref) ? "_blank" : undefined} rel={/^https?:/.test(plan.ctaHref) ? "noreferrer" : undefined} className="block">
-          <Button variant={plan.ctaVariant} size="md" fluid className="justify-center px-6 py-3">{plan.cta}</Button>
+          <Button variant={plan.ctaVariant} size="md" fluid className="justify-center px-6 py-3" onClick={() => trackEvent("pricing_cta_click", { plan: plan.name, cta: plan.cta })}>{plan.cta}</Button>
         </a>
       </div>
     </div>
