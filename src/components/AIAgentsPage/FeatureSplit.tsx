@@ -30,7 +30,7 @@ export default function FeatureSplit({
               <h2 className="font-display mt-3 max-w-[16ch] text-[length:var(--text-h2)] leading-[var(--text-h2--line-height)] tracking-[var(--text-h2--letter-spacing)] text-ink">{title}</h2>
             </Reveal>
             <Reveal delay={0.12}>
-              <p className="mt-5 max-w-[52ch] font-sans text-[length:var(--text-lead)] leading-[var(--text-lead--line-height)] text-ink-muted">{body}</p>
+              <p className="mt-5 max-w-[52ch] font-sans text-[length:var(--text-body)] leading-[var(--text-body--line-height)] text-ink-muted">{body}</p>
             </Reveal>
             {bullets && bullets.length > 0 && (
               <Reveal delay={0.18}>

@@ -13,7 +13,10 @@ function Card({ title, badges }: { title: string; badges: { label: string; tone?
         : { color: "var(--ink-muted)", borderColor: "var(--line)", background: "var(--bg-subtle)" };
   return (
     <div className="w-[13.5rem] rounded-[var(--r-lg)] border border-line bg-surface p-3.5" style={{ boxShadow: "var(--shadow-md)" }}>
-      <div className="font-display text-[var(--text-h3)] leading-tight text-ink">{title}</div>
+      {/* KDS card-title convention: sans (Geist) at a small UI size + semibold —
+          NOT the Besley display serif (an editorial headline reads wrong on a
+          product card). Matches PersonaCard names / Pin titles / Sidebar rows. */}
+      <div className="font-sans text-[length:var(--text-small)] font-semibold leading-tight text-ink">{title}</div>
       <div className="mt-2.5 flex flex-wrap gap-1.5">
         {badges.map((b) => (
           <span key={b.label} className="inline-flex rounded-[var(--r-pill)] border px-2.5 py-1 font-sans text-[var(--text-micro)]" style={toneStyle(b.tone)}>{b.label}</span>

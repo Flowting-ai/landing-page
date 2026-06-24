@@ -30,12 +30,12 @@ type Row = {
 // Brain w/ hierarchy + memory vs. per-chat history vs. siloed app memory),
 // cross-app memory, model routing, and the seat economics.
 const ROWS: Row[] = [
-  { icon: <UserAiIcon size={18} />, cap: "Multi-agent workforce", desc: "Role-tuned Assistants that hand off work.", s: "Native", c: "Single agent", p: "Not available" },
-  { icon: <BubbleChatIcon size={18} />, cap: "Slack-native command center", desc: "One managerial bot coordinates the team in your channels.", s: "Native", c: "Bolt-on · third-party", p: "Bolt-on · third-party" },
-  { icon: <WorkflowSquareTenIcon size={18} />, cap: "Background automation", desc: "Multi-step work runs across your stack without prompts.", s: "Native", c: "Prompt-driven · you drive every step", p: "Not available" },
-  { icon: <BrainTwoIcon size={18} />, cap: "Context architecture", desc: "A central Brain with hierarchy + durable memory feeds every agent.", s: "Central Brain", c: "Per-chat history · nothing shared", p: "Siloed per app · no shared layer" },
-  { icon: <GalaxyIcon size={18} />, cap: "Cross-app memory", desc: "Unified context across Gmail, Drive, Slack, your CRM — persists across every model.", s: "Native", c: "Session-bound · starts blank, provider-locked", p: "App silo · reads only its own app" },
-  { icon: <RadarThreeIcon size={18} />, cap: "Automatic model routing", desc: "Best model picked per task — for quality and cost.", s: "Native", c: "Single model · one provider", p: "Single model · one provider" },
+  { icon: <UserAiIcon size={18} />, cap: "Multi-agent workforce", desc: "Role-tuned agents that hand off work to each other.", s: "A full team of agents", c: "Single agent", p: "Not available" },
+  { icon: <BubbleChatIcon size={18} />, cap: "Slack-native command center", desc: "One managerial bot coordinates the team in your channels.", s: "Built in, runs in Slack", c: "Bolt-on · third-party", p: "Bolt-on · third-party" },
+  { icon: <WorkflowSquareTenIcon size={18} />, cap: "Background automation", desc: "Multi-step work runs across your stack without prompts.", s: "Runs on its own", c: "Prompt-driven · you drive every step", p: "Not available" },
+  { icon: <BrainTwoIcon size={18} />, cap: "Context architecture", desc: "A central Brain with hierarchy + durable memory feeds every agent.", s: "One shared Brain", c: "Per-chat history · nothing shared", p: "Siloed per app · no shared layer" },
+  { icon: <GalaxyIcon size={18} />, cap: "Cross-app memory", desc: "Unified context across Gmail, Drive, Slack, your CRM — persists across every model.", s: "Always on, every app", c: "Session-bound · starts blank, provider-locked", p: "App silo · reads only its own app" },
+  { icon: <RadarThreeIcon size={18} />, cap: "Automatic model routing", desc: "Best model picked per task — for quality and cost.", s: "Automatic, per task", c: "Single model · one provider", p: "Single model · one provider" },
   { icon: <UserAddOneIcon size={18} />, cap: "Unlimited seats", desc: "Whole team onboarded without per-user cost.", s: "Included", c: "Per-seat · $25–60/user/mo", p: "Per-seat · $10–20/user/mo" },
 ];
 
@@ -80,28 +80,28 @@ export default function CategoryTable() {
             className="mt-12 hidden overflow-x-auto rounded-[var(--r-2xl)] border border-line bg-surface md:block"
             style={{ boxShadow: "var(--shadow-sm)", overscrollBehaviorX: "contain" }}
           >
-            <table className="w-full min-w-[760px] border-collapse">
+            <table className="w-full min-w-[840px] border-collapse">
               <thead>
                 <tr className="border-b border-line">
-                  <th className="w-[28%] min-w-0 px-5 py-4 text-left font-sans text-[var(--text-micro)] font-semibold uppercase tracking-[0.1em] text-ink-subtle">Capability</th>
-                  <th className="min-w-0 px-5 py-4 text-left font-sans text-[var(--text-micro)] font-semibold text-ink bg-surface-warm">Souvenir<span className="block font-normal text-ink-subtle">Operational layer</span></th>
-                  <th className="min-w-0 px-5 py-4 text-left font-sans text-[var(--text-micro)] font-medium text-ink-muted">Conversational AI<span className="block font-normal text-ink-subtle">ChatGPT · Claude · Gemini</span></th>
-                  <th className="min-w-0 px-5 py-4 text-left font-sans text-[var(--text-micro)] font-medium text-ink-muted">Productivity tools<span className="block font-normal text-ink-subtle">Notion AI · Copilot</span></th>
+                  <th className="w-[28%] min-w-0 px-6 py-5 text-left font-sans text-[var(--text-micro)] font-semibold uppercase tracking-[0.1em] text-ink-subtle">Capability</th>
+                  <th className="min-w-0 px-6 py-5 text-left font-sans text-[var(--text-micro)] font-semibold text-ink bg-surface-warm">Souvenir<span className="mt-1 block font-normal text-ink-subtle">Operational layer</span></th>
+                  <th className="min-w-0 px-6 py-5 text-left font-sans text-[var(--text-micro)] font-medium text-ink-muted">Conversational AI<span className="mt-1 block font-normal text-ink-subtle">ChatGPT · Claude · Gemini</span></th>
+                  <th className="min-w-0 px-6 py-5 text-left font-sans text-[var(--text-micro)] font-medium text-ink-muted">Productivity tools<span className="mt-1 block font-normal text-ink-subtle">Notion AI · Copilot</span></th>
                 </tr>
               </thead>
               <tbody>
                 {ROWS.map((r) => (
                   <tr key={r.cap} className="border-b border-line last:border-0 align-top">
-                    <td className="px-5 py-4">
+                    <td className="px-6 py-6">
                       <span className="flex items-center gap-2">
                         <span aria-hidden className="shrink-0 text-ink-secondary" style={{ lineHeight: 0 }}>{r.icon}</span>
                         <span className="font-sans text-[var(--text-small)] font-medium text-ink">{r.cap}</span>
                       </span>
-                      <span className="mt-0.5 block font-sans text-[var(--text-micro)] text-ink-subtle">{r.desc}</span>
+                      <span className="mt-1.5 block font-sans text-[var(--text-micro)] leading-relaxed text-ink-subtle">{r.desc}</span>
                     </td>
-                    <td className="px-5 py-4 bg-surface-warm"><YesCell text={r.s} /></td>
-                    <td className="px-5 py-4"><Cell text={r.c} /></td>
-                    <td className="px-5 py-4"><Cell text={r.p} /></td>
+                    <td className="px-6 py-6 bg-surface-warm"><YesCell text={r.s} /></td>
+                    <td className="px-6 py-6"><Cell text={r.c} /></td>
+                    <td className="px-6 py-6"><Cell text={r.p} /></td>
                   </tr>
                 ))}
               </tbody>

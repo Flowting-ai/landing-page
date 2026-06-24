@@ -147,22 +147,29 @@ body { min-height: 100dvh; background: var(--bg); color: var(--ink); font-family
   position: relative;
   display: flex; align-items: center; justify-content: space-between;
   width: 100%;
+  /* Centered in BOTH states (was margin-inline:0 when flush) so the width
+     contraction stays centered through the morph — no margin snap. At full
+     width the auto margins resolve to 0, so flush still reads full-bleed. */
+  margin-inline: auto;
   border: 1px solid transparent;
   border-radius: var(--nav-radius);
   /* One-shot threshold transitions (not scroll-linked per frame). Blur animates
-     the filter value itself — fading a backdrop-filtered layer via opacity flashes. */
+     the filter value itself — fading a backdrop-filtered layer via opacity flashes.
+     Slightly longer + a soft ease so the hero⇄pill morph feels deliberate. */
   transition:
-    max-width 320ms var(--ease-out), padding 320ms var(--ease-out),
-    background-color 320ms var(--ease-out), border-color 320ms var(--ease-out),
-    box-shadow 320ms var(--ease-out),
-    -webkit-backdrop-filter 320ms var(--ease-out), backdrop-filter 320ms var(--ease-out);
+    max-width 420ms var(--ease-out), padding 420ms var(--ease-out),
+    background-color 360ms var(--ease-out), border-color 360ms var(--ease-out),
+    box-shadow 360ms var(--ease-out),
+    -webkit-backdrop-filter 360ms var(--ease-out), backdrop-filter 360ms var(--ease-out);
 }
 /* FLUSH (over the hero): NO fill / border / blur / shadow — reads as part of the
-   hero. Spans the FULL hero width with the standard page gutter, so the flush→pill
-   morph reads as a clear contraction (full-bleed → centered 70rem pill). */
+   hero. Spans the FULL hero width with the standard page gutter, then contracts
+   to the centered 70rem pill. NOTE: max-width is 100% (NOT `none`) — `none` is
+   not a length, so the browser could not interpolate it and the width SNAPPED
+   while padding/blur/fill eased (the janky "collapse"). `100%` resolves to a px
+   length, so the contraction now animates smoothly to the pill's 70rem. */
 .site-nav__pill.is-flush {
-  max-width: none;
-  margin-inline: 0;
+  max-width: 100%;
   padding: 0.5rem var(--gutter);
   background-color: transparent;
   border-color: transparent;

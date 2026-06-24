@@ -27,12 +27,12 @@ export default function LandingHero() {
       <Container className="relative z-10">
         <div className="mx-auto flex flex-col items-center text-center">
           <h1 data-reveal className="font-display mx-auto max-w-[60rem] text-[length:var(--text-hero)] leading-[var(--text-hero--line-height)] tracking-[var(--text-hero--letter-spacing)] text-ink text-balance">
-            The workspace that knows your context{" "}
-            <em className="font-display italic text-ink-secondary">and runs the work.</em>
+            One workspace where your team and its AI{" "}
+            <em className="font-display italic text-ink-secondary">work as one.</em>
           </h1>
-          <p data-reveal className="mt-6 max-w-[52ch] font-sans text-[length:var(--text-body)] leading-[var(--text-body--line-height)] text-ink-secondary">
-            Souvenir connects your apps into one shared context, then runs your multi-step work in the
-            background — for individuals and teams.
+          <p data-reveal className="mt-6 max-w-[56ch] font-sans text-[length:var(--text-body)] leading-[var(--text-body--line-height)] text-ink-secondary">
+            One shared workspace where a team of AI Assistants pulls your apps and data together, then
+            runs the work in the background. Managed from Slack.
           </p>
           <div data-reveal className="mt-9" style={{ ["--font-size-body"]: "16px", ["--line-height-body"]: "24px" } as CSSProperties}>
             <a href={DEMO_URL} target="_blank" rel="noreferrer" className="inline-flex"><Button variant="default" size="md" className="px-7 py-3" rightIcon={<ArrowRightOneIcon size={16} />}>Book a Demo</Button></a>

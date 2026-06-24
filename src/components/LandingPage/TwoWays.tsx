@@ -79,12 +79,12 @@ export default function TwoWays() {
                   ))}
                 </ul>
                 <div
-                  className="mt-8 flex flex-1 items-end"
+                  className="mt-8 flex flex-1 items-end justify-end"
                   style={{ ["--font-size-body" as string]: "15px", ["--line-height-body" as string]: "22px" }}
                 >
-                  <a href={p.href} className="w-full">
+                  <a href={p.href} className="inline-flex">
                     {/* equal billing — both paths get the same CTA weight (true 50/50) */}
-                    <Button variant="default" size="md" className="w-full justify-center px-6 py-3">
+                    <Button variant="default" size="md" className="justify-center px-6 py-3">
                       {p.cta}
                     </Button>
                   </a>

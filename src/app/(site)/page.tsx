@@ -1,14 +1,13 @@
 import type { Metadata } from "next";
 import LandingHero from "@/components/LandingPage/LandingHero";
 import TwoWays from "@/components/LandingPage/TwoWays";
-import Breaking from "@/components/LandingPage/Breaking";
-import Relief from "@/components/LandingPage/Relief";
+import SinglePlayer from "@/components/LandingPage/SinglePlayer";
 import Turn from "@/components/LandingPage/Turn";
 import FeatureSplit from "@/components/AIAgentsPage/FeatureSplit";
 import Pillars from "@/components/LandingPage/Pillars";
 import BrainProof from "@/components/LandingPage/BrainProof";
 import CategoryTable from "@/components/LandingPage/CategoryTable";
-import FinalCTABand from "@/components/sections/FinalCTABand";
+import FinalCtaConnectors from "@/components/LandingPage/FinalCtaConnectors";
 import SlackBrainMap from "@/components/LandingPage/SlackBrainMap";
 
 export const metadata: Metadata = {
@@ -25,8 +24,7 @@ export default function Home() {
   return (
     <>
       <LandingHero />
-      <Breaking />
-      <Relief />
+      <SinglePlayer />
       <Turn />
       <TwoWays />
       <FeatureSplit
@@ -38,11 +36,7 @@ export default function Home() {
       <Pillars />
       <BrainProof />
       <CategoryTable />
-      <FinalCTABand
-        appGrid
-        title="One Brain. A coordinated team of agents."
-        body="Souvenir brings your apps, scattered data, and daily workflows into a single operational layer — with a dedicated workforce of AI Assistants to run your work on autopilot."
-      />
+      <FinalCtaConnectors />
     </>
   );
 }
