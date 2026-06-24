@@ -34,6 +34,14 @@ next session can follow, not a story. Format:
 
 ## Log
 
+### [2026-06-20] Don't change locked nav design intent; verify EVERY nav state; morph must interpolate · (NAV/MOTION)
+- **What happened / feedback:** Asked to fix the nav "going on one side," I restructured the **centered** desktop menu to left-aligned-after-logo. That **destroyed the centered experience Chai wanted** — a design-intent change made without approval — and I changed it across breakpoints without walking each navbar STATE on the collapse. Chai: revert to centered, make it responsive *from the center*, consider every state on the transition. Separately surfaced: the flush→pill morph wasn't smooth — the width **snapped**.
+- **Rule going forward:**
+  1. **The desktop nav menu is CENTERED — locked design intent.** Never restructure the nav's layout/alignment without explicit sign-off. "Fix responsiveness" ≠ "redesign the layout."
+  2. **The navbar is a multi-STATE component. Before AND after any nav change, screenshot-verify EVERY state:** scroll `{flush, pill}` × breakpoint `{mobile <640, tablet 640–1023, desktop ≥1024}` × menu `{closed, mega-open, drawer-open}` — **plus the flush⇄pill transition in BOTH directions** (scroll down to the sections AND back up to the hero). Missing one state is the mistake.
+  3. **A morph must interpolate.** Never transition `max-width: none` — `none` is not a length, so it can't interpolate and the width SNAPS while padding/blur/fill ease (the janky collapse). Use `max-width: 100%` (resolves to px) + center in both states (`margin-inline: auto`) so the contraction stays centered. Verify smoothness by **sampling the element width across the transition**, not by eye.
+- **Promoted to:** `.claude/skills/souvenir-taste/SKILL.md` (nav-centered intent + verify-every-state) + this file.
+
 ### [2026-06-19] SEO foundation shipped — don't add a global title template or root canonical on this site · (SEO/METADATA)
 - **What happened / feedback:** Added a root `title.template` (`%s · Souvenir`) + root `alternates.canonical: "/"`. Build verification showed every page title doubled the brand (`Brain & Automation — Souvenir · Souvenir`) and EVERY subpage canonicalised to the home URL — which would deindex them. Pages here already use self-contained titles (`X — Souvenir`).
 - **Rule going forward:** No global title template (titles are self-contained; `pageMeta` appends ` — Souvenir` only if absent). Canonical is per-page/self-referencing via `pageMeta`, never a root default. With `output: "export"`, metadata image routes need `export const dynamic = "force-static"`, and a page that overrides `openGraph` drops the file-based `og:image` unless it re-adds it — so leave `openGraph` to inherit on the home page. Full rules now in the `seo` skill.

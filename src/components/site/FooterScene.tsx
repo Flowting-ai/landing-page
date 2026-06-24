@@ -54,8 +54,6 @@ export default function FooterScene({ children }: { children: React.ReactNode })
     >
       {/* scenery image (decorative) */}
       <div className="footer-scene__img" aria-hidden />
-      {/* grain over the whole footer — unifies cream fill + image texture */}
-      <div className="footer-scene__grain" aria-hidden />
       {/* cursor-tracked sunlight pool */}
       <div className="footer-scene__sun" aria-hidden />
       {/* content overlaid */}

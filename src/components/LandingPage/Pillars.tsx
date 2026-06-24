@@ -24,9 +24,9 @@ function PillarVisual({ kind }: { kind: number }) {
 }
 
 const PILLARS = [
-  { n: "01", title: "A team of Assistants, not a chatbot.", body: "Each Assistant has a role. They think, decide, and hand work to each other. You manage them like a team." },
-  { n: "02", title: "Background automation, no babysitting.", body: "A team of AI Agents that executes complex work in the background — no constant supervision needed." },
-  { n: "03", title: "Not one AI co-worker, but a full AI department.", body: "Role-tuned AI Assistants that coordinate, hand off, and share memory. Grow output without growing headcount. One Slack bot manages them." },
+  { n: "01", title: "A team of agents, not a chatbot.", body: "Each agent has a role. They think, decide, and hand work to each other. You manage them like a team." },
+  { n: "02", title: "Background automation, no babysitting.", body: "A team of AI agents that executes complex work in the background — no constant supervision needed." },
+  { n: "03", title: "Not one AI co-worker, but a full AI department.", body: "Role-tuned AI agents that coordinate, hand off, and share memory. Grow output without growing headcount. One Slack bot manages them." },
   { n: "04", title: "One chatspace. Every frontier model.", body: "Auto-routes prompts to the best model for quality and cost. Persistent memory across sessions. Pins, folders, and shared projects keep nothing scattered." },
 ];
 
@@ -42,7 +42,7 @@ export default function Pillars() {
         <div className="mt-14 grid gap-5 lg:grid-cols-2">
           {PILLARS.map((p, i) => (
             <Reveal key={p.n} delay={(i % 2) * 0.08}>
-              <div className="relative flex h-full flex-col rounded-[var(--r-2xl)] border border-line bg-surface p-6 sm:p-8" style={{ boxShadow: "var(--shadow-sm)" }}>
+              <div className="relative flex h-full flex-col overflow-hidden rounded-[var(--r-2xl)] border border-line bg-surface p-4 sm:p-8" style={{ boxShadow: "var(--shadow-sm)" }}>
                 <span aria-hidden className="pointer-events-none absolute inset-0 rounded-[var(--r-2xl)]" style={{ boxShadow: "var(--shadow-inner)" }} />
                 <span className="font-mono text-[var(--text-micro)] uppercase tracking-[0.12em] text-ink-subtle">Pillar {p.n}</span>
                 <h3 className="font-display mt-2 max-w-[24ch] text-[length:var(--text-h3)] text-ink">{p.title}</h3>

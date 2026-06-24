@@ -1,0 +1,24 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Account avatar">
+  <defs>
+    <!-- Warm cream → ochre-gold → dusty-mauve blend, on-brand with the site palette. -->
+    <linearGradient id="orbWarm" x1="14" y1="8" x2="52" y2="58" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#F2E9DA" />
+      <stop offset="0.48" stop-color="#C99A52" />
+      <stop offset="1" stop-color="#674F68" />
+    </linearGradient>
+    <!-- Soft top-left sheen so it reads as a lit sphere, not a flat disc. -->
+    <radialGradient id="orbSheen" cx="0.34" cy="0.28" r="0.7" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.55" />
+      <stop offset="0.45" stop-color="#FFFFFF" stop-opacity="0.08" />
+      <stop offset="1" stop-color="#FFFFFF" stop-opacity="0" />
+    </radialGradient>
+    <!-- Gentle bottom-right falloff for depth. -->
+    <radialGradient id="orbShade" cx="0.74" cy="0.8" r="0.6" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#2E2622" stop-opacity="0.28" />
+      <stop offset="1" stop-color="#2E2622" stop-opacity="0" />
+    </radialGradient>
+  </defs>
+  <rect width="64" height="64" fill="url(#orbWarm)" />
+  <rect width="64" height="64" fill="url(#orbShade)" />
+  <rect width="64" height="64" fill="url(#orbSheen)" />
+</svg>

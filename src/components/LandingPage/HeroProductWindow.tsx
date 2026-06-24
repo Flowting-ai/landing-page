@@ -338,11 +338,23 @@ export default function HeroProductWindow() {
               transform: `scale(${scale})`,
               transformOrigin: "top left",
               pointerEvents: "none",
+              // The product UI must NOT inherit the hero's `text-center` — that
+              // leaked into the Pinboard (pin titles read centered). Reset to the
+              // product's natural left baseline for the whole window.
+              textAlign: "left",
             }}
           >
             <ChatBoard
               topBarLabel="Souvenir AI · Muse"
-              sidebarProps={{ projects: SIDEBAR_PROJECTS, recents: SIDEBAR_RECENTS }}
+              sidebarProps={{
+                projects: SIDEBAR_PROJECTS,
+                recents: SIDEBAR_RECENTS,
+                userName: "Power User",
+                // Gimmicky role tag, not a real email — the .edu address read as
+                // placeholder. Overrides the ChatBoard template default.
+                userEmail: "Certified power user",
+                avatarSrc: "/hero/avatar.svg",
+              }}
               pinboardProps={{ pins: livePins }}
               chatInputProps={{ value: "", onChange: () => {} }}
             >

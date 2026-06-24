@@ -52,6 +52,12 @@ a warm, tangible, kept object. Every section serves three pillars:
   only for marquees/time. Enter decelerates, exit accelerates — don't just reverse the curve.
 - One signature moment per page; layout + type locked BEFORE motion. Animate transform/opacity
   only. Always honor `prefers-reduced-motion`.
+- **Multi-state components (esp. the site nav): the desktop nav menu is CENTERED — locked design
+  intent; never restructure its layout/alignment without explicit sign-off.** Before AND after any
+  nav change, screenshot-verify EVERY state: scroll `{flush, pill}` × breakpoint
+  `{mobile, tablet, desktop}` × menu `{closed, mega-open, drawer-open}`, plus the flush⇄pill morph in
+  BOTH directions. A morph must interpolate: never transition `max-width: none` (snaps) — use a length
+  like `100%`. (See LEARNINGS 2026-06-20.)
 
 ## Typography & layout
 - Besley for display/headlines (push hero toward fluid `clamp` ~72–120px); Geist for body.

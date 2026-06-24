@@ -91,19 +91,19 @@ export default function SlackBrainMap() {
       {/* Brain (Souvenir mark) + Slack header */}
       <div className="flex items-center gap-3">
         <span
-          className="flex h-12 w-12 items-center justify-center rounded-full bg-ink"
+          className="flex h-16 w-16 items-center justify-center rounded-full bg-ink"
           style={{ boxShadow: "var(--shadow-lg), 0 0 0 3px var(--purple-50)" }}
         >
-          <LogoIcon size={24} color="var(--dark-ink)" />
+          <LogoIcon size={32} color="var(--dark-ink)" />
         </span>
         <span aria-hidden className="text-ink-subtle">
           +
         </span>
         <span
-          className="flex h-12 w-12 items-center justify-center rounded-[14px] border border-line bg-surface"
+          className="flex h-16 w-16 items-center justify-center rounded-[16px] border border-line bg-surface"
           style={{ boxShadow: "var(--shadow-sm)" }}
         >
-          <ConnectorIcon id="slack" size={24} />
+          <ConnectorIcon id="slack" size={32} />
         </span>
       </div>
       <Join />
