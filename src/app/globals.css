@@ -259,7 +259,7 @@ body { min-height: 100dvh; background: var(--bg); color: var(--ink); font-family
 .site-nav__pill.is-pill .nav-viewport {
   width: 100%;
   border: 1px solid var(--line);
-  border-radius: var(--r-lg);
+  border-radius: var(--r-xl);   /* match the product/guide card radius family */
 }
 
 .nav-content { position: absolute; top: 0; left: 0; right: 0; }
