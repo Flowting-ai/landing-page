@@ -1,0 +1,90 @@
+{
+  "slug": "share-import-agents",
+  "title": "Share & Import Agents",
+  "overview": "Share the agents you build and import agents your teammates send you — all in a couple of clicks.",
+  "supademoId": "cmqzn5zlk05ghqm4iiyfakry7",
+  "steps": [
+    {
+      "num": 1,
+      "text": "Firstly, click the Agents tab to view and manage your agents.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/lF27QB51Yh0xGvL8A25fC.jpg",
+      "hotspot": {
+        "x": 7.4,
+        "y": 6.9
+      }
+    },
+    {
+      "num": 2,
+      "text": "Choose an agent from your library that you want to share, then click the copy link button to copy its URL.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/yiSGEYB_JsqFsCyDRmk5U.jpg",
+      "hotspot": {
+        "x": 35.1,
+        "y": 29.2
+      }
+    },
+    {
+      "num": 3,
+      "text": "After that, enter your colleague's email address to send them a sharing invite.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/rCrgBiPbZWtRDjtoQH4_D.jpg",
+      "hotspot": {
+        "x": 54.3,
+        "y": 55.4
+      }
+    },
+    {
+      "num": 4,
+      "text": "Then, click the Send invite button to share this agent with the recipient.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/sSgE9NQtOSJ89fPVtzDCm.jpg",
+      "hotspot": {
+        "x": 74.4,
+        "y": 55.8
+      }
+    },
+    {
+      "num": 5,
+      "text": "Following this, click the Republish button to save and publish your sharing changes.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/cJj_oviebmB2NobqnHW1e.jpg",
+      "hotspot": {
+        "x": 95.2,
+        "y": 3.8
+      }
+    },
+    {
+      "num": 6,
+      "text": "On the receiving end: open the email with the shared agent link and click Add to my account to import it.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/xrUMwGtOi3nYL3MWCujXx.jpg",
+      "hotspot": {
+        "x": 46.5,
+        "y": 45.8
+      }
+    },
+    {
+      "num": 7,
+      "text": "After that, click the Accept & copy agent button to add the Souvenir Scout agent.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/5GB-3F9nnYYEEPumNhXHR.jpg",
+      "hotspot": {
+        "x": 64.3,
+        "y": 69.8
+      }
+    },
+    {
+      "num": 8,
+      "text": "Go to your Agents page and click Use in chat to start using the agent in the chatspace.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/7MQ3fPK7v2en0joF3nnDq.jpg",
+      "hotspot": {
+        "x": 44.7,
+        "y": 29.3
+      }
+    },
+    {
+      "num": 9,
+      "text": "As the final step, click the message input field to type your message to the Souvenir Scout agent.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/B-QVHo6g9QfmVXiPYKsEr.jpg",
+      "hotspot": {
+        "x": 46.5,
+        "y": 88.3
+      }
+    }
+  ],
+  "aspect": "1920 / 1200"
+}

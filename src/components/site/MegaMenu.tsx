@@ -209,7 +209,7 @@ const sheetInnerStyle = { maxWidth: "var(--maxw)", paddingInline: "var(--gutter)
 const FOOTER_LINKS = [
   { label: "Pricing", href: "/pricing" },
   { label: "Integrations", href: "/integrations" },
-  { label: "Guide", href: "/guide" },
+  { label: "Learning Guide", href: "/guide" },
 ];
 
 /** Utility footer bar — a full-width strip grounding the sheet: secondary links

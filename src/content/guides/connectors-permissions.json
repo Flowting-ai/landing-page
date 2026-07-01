@@ -1,0 +1,122 @@
+{
+  "slug": "connectors-permissions",
+  "title": "Connectors & Permissions",
+  "overview": "Enable connectors for your whole organization, approve member requests, and scope shared connectors to specific teams.",
+  "supademoId": "cmr05pgw50kgwqm4iu8qbvizy",
+  "steps": [
+    {
+      "num": 1,
+      "text": "First off, click on “Manage Souvenir” to access settings and configuration options.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/-av3vjk3eS-KsB4nA_dbw.jpg",
+      "hotspot": {
+        "x": 8.8,
+        "y": 14.8
+      }
+    },
+    {
+      "num": 2,
+      "text": "Next, click the Connectors option to configure your workspace integrations.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/-O45iQ4GbKgnLqi1xKuYX.jpg",
+      "hotspot": {
+        "x": 7.9,
+        "y": 45.5
+      }
+    },
+    {
+      "num": 3,
+      "text": "In the connectors catalog, you can see every connector Souvenir offers.",
+      "image": null
+    },
+    {
+      "num": 4,
+      "text": "Following this, toggle the switch to enable a connector for your entire organization — use this for a common connector everyone in your org uses.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/8NwqGTMAJR97gew55zrP5.jpg",
+      "hotspot": {
+        "x": 85.7,
+        "y": 40.1
+      }
+    },
+    {
+      "num": 5,
+      "text": "In the Permissions tab, you can see who is requesting connector access — editors and members can request a connector for their team or project.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/hEzF_5TS5QluIWSGEjHoN.jpg",
+      "hotspot": {
+        "x": 43,
+        "y": 44.5
+      }
+    },
+    {
+      "num": 6,
+      "text": "Next, review the connector request message and the member who requested it before approving.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/hEzF_5TS5QluIWSGEjHoN.jpg",
+      "hotspot": {
+        "x": 43,
+        "y": 44.5
+      }
+    },
+    {
+      "num": 7,
+      "text": "After that, click the Approve button to authorize the connector request.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/4upwok1fYxU9cFlrwZIUi.jpg",
+      "hotspot": {
+        "x": 85.4,
+        "y": 43.6
+      }
+    },
+    {
+      "num": 8,
+      "text": "In the Manage Connectors section, you can manage connectors shared across multiple accounts and assign them to a specific team.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/jArFAPOnZAQFCRVIqykFF.jpg",
+      "hotspot": {
+        "x": 64.1,
+        "y": 63.1
+      }
+    },
+    {
+      "num": 9,
+      "text": "Next, click the Manage button to configure shared connector accounts.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/jArFAPOnZAQFCRVIqykFF.jpg",
+      "hotspot": {
+        "x": 64.1,
+        "y": 63.1
+      }
+    },
+    {
+      "num": 10,
+      "text": "After that, click Manage to configure the connector settings and team access.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/QSwna5ynYKppGKmI9f0gF.jpg",
+      "hotspot": {
+        "x": 85,
+        "y": 35.8
+      }
+    },
+    {
+      "num": 11,
+      "text": "Enable this toggle to attach the shared connector to a specific team.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/tuvFeEiuyXWr9iWzewKip.jpg",
+      "hotspot": {
+        "x": 86.7,
+        "y": 75.1
+      }
+    },
+    {
+      "num": 12,
+      "text": "Now you have the flexibility to grant connector permissions at the individual team level.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/LwBTpDuo1DwA2imHYtWMb.jpg",
+      "hotspot": {
+        "x": 83.3,
+        "y": 29.6
+      }
+    },
+    {
+      "num": 13,
+      "text": "Now, click the All permissions dropdown to view the available permission options.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/6YC3JlVoWp2C7qT0GyzYU.jpg",
+      "hotspot": {
+        "x": 82.1,
+        "y": 36.1
+      }
+    }
+  ],
+  "aspect": "3828 / 1962"
+}

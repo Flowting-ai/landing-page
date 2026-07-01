@@ -1,0 +1,72 @@
+{
+  "slug": "query-ga-scout",
+  "title": "Query GA with Scout",
+  "overview": "Ask the Souvenir Scout agent for your Google Analytics numbers in plain language — no dashboards required.",
+  "supademoId": "cmqynsc011yb1qmec1r8ek0ir",
+  "steps": [
+    {
+      "num": 1,
+      "text": "To get started, click the Chats tab to view your conversation history and active discussions.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/YKOY6S2YhV8A5Y5Mf0lR_.jpg",
+      "hotspot": {
+        "x": 4.1,
+        "y": 10.4
+      }
+    },
+    {
+      "num": 2,
+      "text": "Click here to add an agent to your chat at any time.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/yDRHTEHOZM6l_8iNDYFer.jpg",
+      "hotspot": {
+        "x": 41.5,
+        "y": 48.6
+      }
+    },
+    {
+      "num": 3,
+      "text": "From here, click Add agent to bring a new agent into your workspace.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/Msg-Gv1etGRlpuj5JqS4R.jpg",
+      "hotspot": {
+        "x": 44.7,
+        "y": 37.9
+      }
+    },
+    {
+      "num": 4,
+      "text": "Select any agent from your library to add it to the chat.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/OVyKhezSRDf8LU0X7nvsw.jpg",
+      "hotspot": {
+        "x": 57.5,
+        "y": 27.1
+      }
+    },
+    {
+      "num": 5,
+      "text": "Afterwards, click in the message input field and enter your question for Souvenir Scout.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/0Q4NsrmeDbdLa_CePfhN-.jpg",
+      "hotspot": {
+        "x": 51.7,
+        "y": 40.5
+      }
+    },
+    {
+      "num": 6,
+      "text": "Then, enter your query in the message box to request data from Google Analytics.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/Pdje0uaLfZJAKlOt78y57.jpg",
+      "hotspot": {
+        "x": 40.1,
+        "y": 37.8
+      }
+    },
+    {
+      "num": 7,
+      "text": "Then, click the Send button to submit your message and run the agent request.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/a5T3pAHTxQyGm8u8HXNBq.jpg",
+      "hotspot": {
+        "x": 75.5,
+        "y": 46.9
+      }
+    }
+  ],
+  "aspect": "3789 / 2049"
+}

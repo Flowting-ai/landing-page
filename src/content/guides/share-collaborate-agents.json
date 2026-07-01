@@ -1,0 +1,140 @@
+{
+  "slug": "share-collaborate-agents",
+  "title": "Share & Collaborate on Agents",
+  "overview": "Work on agents as a team — share an agent with specific teams, set visibility, and use it together inside a team project.",
+  "supademoId": "cmqzuimqs0c24qm4i4jrtz190",
+  "steps": [
+    {
+      "num": 1,
+      "text": "To get started, click the Agents tab to view and manage your available agents.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/rdjaPgpXYiwBa0cL5E-Fz.jpg",
+      "hotspot": {
+        "x": 8.6,
+        "y": 7.5
+      }
+    },
+    {
+      "num": 2,
+      "text": "Afterwards, click the share link button to share the agent configuration with your team.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/KCwh-swST4Q4c2YBicnly.jpg",
+      "hotspot": {
+        "x": 35.7,
+        "y": 29.1
+      }
+    },
+    {
+      "num": 3,
+      "text": "Souvenir lets you build an agent once and share it with specific team members or your entire team — so everyone works from the same brain without losing control over who has access to what.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/u4N3VeAH9z1cnhKLS2Zb0.jpg",
+      "hotspot": {
+        "x": 73.1,
+        "y": 26.2
+      }
+    },
+    {
+      "num": 4,
+      "text": "Then click the dropdown to select which teams in your organization can access this agent.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/u4N3VeAH9z1cnhKLS2Zb0.jpg",
+      "hotspot": {
+        "x": 73.1,
+        "y": 26.2
+      }
+    },
+    {
+      "num": 5,
+      "text": "After that, select the team you want to share this agent with.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/IFzCKmqFTq7B86QoehoML.jpg",
+      "hotspot": {
+        "x": 44.7,
+        "y": 42.8
+      }
+    },
+    {
+      "num": 6,
+      "text": "Clicking Save visibility makes the agent visible to the team members you selected.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/6-Agzrxy1BqEKsIjHiaD3.jpg",
+      "hotspot": {
+        "x": 60.5,
+        "y": 65.1
+      }
+    },
+    {
+      "num": 7,
+      "text": "Next, click the Republish button to save and deploy your sharing changes.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/LT3lyq3adhoEaHG7rsNVR.jpg",
+      "hotspot": {
+        "x": 96.4,
+        "y": 3.7
+      }
+    },
+    {
+      "num": 8,
+      "text": "Next up, click the Chats tab to view and manage your conversations with agents.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/KXkXMLoKEb1t3AzPh_lDf.jpg",
+      "hotspot": {
+        "x": 3.6,
+        "y": 7.2
+      }
+    },
+    {
+      "num": 9,
+      "text": "Click the teams dropdown to select the team where you want to use this agent.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/iYsFlg7oSw9LSubjDCgSu.jpg",
+      "hotspot": {
+        "x": 13.6,
+        "y": 24.5
+      }
+    },
+    {
+      "num": 10,
+      "text": "Scroll to find the team you've shared this agent with.",
+      "image": null
+    },
+    {
+      "num": 11,
+      "text": "Then, click the Product-Design team to open its workspace and access the agent.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/pJjV7HbxkMAMKrjfAh94b.jpg",
+      "hotspot": {
+        "x": 8.6,
+        "y": 40.4
+      }
+    },
+    {
+      "num": 12,
+      "text": "Select the project under the selected team to open it.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/NIwAMftsgQukRRXhefnmr.jpg",
+      "hotspot": {
+        "x": 7.8,
+        "y": 33.2
+      }
+    },
+    {
+      "num": 13,
+      "text": "From here, click the attachment button to add an agent inside your team's project.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/QiWTTu4S92r8FxaTVFFZq.jpg",
+      "hotspot": {
+        "x": 31.8,
+        "y": 24.2
+      }
+    },
+    {
+      "num": 14,
+      "text": "Next, click Add agent to access your agent.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/I_p2a7DQLgecTsPXopcXh.jpg",
+      "hotspot": {
+        "x": 36.4,
+        "y": 17.9
+      }
+    },
+    {
+      "num": 15,
+      "text": "Now select the agent you shared with this team — your teammates will be able to access it too.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/Ai9LrIHm8z36NB7Bk3Ezt.jpg",
+      "hotspot": {
+        "x": 51.3,
+        "y": 8.4
+      }
+    }
+  ],
+  "aspect": "1920 / 1200"
+}

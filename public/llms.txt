@@ -1,0 +1,20 @@
+# Souvenir — Learning Guide
+
+> Step-by-step guides for using Souvenir: the Chatspace and models, building AI agents, teams and admin. Each guide pairs a live interactive demo with a written walkthrough, and is available as Markdown at the .md URL below.
+
+## Guides
+- [Move & Monitor Chats](https://www.getsouvenir.com/guides/analytics-chats.md): Move chats into projects and keep your analytics work organized across your workspace.
+- [The Souvenir Chatspace](https://www.getsouvenir.com/guides/chatspace.md): Your home base for working with AI — start a chat, switch models on the fly, and keep every conversation in one place.
+- [Compare and Deploy AI Models on Souvenir](https://www.getsouvenir.com/guides/compare-models.md): Run the same prompt across GPT, Claude, and Gemini side by side, then deploy the model that wins — without leaving the chat.
+- [Connectors & Permissions](https://www.getsouvenir.com/guides/connectors-permissions.md): Enable connectors for your whole organization, approve member requests, and scope shared connectors to specific teams.
+- [Create and Deploy a Custom AI Agent on Souvenir](https://www.getsouvenir.com/guides/create-agent.md): Build a custom AI agent from scratch — give it a name, instructions, knowledge, and tools, then deploy it to your workspace.
+- [Highlights](https://www.getsouvenir.com/guides/highlights.md): Save the moments that matter — highlight key passages from any answer, reuse them, and find them all in one panel.
+- [Import the Research Analyst](https://www.getsouvenir.com/guides/import-research-analyst.md): Add the ready-made Google Research Analyst agent to your workspace from a teammate's share link.
+- [Invite Team Members](https://www.getsouvenir.com/guides/invite-members.md): Invite people to your workspace, set their role, assign them to a team, and cap their credits.
+- [Personal Projects](https://www.getsouvenir.com/guides/personal-projects.md): Keep your own work in its own space — switch to personal projects and spin up a new one with a name and goals.
+- [Organize Pins & Folders](https://www.getsouvenir.com/guides/pins.md): Keep your best chats within reach — pin what matters, add notes, and group your pins into folders.
+- [Query GA with Scout](https://www.getsouvenir.com/guides/query-ga-scout.md): Ask the Souvenir Scout agent for your Google Analytics numbers in plain language — no dashboards required.
+- [Set Up Teams](https://www.getsouvenir.com/guides/set-up-teams.md): Create a team, describe what it works on, add members and roles, and scope which connectors it can use.
+- [Share & Collaborate on Agents](https://www.getsouvenir.com/guides/share-collaborate-agents.md): Work on agents as a team — share an agent with specific teams, set visibility, and use it together inside a team project.
+- [Share GA Reports](https://www.getsouvenir.com/guides/share-ga-reports.md): Turn an analytics chat into a shareable report — set its visibility, choose a permission level, and share it with the right people.
+- [Share & Import Agents](https://www.getsouvenir.com/guides/share-import-agents.md): Share the agents you build and import agents your teammates send you — all in a couple of clicks.

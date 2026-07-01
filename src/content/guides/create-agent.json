@@ -1,0 +1,392 @@
+{
+  "slug": "create-agent",
+  "title": "Create and Deploy a Custom AI Agent on Souvenir",
+  "overview": "Build a custom AI agent from scratch — give it a name, instructions, knowledge, and tools, then deploy it to your workspace.",
+  "supademoId": "cmqykxfc71x0xqmecwmljci35",
+  "steps": [
+    {
+      "num": 1,
+      "text": "To begin, click the Agents tab to view and manage available AI agents.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/oAMifnS4XtQf74sXsqnpY.jpg",
+      "hotspot": {
+        "x": 8.6,
+        "y": 10.1
+      }
+    },
+    {
+      "num": 2,
+      "text": "This is your AI Assistant library. All your team's assistants live here. Click any card to open it or create a new one",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/nO15AiPBY0JhVqR62dsqD.jpg",
+      "hotspot": {
+        "x": 81.9,
+        "y": 13.4
+      }
+    },
+    {
+      "num": 3,
+      "text": "Then, click the New agent button to create and configure a new AI agent.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/nO15AiPBY0JhVqR62dsqD.jpg",
+      "hotspot": {
+        "x": 81.9,
+        "y": 13.4
+      }
+    },
+    {
+      "num": 4,
+      "text": "Pick a template to get started quickly, or click Start blank to build a custom AI Assistant from scratch.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/xaq9v9ZuOWghW-K99qbJH.jpg",
+      "hotspot": {
+        "x": 76.5,
+        "y": 28.3
+      }
+    },
+    {
+      "num": 5,
+      "text": "From here, click Start blank to create a new custom agent from scratch.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/xaq9v9ZuOWghW-K99qbJH.jpg",
+      "hotspot": {
+        "x": 76.5,
+        "y": 28.3
+      }
+    },
+    {
+      "num": 6,
+      "text": "Next, enter a concise description of what this agent should accomplish in plain English.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/x5WnFuvx-h2fx79a6KgRc.jpg",
+      "hotspot": {
+        "x": 45.7,
+        "y": 28.2
+      }
+    },
+    {
+      "num": 7,
+      "text": "Then, click the Continue button to proceed to the next configuration step.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/i1LRy3ME1E51bCyVe8C5I.jpg",
+      "hotspot": {
+        "x": 77.3,
+        "y": 44.3
+      }
+    },
+    {
+      "num": 8,
+      "text": "Next up, enter your desired agent name in the text field to continue setup.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/7chyAXVrfXPkM_-YP8NGU.jpg",
+      "hotspot": {
+        "x": 52.2,
+        "y": 27
+      }
+    },
+    {
+      "num": 9,
+      "text": "Now, click the Continue button to proceed with setting up your agent.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/CUkj5JqL1iMV8dfG8RFc8.jpg",
+      "hotspot": {
+        "x": 68.1,
+        "y": 41.1
+      }
+    },
+    {
+      "num": 10,
+      "text": "Choose how your AI Assistant should sound and behave in every conversation.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/CSx1qpx47p7aQm71ZW7cz.jpg",
+      "hotspot": {
+        "x": 45,
+        "y": 31.9
+      }
+    },
+    {
+      "num": 11,
+      "text": "Afterwards, click the Continue button to proceed to the next configuration step.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/M9Pbz0TJqzODBRvxWCiGS.jpg",
+      "hotspot": {
+        "x": 77.5,
+        "y": 59.3
+      }
+    },
+    {
+      "num": 12,
+      "text": "Click Select model to choose the right AI model for your assistant. Use a cost-efficient model for simple tasks and a powerful one for complex work.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/VTzxyqwHAsgQ3ZZBdyyQE.jpg",
+      "hotspot": {
+        "x": 45.8,
+        "y": 29.7
+      }
+    },
+    {
+      "num": 13,
+      "text": "After that, select any model from the model dropdown list to configure the agent.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/70C4ZKqJlWk01m94j826U.jpg",
+      "hotspot": {
+        "x": 46.5,
+        "y": 46.7
+      }
+    },
+    {
+      "num": 14,
+      "text": "Review the system instruction to see how your assistant behaves. You can edit it or add your own custom instructions to tailor it to your exact needs.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/be2a5jv5vcRBDai6a56kz.jpg",
+      "hotspot": {
+        "x": 71.5,
+        "y": 53.8
+      }
+    },
+    {
+      "num": 15,
+      "text": "Not sure how to improve your instructions? Click Enhance and Souvenir will automatically make them clearer and more powerful.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/KNT8PP7UdgEHbe5nr_0B7.jpg",
+      "hotspot": {
+        "x": 74.2,
+        "y": 62.8
+      }
+    },
+    {
+      "num": 16,
+      "text": "Set the creativity level. Closer to 0 means precise answers straight from your sources. Closer to 1 gives your assistant more freedom to research and go beyond the source.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/qYO6VBGjOX3uwmkrZK1_u.jpg",
+      "hotspot": {
+        "x": 60.7,
+        "y": 96
+      }
+    },
+    {
+      "num": 17,
+      "text": "Now, click the Continue button to proceed to the next configuration step.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/qYO6VBGjOX3uwmkrZK1_u.jpg",
+      "hotspot": {
+        "x": 60.7,
+        "y": 96
+      }
+    },
+    {
+      "num": 18,
+      "text": "Then, click the \"Change Image\" button to update the agent's avatar.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/v-r80G3n-CCPotXMDywVl.jpg",
+      "hotspot": {
+        "x": 53.8,
+        "y": 18.5
+      }
+    },
+    {
+      "num": 19,
+      "text": "Following that, click the Continue button to proceed to the next configuration step.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/oyEmq-Cbp62_yYLlk6ME9.jpg",
+      "hotspot": {
+        "x": 63.6,
+        "y": 95.6
+      }
+    },
+    {
+      "num": 20,
+      "text": "Now, click Upload Files to add knowledge sources for your Agent.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/QJ3ARQbFc9rkfaSNsXYx8.jpg",
+      "hotspot": {
+        "x": 58.3,
+        "y": 49.8
+      }
+    },
+    {
+      "num": 21,
+      "text": "After that, click the Continue button to proceed to the next configuration step.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/8NRs0u80Fv2eHDgnYrcRm.jpg",
+      "hotspot": {
+        "x": 63.1,
+        "y": 95.4
+      }
+    },
+    {
+      "num": 22,
+      "text": "Here you can see all the apps already connected to your workspace.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/tJ01nbuXFHitq_2_8FzJJ.jpg",
+      "hotspot": {
+        "x": 78,
+        "y": 33.3
+      }
+    },
+    {
+      "num": 23,
+      "text": "Toggle any one on to give your AI Assistant access to its data.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/tJ01nbuXFHitq_2_8FzJJ.jpg",
+      "hotspot": {
+        "x": 78,
+        "y": 33.3
+      }
+    },
+    {
+      "num": 24,
+      "text": "Need to connect a new app? Click Manage in Settings to add connectors and make them available to your AI Assistants.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/ay2W4g77URdP5VLqRXqXu.jpg",
+      "hotspot": {
+        "x": 77.7,
+        "y": 33
+      }
+    },
+    {
+      "num": 25,
+      "text": "After that, click the Continue button to proceed to the next step.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/aHCBSqKdkJn_4eDwvrcXU.jpg",
+      "hotspot": {
+        "x": 62.3,
+        "y": 94.4
+      }
+    },
+    {
+      "num": 26,
+      "text": "Next up, click Save version to preserve your current sharing configuration changes.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/rkK2Zhe7aKpUyD1Gp2P3y.jpg",
+      "hotspot": {
+        "x": 91.8,
+        "y": 5.3
+      }
+    },
+    {
+      "num": 27,
+      "text": "View your AI Assistant's full version history and restore any previous version at any time.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/BESmG0bES1U8f2QNewmhR.jpg",
+      "hotspot": {
+        "x": 97.7,
+        "y": 5.5
+      }
+    },
+    {
+      "num": 28,
+      "text": "Next up, close the Versions panel to return to the main Sharing Configuration view.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/BESmG0bES1U8f2QNewmhR.jpg",
+      "hotspot": {
+        "x": 97.7,
+        "y": 5.5
+      }
+    },
+    {
+      "num": 29,
+      "text": "From here, click AI Suggestions to receive automated recommendations for sharing configuration.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/J2KWAsbnfva6W5-OIpTgE.jpg",
+      "hotspot": {
+        "x": 96.6,
+        "y": 47.2
+      }
+    },
+    {
+      "num": 30,
+      "text": "From here, click the input field to ask the AI for guidance on improving your agent.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/UAjku1Y2tQwtbQM0i5WlB.jpg",
+      "hotspot": {
+        "x": 85.6,
+        "y": 86.1
+      }
+    },
+    {
+      "num": 31,
+      "text": "From here, click the input field to ask AI for suggestions improving your agent.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/AiB9GyDwtT4hWS3qJrLnI.jpg",
+      "hotspot": {
+        "x": 79.2,
+        "y": 86.1
+      }
+    },
+    {
+      "num": 32,
+      "text": "Afterwards, click the send button to deliver the email invitation to your colleague.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/FwKBfRNp6jH82S63yxDtV.jpg",
+      "hotspot": {
+        "x": 96.2,
+        "y": 93.1
+      }
+    },
+    {
+      "num": 33,
+      "text": "After that, click the expand button to view AI suggestions for optimizing your agent configuration.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/8J8k9R6YAmKovRewh2vi7.jpg",
+      "hotspot": {
+        "x": 94.7,
+        "y": 5.4
+      }
+    },
+    {
+      "num": 34,
+      "text": "Next up, click the close button to dismiss the AI suggestions panel.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/wdkq93numR_EsE2Ug2sIK.jpg",
+      "hotspot": {
+        "x": 70.7,
+        "y": 14.4
+      }
+    },
+    {
+      "num": 35,
+      "text": "After that, click the Test Chat button to preview your agent in action.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/qWM0d9KfdpIXdg202SGOE.jpg",
+      "hotspot": {
+        "x": 97.2,
+        "y": 43.4
+      }
+    },
+    {
+      "num": 36,
+      "text": "Afterwards, test your agent by typing a message in the test chat field.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/_bSqwpcQoK59e0SoIYR6e.jpg",
+      "hotspot": {
+        "x": 83.2,
+        "y": 86.5
+      }
+    },
+    {
+      "num": 37,
+      "text": "Next up, click the close button to exit the test chat panel.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/IRRWIIgyi318EQCPne2XB.jpg",
+      "hotspot": {
+        "x": 97.3,
+        "y": 5
+      }
+    },
+    {
+      "num": 38,
+      "text": "Next up, click the Publish button to deploy your sharing configuration changes.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/EQ-fCl9YjpyLugLROmzlb.jpg",
+      "hotspot": {
+        "x": 95.5,
+        "y": 4.3
+      }
+    },
+    {
+      "num": 39,
+      "text": "Now, click \"Use this agent\" to add the Souvenir Scout agent to your workspace.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/v4ADHKFDAJxaTkpwJv6DH.jpg",
+      "hotspot": {
+        "x": 56.4,
+        "y": 79.6
+      }
+    },
+    {
+      "num": 40,
+      "text": "Ask your AI Assistant anything and get answers tailored exactly to how you trained it.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/jgYegfI5wU7lovmoLFOfc.jpg",
+      "hotspot": {
+        "x": 52.8,
+        "y": 83.4
+      }
+    },
+    {
+      "num": 41,
+      "text": "Your AI Assistant can pull live data from connected apps like Shopify and ClickUp to give you real time answers and complete tasks for you.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/MYiElNX-VF-6aoSGaj3Nd.jpg",
+      "hotspot": {
+        "x": 52.4,
+        "y": 83.8
+      }
+    },
+    {
+      "num": 42,
+      "text": "Next up, click the Send button to submit your message to the agent.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/aCgTOKtGwMXzbPwSG7r-a.jpg",
+      "hotspot": {
+        "x": 78.4,
+        "y": 89.9
+      }
+    },
+    {
+      "num": 43,
+      "text": "Your AI Assistant pulls live data and gets the work done for you automatically.",
+      "image": null
+    }
+  ],
+  "aspect": "3828 / 1962"
+}

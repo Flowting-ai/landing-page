@@ -1,0 +1,72 @@
+{
+  "slug": "personal-projects",
+  "title": "Personal Projects",
+  "overview": "Keep your own work in its own space — switch to personal projects and spin up a new one with a name and goals.",
+  "supademoId": "cmr02g0w70i76qm4ibhrzrpw8",
+  "steps": [
+    {
+      "num": 1,
+      "text": "First, click the Chats tab to view and manage your conversations.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/ui2FbNnhjaQsan8ygs6U1.jpg",
+      "hotspot": {
+        "x": 4.1,
+        "y": 10.3
+      }
+    },
+    {
+      "num": 2,
+      "text": "Next, click the dropdown arrow to switch between personal projects and team projects.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/UyRe9DmYgCn3mI8SB4tK_.jpg",
+      "hotspot": {
+        "x": 15.3,
+        "y": 34.7
+      }
+    },
+    {
+      "num": 3,
+      "text": "After that, click Personal projects to view and manage all your personal projects.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/kVr1Ja6TKMNoORvpJVjJt.jpg",
+      "hotspot": {
+        "x": 6.5,
+        "y": 41.1
+      }
+    },
+    {
+      "num": 4,
+      "text": "Now, click “New project” to create a fresh project within your personal workspace.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/2oDDhPA_gqL1RY5nI9XzQ.jpg",
+      "hotspot": {
+        "x": 6.1,
+        "y": 43.4
+      }
+    },
+    {
+      "num": 5,
+      "text": "After that, enter a clear project name in the text field to identify your project.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/0fLCb8cVYrspGYEa8VvzN.jpg",
+      "hotspot": {
+        "x": 46.6,
+        "y": 29.3
+      }
+    },
+    {
+      "num": 6,
+      "text": "Following that, enter your project goals in the text area to provide context.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/XHDufObrrJIB_KxZKFJ8J.jpg",
+      "hotspot": {
+        "x": 59,
+        "y": 51.3
+      }
+    },
+    {
+      "num": 7,
+      "text": "To wrap up, click the Create project button to finalize your new project setup.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/ys7XGPgrLgJAoO1XGQPFc.jpg",
+      "hotspot": {
+        "x": 72.9,
+        "y": 72.6
+      }
+    }
+  ],
+  "aspect": "3360 / 1605"
+}

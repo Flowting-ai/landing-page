@@ -1,0 +1,36 @@
+{
+  "slug": "import-research-analyst",
+  "title": "Import the Research Analyst",
+  "overview": "Add the ready-made Google Research Analyst agent to your workspace from a teammate's share link.",
+  "supademoId": "cmqyewcr81sjbqmecahai2272",
+  "steps": [
+    {
+      "num": 1,
+      "text": "Open the email your teammate sent you, find the shared agent, and click Add to my account to import it into your workspace.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/sSoHAYU008EP6OXL5ImxF.jpg",
+      "hotspot": {
+        "x": 49.9,
+        "y": 68.4
+      }
+    },
+    {
+      "num": 2,
+      "text": "Then, click “Accept & copy agent” to add the Google Research Analyst to your account.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/J2YFbgyPwzowCxzDU3qpA.jpg",
+      "hotspot": {
+        "x": 65.4,
+        "y": 77.5
+      }
+    },
+    {
+      "num": 3,
+      "text": "To end off, click the Shared tab to view agents shared with your team.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/corKqtRbKz2A4QnleyS6X.jpg",
+      "hotspot": {
+        "x": 43.4,
+        "y": 7.6
+      }
+    }
+  ],
+  "aspect": "3828 / 1962"
+}
