@@ -191,20 +191,6 @@ body { min-height: 100dvh; background: var(--bg); color: var(--ink); font-family
   box-shadow: var(--shadow-md);
   -webkit-backdrop-filter: blur(8px); backdrop-filter: blur(8px);
 }
-/* DOCS bar (guide pages): the full-width docs layout is too wide for the floating
-   pill, so we keep a full-width, solid, blurred top bar with a hairline underline —
-   a proper docs header that stays put instead of drifting to the middle. */
-.site-nav__pill.is-docs {
-  max-width: 100%;
-  padding: 0.5rem var(--gutter);
-  border-radius: 0;
-  /* Solid (not translucent): a full-width bar has lots of docs content scrolling
-     under it, which ghosts through a see-through fill. */
-  background-color: var(--bg);
-  border-color: transparent;
-  border-bottom-color: var(--line);
-  box-shadow: none;
-}
 
 /* Logo: wordmark over the hero, condensing to the mark in the pill. Width is
    set inline from the asset ratios so the swap is absorbed left-anchored. */
@@ -258,6 +244,23 @@ body { min-height: 100dvh; background: var(--bg); color: var(--ink); font-family
 .nav-viewport[data-state="closed"] { animation: nav-vp-out 150ms var(--ease-out); }
 @keyframes nav-vp-in  { from { opacity: 0; transform: translateY(-6px) scale(0.985); } to { opacity: 1; transform: none; } }
 @keyframes nav-vp-out { from { opacity: 1; transform: none; } to { opacity: 0; transform: translateY(-6px) scale(0.985); } }
+
+/* COLLAPSED PILL dropdown: the full-bleed 100vw sheet detaches from the narrow
+   floating pill, so when `.is-pill` we anchor the mega-menu as a CONTAINED card —
+   centered on the pill's own box (pill max-width), fully rounded + bordered, a
+   hair below the pill. The mega-menu renders inside `.site-nav__pill`, so this
+   scopes cleanly and leaves the flush (full-width) sheet untouched. */
+.site-nav__pill.is-pill .nav-viewport-position {
+  left: 0; right: 0; width: auto;
+  margin-inline: auto;
+  max-width: var(--nav-pill-maxw);
+  top: calc(var(--nav-shell-h) - 0.5rem);
+}
+.site-nav__pill.is-pill .nav-viewport {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: var(--r-lg);
+}
 
 .nav-content { position: absolute; top: 0; left: 0; right: 0; }
 .nav-content[data-motion="from-start"] { animation: nav-c-from-l 220ms var(--ease-out); }

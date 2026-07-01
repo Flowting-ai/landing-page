@@ -44,12 +44,6 @@ export default function SiteNav() {
   const pathname = usePathname() ?? "/";
   const close = () => setOpen(false);
 
-  // Docs/guide pages use a full-width layout (~104rem), so the centered 70rem
-  // floating pill looks marooned — the sidebar + rail stick out past it. On those
-  // routes we keep the nav as a full-width, solid docs bar (no pill morph).
-  const isDocs = pathname.startsWith("/guide");
-  const showMark = !isDocs && scrolled;
-
   // Flush → pill: the bar stays full-width and fill-free over the hero, then
   // condenses into the floating pill once you've scrolled ~halfway down the
   // first screen (≈ halfway through a viewport-tall hero). Threshold reads
@@ -75,12 +69,12 @@ export default function SiteNav() {
       <header className="site-nav sticky top-0 z-50">
         {/* Outer shell holds a CONSTANT reserved height; the morph is all on the pill. */}
         <div className="site-nav__shell">
-            <div className={`site-nav__pill ${isDocs ? "is-docs" : scrolled ? "is-pill" : "is-flush"}`}>
+            <div className={`site-nav__pill ${scrolled ? "is-pill" : "is-flush"}`}>
               <Link href="/" aria-label="Souvenir home" className="inline-flex items-center">
                 <span
                   className="site-nav__logo"
-                  data-scrolled={showMark}
-                  style={{ height: LOGO_H, width: showMark ? MARK_W : WORD_W }}
+                  data-scrolled={scrolled}
+                  style={{ height: LOGO_H, width: scrolled ? MARK_W : WORD_W }}
                 >
                   <Logo variant="wordmark" height={LOGO_H} className="nav-logo-word text-ink" />
                   <Logo variant="mark" height={LOGO_H} className="nav-logo-mark text-ink" />
