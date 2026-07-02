@@ -221,21 +221,25 @@ body { min-height: 100dvh; background: var(--bg); color: var(--ink); font-family
    the nav. The page below it blurs (via .nav-backdrop); the sheet itself is 100%
    solid. Content inside is gutter-aligned to the page container. Only the HEIGHT
    morphs between panels (the sheet is always full width). */
+/* The mega-menu dropdown is a CONTAINED floating card in EVERY nav state (flush +
+   collapsed pill) — one consistent width (the pill's max-width), centered on the
+   trigger, fully rounded + bordered. */
 .nav-viewport-position {
-  position: fixed; top: var(--nav-shell-h); left: 0;
-  width: 100vw;
+  position: fixed; top: var(--nav-shell-h);
+  left: 0; right: 0; width: auto;
+  margin-inline: auto;
+  max-width: var(--nav-pill-maxw);
   z-index: 1; /* above .nav-backdrop (z-0) so the sheet stays crisp */
   pointer-events: none;
 }
 .nav-viewport {
   pointer-events: auto;
-  /* Force full-bleed — override Radix's inline content-width var. */
-  width: 100vw;
+  width: 100%;
   height: var(--radix-navigation-menu-viewport-height);
   overflow: hidden;
   background: var(--popover-bg);
-  border-top: 1px solid var(--line);
-  border-radius: 0 0 var(--r-lg) var(--r-lg);
+  border: 1px solid var(--line);
+  border-radius: var(--nav-radius);
   box-shadow: var(--shadow-lg);
   transform-origin: top center;
   transition: height 320ms var(--ease-out);
@@ -245,22 +249,6 @@ body { min-height: 100dvh; background: var(--bg); color: var(--ink); font-family
 @keyframes nav-vp-in  { from { opacity: 0; transform: translateY(-6px) scale(0.985); } to { opacity: 1; transform: none; } }
 @keyframes nav-vp-out { from { opacity: 1; transform: none; } to { opacity: 0; transform: translateY(-6px) scale(0.985); } }
 
-/* COLLAPSED PILL dropdown: the full-bleed 100vw sheet detaches from the narrow
-   floating pill, so when `.is-pill` we anchor the mega-menu as a CONTAINED card —
-   centered on the pill's own box (pill max-width), fully rounded + bordered, a
-   hair below the pill. The mega-menu renders inside `.site-nav__pill`, so this
-   scopes cleanly and leaves the flush (full-width) sheet untouched. */
-.site-nav__pill.is-pill .nav-viewport-position {
-  left: 0; right: 0; width: auto;
-  margin-inline: auto;
-  max-width: var(--nav-pill-maxw);
-  top: calc(var(--nav-shell-h) - 0.5rem);
-}
-.site-nav__pill.is-pill .nav-viewport {
-  width: 100%;
-  border: 1px solid var(--line);
-  border-radius: var(--nav-radius);   /* SAME radius as the pill above it — consistent corners */
-}
 /* Mega-menu triggers: while the menu is OPEN, kill the focus outline entirely —
    Radix moves focus to the trigger on open, and some browsers render that as a
    :focus-visible box that reads as a stuck hover/active state. The open panel is
@@ -288,7 +276,7 @@ body { min-height: 100dvh; background: var(--bg); color: var(--ink); font-family
 
 .brain-card {
   /* knobs */
-  --bc-radius: 14px;
+  --bc-radius: var(--nav-radius);   /* unified with every other dropdown card corner */
   --bc-tilt-max: 9deg;
   --bc-sheen-opacity: 0.55;
   --bc-spec-opacity: 0.5;

@@ -105,13 +105,13 @@ function NavCard({ item, onPick, onHover, active = false }: { item: MenuItem; on
         onMouseEnter={() => onHover?.(item)}
         onFocus={() => onHover?.(item)}
         data-active={active}
-        className="group flex items-center gap-3 rounded-[10px] p-2.5 transition-[background-color,box-shadow] duration-150 hover:bg-surface hover:shadow-[var(--card-shadow)] data-[active=true]:bg-surface data-[active=true]:shadow-[var(--card-shadow)]"
+        className="group flex items-center gap-3 rounded-[var(--nav-radius)] p-2.5 transition-[background-color,box-shadow] duration-150 hover:bg-surface hover:shadow-[var(--card-shadow)] data-[active=true]:bg-surface data-[active=true]:shadow-[var(--card-shadow)]"
         style={{ ["--card-shadow" as string]: SHADOW_CARD }}
       >
         {/* Icon tile — warms + darkens and the glyph picks up mauve when the row
             is hovered OR active (its preview is showing). */}
         <span
-          className="flex h-[38px] w-[38px] shrink-0 items-center justify-center rounded-[9px] bg-surface text-ink transition-colors duration-150 group-hover:bg-surface-warm group-hover:text-[color:var(--accent)] group-data-[active=true]:bg-surface-warm group-data-[active=true]:text-[color:var(--accent)]"
+          className="flex h-[38px] w-[38px] shrink-0 items-center justify-center rounded-[var(--nav-radius)] bg-surface text-ink transition-colors duration-150 group-hover:bg-surface-warm group-hover:text-[color:var(--accent)] group-data-[active=true]:bg-surface-warm group-data-[active=true]:text-[color:var(--accent)]"
           style={{ boxShadow: SHADOW_CARD }}
         >
           {itemIcon(item, 20)}
@@ -134,11 +134,11 @@ function ItemPreview({ item }: { item: MenuItem }) {
     <NavigationMenu.Link asChild>
       <a
         href={item.href}
-        className="group flex flex-1 flex-col justify-between overflow-hidden rounded-[14px] border border-line p-4"
+        className="group flex flex-1 flex-col justify-between overflow-hidden rounded-[var(--nav-radius)] border border-line p-4"
         style={{ background: "linear-gradient(160deg, var(--surface) 0%, var(--surface-warm) 130%)", boxShadow: SHADOW_CARD }}
       >
         <span
-          className="inline-flex h-11 w-11 items-center justify-center rounded-[11px] bg-surface text-[color:var(--accent)]"
+          className="inline-flex h-11 w-11 items-center justify-center rounded-[var(--nav-radius)] bg-surface text-[color:var(--accent)]"
           style={{ boxShadow: SHADOW_CARD }}
         >
           {itemIcon(item, 24)}
