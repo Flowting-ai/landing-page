@@ -1,0 +1,108 @@
+{
+  "slug": "compare-models",
+  "title": "Compare and Deploy AI Models on Souvenir",
+  "overview": "Run the same prompt across GPT, Claude, and Gemini side by side, then deploy the model that wins — without leaving the chat.",
+  "supademoId": "cmqydx38s1s8oqmec5lt248dw",
+  "steps": [
+    {
+      "num": 1,
+      "text": "Firstly, click the Compare Models button to evaluate different AI model options.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/wGLvF327cU71KFKLz4-DD.jpg",
+      "hotspot": {
+        "x": 96.8,
+        "y": 50.2
+      }
+    },
+    {
+      "num": 2,
+      "text": "Following that, click GPT-5 Mini to view its features and specifications.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/RyzgKM4hABwmAtNcyqHUG.jpg",
+      "hotspot": {
+        "x": 31.8,
+        "y": 26.1
+      }
+    },
+    {
+      "num": 3,
+      "text": "From here, click the Anthropic filter to view only Anthropic models available for comparison.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/YDHlMYEThIGscJP2WwoXz.jpg",
+      "hotspot": {
+        "x": 32.2,
+        "y": 37.9
+      }
+    },
+    {
+      "num": 4,
+      "text": "Now, click on Google to view and select the Gemini 3.5 Flash model option.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/FbCMQENT6nbUWHJIj4ZwZ.jpg",
+      "hotspot": {
+        "x": 47.7,
+        "y": 68.8
+      }
+    },
+    {
+      "num": 5,
+      "text": "Now, click the Test models button to run a comparison of your selected models.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/PEykE0XNPP83FvCXmx4sH.jpg",
+      "hotspot": {
+        "x": 81.5,
+        "y": 94.6
+      }
+    },
+    {
+      "num": 6,
+      "text": "Next up, click the message input field to ask a question about model performance.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/qCki3NH2zmvLlG33Nwxc_.jpg",
+      "hotspot": {
+        "x": 54.7,
+        "y": 92.5
+      }
+    },
+    {
+      "num": 7,
+      "text": "After that, click the Send button to submit your prompt and view model results.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/msrcE7MfF3XettEd7Gmnm.jpg",
+      "hotspot": {
+        "x": 81.1,
+        "y": 92
+      }
+    },
+    {
+      "num": 8,
+      "text": "From here, click the expand icon to view detailed model comparison metrics and performance data.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/1E7aT8pey6Og89SY0DlEU.jpg",
+      "hotspot": {
+        "x": 59.6,
+        "y": 16.5
+      }
+    },
+    {
+      "num": 9,
+      "text": "After that, click the \"Use this model\" button to deploy the selected AI model.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/kERJE3ABITBya1PoxlgGB.jpg",
+      "hotspot": {
+        "x": 80,
+        "y": 80.2
+      }
+    },
+    {
+      "num": 10,
+      "text": "Next up, select Claude Sonnet 4.6 to choose your preferred AI model.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/aFmUGINi70NK_ckf0V3Zs.jpg",
+      "hotspot": {
+        "x": 22.4,
+        "y": 4.4
+      }
+    },
+    {
+      "num": 11,
+      "text": "From here, type your question or request in the message input field below.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/p8fjj1-t6E8bDGfCnsdxe.jpg",
+      "hotspot": {
+        "x": 55,
+        "y": 40.9
+      }
+    }
+  ],
+  "aspect": "3828 / 1962"
+}

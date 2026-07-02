@@ -1,0 +1,63 @@
+{
+  "slug": "analytics-chats",
+  "title": "Move & Monitor Chats",
+  "overview": "Move chats into projects and keep your analytics work organized across your workspace.",
+  "supademoId": "cmr01tp5n0hjwqm4ik37vggf8",
+  "steps": [
+    {
+      "num": 1,
+      "text": "Select a chat you want to move using the menu in the menu bar, then choose “Move to Projects.”",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/26jDwtcMKmqAUESaaSzGX.jpg",
+      "hotspot": {
+        "x": 13.3,
+        "y": 41.1
+      }
+    },
+    {
+      "num": 2,
+      "text": "From here, click Move to project to relocate this chat to a project.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/Vr8i54_EjCrLpCHahjPS8.jpg",
+      "hotspot": {
+        "x": 12.3,
+        "y": 53.7
+      }
+    },
+    {
+      "num": 3,
+      "text": "Following this, select the project you want to move your chat to.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/j-njVPt0TkPLuv8EW-mne.jpg",
+      "hotspot": {
+        "x": 59.8,
+        "y": 47.5
+      }
+    },
+    {
+      "num": 4,
+      "text": "Afterwards, click the Move to project button to confirm.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/Sp6Qang83gVeB8fmYn_KM.jpg",
+      "hotspot": {
+        "x": 59.4,
+        "y": 73.1
+      }
+    },
+    {
+      "num": 5,
+      "text": "Then go back to the project where you sent your chat and select it.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/erXLkxexk8LRqoPTzZy6N.jpg",
+      "hotspot": {
+        "x": 6.9,
+        "y": 43.5
+      }
+    },
+    {
+      "num": 6,
+      "text": "Now, inside the project, you can see your chat and keep working with it.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/t2dPT4VwOE3DJtauu_xRT.jpg",
+      "hotspot": {
+        "x": 53.9,
+        "y": 40.2
+      }
+    }
+  ],
+  "aspect": "3840 / 1834"
+}

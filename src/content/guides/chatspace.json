@@ -1,0 +1,72 @@
+{
+  "slug": "chatspace",
+  "title": "The Souvenir Chatspace",
+  "overview": "Your home base for working with AI — start a chat, switch models on the fly, and keep every conversation in one place.",
+  "supademoId": "cmqyb17cv1rdnqmecccdqaxdw",
+  "steps": [
+    {
+      "num": 1,
+      "text": "To begin, click the Chats tab to access your conversation history and messaging interface.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/q_ICVlYRvSFR784-R9iMX.jpg",
+      "hotspot": {
+        "x": 3.8,
+        "y": 10.9
+      }
+    },
+    {
+      "num": 2,
+      "text": "Click here to switch your AI model — pick the one that fits your task.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/DM3dDdeeFqUuQx_OfnX7_.jpg",
+      "hotspot": {
+        "x": 24.6,
+        "y": 5.2
+      }
+    },
+    {
+      "num": 3,
+      "text": "Select Muse for everyday tasks. It's fast, smart, and uses fewer credits.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/fA6pXrZpDE8ChqfIO6Twz.jpg",
+      "hotspot": {
+        "x": 24.3,
+        "y": 23.1
+      }
+    },
+    {
+      "num": 4,
+      "text": "Next, click the dropdown menu to select a different AI Muse model.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/1B9qEYJmLNq_c4THcN_iU.jpg",
+      "hotspot": {
+        "x": 25.7,
+        "y": 5.9
+      }
+    },
+    {
+      "num": 5,
+      "text": "Select Advanced for complex or high-stakes tasks — best quality, no compromises.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/dNJFVP41s8HHxfucDjSp0.jpg",
+      "hotspot": {
+        "x": 35.7,
+        "y": 18.5
+      }
+    },
+    {
+      "num": 6,
+      "text": "Then, enter your question or request in the message input field to chat.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/utN1zMJ0nirq8UUa50vYg.jpg",
+      "hotspot": {
+        "x": 48.1,
+        "y": 40.9
+      }
+    },
+    {
+      "num": 7,
+      "text": "Finally, click the send button to submit your message to the agent.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/2QVrhRe5L7Col0_a13mex.jpg",
+      "hotspot": {
+        "x": 75.4,
+        "y": 47.9
+      }
+    }
+  ],
+  "aspect": "3828 / 1962"
+}

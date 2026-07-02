@@ -1,0 +1,99 @@
+{
+  "slug": "highlights",
+  "title": "Highlights",
+  "overview": "Save the moments that matter — highlight key passages from any answer, reuse them, and find them all in one panel.",
+  "supademoId": "cmqybsk6y1rfnqmecg5fxnbek",
+  "steps": [
+    {
+      "num": 1,
+      "text": "First up, click the message input field to begin typing your message.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/4HEF68p6jIzMjHbikxSHq.jpg",
+      "hotspot": {
+        "x": 42.9,
+        "y": 83.7
+      }
+    },
+    {
+      "num": 2,
+      "text": "Following this, click the Send button to submit your question to the agent.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/Ns6V0dWZ6E3RaZru3UkGq.jpg",
+      "hotspot": {
+        "x": 78.1,
+        "y": 89.8
+      }
+    },
+    {
+      "num": 3,
+      "text": "Now highlight the first point so you can save it for later.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/5W7djwVpqAt7ooqXi1RNd.jpg",
+      "hotspot": {
+        "x": 57,
+        "y": 33.5
+      }
+    },
+    {
+      "num": 4,
+      "text": "Now, click the Highlight button to emphasize important text in the answer.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/qNf-wI3U53TM8NmEPbCn4.jpg",
+      "hotspot": {
+        "x": 54.9,
+        "y": 26.7
+      }
+    },
+    {
+      "num": 5,
+      "text": "Click Copy to grab this highlight — paste it into any chat or app later.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/jYjNFPwZcVFrdYgplyObE.jpg",
+      "hotspot": {
+        "x": 82.2,
+        "y": 23.2
+      }
+    },
+    {
+      "num": 6,
+      "text": "Now paste your copied highlight here and ask a follow-up question.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/VS7iDINh8EPk463CCFRTE.jpg",
+      "hotspot": {
+        "x": 38.5,
+        "y": 83.6
+      }
+    },
+    {
+      "num": 7,
+      "text": "Afterwards, click Open in chat to view the highlighted content in the main conversation.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/4qT9d-6nVtjz-2cDUkAjU.jpg",
+      "hotspot": {
+        "x": 84.2,
+        "y": 22.4
+      }
+    },
+    {
+      "num": 8,
+      "text": "Don't need it anymore? Click the delete icon to remove the highlight.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/kdAQ8qVsy7IEghpW2xuYB.jpg",
+      "hotspot": {
+        "x": 86,
+        "y": 21.7
+      }
+    },
+    {
+      "num": 9,
+      "text": "Now, click the Close button to dismiss the highlight panel and continue.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/37OUlH55aOgc-kiPooXof.jpg",
+      "hotspot": {
+        "x": 98.4,
+        "y": 4.6
+      }
+    },
+    {
+      "num": 10,
+      "text": "Open the Highlights panel here to find every passage you've saved, all in one place.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/BByr3-0cdytYZBTRp4diZ.jpg",
+      "hotspot": {
+        "x": 96.3,
+        "y": 54
+      }
+    }
+  ],
+  "aspect": "3828 / 1962"
+}

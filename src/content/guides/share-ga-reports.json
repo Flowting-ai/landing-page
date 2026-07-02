@@ -1,0 +1,99 @@
+{
+  "slug": "share-ga-reports",
+  "title": "Share GA Reports",
+  "overview": "Turn an analytics chat into a shareable report — set its visibility, choose a permission level, and share it with the right people.",
+  "supademoId": "cmr02l5h90idpqm4iv1q91biq",
+  "steps": [
+    {
+      "num": 1,
+      "text": "Firstly, click the Google Analytics Two-Week Summary chat to open it.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/_1aTtpvRY3722dqBMHrUi.jpg",
+      "hotspot": {
+        "x": 8.2,
+        "y": 59.1
+      }
+    },
+    {
+      "num": 2,
+      "text": "Next, click the Share chat button to export or share this conversation.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/nnZDb62uJPLURUf8cYfk3.jpg",
+      "hotspot": {
+        "x": 96.5,
+        "y": 5.3
+      }
+    },
+    {
+      "num": 3,
+      "text": "Now, click the Private option to keep this chat visible only to you.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/pmTM5YAeEcXIgpf-4xli8.jpg",
+      "hotspot": {
+        "x": 37,
+        "y": 43.9
+      }
+    },
+    {
+      "num": 4,
+      "text": "Following that, click the “Read only” dropdown to select the appropriate sharing permission level.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/WNNWuL-7D7GmJpeJHCIJH.jpg",
+      "hotspot": {
+        "x": 43.2,
+        "y": 56.5
+      }
+    },
+    {
+      "num": 5,
+      "text": "Afterwards, select Read only from the dropdown to set chat access permissions.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/3M2nI0sm8-pNGtwoXHiWP.jpg",
+      "hotspot": {
+        "x": 36.3,
+        "y": 61.6
+      }
+    },
+    {
+      "num": 6,
+      "text": "Following that, click the “Select person…” dropdown to choose a recipient for sharing.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/q9sJ8tiTsrq5E5t00ob_M.jpg",
+      "hotspot": {
+        "x": 36.8,
+        "y": 64
+      }
+    },
+    {
+      "num": 7,
+      "text": "Following this, select a person from the dropdown to share the chat directly with them.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/E4-Mzcd-7c2wxBnByuwP7.jpg",
+      "hotspot": {
+        "x": 36.8,
+        "y": 64
+      }
+    },
+    {
+      "num": 8,
+      "text": "Following this, click the person you want to select for chat sharing.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/wkKq6t3Wi-U8ShjmzdnH6.jpg",
+      "hotspot": {
+        "x": 38.4,
+        "y": 69
+      }
+    },
+    {
+      "num": 9,
+      "text": "From here, click the Share button to send this chat to specific people or teams.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/Rq2foKFbwauYV7figr0ZJ.jpg",
+      "hotspot": {
+        "x": 51.2,
+        "y": 72.9
+      }
+    },
+    {
+      "num": 10,
+      "text": "To end, click the close button to dismiss the Share chat dialog.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/O8utYdTjP3Bik5pfgEdJe.jpg",
+      "hotspot": {
+        "x": 53.5,
+        "y": 27.5
+      }
+    }
+  ],
+  "aspect": "3360 / 1605"
+}

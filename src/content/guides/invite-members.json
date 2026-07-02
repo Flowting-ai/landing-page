@@ -1,0 +1,81 @@
+{
+  "slug": "invite-members",
+  "title": "Invite Team Members",
+  "overview": "Invite people to your workspace, set their role, assign them to a team, and cap their credits.",
+  "supademoId": "cmr046fgm0jesqm4itb55n54i",
+  "steps": [
+    {
+      "num": 1,
+      "text": "Click on “Manage Souvenir” to invite team members and access admin controls.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/Y_Xv2tCbiU7WZYpjB_n59.jpg",
+      "hotspot": {
+        "x": 7.5,
+        "y": 14.2
+      }
+    },
+    {
+      "num": 2,
+      "text": "Now, click Members to view and manage all workspace members and permissions.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/LMDDyQKI_wmlCBf-U3LDh.jpg",
+      "hotspot": {
+        "x": 7.9,
+        "y": 26.9
+      }
+    },
+    {
+      "num": 3,
+      "text": "Afterwards, click the “Invite members” button to add new users to your workspace.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/PwUp-qNx4b618ZDrDRjOy.jpg",
+      "hotspot": {
+        "x": 82.4,
+        "y": 37.5
+      }
+    },
+    {
+      "num": 4,
+      "text": "Following that, enter the colleague's email address in the input field to invite them.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/AmLiy85ow5mlmNgmuiWAl.jpg",
+      "hotspot": {
+        "x": 44.6,
+        "y": 40.6
+      }
+    },
+    {
+      "num": 5,
+      "text": "Select a role for the member based on their access needs — Member: can chat, use agents, and access team projects. Editor: everything a Member can do, plus the ability to publish to the Team scope. Admin: full access excluding billing.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/-Zz0mzDdrc3yqmWEvEcIK.jpg",
+      "hotspot": {
+        "x": 59.2,
+        "y": 50.6
+      }
+    },
+    {
+      "num": 6,
+      "text": "Next, select a team from the dropdown to assign the invited member to it.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/lkrNNa8u0kyxPmwLHzCCJ.jpg",
+      "hotspot": {
+        "x": 50.9,
+        "y": 50.8
+      }
+    },
+    {
+      "num": 7,
+      "text": "Following that, enter a credit cap for the invited member's workspace access.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/5rGgWT_fs7oCFuAcj32Gd.jpg",
+      "hotspot": {
+        "x": 47.5,
+        "y": 60.6
+      }
+    },
+    {
+      "num": 8,
+      "text": "After that, click Send invite to dispatch the invitation to the specified email address.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/ZgZbzRtFRQCv_J8d1KLqA.jpg",
+      "hotspot": {
+        "x": 62.8,
+        "y": 66.7
+      }
+    }
+  ],
+  "aspect": "3795 / 2049"
+}

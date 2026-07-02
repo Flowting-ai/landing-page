@@ -1,0 +1,135 @@
+{
+  "slug": "set-up-teams",
+  "title": "Set Up Teams",
+  "overview": "Create a team, describe what it works on, add members and roles, and scope which connectors it can use.",
+  "supademoId": "cmr04gffk0jkjqm4ippkgw1jc",
+  "steps": [
+    {
+      "num": 1,
+      "text": "Start by clicking Manage Souvenir to access workspace and team settings.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/cRjg9uPyapaIcTjNcgTTG.jpg",
+      "hotspot": {
+        "x": 9.6,
+        "y": 15.9
+      }
+    },
+    {
+      "num": 2,
+      "text": "Next up, click the Teams menu option to manage your organization's team settings.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/jJtIi8jzebBimYrhcQWa9.jpg",
+      "hotspot": {
+        "x": 9.8,
+        "y": 32.3
+      }
+    },
+    {
+      "num": 3,
+      "text": "Next up, click the Create new team button to add a new team to your workspace.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/stfgaOI4ELjHrvTCObGxO.jpg",
+      "hotspot": {
+        "x": 87.6,
+        "y": 15
+      }
+    },
+    {
+      "num": 4,
+      "text": "Next up, enter a team name in the text field to create your new team.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/n7NX6y1-MZbmM6Rz2Xnam.jpg",
+      "hotspot": {
+        "x": 37.4,
+        "y": 38.3
+      }
+    },
+    {
+      "num": 5,
+      "text": "Now, enter a description in the field to explain what the team works on.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/grchzc5xe0TAWtONKwH3d.jpg",
+      "hotspot": {
+        "x": 70.9,
+        "y": 36.2
+      }
+    },
+    {
+      "num": 6,
+      "text": "Afterwards, click “Create Team” to build the new team in Souvenir.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/5YKENv55QphaXZcqzaD0w.jpg",
+      "hotspot": {
+        "x": 86.4,
+        "y": 44.5
+      }
+    },
+    {
+      "num": 7,
+      "text": "Following this, click Team settings to customize the team configuration.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/w-j0QJmiGvaBTeuETQetp.jpg",
+      "hotspot": {
+        "x": 87.1,
+        "y": 86.8
+      }
+    },
+    {
+      "num": 8,
+      "text": "Now, click Invite members to add new members to the team.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/XHr-qhYufQxWDwpzyO4Q6.jpg",
+      "hotspot": {
+        "x": 85.2,
+        "y": 55.5
+      }
+    },
+    {
+      "num": 9,
+      "text": "Now, click Select workspace members to add existing members to this team.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/RfCiDId2LPTgV_ZtnaG9V.jpg",
+      "hotspot": {
+        "x": 33.3,
+        "y": 71.5
+      }
+    },
+    {
+      "num": 10,
+      "text": "Next up, select the team member to add them to this team.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/nagGX1RNnvoA13LFIGQbK.jpg",
+      "hotspot": {
+        "x": 33.2,
+        "y": 60.2
+      }
+    },
+    {
+      "num": 11,
+      "text": "Afterwards, select Member or Editor to assign a role to the invited team member.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/Kw60kE_rmA9YAkpBCJe2s.jpg",
+      "hotspot": {
+        "x": 33.1,
+        "y": 66.9
+      }
+    },
+    {
+      "num": 12,
+      "text": "Now, click Send invites to add the selected member to your team.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/ZIrOoW3qaJRCURjS2OiNC.jpg",
+      "hotspot": {
+        "x": 26.2,
+        "y": 54.6
+      }
+    },
+    {
+      "num": 13,
+      "text": "After that, search for connectors by typing keywords in the search field.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/1tVy3LYXzfAlXeU9-C38E.jpg",
+      "hotspot": {
+        "x": 38.2,
+        "y": 37.5
+      }
+    },
+    {
+      "num": 14,
+      "text": "Select the connectors you want to give a team access to — for example, give the Finance team access to finance connectors only, while keeping other teams restricted.",
+      "image": "https://media.supademo.com/cmqyauvbv064sxb0jcja8bg8c/ssNi_GxKFOMAUsuk9AKdy.jpg",
+      "hotspot": {
+        "x": 88.6,
+        "y": 50.1
+      }
+    }
+  ],
+  "aspect": "3828 / 1962"
+}

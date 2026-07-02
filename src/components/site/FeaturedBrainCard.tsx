@@ -121,7 +121,7 @@ export default function FeaturedBrainCard({
         <div className="relative z-[1] flex items-center justify-between">
           {/* Gold-plated glossy icon chip (metallic gradient + sharp gleam). */}
           <span
-            className="brain-card__icon inline-flex h-9 w-9 items-center justify-center rounded-[9px]"
+            className="brain-card__icon inline-flex h-9 w-9 items-center justify-center rounded-[var(--nav-radius)]"
             style={{ color: "#5a3f14" }}
           >
             <NeuralNetworkIcon size={19} />
