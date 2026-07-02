@@ -207,7 +207,11 @@ body { min-height: 100dvh; background: var(--bg); color: var(--ink); font-family
    body-level portal would paint over the nav). z-index 0 keeps it under the nav
    List (z-1) + Viewport (z-1); pointer-events:none keeps the hover-close model. */
 .nav-backdrop {
-  position: fixed; inset: 0; z-index: 0;
+  /* Start BELOW the nav shell so the blur only softens the PAGE — not the nav bar
+     itself. When it covered the full viewport it blurred the pill's own logo +
+     border (the pill went hazy on open). The pill keeps its own frosted bg via
+     its own backdrop-filter. */
+  position: fixed; inset: var(--nav-shell-h) 0 0 0; z-index: 0;
   /* Warm frosted glass — a soft warm veil (neutral-50, NOT grey ink) + a deeper
      blur with a touch of saturation, so the page reads as softly out-of-focus
      behind the sheet rather than greyed. */
@@ -225,7 +229,7 @@ body { min-height: 100dvh; background: var(--bg); color: var(--ink); font-family
    collapsed pill) — one consistent width (the pill's max-width), centered on the
    trigger, fully rounded + bordered. */
 .nav-viewport-position {
-  position: fixed; top: var(--nav-shell-h);
+  position: fixed; top: calc(var(--nav-shell-h) - 1.25rem);   /* tighter gap under the pill */
   left: 0; right: 0; width: auto;
   margin-inline: auto;
   max-width: var(--nav-pill-maxw);
