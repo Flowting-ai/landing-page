@@ -261,9 +261,13 @@ body { min-height: 100dvh; background: var(--bg); color: var(--ink); font-family
   border: 1px solid var(--line);
   border-radius: var(--nav-radius);   /* SAME radius as the pill above it — consistent corners */
 }
-/* Mega-menu triggers: keep a keyboard focus cue for a11y, but hug the trigger
-   (no offset "floating box" that reads as a stuck hover/active state). Mouse-open
-   never shows this — it's :focus-visible (keyboard) only. */
+/* Mega-menu triggers: while the menu is OPEN, kill the focus outline entirely —
+   Radix moves focus to the trigger on open, and some browsers render that as a
+   :focus-visible box that reads as a stuck hover/active state. The open panel is
+   the indicator, so no ring is needed here. `!important` beats the global
+   :focus-visible rule regardless of browser focus heuristics. Keyboard focus on
+   the CLOSED trigger (tabbing through the nav) still shows a tight ring. */
+.site-nav-trigger[data-state="open"] { outline: none !important; }
 .site-nav-trigger:focus-visible { outline-offset: 0; border-radius: 8px; }
 
 .nav-content { position: absolute; top: 0; left: 0; right: 0; }
