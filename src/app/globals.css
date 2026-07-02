@@ -234,6 +234,10 @@ body { min-height: 100dvh; background: var(--bg); color: var(--ink); font-family
 }
 .nav-viewport {
   pointer-events: auto;
+  /* relative so the absolutely-positioned .nav-content is contained here and gets
+     clipped by overflow+radius — otherwise the footer paints over the rounded
+     BOTTOM corners (they rendered square while the top rounded). */
+  position: relative;
   width: 100%;
   height: var(--radix-navigation-menu-viewport-height);
   overflow: hidden;
