@@ -259,8 +259,12 @@ body { min-height: 100dvh; background: var(--bg); color: var(--ink); font-family
 .site-nav__pill.is-pill .nav-viewport {
   width: 100%;
   border: 1px solid var(--line);
-  border-radius: var(--r-xl);   /* match the product/guide card radius family */
+  border-radius: var(--nav-radius);   /* SAME radius as the pill above it — consistent corners */
 }
+/* Mega-menu triggers: keep a keyboard focus cue for a11y, but hug the trigger
+   (no offset "floating box" that reads as a stuck hover/active state). Mouse-open
+   never shows this — it's :focus-visible (keyboard) only. */
+.site-nav-trigger:focus-visible { outline-offset: 0; border-radius: 8px; }
 
 .nav-content { position: absolute; top: 0; left: 0; right: 0; }
 .nav-content[data-motion="from-start"] { animation: nav-c-from-l 220ms var(--ease-out); }
