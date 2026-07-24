@@ -8,4 +8,4 @@ export const LOGIN_URL = `${APP_URL}/auth/login`;
 export const SIGNUP_URL = `${APP_URL}/auth/login?screen_hint=signup`;
 
 // Book-a-demo / talk-to-sales scheduling link.
-export const DEMO_URL = "https://calendar.app.google/bkSbQ7BYNZBaZ4uX9";
+export const DEMO_URL = "https://calendar.app.google/8SH2PCwGkpp9Jfc16";
