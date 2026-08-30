@@ -21,6 +21,7 @@ const ROUTES: { path: string; priority: number }[] = [
   { path: "/legal/cookies", priority: 0.3 },
   { path: "/legal/acceptable-use", priority: 0.3 },
   { path: "/legal/connected-services", priority: 0.3 },
+  { path: "/legal/subprocessors", priority: 0.3 },
   { path: "/legal/copyright", priority: 0.3 },
 ];
 

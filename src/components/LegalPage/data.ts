@@ -274,7 +274,7 @@ export const LEGAL_DOCS: Record<string, LegalDoc> = {
       { title: "How We Share Information", body: [
         "We share personal information with:",
         { list: [
-          "Subprocessors and service providers who help operate the Service, under contracts requiring appropriate protection. Categories include: cloud infrastructure (Amazon Web Services — compute, storage including Amazon S3, PostgreSQL databases, caching via Redis, Amazon Textract for document OCR, and Amazon Bedrock for vector embeddings); AI model routing (OpenRouter); AI model providers (OpenAI, Anthropic, Google Gemini, xAI, and Mistral); identity and authentication (Auth0, an Okta company); connector / integration providers (Pipedream); sandboxed code execution (E2B); web page retrieval and search (Jina AI); payment processing (Stripe); error monitoring (Sentry); product analytics (Mixpanel and Google Analytics); application hosting for our web front end (Vercel); and email and operational tooling. A current provider-level list is published in our Connected Services Privacy Policy.",
+          "Subprocessors and service providers who help operate the Service, under contracts requiring appropriate protection. Categories include: cloud infrastructure (Amazon Web Services — compute, storage including Amazon S3, PostgreSQL databases, caching via Redis, Amazon Textract for document OCR, and Amazon Bedrock for vector embeddings); AI model routing (OpenRouter); AI model providers (OpenAI, Anthropic, Google Gemini, xAI, and Mistral); identity and authentication (Auth0, an Okta company); connector / integration providers (Pipedream); sandboxed code execution (E2B); web page retrieval and search (Jina AI); payment processing (Stripe); error monitoring (Sentry); product analytics (Mixpanel and Google Analytics); application hosting for our web front end (Vercel); and email and operational tooling. A current provider-level list is published at getsouvenir.com/legal/subprocessors.",
           "Within your organization: if you use the Service as part of an organization, your account information, content, and usage may be accessible to that organization’s administrators and, where resources are shared, to other authorized members.",
           "Third-party services you connect: when you direct the AI to take actions, we send data to those services as needed to perform the action.",
           "Legal and safety: to comply with law, legal process, or governmental requests; to enforce our terms; and to protect the rights, property, or safety of Souvenir, our users, or others.",
@@ -313,6 +313,71 @@ export const LEGAL_DOCS: Record<string, LegalDoc> = {
       { title: "Third-Party Services", body: "The Service integrates with and links to third-party services. This Policy does not cover those third parties’ practices. Your use of connected services remains subject to their own privacy policies and terms." },
       { title: "Changes to This Policy", body: "We may update this Privacy Policy from time to time and review it at least annually. If we make material changes, we will provide notice (for example, by email or in-product). The “Last updated” date reflects the latest revision. Your continued use after changes take effect constitutes acceptance." },
       { title: "Contact Us", body: "Questions or requests regarding this Privacy Policy or your personal information: contact@getsouvenir.com — Souvenir, Inc. 211 28th Street, Des Moines, Iowa, USA." },
+    ],
+  },
+  subprocessors: {
+    slug: "subprocessors",
+    eyebrow: "Privacy & Data",
+    title: "Sub-processor List",
+    updated: "August 30, 2026",
+    sections: [
+      { title: "About This List", body: [
+        "This page lists the third parties Souvenir, Inc. engages to process personal information on behalf of our customers (our “sub-processors”), together with what each one does and where it processes data. It supplements our Privacy Policy and our Connected Services Privacy Policy, and is the list referenced by our data processing commitments.",
+        "Every sub-processor listed here is engaged under a written contract requiring it to process data only on our documented instructions, to protect it with appropriate technical and organizational measures, and to support our obligations to you.",
+      ] },
+      { title: "Infrastructure and Platform", body: [
+        { table: {
+          head: ["Sub-processor", "Purpose", "Location"],
+          rows: [
+            ["Amazon Web Services, Inc.", "Primary cloud infrastructure — compute, PostgreSQL databases, S3 file storage, Redis caching, secrets management, Textract document OCR, and Bedrock vector embeddings (Cohere models)", "United States (us-east-1)"],
+            ["Vercel Inc.", "Hosting and content delivery for the Souvenir web application and marketing site", "United States"],
+            ["Okta, Inc. (Auth0)", "User authentication, login, and session management", "United States"],
+            ["E2B", "Isolated sandbox containers that execute code and generate files on a user’s request", "United States"],
+          ],
+        } },
+      ] },
+      { title: "AI Model Providers", body: [
+        "Inputs are transmitted to the providers below to generate a response. Requests are routed through OpenRouter, which selects and calls the appropriate provider. We do not use Customer Data to train any model, and we rely on each provider’s API terms, under which API inputs and outputs are not used to train their foundation models.",
+        { table: {
+          head: ["Sub-processor", "Purpose", "Location"],
+          rows: [
+            ["OpenRouter, Inc.", "AI model routing — transmits Inputs to the selected model provider and returns the response", "United States"],
+            ["OpenAI, L.L.C.", "AI model inference, including speech-to-text transcription", "United States"],
+            ["Anthropic PBC", "AI model inference", "United States"],
+            ["Google LLC", "AI model inference (Gemini models)", "United States"],
+            ["xAI Corp.", "AI model inference (Grok models)", "United States"],
+            ["Mistral AI SAS", "AI model inference and document OCR", "France"],
+          ],
+        } },
+      ] },
+      { title: "Connectors and Integrations", body: [
+        { table: {
+          head: ["Sub-processor", "Purpose", "Location"],
+          rows: [
+            ["Pipedream, Inc.", "Connector authentication and API brokering — holds connected-account credentials in its vault and relays requests to the connected service", "United States"],
+            ["Jina AI GmbH", "Retrieval and search of public web pages when an assistant looks up information from the internet", "Germany"],
+            ["Slack Technologies, LLC", "Platform for the Souvenir Slack app", "United States"],
+            ["Meta Platforms, Inc.", "Meta Ads API, for customers who connect a Meta Ads account", "United States"],
+          ],
+        } },
+        "Connectors are optional. A provider in this section processes your data only if you choose to enable the corresponding connector or install the Slack app.",
+      ] },
+      { title: "Business Operations", body: [
+        { table: {
+          head: ["Sub-processor", "Purpose", "Location"],
+          rows: [
+            ["Stripe, Inc.", "Payment processing, subscriptions, and billing", "United States"],
+            ["Functional Software, Inc. (Sentry)", "Application error monitoring and diagnostics", "United States"],
+            ["Mixpanel, Inc.", "Product analytics within the Souvenir application", "United States"],
+            ["Google LLC (Google Analytics)", "Website analytics for getsouvenir.com", "United States"],
+          ],
+        } },
+      ] },
+      { title: "Changes to This List", body: [
+        "We may add or replace sub-processors as the Service evolves. When we do, we will update this page and revise the “Last updated” date above.",
+        "To be notified in advance of changes to this list, email contact@getsouvenir.com and ask to be added to our sub-processor change notifications. Customers with a data processing agreement in place receive notice in accordance with that agreement.",
+      ] },
+      { title: "Contact", body: "Questions about this list, or requests for notification of changes: contact@getsouvenir.com — Souvenir, Inc. 211 28th Street, Des Moines, Iowa, USA." },
     ],
   },
   cookies: {
