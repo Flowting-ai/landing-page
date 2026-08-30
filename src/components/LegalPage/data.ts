@@ -25,7 +25,7 @@ export const LEGAL_DOCS: Record<string, LegalDoc> = {
     slug: "terms",
     eyebrow: "Platform · Terms",
     title: "Terms of Service",
-    updated: "June 14, 2026",
+    updated: "August 30, 2026",
     sections: [
       { title: "Agreement to These Terms", body: [
         "These Terms of Service (“Terms”) are a binding agreement between you and Souvenir, Inc. (“Souvenir,” “we,” “us,” or “our”), governing your access to and use of the Souvenir products, applications, the website at getsouvenir.com, APIs, and related services (collectively, the “Service”).",
@@ -62,7 +62,7 @@ export const LEGAL_DOCS: Record<string, LegalDoc> = {
         ] },
       ] },
       { title: "Connectors and Third-Party Services", body: [
-        "A core feature of the Service is connecting third-party applications and data sources (for example, Shopify, Slack, Meta Ads, Klaviyo, HubSpot, ShipStation, Google Drive, Gmail, and others). Connectors are facilitated through integration providers including Composio and Nango.",
+        "A core feature of the Service is connecting third-party applications and data sources (for example, Shopify, Slack, Meta Ads, Klaviyo, HubSpot, ShipStation, Google Drive, Gmail, and others). Connectors are facilitated through our integration provider Pipedream, through remote Model Context Protocol (MCP) servers operated by the third-party service itself, or through direct OAuth connections we operate.",
         "By enabling a Connector, you authorize us and our integration providers to access, retrieve, store, and act on data within that third-party service on your behalf, to the extent of the permissions (scopes) you grant.",
         "You understand and agree that:",
         { list: [
@@ -94,7 +94,7 @@ export const LEGAL_DOCS: Record<string, LegalDoc> = {
       ] },
       { title: "AI Output, Model Providers, and Subprocessors", body: [
         { list: [
-          "The Service generates Output using third-party AI model providers, currently OpenAI, Anthropic (Claude models), Google (Gemini), and Mistral. Your prompts and relevant context are transmitted to these providers to generate Output.",
+          "The Service generates Output using third-party AI model providers, currently OpenAI, Anthropic (Claude models), Google (Gemini), xAI (Grok), and Mistral. Your prompts and relevant context are transmitted to these providers, routed through OpenRouter, an AI model routing provider, to generate Output.",
           "The Service is hosted on and uses Amazon Web Services (AWS) for compute, storage, and databases. Your Content is stored and processed on AWS infrastructure.",
           "A current list of categories of subprocessors is described in our Privacy Policy.",
         ] },
@@ -129,7 +129,7 @@ export const LEGAL_DOCS: Record<string, LegalDoc> = {
           "Use automated means to access the Service except through documented APIs and within their limits;",
           "Use the Service for high-risk activities where failure could lead to death, personal injury, or severe environmental or property damage.",
         ] },
-        "We may investigate suspected violations and may suspend or terminate access. We may also be required to follow the usage policies of our model providers (for example, OpenAI’s, Anthropic’s, Google’s, and Mistral’s usage policies), and you agree to comply with those policies as applied through the Service.",
+        "We may investigate suspected violations and may suspend or terminate access. We may also be required to follow the usage policies of our model providers (for example, OpenAI’s, Anthropic’s, Google’s, xAI’s, and Mistral’s usage policies), and you agree to comply with those policies as applied through the Service.",
       ] },
       { title: "Intellectual Property", body: [
         { list: [
@@ -206,7 +206,7 @@ export const LEGAL_DOCS: Record<string, LegalDoc> = {
     slug: "privacy",
     eyebrow: "Privacy & Data",
     title: "Privacy Policy",
-    updated: "June 14, 2026",
+    updated: "August 30, 2026",
     sections: [
       { title: "Overview", body: [
         "This Privacy Policy explains how Souvenir, Inc. (“Souvenir,” “we,” “us,” or “our”) collects, uses, shares, and protects personal information when you use the Souvenir products, the website at getsouvenir.com, our APIs, and related services (the “Service”).",
@@ -264,7 +264,7 @@ export const LEGAL_DOCS: Record<string, LegalDoc> = {
         "Legal bases (where GDPR / UK GDPR applies): performance of a contract; our legitimate interests (securing and improving the Service, preventing abuse); consent (e.g., certain cookies, certain Connectors); and compliance with legal obligations.",
       ] },
       { title: "AI Model Providers and How Your Inputs Are Used", body: [
-        "To generate Output, we transmit your prompts and relevant context (which may include Your Content and Connector data) to third-party AI model providers, currently OpenAI, Anthropic, Google (Gemini), and Mistral.",
+        "To generate Output, we transmit your prompts and relevant context (which may include Your Content and Connector data) to third-party AI model providers, currently OpenAI, Anthropic, Google (Gemini), xAI (Grok), and Mistral. These requests are routed through OpenRouter, an AI model routing provider that transmits your Inputs to the selected provider and returns the response.",
         { list: [
           "These providers process inputs to return Output to you.",
           "We rely on these providers’ enterprise / API terms, under which, per their current policies, API inputs and outputs are not used to train their foundation models except as their terms permit. Their handling of data is governed by their own privacy terms.",
@@ -274,7 +274,7 @@ export const LEGAL_DOCS: Record<string, LegalDoc> = {
       { title: "How We Share Information", body: [
         "We share personal information with:",
         { list: [
-          "Subprocessors and service providers who help operate the Service, under contracts requiring appropriate protection. Categories include: cloud infrastructure (Amazon Web Services — compute, storage including Amazon S3, databases via PostgreSQL, and caching via Redis); AI model providers (OpenAI, Anthropic, Google Gemini, and Mistral); Connector / integration providers (Composio and Nango); payment processing (Stripe); and analytics, email, and operational tooling.",
+          "Subprocessors and service providers who help operate the Service, under contracts requiring appropriate protection. Categories include: cloud infrastructure (Amazon Web Services — compute, storage including Amazon S3, PostgreSQL databases, caching via Redis, Amazon Textract for document OCR, and Amazon Bedrock for vector embeddings); AI model routing (OpenRouter); AI model providers (OpenAI, Anthropic, Google Gemini, xAI, and Mistral); identity and authentication (Auth0, an Okta company); connector / integration providers (Pipedream); sandboxed code execution (E2B); web page retrieval and search (Jina AI); payment processing (Stripe); error monitoring (Sentry); product analytics (Mixpanel and Google Analytics); application hosting for our web front end (Vercel); and email and operational tooling. A current provider-level list is published in our Connected Services Privacy Policy.",
           "Within your organization: if you use the Service as part of an organization, your account information, content, and usage may be accessible to that organization’s administrators and, where resources are shared, to other authorized members.",
           "Third-party services you connect: when you direct the AI to take actions, we send data to those services as needed to perform the action.",
           "Legal and safety: to comply with law, legal process, or governmental requests; to enforce our terms; and to protect the rights, property, or safety of Souvenir, our users, or others.",
@@ -287,10 +287,11 @@ export const LEGAL_DOCS: Record<string, LegalDoc> = {
           "We retain personal information for as long as your account is active and as needed to provide the Service.",
           "We retain Your Content until you delete it or your account, subject to backups and legal / operational requirements.",
           "We may retain certain data longer where required for legal compliance, dispute resolution, security, and enforcement of our agreements.",
-          "Some large Connector results may be stored temporarily as files within your chat to allow the AI to process them; these follow the same deletion controls as your other chat content.",
+          "Some large Connector results may be stored temporarily as files within your chat to allow the AI to process them; these follow the same deletion controls as your other chat content. Cached Connector results held for reuse expire automatically 30 days after they are fetched.",
+          "We do not store the text of Slack messages. When you use our Slack app, conversation context is read live from Slack’s API on each request and is not written to our database.",
         ] },
       ] },
-      { title: "Security", body: "We implement reasonable technical and organizational measures to protect personal information, including encryption in transit and at rest, access controls, and isolation between accounts. No method of transmission or storage is completely secure, and we cannot guarantee absolute security. Protect your credentials and connected accounts, and notify us of any suspected compromise. If a security breach affecting your personal information occurs, we will notify you and the relevant authorities as required by applicable law." },
+      { title: "Security", body: "We implement reasonable technical and organizational measures to protect personal information, including encryption in transit (TLS) and at rest, application-layer encryption of connector credentials and Slack bot tokens before they are written to our database, access controls, databases that are not reachable from the public internet, and isolation between accounts. No method of transmission or storage is completely secure, and we cannot guarantee absolute security. Protect your credentials and connected accounts, and notify us of any suspected compromise. If a security breach affecting your personal information occurs, we will notify you and the relevant authorities as required by applicable law." },
       { title: "Your Rights and Choices", body: [
         "Depending on your location, you may have rights to:",
         { list: [
@@ -379,7 +380,7 @@ export const LEGAL_DOCS: Record<string, LegalDoc> = {
     slug: "connected-services",
     eyebrow: "Privacy & Data",
     title: "Privacy Policy — Connected Services",
-    updated: "June 14, 2026",
+    updated: "August 30, 2026",
     sections: [
       { title: "Scope", body: [
         "This Privacy Policy describes how Souvenir, Inc. (“Souvenir,” “we,” “us,” or “our”) collects, uses, stores, and shares information when you use the Souvenir Meta (Facebook) app, the Souvenir Slack managerial bot, and other Connectors. It covers:",
@@ -413,7 +414,7 @@ export const LEGAL_DOCS: Record<string, LegalDoc> = {
         { subhead: "a) Meta (Facebook) — Souvenir Meta app" },
         "When you connect a Meta Ads account, you authorize our Meta app through Meta’s OAuth consent flow. Through this connection we may receive:",
         { list: [
-          "OAuth access tokens for your Meta account (managed through our authentication broker, Composio). We never receive or store your Facebook / Meta password.",
+          "OAuth access tokens for your Meta account, obtained through Meta’s OAuth consent flow and held by Souvenir encrypted at rest. We never receive or store your Facebook / Meta password.",
           "Advertising data you direct an assistant to retrieve, under the ads_read and ads_management permissions: ad account metadata, campaigns, ad sets, ads, creatives, audiences, budgets, and performance insights (impressions, clicks, spend, conversions, and similar metrics).",
           "Basic profile information associated with the connected Meta account (such as name and account ID) as returned by Meta during authorization.",
         ] },
@@ -423,7 +424,7 @@ export const LEGAL_DOCS: Record<string, LegalDoc> = {
         { list: [
           "Workspace installation data: Slack workspace (team) ID and name, the bot access token (encrypted at rest), the bot’s user ID, the granted OAuth scopes, and which Souvenir account performed the installation.",
           "Identity links: a mapping between your Souvenir account and your Slack user ID in each workspace, created when you link your Slack identity, so the bot can attribute requests to your Souvenir account.",
-          "Message content — only in limited cases: when you @-mention the bot in a channel; send the bot a direct message; use one of the bot’s slash commands; or when the bot reads the history of a thread it is participating in, in order to maintain conversational context for its reply.",
+          "Message content — processed, not stored, and only in limited cases: when you @-mention the bot in a channel; send the bot a direct message; use one of the bot’s slash commands; or when the bot reads the history of a thread it is participating in, in order to maintain conversational context for its reply.",
         ] },
         "The bot requests the following Slack scopes, for these purposes:",
         { table: {
@@ -432,16 +433,25 @@ export const LEGAL_DOCS: Record<string, LegalDoc> = {
             ["app_mentions:read", "Receive messages that @-mention the bot"],
             ["chat:write", "Post replies in channels, threads, and DMs"],
             ["commands", "Provide slash commands"],
-            ["im:history", "Read direct messages sent to the bot"],
+            ["im:history, im:read, im:write", "Receive and reply to direct messages sent to the bot"],
             ["channels:history, groups:history, mpim:history", "Read the thread the bot is replying in, so replies have context"],
-            ["users:read", "Resolve Slack user IDs to display names"],
+            ["channels:read, groups:read, mpim:read", "Resolve channel names and confirm which conversations the bot belongs to"],
+            ["channels:join, channels:manage", "Join a channel when invited and create a channel when you ask the bot to"],
+            ["users:read, users:read.email", "Resolve Slack user IDs to display names and match a Slack user to their Souvenir account"],
+            ["team:read, usergroups:read, emoji:read", "Read workspace, user-group, and custom-emoji names used in a conversation"],
+            ["files:read, files:write", "Read a file you point the bot at, and post files it produces (charts, spreadsheets, reports) into the thread"],
+            ["canvases:read, canvases:write", "Read and write Slack canvases when you ask the bot to draft or update one"],
+            ["bookmarks:read, bookmarks:write", "Read and manage channel bookmarks when you ask the bot to"],
+            ["pins:read, pins:write", "Read and manage pinned messages when you ask the bot to"],
+            ["reactions:read, reactions:write", "Read and add emoji reactions, which the bot uses to acknowledge a request"],
+            ["assistant:write", "Operate in Slack’s AI assistant surface"],
           ],
         } },
-        "The bot does not continuously monitor, archive, or index your workspace’s messages. Messages directed at the bot are processed to generate a response (including being sent to AI model providers) and retained as part of the associated Souvenir conversation history. If the bot is uninstalled from a workspace, or its tokens are revoked, we delete the stored installation record and bot token for that workspace automatically.",
+        "The bot does not continuously monitor, archive, or index your workspace’s messages, and we do not store the text of Slack messages. Each time the bot is asked to respond, it reads the conversation it is participating in live from Slack’s API, uses it to generate a reply (including by sending it to AI model providers), and does not write that message text to our database. Files you explicitly ask the bot to fetch are stored with your Souvenir chat so the assistant can work with them, and follow the same deletion controls as your other chat content. If the bot is uninstalled from a workspace, or its tokens are revoked, we delete the stored installation record and bot token for that workspace automatically.",
         { subhead: "c) Google, Shopify, and other connectors" },
         "The Service supports additional connectors (e.g., Google Drive, Gmail, Shopify, HubSpot, Klaviyo, ShipStation, and others). For each, the same principles apply: we access data only through the permissions you grant via OAuth, only to fulfill tasks you request, and we store the tokens or credentials you provide encrypted at rest. We do not use data from any connected service for advertising or to train AI models. Souvenir’s use and transfer of information received from Google APIs adheres to the Google API Services User Data Policy, including its Limited Use requirements. You can disconnect any connector at any time, or revoke access from the third-party service’s own settings.",
         { subhead: "d) Connector authentication brokers" },
-        "To connect third-party accounts securely, Souvenir uses specialized integration providers — Composio and Nango — that act strictly as processors on our behalf. They broker the OAuth flow, hold the resulting credentials encrypted, and relay API requests; they do not use your data for their own purposes. Connections are scoped to your individual account and isolated from other users. When you disconnect a connector in Souvenir, the corresponding connection record is deleted or unlinked, and we no longer have access to that account. You can also revoke access directly from the third-party service’s own security settings at any time.",
+        "To connect third-party accounts securely, Souvenir uses the integration provider Pipedream, which acts strictly as a processor on our behalf: it brokers the OAuth flow, holds the resulting credentials encrypted in its own vault, and relays API requests; it does not use your data for its own purposes. For some services we connect directly instead — either to a remote Model Context Protocol (MCP) server operated by that service, or through an OAuth application we operate ourselves. Where we hold credentials directly, we encrypt them at the application layer before storing them. Connections are scoped to your individual account and isolated from other users. When you disconnect a connector in Souvenir, the corresponding connection record is deleted or unlinked, and we no longer have access to that account. You can also revoke access directly from the third-party service’s own security settings at any time.",
       ] },
       { title: "How We Use Information", body: [
         "We use the information described above to:",
@@ -457,11 +467,12 @@ export const LEGAL_DOCS: Record<string, LegalDoc> = {
         "We do not sell your personal information, and we do not use your data — including data obtained from Meta or Slack — for third-party advertising.",
       ] },
       { title: "AI Model Processing", body: [
-        "Souvenir generates responses using third-party large language model providers, currently OpenAI, Anthropic, Google (Gemini), and Mistral. When you chat with an assistant:",
+        "Souvenir generates responses using third-party large language model providers, currently OpenAI, Anthropic, Google (Gemini), xAI (Grok), and Mistral, reached through OpenRouter, an AI model routing provider. When you chat with an assistant:",
         { list: [
           "your messages, relevant conversation history, uploaded document excerpts, and connected data needed to answer your request are transmitted to the selected model provider to generate a response;",
           "we access these providers via their business / API offerings, under terms that prohibit them from using API-submitted data to train their models.",
         ] },
+        "Beyond response generation, your content may also be processed by: Amazon Bedrock (Cohere embedding models) to create the vector embeddings that power document search; Amazon Textract or Mistral to extract text from documents and images you upload; E2B, which runs isolated sandbox containers when an assistant executes code or builds a file for you; and Jina AI, which retrieves and searches web pages when an assistant needs public information from the internet.",
         "You control what you share in conversations and which connectors you enable.",
       ] },
       { title: "How We Share Information", body: [
@@ -479,15 +490,22 @@ export const LEGAL_DOCS: Record<string, LegalDoc> = {
         { table: {
           head: ["Provider", "Purpose"],
           rows: [
-            ["Amazon Web Services (AWS)", "Cloud hosting (compute, database, storage) — United States"],
-            ["Auth0 (Okta)", "Authentication"],
+            ["Amazon Web Services (AWS)", "Cloud hosting — compute, PostgreSQL databases, S3 storage, Redis caching, Textract document OCR, and Bedrock vector embeddings (Cohere models) — United States (us-east-1)"],
+            ["Vercel", "Hosting and delivery of our web front end — United States"],
+            ["Auth0 (Okta)", "Authentication and session management"],
             ["Stripe", "Payments and billing"],
-            ["Composio", "Connector authentication and API brokering"],
-            ["Nango", "Connector authentication and API brokering (select connectors)"],
-            ["OpenAI", "AI model inference"],
+            ["Pipedream", "Connector authentication and API brokering"],
+            ["OpenRouter", "AI model routing — transmits Inputs to the selected model provider — United States"],
+            ["OpenAI", "AI model inference (including speech-to-text)"],
             ["Anthropic", "AI model inference"],
             ["Google (Gemini)", "AI model inference"],
-            ["Mistral", "AI model inference"],
+            ["xAI (Grok)", "AI model inference"],
+            ["Mistral AI", "AI model inference and document OCR — France"],
+            ["E2B", "Isolated sandbox containers for code execution and file generation"],
+            ["Jina AI", "Web page retrieval and search when an assistant looks up public information"],
+            ["Sentry", "Application error monitoring"],
+            ["Mixpanel", "Product analytics"],
+            ["Google Analytics", "Website analytics (getsouvenir.com marketing site)"],
             ["Slack Technologies", "Slack managerial bot platform"],
             ["Meta Platforms", "Meta Ads API"],
           ],
@@ -503,7 +521,8 @@ export const LEGAL_DOCS: Record<string, LegalDoc> = {
             ["Chat history, uploaded files, AI Assistants, projects", "Until you delete them or delete your account"],
             ["Connector credentials / tokens", "Until you disconnect the connector or delete your account"],
             ["Slack installation data (workspace, bot token)", "Until the bot is uninstalled or tokens are revoked, then deleted automatically"],
-            ["Connected third-party data retrieved for a task", "Retained as part of the relevant conversation / results until that conversation is deleted"],
+            ["Slack message text", "Not stored — read live from Slack on each request"],
+            ["Connected third-party data retrieved for a task", "Retained as part of the relevant conversation / results until that conversation is deleted; cached results held for reuse expire automatically after 30 days"],
             ["Billing records", "As required by tax and accounting law"],
             ["Server logs", "Rotated on a rolling basis"],
           ],
@@ -514,7 +533,7 @@ export const LEGAL_DOCS: Record<string, LegalDoc> = {
         { list: [
           "Delete conversations, files, AI Assistants, and projects from within the Service.",
           "Disconnect any connector (including Meta Ads) from the connectors page — this removes our access and stored credentials for that account. You can additionally revoke Souvenir’s access from the third party’s side (for Meta: Settings & Privacy → Settings → Business Integrations on Facebook; for Slack: remove the app from your workspace, which triggers automatic deletion of our stored installation data).",
-          "Delete your Souvenir account by contacting contact@getsouvenir.com (or via in-app account settings, where available). Account deletion removes your personal information, chat history, uploads, identity links, and stored connector credentials, except records we must retain for legal / billing compliance.",
+          "Close your account from in-app account settings, which deactivates it and ends access to the Service, or request full deletion by emailing contact@getsouvenir.com. On a verified deletion request we erase your personal information, chat history, uploads, identity links, and stored connector credentials within 30 days, except records we must retain for legal / billing compliance and residual copies in encrypted backups, which age out on our backup rotation schedule.",
         ] },
         { subhead: "Data deletion for Meta users" },
         "If you used the Souvenir Meta app and want data obtained from Meta deleted, either disconnect the Meta Ads connector in Souvenir and delete any conversations that referenced it; or email contact@getsouvenir.com with the subject “Meta Data Deletion Request” from the email associated with your account. We will delete the data and confirm within 30 days.",
